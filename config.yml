@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+# ↓↓↓ 部署時把這行改成你的「GitHub 帳號/倉庫名稱」 ↓↓↓
+backend:
+  name: github
+  repo: mstarsbusiness/mstarsbusiness.github.io
+  branch: main
+
+# 上傳圖片會存到這個資料夾
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: zh_Hant
+
+collections:
+  - name: blog
+    label: 最新貼文
+    files:
+      - name: posts
+        label: 貼文清單
+        file: data/posts.json
+        editor:
+          preview: false
+        fields:
+          - label: 貼文
+            name: posts
+            widget: list
+            label_singular: 一則貼文
+            summary: "{{fields.title}}（{{fields.date}}）"
+            fields:
+              - { label: 識別碼（自動）, name: id, widget: uuid, required: false }
+              - { label: 標題, name: title, widget: string }
+              - { label: 日期, name: date, widget: string, hint: "顯示用文字，例如 2026.06" }
+              - { label: 分類標籤, name: tag, widget: string, hint: "例如：最新消息 / 場館動態 / 講座活動" }
+              - { label: 圖片, name: img, widget: image, required: false, hint: "建議寬度 1000px 以上" }
+              - { label: 內文, name: body, widget: text, hint: "可分多段；段落之間空一行" }
+              - { label: 連結網址（可留空）, name: link, widget: string, required: false }
+              - { label: 連結文字, name: linkText, widget: string, required: false, hint: "例如：查看更多 →" }
