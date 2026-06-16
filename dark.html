@@ -439,45 +439,9 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 <link rel="apple-touch-icon" href="images/logo-dark.png">
 <meta name="twitter:image" content="https://www.morning-stars.com.tw/images/og-cover.jpg">
 <style id="theme-switch-css">.theme-switch{position:fixed;left:18px;bottom:18px;z-index:200;display:flex;gap:6px;background:rgba(26,23,18,.42);padding:6px;border-radius:30px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.theme-switch a{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.55);font-family:'Noto Serif TC',serif;transition:.2s}.theme-switch a:hover,.theme-switch a.cur{background:#A9803F;border-color:#A9803F}</style>
+<style id="hero-carousel-css">.hero .bg .hslide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}.hero .bg .hslide.on{opacity:1}.hero .bg .hslide img{width:100%;height:100%;object-fit:cover;display:block}</style>
 </head>
 <body>
-
-<div id="intro" title="點擊進入網站">
-  <div class="ibg on"><img src="images/img-e78d5044cd.jpg" alt="台北101夜景"></div>
-  <div class="ibg"><img src="images/img-e78d5044cd.jpg" alt="台北101晨曦"></div>
-  <div class="ibg"><img src="images/img-e78d5044cd.jpg" alt="信義館辦公區"></div>
-  <div class="ibg"><img src="images/img-e78d5044cd.jpg" alt="世貿館 茶水收納區"></div>
-  <div class="ishade"></div>
-  <div class="ichrome"><span>Morning Stars · 台北信義區</span><span>Service Intro · 2026</span></div>
-  <div class="imid">
-    <div class="ilogo"><img src="images/img-0b03902608.png" alt="辰星商務中心 Morning Stars Ltd."></div>
-    <div class="ikick">Your Work From Office Solutions</div>
-    <h1>辰星商務中心</h1>
-    <div class="isub">黃金地段的小坪數辦公方案</div>
-    <p class="idesc">以共享經濟為核心，在台北信義區提供兩處據點——從一個合法登記地址，到一張專注工作的辦公桌。</p>
-  </div>
-  <div class="icaption" id="icap">Taipei 101 · Night View</div>
-  <div class="ictrl">
-    <button class="iarr" id="iprev" aria-label="上一張">←</button>
-    <div class="idots" id="idots"></div>
-    <button class="iarr" id="inext" aria-label="下一張">→</button>
-  </div>
-  <div class="ifoot">
-    <span>信義館 · 世貿館 · Morning-Stars</span>
-    <span></span>
-    <span>— 2026 —</span>
-  </div>
-  <div class="ienter">點擊任意處進入網站 · Click to Enter</div>
-</div>
-
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<g id="mslogo">
-  <circle cx="50" cy="50" r="47" fill="none" stroke="#B79A6A" stroke-width="2.5"/>
-  <path fill="#B79A6A" d="M50 14a13 13 0 0 1 11.3 6.5 13 13 0 0 1 13 13 13 13 0 0 1 6.5 11.3 13 13 0 0 1-6.5 11.3 13 13 0 0 1-13 13 13 13 0 0 1-11.3 6.5 13 13 0 0 1-11.3-6.5 13 13 0 0 1-13-13 13 13 0 0 1-6.5-11.3 13 13 0 0 1 6.5-11.3 13 13 0 0 1 13-13A13 13 0 0 1 50 14z"/>
-  <path fill="#FFFFFF" d="M50 27 L54 46 L73 50 L54 54 L50 73 L46 54 L27 50 L46 46 Z"/>
-</g>
-</defs></svg>
 
 <header id="hdr">
   <div class="nav">
@@ -503,7 +467,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 
 <div class="page active" id="page-home">
   <section class="hero" id="top" style="padding:0">
-    <div class="bg"><div class="ph imgbox" data-ph="主視覺 辦公空間 / 信義城市景滿版大圖"><img class="ph-img" src="images/img-e78d5044cd.jpg" alt="辰星商務中心 主視覺 辦公空間 / 信義城市景滿版大圖" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('failed')"></div></div>
+    <div class="bg" id="heroBg"><div class="hslide on"><img class="ph-img" src="images/img-e78d5044cd.jpg" alt="辰星商務中心 信義城市景主視覺" loading="eager"></div><div class="hslide"><img class="ph-img" src="images/img-11c39c3bc3.jpg" alt="台北101 夜景" loading="lazy"></div><div class="hslide"><img class="ph-img" src="images/img-1e5117b00c.jpg" alt="台北101 晨曦" loading="lazy"></div><div class="hslide"><img class="ph-img" src="images/img-311b47afa9.jpg" alt="信義館 辦公空間" loading="lazy"></div><div class="hslide"><img class="ph-img" src="images/img-f29e1d510f.jpg" alt="世貿館 茶水空間" loading="lazy"></div></div>
     <div class="hero-content">
       <div class="kick">Your Work From Office Solutions</div>
       <h1>黃金地段的，<br>小坪數辦公空間<span class="en">Crafted Workspace in the Heart of Taipei</span></h1>
@@ -858,41 +822,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   fetch('data/posts.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){var a=(d&&d.posts)?d.posts:(Array.isArray(d)?d:[]);POSTS=a.map(function(p){var b=p.body;if(typeof b==='string'){b=b.split(/\r?\n+/).map(function(t){return t.trim();}).filter(Boolean);}return Object.assign({},p,{body:b||[],id:p.id||('post-'+Math.random().toString(36).slice(2,8))});});renderPosts();observeReveals();fromHash();}).catch(function(e){console.error('讀取貼文失敗',e);renderPosts();observeReveals();fromHash();});
 </script>
 
-<script id="intro-script">
-(function(){
-  document.body.classList.add('ilock');
-  const intro=document.getElementById('intro');
-  const bgs=[...intro.querySelectorAll('.ibg')];
-  const caps=['Morning Stars · Xinyi, Taipei','Morning Stars · Xinyi, Taipei','Morning Stars · Xinyi, Taipei','Morning Stars · Xinyi, Taipei'];
-  const dotsBox=document.getElementById('idots'), cap=document.getElementById('icap');
-  let cur=0, timer=null, done=false;
-  bgs.forEach((_,i)=>{
-    const b=document.createElement('button');
-    if(i===0)b.classList.add('on');
-    b.addEventListener('click',e=>{e.stopPropagation();sel(i)});
-    dotsBox.appendChild(b);
-  });
-  const dots=[...dotsBox.children];
-  function sel(i){
-    cur=(i+bgs.length)%bgs.length;
-    bgs.forEach((b,j)=>b.classList.toggle('on',j===cur));
-    dots.forEach((d,j)=>d.classList.toggle('on',j===cur));
-    cap.style.opacity=0;
-    setTimeout(()=>{cap.textContent=caps[cur];cap.style.opacity=1},300);
-    restart();
-  }
-  function restart(){clearInterval(timer);timer=setInterval(()=>sel(cur+1),6000)}
-  restart();
-  document.getElementById('iprev').addEventListener('click',e=>{e.stopPropagation();sel(cur-1)});
-  document.getElementById('inext').addEventListener('click',e=>{e.stopPropagation();sel(cur+1)});
-  intro.addEventListener('click',()=>{
-    if(done)return; done=true; clearInterval(timer);
-    intro.classList.add('exit');
-    document.body.classList.remove('ilock');
-    setTimeout(()=>intro.remove(),1200);
-  });
-})();
-</script>
+
 
 
 <script id="booking-script">
@@ -909,5 +839,6 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   <a href="dark.html" title="暗夜畫廊版" class="cur">暗</a>
   <a href="light.html" title="白底設計版">白</a>
 </nav>
+<script id="hero-rotate">(function(){var bg=document.getElementById("heroBg");if(!bg)return;var s=[].slice.call(bg.querySelectorAll(".hslide"));if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove("on");i=(i+1)%s.length;s[i].classList.add("on");},5000);})();</script>
 </body>
 </html>
