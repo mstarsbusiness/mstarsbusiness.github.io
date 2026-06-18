@@ -18,53 +18,282 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 [
-{
-  "@context":"https://schema.org",
-  "@type":["LocalBusiness","CoworkingSpace"],
-  "name":"辰星商務中心 Morning Stars",
-  "alternateName":"Morning Stars Business Center",
-  "image":"https://www.morning-stars.com.tw/images/og-cover.jpg",
-  "logo":"https://www.morning-stars.com.tw/images/logo-dark.png",
-  "url":"https://www.morning-stars.com.tw/",
-  "telephone":"+886-903-368-856",
-  "email":"mstars.business@gmail.com",
-  "priceRange":"$$",
-  "currenciesAccepted":"TWD",
-  "paymentAccepted":"Cash, Bank Transfer",
-  "description":"辰星商務中心位於台北信義區黃金地段，提供信義館與世貿館兩處據點，服務涵蓋借址登記（虛擬辦公室）、獨立辦公室租借、共享座位及會議室預約。",
-  "address":[
-    {"@type":"PostalAddress","streetAddress":"基隆路二段145號10樓","addressLocality":"信義區","addressRegion":"台北市","postalCode":"110","addressCountry":"TW"},
-    {"@type":"PostalAddress","streetAddress":"基隆路一段398號4樓","addressLocality":"信義區","addressRegion":"台北市","postalCode":"110","addressCountry":"TW"}
-  ],
-  "geo":{"@type":"GeoCoordinates","latitude":25.0270,"longitude":121.5538},
-  "hasMap":"https://maps.google.com/?q=台北市信義區基隆路二段145號10樓",
-  "openingHoursSpecification":[
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"21:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"09:00","closes":"18:00"}
-  ],
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"125","bestRating":"5","worstRating":"1"},
-  "review":[
-    {"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5"},"author":{"@type":"Person","name":"Harry Chen"},"reviewBody":"地點很方便，靠近101站，工作空間舒適安靜，工作人員積極協助，是很貼心的商務中心。"},
-    {"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5"},"author":{"@type":"Person","name":"陳炳勳"},"reviewBody":"鄰近捷運交通方便，室內採光佳而且環境整潔，如果是新鮮創業人士可以來嘗試看看。"}
-  ],
-  "hasOfferCatalog":{"@type":"OfferCatalog","name":"辦公方案","itemListElement":[
-    {"@type":"Offer","name":"借址登記（虛擬辦公室）","description":"公司行號工商登記借址，含收發服務，年繳NT$18,000起","price":"18000","priceCurrency":"TWD"},
-    {"@type":"Offer","name":"獨立辦公室","description":"1至6人獨立辦公空間，月租NT$10,000起","price":"10000","priceCurrency":"TWD"},
-    {"@type":"Offer","name":"共享座位","description":"彈性共享座位，月租NT$4,500起","price":"4500","priceCurrency":"TWD"}
-  ]},
-  "sameAs":["https://www.morning-stars.com.tw/","https://line.me/R/ti/p/@mstars"]
-},
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"辦公室空間適合哪類行業租用？","acceptedAnswer":{"@type":"Answer","text":"辰星歡迎各行業，規劃的個別空間功能具有彈性，適合個人專業諮詢服務、創意設計工作室、商品展示空間、新創企業等六人以下團隊。"}},
-    {"@type":"Question","name":"辦公室租金包含了哪些？","acceptedAnswer":{"@type":"Answer","text":"租金包含水電管理費、辦公桌椅、空間設施及基本服務（收發、茶水、清潔、網路、冷氣等），有公司借址登記需求者租金已包含，無需額外費用。"}},
-    {"@type":"Question","name":"是否有提供會議室？","acceptedAnswer":{"@type":"Answer","text":"是的，世貿館提供會議室租借服務，信義館進駐客戶亦可跨館使用，依需求線上預約即可。"}},
-    {"@type":"Question","name":"是否需要簽長期合約？","acceptedAnswer":{"@type":"Answer","text":"提供各種彈性方案，包含依小時計費的臨時辦公、短期月繳，以及季繳、年繳等長期方案。"}},
-    {"@type":"Question","name":"停車方便嗎？","acceptedAnswer":{"@type":"Answer","text":"兩處據點大樓地下均有月租車位。信義館附近步行2分鐘內有多處停車場；世貿館步行10分鐘內有嘟嘟房、愛馬屋等選擇。"}}
-  ]
-}
+  {
+    "@context": "https://schema.org",
+    "@type": [
+      "LocalBusiness",
+      "CoworkingSpace"
+    ],
+    "name": "辰星商務中心 Morning Stars",
+    "alternateName": "Morning Stars Business Center",
+    "image": "https://www.morning-stars.com.tw/images/og-cover.jpg",
+    "logo": "https://www.morning-stars.com.tw/images/logo-dark.png",
+    "url": "https://www.morning-stars.com.tw/",
+    "telephone": "+886-903-368-856",
+    "email": "mstars.business@gmail.com",
+    "priceRange": "$$",
+    "currenciesAccepted": "TWD",
+    "paymentAccepted": "Cash, Bank Transfer",
+    "description": "辰星商務中心位於台北信義區黃金地段，提供信義館與世貿館兩處據點，服務涵蓋借址登記（虛擬辦公室）、獨立辦公室租借、共享座位及會議室預約。",
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "基隆路二段145號10樓",
+        "addressLocality": "信義區",
+        "addressRegion": "台北市",
+        "postalCode": "110",
+        "addressCountry": "TW"
+      },
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "基隆路一段398號4樓",
+        "addressLocality": "信義區",
+        "addressRegion": "台北市",
+        "postalCode": "110",
+        "addressCountry": "TW"
+      }
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.027,
+      "longitude": 121.5538
+    },
+    "hasMap": "https://maps.google.com/?q=台北市信義區基隆路二段145號10樓",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "10",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Harry Chen"
+        },
+        "reviewBody": "地點很方便，靠近101站，工作空間舒適安靜，工作人員積極協助，是很貼心的商務中心。"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "陳炳勳"
+        },
+        "reviewBody": "鄰近捷運交通方便，室內採光佳而且環境整潔，如果是新鮮創業人士可以來嘗試看看。"
+      }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "辦公方案",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "借址登記（虛擬辦公室）",
+          "description": "公司行號工商登記借址，含收發服務，年繳NT$18,000起",
+          "price": "18000",
+          "priceCurrency": "TWD"
+        },
+        {
+          "@type": "Offer",
+          "name": "獨立辦公室",
+          "description": "1至6人獨立辦公空間，月租NT$10,000起",
+          "price": "10000",
+          "priceCurrency": "TWD"
+        },
+        {
+          "@type": "Offer",
+          "name": "共享座位",
+          "description": "彈性共享座位，月租NT$4,500起",
+          "price": "4500",
+          "priceCurrency": "TWD"
+        }
+      ]
+    },
+    "sameAs": [
+      "https://www.facebook.com/mstarscowork/",
+      "https://www.instagram.com/mstarsoffice/",
+      "https://line.me/R/ti/p/@mstars"
+    ],
+    "@id": "https://www.morning-stars.com.tw/#brand"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": [
+      "LocalBusiness",
+      "CoworkingSpace"
+    ],
+    "name": "辰星商務中心 信義館",
+    "image": "https://www.morning-stars.com.tw/images/og-cover.jpg",
+    "url": "https://www.morning-stars.com.tw/#venues",
+    "telephone": "+886-903-368-856",
+    "email": "mstars.business@gmail.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "基隆路二段145號10樓",
+      "addressLocality": "信義區",
+      "addressRegion": "台北市",
+      "postalCode": "110",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.0269916,
+      "longitude": 121.5463421
+    },
+    "hasMap": "https://maps.google.com/?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%BF%A1%E7%BE%A9%E5%8D%80%E5%9F%BA%E9%9A%86%E8%B7%AF%E4%BA%8C%E6%AE%B5145%E8%99%9F10%E6%A8%93",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "7",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "branchOf": {
+      "@type": "Organization",
+      "name": "辰星商務中心 Morning Stars",
+      "@id": "https://www.morning-stars.com.tw/#brand"
+    },
+    "description": "辰星商務中心信義館，鄰近捷運六張犁站，提供共享辦公室、獨立辦公室、借址登記（虛擬辦公室）及彈性座位方案。"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": [
+      "LocalBusiness",
+      "CoworkingSpace"
+    ],
+    "name": "辰星商務中心 世貿館",
+    "image": "https://www.morning-stars.com.tw/images/og-cover.jpg",
+    "url": "https://www.morning-stars.com.tw/#venues",
+    "telephone": "+886-903-368-856",
+    "email": "mstars.business@gmail.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "基隆路一段398號4樓",
+      "addressLocality": "信義區",
+      "addressRegion": "台北市",
+      "postalCode": "110",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.0308218,
+      "longitude": 121.5511486
+    },
+    "hasMap": "https://maps.google.com/?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%BF%A1%E7%BE%A9%E5%8D%80%E5%9F%BA%E9%9A%86%E8%B7%AF%E4%B8%80%E6%AE%B5398%E8%99%9F4%E6%A8%93",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "3",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "branchOf": {
+      "@type": "Organization",
+      "name": "辰星商務中心 Morning Stars",
+      "@id": "https://www.morning-stars.com.tw/#brand"
+    },
+    "description": "辰星商務中心世貿館，鄰近捷運台北101/世貿站，提供共享辦公室、獨立辦公室、借址登記及會議室租借；進駐客戶可 24 小時進出。"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "辦公室空間適合哪類行業租用？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "辰星歡迎各行業，規劃的個別空間功能具有彈性，適合個人專業諮詢服務、創意設計工作室、商品展示空間、新創企業等六人以下團隊。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "辦公室租金包含了哪些？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "租金包含水電管理費、辦公桌椅、空間設施及基本服務（收發、茶水、清潔、網路、冷氣等），有公司借址登記需求者租金已包含，無需額外費用。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "是否有提供會議室？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "是的，世貿館提供會議室租借服務，信義館進駐客戶亦可跨館使用，依需求線上預約即可。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "是否需要簽長期合約？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "提供各種彈性方案，包含依小時計費的臨時辦公、短期月繳，以及季繳、年繳等長期方案。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "停車方便嗎？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "兩處據點大樓地下均有月租車位。信義館附近步行2分鐘內有多處停車場；世貿館步行10分鐘內有嘟嘟房、愛馬屋等選擇。"
+        }
+      }
+    ]
+  }
 ]
 </script>
 <meta name="geo.region" content="TW-TPE">
@@ -445,6 +674,9 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 <meta name="twitter:image" content="https://www.morning-stars.com.tw/images/og-cover.jpg">
 <style id="theme-switch-css">.theme-switch{position:fixed;left:18px;bottom:18px;z-index:200;display:flex;gap:6px;background:rgba(26,23,18,.42);padding:6px;border-radius:30px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.theme-switch a{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.55);font-family:'Noto Serif TC',serif;transition:.2s}.theme-switch a:hover,.theme-switch a.cur{background:#A9803F;border-color:#A9803F}</style>
 <style id="hero-carousel-css">.hero .bg .hslide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}.hero .bg .hslide.on{opacity:1}.hero .bg .hslide img{width:100%;height:100%;object-fit:cover;display:block}</style>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PKTJLRH2N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4PKTJLRH2N");</script>
 </head>
 <body>
 
@@ -689,7 +921,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
         <div class="field"><label>E-mail</label><input type="email" placeholder="example@mail.com"></div>
         <div class="field"><label>諮詢項目</label><div class="opts"><label><input type="checkbox">辦公室</label><label><input type="checkbox">共享座位</label><label><input type="checkbox">借址登記</label><label><input type="checkbox">其他</label></div></div>
         <div class="field"><label>問題諮詢或意見反應</label><textarea placeholder="請輸入您的需求…"></textarea></div>
-        <label class="agree"><input type="checkbox" required>同意「個人資料蒐集同意聲明」</label>
+        <label class="agree"><input type="checkbox" required>同意「<a href="privacy-policy.html" target="_blank" rel="noopener">個人資料蒐集同意聲明</a>」</label>
         <button type="submit" class="submit">送出諮詢　SUBMIT</button>
       </form>
     </div>
@@ -698,8 +930,8 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   <footer><div class="wrap">
     <div class="foot">
       <div><a class="logo" onclick="go('home')"><span class="sealwrap"><img class="seal seal-img" src="images/img-23a7d345e5.png" alt="辰星商務中心 Morning Stars Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><svg class="seal seal-fb" viewBox="0 0 100 100" style="display:none"><use href="#mslogo"/></svg></span><span><b>辰星商務中心</b><small>Morning Stars</small></span></a><p>位於台北信義區黃金地段的小坪數共享辦公空間，為您的事業提供彈性、優質的工作場域。</p></div>
-      <div><h5>Contact</h5><a href="tel:0903368856">0903-368-856</a><a href="mailto:mstars.business@gmail.com">mstars.business@gmail.com</a><span class="li">LINE：@mstars</span></div>
-      <div><h5>Locations</h5><span class="li">信義館｜基隆路二段 145 號 10 樓</span><span class="li">世貿館｜基隆路一段 398 號 4 樓</span><a>隱私權政策</a></div>
+      <div><h5>Contact</h5><a href="tel:0903368856">0903-368-856</a><a href="mailto:mstars.business@gmail.com">mstars.business@gmail.com</a><span class="li">LINE：@mstars</span><a href="https://www.facebook.com/mstarscowork/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/mstarsoffice/" target="_blank" rel="noopener">Instagram</a></div>
+      <div><h5>Locations</h5><span class="li">信義館｜基隆路二段 145 號 10 樓</span><span class="li">世貿館｜基隆路一段 398 號 4 樓</span><a href="privacy-policy.html">隱私權政策</a></div>
     </div>
     <div class="foot-bot">© 2026 辰星商務中心 Morning Stars Ltd. All rights reserved.</div>
   </div></footer>
@@ -806,7 +1038,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   });
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
   function observeReveals(){document.querySelectorAll(".reveal:not(.in)").forEach(el=>io.observe(el));}
-  const GAS_URL="";/*←部署 Apps Script 後把網址貼進引號內*/
+  const GAS_URL="https://script.google.com/macros/s/AKfycbyscof3lYNc-fwzExTcBDX4hlSoMUB6zAQOn6rkjjaxdCy9RLwxh3S5ANZVxAIbUYWkEw/exec";/*←部署 Apps Script 後把網址貼進引號內*/
   $("#cform").addEventListener("submit",async e=>{
     e.preventDefault();
     const f=e.target;
@@ -845,5 +1077,6 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   <a href="light.html" title="白底設計版" class="cur">白</a>
 </nav>
 <script id="hero-rotate">(function(){var bg=document.getElementById("heroBg");if(!bg)return;var s=[].slice.call(bg.querySelectorAll(".hslide"));if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove("on");i=(i+1)%s.length;s[i].classList.add("on");},5000);})();</script>
+<script id="anchor-compat">(function(){var map={about:"about",location:"venues",venues:"venues",services:"services",pricing:"pricing",fees:"pricing",faq:"faq",book:"booking",booking:"booking",contact:"contact"};function jump(){var h=(location.hash||"").replace("#","").toLowerCase();if(map[h]){var el=document.getElementById(map[h]);if(el){setTimeout(function(){el.scrollIntoView({behavior:"smooth"});},120);}}}window.addEventListener("hashchange",jump);if(document.readyState!=="loading"){jump();}else{document.addEventListener("DOMContentLoaded",jump);}})();</script>
 </body>
 </html>
