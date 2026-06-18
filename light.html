@@ -918,7 +918,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
     <div class="reveal">
       <form id="cform">
         <div class="field"><label>請選擇據點</label><select required><option value="">請選擇…</option><option>信義館</option><option>世貿館</option></select></div>
-        <div class="frow"><div class="field"><label>怎麼稱呼您</label><input type="text" placeholder="您的姓名" required></div><div class="field"><label>聯絡電話</label><input type="tel" placeholder="09XX-XXX-XXX" required></div></div>
+        <div class="frow"><div class="field"><label>怎麼稱呼您</label><div class="opts" style="margin:4px 0 12px"><label><input type="radio" name="title" value="先生">先生</label><label><input type="radio" name="title" value="女士">女士</label></div><input type="text" placeholder="您的姓名" required></div><div class="field"><label>聯絡電話</label><input type="tel" placeholder="09XX-XXX-XXX" required></div></div>
         <div class="field"><label>E-mail</label><input type="email" placeholder="example@mail.com"></div>
         <div class="field"><label>諮詢項目</label><div class="opts"><label><input type="checkbox">辦公室</label><label><input type="checkbox">共享座位</label><label><input type="checkbox">借址登記</label><label><input type="checkbox">其他</label></div></div>
         <div class="field"><label>問題諮詢或意見反應</label><textarea placeholder="請輸入您的需求…"></textarea></div>
@@ -1044,9 +1044,10 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
     e.preventDefault();
     const f=e.target;
     const venue=f.querySelector("select").value;
+    var title=(f.querySelector('input[name=title]:checked')||{}).value||"";
     const texts=f.querySelectorAll("input[type=text],input[type=tel],input[type=email]");
     const items=[...f.querySelectorAll(".opts input:checked")].map(c=>c.parentElement.textContent.trim()).join("、");
-    const data={venue:venue,name:texts[0].value,tel:texts[1].value,email:texts[2].value,items:items,msg:f.querySelector("textarea").value};
+    const data={venue:venue,name:texts[0].value,tel:texts[1].value,email:texts[2].value,items:items,msg:f.querySelector("textarea").value,gender:title};
     if(GAS_URL){
       try{
         await fetch(GAS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(data)});
