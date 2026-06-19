@@ -1,0 +1,31 @@
+name: Deploy to PUMO via FTP
+
+# 每次 GitHub 有更新（含 /admin 發文），就自動把網站 FTP 上傳到捕夢網 public_html
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:        # 也可在 Actions 頁面手動執行
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy to 捕夢網 public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps          # 加密傳輸；若主機不支援可改成 ftp
+          port: 21
+          server-dir: ./public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            README.md
+            CNAME
+            .nojekyll
