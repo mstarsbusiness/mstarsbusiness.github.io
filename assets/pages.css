@@ -1,0 +1,71 @@
+/* 辰星商務中心 — 子頁共用樣式（服務頁／貼文頁）暖金亮色版 */
+:root{--ink:#F7F3EC;--ink-2:#EFE8DA;--bone:#3A2E22;--champagne:#A9803F;--champagne-lt:#8A6A30;--stone:#6E6250;--hair:rgba(58,46,34,.14);--navbg:#1A1712;--maxw:1100px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;background:var(--ink);color:var(--bone);line-height:1.9;font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+header.top{position:sticky;top:0;z-index:50;background:rgba(26,23,18,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand b{font-family:"Noto Serif TC",serif;font-size:1.05rem;letter-spacing:.16em;color:#F5F1E8;font-weight:500;line-height:1.1}
+.brand small{display:block;font-family:"Cormorant Garamond",serif;font-size:.56rem;letter-spacing:.32em;color:var(--stone);text-transform:uppercase}
+.topnav{display:flex;gap:22px;align-items:center;font-size:.86rem;letter-spacing:.08em}
+.topnav a{color:#CFC6B5;transition:.3s}
+.topnav a:hover{color:#CDAC6A}
+.topnav .book{border:1px solid var(--champagne);color:#CDAC6A;padding:8px 16px;letter-spacing:.12em}
+.topnav .book:hover{background:var(--champagne);color:var(--ink)}
+@media(max-width:760px){.topnav .lnk{display:none}}
+.hero2{background:linear-gradient(160deg,#1A1712,#2A2118);color:#F2ECE0;padding:78px 0 60px}
+.hero2 .kick{font-family:"Cormorant Garamond",serif;letter-spacing:.4em;text-transform:uppercase;color:#CDAC6A;font-size:.9rem;margin-bottom:18px}
+.hero2 h1{font-family:"Noto Serif TC",serif;font-weight:600;font-size:clamp(1.9rem,5vw,3.1rem);line-height:1.32;letter-spacing:.03em}
+.hero2 p.sub{margin-top:20px;max-width:700px;color:#D8CFBE;font-size:1.05rem}
+.crumb{font-size:.8rem;letter-spacing:.06em;color:var(--stone);padding:16px 0}
+.crumb a:hover{color:var(--champagne)}
+main section{padding:46px 0;border-bottom:1px solid var(--hair)}
+h2.sec{font-family:"Noto Serif TC",serif;font-weight:600;font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:.04em;margin-bottom:20px;color:var(--bone)}
+.lead{font-family:"Noto Serif TC",serif;font-size:1.25rem;line-height:1.9;color:var(--bone);margin-bottom:22px}
+h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:1.16rem;margin:24px 0 10px;color:#4A3A2A}
+p{margin-bottom:16px}
+strong{color:#4A3A2A;font-weight:500}
+ul.feat{list-style:none;margin:14px 0}
+ul.feat li{padding:10px 0 10px 26px;position:relative;border-bottom:1px solid var(--hair)}
+ul.feat li::before{content:"";position:absolute;left:0;top:18px;width:8px;height:8px;background:var(--champagne);border-radius:50%}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+.card{border:1px solid var(--hair);padding:24px;background:#FFF9EF}
+.card .en{font-family:"Cormorant Garamond",serif;letter-spacing:.2em;text-transform:uppercase;color:var(--champagne);font-size:.82rem}
+.card h3{margin-top:6px}
+.rate{margin-top:14px;font-family:"Noto Serif TC",serif;color:var(--champagne-lt);font-size:1.12rem}
+.rate small{display:block;font-size:.78rem;color:var(--stone);margin-top:4px;font-family:"Noto Sans TC",sans-serif}
+.cta{background:var(--navbg);color:#F2ECE0;text-align:center;padding:56px 24px}
+.cta h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:1.7rem;margin-bottom:16px;color:#F2ECE0}
+.cta p{color:#C9C0AF;margin-bottom:24px}
+.btn{display:inline-block;border:1px solid var(--champagne);color:#CDAC6A;padding:13px 30px;letter-spacing:.14em;margin:6px;transition:.3s;font-size:.92rem}
+.btn:hover{background:var(--champagne);color:var(--ink)}
+.btn.solid{background:var(--champagne);color:var(--ink)}
+.faqs{margin-top:8px}
+.faqs details{border-bottom:1px solid var(--hair);padding:14px 0}
+.faqs summary{cursor:pointer;font-weight:500;color:#4A3A2A;list-style:none;position:relative;padding-left:26px}
+.faqs summary::-webkit-details-marker{display:none}
+.faqs summary::before{content:"＋";color:var(--champagne);position:absolute;left:0}
+.faqs details[open] summary::before{content:"－"}
+.faqs .ans{padding:12px 0 4px 26px;color:var(--bone)}
+.related{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.related a{border:1px solid var(--hair);padding:10px 18px;font-size:.9rem;transition:.3s}
+.related a:hover{border-color:var(--champagne);color:var(--champagne)}
+footer.ft{background:#1A1712;color:#9A8E7C;padding:40px 0;font-size:.86rem}
+footer.ft .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between}
+footer.ft b{color:#F5F1E8;font-family:"Noto Serif TC",serif;letter-spacing:.1em;font-weight:500}
+footer.ft a:hover{color:#CDAC6A}
+footer.ft .cols div{margin-bottom:6px}
+.post-meta{color:var(--stone);font-size:.85rem;letter-spacing:.08em;margin-bottom:6px}
+.post-tag{display:inline-block;font-family:"Cormorant Garamond",serif;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);font-size:.78rem;border:1px solid var(--hair);padding:3px 12px;margin-bottom:14px}
+.post-hero-img{margin:22px 0;border:1px solid var(--hair)}
+.post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px;margin-top:24px}
+.post-card{border:1px solid var(--hair);background:#FFF9EF;transition:.3s}
+.post-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(58,46,34,.1)}
+.post-card .thumb{aspect-ratio:16/10;overflow:hidden;background:var(--ink-2)}
+.post-card .thumb img{width:100%;height:100%;object-fit:cover}
+.post-card .pb{padding:20px}
+.post-card h3{margin:8px 0 6px;font-size:1.05rem}
+.post-card .date{color:var(--stone);font-size:.82rem}
