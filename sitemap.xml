@@ -37,6 +37,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.morning-stars.com.tw/posts/e3da12f1-627c-4d99-9476-448e2f69006a.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.morning-stars.com.tw/posts/9291514c-3bea-4d29-9cc3-8a8953967708.html</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -63,12 +69,6 @@
   <url>
     <loc>https://www.morning-stars.com.tw/posts/wtc-coming-soon-2025.html</loc>
     <lastmod>2025-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.morning-stars.com.tw/posts/e3da12f1-627c-4d99-9476-448e2f69006a.html</loc>
-    <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
