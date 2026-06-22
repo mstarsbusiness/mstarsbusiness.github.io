@@ -838,7 +838,8 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
       <button class="bk-tab on" id="bkXinyi" type="button">信義館</button>
       <button class="bk-tab" id="bkWtc" type="button">世貿館</button>
     </div>
-    <p class="bk-note reveal">於日曆中點選可預約時段，即可直接完成線上預約；亦歡迎來電 0903-368-856 或 LINE @mstars 洽詢。</p>
+    <p class="bk-note reveal">下方日曆可即時查看會議室「已預約／可預約」時段。世貿館會議室確認時間後，點下方按鈕即可線上預約；信義館預約或其他協助，歡迎來電 0903-368-856 或 LINE @mstars。</p>
+    <div class="bk-cta reveal" style="text-align:center;margin:2px 0 22px"><a href="meeting-room.html" style="display:inline-block;padding:13px 32px;border:1px solid #c8a24a;border-radius:30px;color:#c8a24a;text-decoration:none;font-weight:600;letter-spacing:.04em">線上預約世貿館會議室 →</a></div>
     <div class="bk-frame reveal"><iframe id="bkIframe" src="https://calendar.google.com/calendar/embed?src=76d23f94b710e7d4ebae0ad74576d7a3f86e0458488cae9ff2068bf17e98ea47%40group.calendar.google.com&ctz=Asia%2FTaipei&mode=WEEK&hl=zh_TW&showTitle=0&showPrint=0&showCalendars=0&wkst=1&bgcolor=%23FFFFFF" loading="lazy" title="辰星會議室預約日曆"></iframe></div>
   </div></section>
 
@@ -1067,7 +1068,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 <script id="booking-script">
 (function(){
   var x=document.getElementById('bkXinyi'),w=document.getElementById('bkWtc'),fr=document.getElementById('bkIframe');
-  var XURL="https://calendar.google.com/calendar/embed?src=76d23f94b710e7d4ebae0ad74576d7a3f86e0458488cae9ff2068bf17e98ea47%40group.calendar.google.com&ctz=Asia%2FTaipei&mode=WEEK&hl=zh_TW&showTitle=0&showPrint=0&showCalendars=0&wkst=1&bgcolor=%23FFFFFF",WURL="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1CNFC1W-8uPimJpw7GB8u5PWLl8_hF2ngVzz9y8wob06D1ZEvy_d4CBCcoiA6W0JRdIgEyyMoR?gv=true";
+  var XURL="https://calendar.google.com/calendar/embed?src=76d23f94b710e7d4ebae0ad74576d7a3f86e0458488cae9ff2068bf17e98ea47%40group.calendar.google.com&ctz=Asia%2FTaipei&mode=WEEK&hl=zh_TW&showTitle=0&showPrint=0&showCalendars=0&wkst=1&bgcolor=%23FFFFFF",WURL="https://calendar.google.com/calendar/embed?src=303948eab3cdefb6f7e1564c34fee3fe451dc13012ab0acddedbd5412f77705b%40group.calendar.google.com&ctz=Asia%2FTaipei&mode=WEEK&hl=zh_TW&showTitle=0&showPrint=0&showCalendars=0&wkst=1&bgcolor=%23FFFFFF";
   x.addEventListener('click',function(){fr.src=XURL;x.classList.add('on');w.classList.remove('on');});
   w.addEventListener('click',function(){fr.src=WURL;w.classList.add('on');x.classList.remove('on');});
 })();
