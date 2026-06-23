@@ -338,7 +338,7 @@
   .logo b{font-family:"Noto Serif TC",serif;font-size:1.14rem;letter-spacing:.16em;color:var(--bone);display:block;line-height:1.2;font-weight:500}
   .logo small{font-family:"Cormorant Garamond",serif;font-size:.6rem;letter-spacing:.34em;color:var(--stone);text-transform:uppercase}
   .menu{display:flex;gap:26px;align-items:center}
-  .menu a{font-size:.84rem;letter-spacing:.1em;color:var(--bone-dim);position:relative;padding:6px 0;transition:color .3s}
+  .menu a{font-size:.84rem;letter-spacing:.1em;color:var(--bone-dim);position:relative;padding:6px 0;transition:color .3s;white-space:nowrap;flex-shrink:0}
   .menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--champagne);transition:width .3s}
   .menu a:hover{color:var(--bone)}.menu a:hover::after{width:100%}
   .menu .book{border:1px solid var(--champagne);color:var(--champagne-lt);padding:9px 18px;letter-spacing:.12em;transition:.3s}
@@ -645,8 +645,8 @@ body.ilock{overflow:hidden;height:100vh}
 
 /* ── 導覽升級 ── */
 .nav{padding:18px 44px!important}
-.menu{gap:30px!important}
-.menu a{font-size:.82rem!important;letter-spacing:.15em!important;font-weight:400!important}
+.menu{gap:16px!important}
+.menu a{font-size:.8rem!important;letter-spacing:.04em!important;font-weight:400!important;white-space:nowrap!important}
 .menu a.book{padding:10px 22px!important;font-size:.82rem!important;letter-spacing:.16em!important}
 
 /* ── 區塊標題升級 ── */
@@ -686,10 +686,10 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
       <a onclick="go('home','about')">關於辰星</a>
       <a onclick="go('home','venues')">場館</a>
       <a onclick="go('home','services')">服務</a>
-      <a onclick="go('home','onestop')">一站式服務</a>
+      <a onclick="go('home','onestop')">一站式</a>
       <a onclick="go('home','pricing')">費用方案</a>
       <a onclick="go('home','voices')">用戶評價</a>
-      <a onclick="go('home','booking')">會議室預約</a>
+      <a onclick="go('home','booking')">會議室</a>
       <a onclick="go('home','journal')">最新貼文</a>
       <a onclick="go('home','partners')">合作夥伴</a>
       <a onclick="go('home','faq')">常見問題</a>
