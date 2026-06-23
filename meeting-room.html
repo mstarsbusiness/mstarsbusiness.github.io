@@ -130,8 +130,8 @@
   </div></section>
 
   <section id="booking-wtc"><div class="wrap">
-    <h2 class="sec">世貿館會議室・線上預約</h2>
-    <p class="lead">先在「即時空檔」日曆確認想要的時段，再到下方預約表單選取時段送出，即可完成世貿館會議室預約。若需信義館或其他協助，歡迎來電 0903-368-856 或加 LINE @mstars。</p>
+    <h2 class="sec">線上預約會議室（信義館 / 世貿館）</h2>
+    <p class="lead">選擇館別與日期查看空檔，挑好時段、填寫聯絡方式即可送出預約申請。送出後專員會與您聯繫並請您完成付款，款項確認後預約即正式成立。若需協助，歡迎來電 0903-368-856 或加 LINE @mstars。</p>
 
     <div style="background:#fbf7ef;border:1px solid #e6d6b0;border-radius:10px;padding:14px 16px;margin:18px 0;font-size:.9rem;line-height:1.85;color:#6b5a36">
       <b>📌 預約須知</b><br>
@@ -140,20 +140,128 @@
       3. 不同客戶的預約之間保留 1 小時緩衝時間；進駐／設址客戶享每月贈送時數，超出部分每小時 400 元。
     </div>
 
-    <h3 style="margin:24px 0 8px;font-size:1.05rem">① 先看即時空檔（已預約／可預約）</h3>
-    <div style="margin-bottom:6px;border:1px solid #e7e0d2;border-radius:14px;overflow:hidden;background:#fff">
-      <iframe src="https://calendar.google.com/calendar/embed?src=303948eab3cdefb6f7e1564c34fee3fe451dc13012ab0acddedbd5412f77705b%40group.calendar.google.com&ctz=Asia%2FTaipei&mode=WEEK&hl=zh_TW&showTitle=0&showPrint=0&showCalendars=0&wkst=1&bgcolor=%23FFFFFF"
-              title="世貿館會議室可預約時段日曆"
-              style="border:0;width:100%;height:600px;display:block" loading="lazy"></iframe>
+    <div id="mbCal" style="margin-top:6px">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+        <label style="font-size:.88rem;color:#6b5a36">館別 <select id="mb_venue" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"><option>信義館</option><option>世貿館</option></select></label>
+        <div style="display:flex;align-items:center;gap:10px;margin-left:auto">
+          <button type="button" id="mb_prev" style="width:36px;height:36px;border:1px solid #d8cdb6;background:#fff;border-radius:8px;cursor:pointer;font-size:1.2rem;color:#A9803F">&lsaquo;</button>
+          <span id="mb_month" style="font-weight:700;color:#6b5a36;min-width:130px;text-align:center"></span>
+          <button type="button" id="mb_next" style="width:36px;height:36px;border:1px solid #d8cdb6;background:#fff;border-radius:8px;cursor:pointer;font-size:1.2rem;color:#A9803F">&rsaquo;</button>
+        </div>
+      </div>
+      <div id="mb_grid"></div>
+      <div id="mb_day" style="display:none;margin-top:18px;border-top:1px solid #eee;padding-top:16px">
+        <h3 id="mb_dayTitle" style="font-size:1rem;margin:0 0 10px;color:#6b5a36"></h3>
+        <div id="mb_slots" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+        <div style="font-size:.82rem;color:#9a8c66;margin:8px 0">綠＝可預約、灰＝已約/緩衝。請點選「開始時段」，再選「時長」。</div>
+        <div id="mb_durRow" style="display:none;margin-top:4px;font-size:.9rem;color:#6b5a36">時長：<span id="mb_durs"></span></div>
+        <div id="mb_form" style="display:none;margin-top:12px;background:#faf6ee;border:1px solid #ecdfc4;border-radius:10px;padding:14px">
+          <div id="mb_cost" style="font-weight:700;color:#A9803F;margin-bottom:10px"></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <label style="font-size:.85rem;color:#6b5a36">姓名 *<br><input id="mb_name" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
+            <label style="font-size:.85rem;color:#6b5a36">電話 *<br><input id="mb_phone" inputmode="tel" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
+            <label style="font-size:.85rem;color:#6b5a36">公司（選填）<br><input id="mb_company" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
+            <label style="font-size:.85rem;color:#6b5a36">Email（選填）<br><input id="mb_email" inputmode="email" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
+          </div>
+          <button type="button" id="mb_submit" style="margin-top:14px;padding:12px 28px;background:#A9803F;color:#fff;border:0;border-radius:9px;font-weight:700;cursor:pointer">送出預約申請</button>
+          <div id="mb_msg" style="margin-top:10px;font-size:.9rem"></div>
+        </div>
+      </div>
     </div>
-
-    <h3 style="margin:26px 0 8px;font-size:1.05rem">② 選取時段並送出預約</h3>
-    <div style="margin-top:6px;border:1px solid #e7e0d2;border-radius:14px;overflow:hidden;background:#fff">
-      <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1CNFC1W-8uPimJpw7GB8u5PWLl8_hF2ngVzz9y8wob06D1ZEvy_d4CBCcoiA6W0JRdIgEyyMoR?gv=true"
-              title="世貿館會議室線上預約"
-              style="border:0;width:100%;height:720px;display:block" loading="lazy"></iframe>
-    </div>
-    <p style="margin-top:12px;font-size:.85rem;color:var(--stone)">＊ 若日曆無法顯示，請點 <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1CNFC1W-8uPimJpw7GB8u5PWLl8_hF2ngVzz9y8wob06D1ZEvy_d4CBCcoiA6W0JRdIgEyyMoR" target="_blank" rel="noopener">這裡開新分頁預約</a>。</p>
+    <p style="margin-top:14px;font-size:.85rem;color:var(--stone)">＊ 外部客戶預約為「待收款」狀態，款項確認後正式成立；每次最長 3 小時、最短 1 小時、可分段預約。進駐／設址租戶請改用官方 LINE 預約，以使用每月贈送時數。</p>
+    <script>
+    (function(){
+      var EP='https://morning-stars-right.netlify.app/.netlify/functions/meeting-book';
+      var BUF=60, RATE=400;
+      var $=function(id){return document.getElementById(id);};
+      var view=new Date(); view.setDate(1);
+      var monthData=[]; var selDate='', selStart=null, selDur=null;
+      function pad(n){return (n<10?'0':'')+n;}
+      function todayStr(){return new Date(Date.now()+8*3600000).toISOString().slice(0,10);}
+      function toMin(s){var m=/^(\d{1,2}):(\d{2})$/.exec(s);return (+m[1])*60+(+m[2]);}
+      function fmt(m){return pad(Math.floor(m/60))+':'+pad(m%60);}
+      var WK=['日','一','二','三','四','五','六'];
+      function loadMonth(){
+        var ym=view.getFullYear()+'-'+pad(view.getMonth()+1);
+        $('mb_month').textContent=view.getFullYear()+' 年 '+(view.getMonth()+1)+' 月';
+        $('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#9a8c66">載入中…</div>';
+        $('mb_day').style.display='none';
+        fetch(EP+'?venue='+encodeURIComponent($('mb_venue').value)+'&month='+ym).then(function(r){return r.json();}).then(function(j){
+          monthData=(j&&j.bookings)||[]; renderGrid();
+        }).catch(function(){$('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#c0392b">載入失敗，請稍後再試。</div>';});
+      }
+      function dayHasBk(ds){return monthData.some(function(b){return b.date===ds;});}
+      function renderGrid(){
+        var y=view.getFullYear(), mo=view.getMonth();
+        var first=new Date(y,mo,1).getDay(), days=new Date(y,mo+1,0).getDate(), today=todayStr();
+        var h='<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px">';
+        for(var i=0;i<7;i++) h+='<div style="text-align:center;font-size:.8rem;color:#9a8c66;padding:4px 0">'+WK[i]+'</div>';
+        for(var b=0;b<first;b++) h+='<div></div>';
+        for(var d=1;d<=days;d++){
+          var ds=y+'-'+pad(mo+1)+'-'+pad(d), past=ds<today, has=dayHasBk(ds), cur=ds===selDate;
+          h+='<div data-d="'+ds+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#A9803F':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+((has&&!past)?'<div style="font-size:.62rem;color:#A9803F">有預約</div>':'')+'</div>';
+        }
+        h+='</div>'; $('mb_grid').innerHTML=h;
+        [].slice.call($('mb_grid').querySelectorAll('.mbcell')).forEach(function(c){
+          var ds=c.getAttribute('data-d');
+          if(ds && ds>=today) c.onclick=function(){selectDay(ds);};
+        });
+      }
+      function dayBookings(ds){return monthData.filter(function(b){return b.date===ds;}).map(function(b){return {s:toMin(b.start),e:toMin(b.end)};});}
+      function blockedCell(m,bks){var booked=bks.some(function(k){return m<k.e&&m+30>k.s;});var buffer=!booked&&bks.some(function(k){return m<k.e+BUF&&m+30>k.s-BUF;});return booked?'booked':(buffer?'buffer':'free');}
+      function conflict(a,b,bks){return bks.some(function(k){return a<k.e+BUF&&b>k.s-BUF;});}
+      function selectDay(ds){
+        selDate=ds; selStart=null; selDur=null; renderGrid();
+        $('mb_day').style.display='block';
+        $('mb_dayTitle').textContent=ds+'（'+WK[new Date(ds+'T12:00:00Z').getUTCDay()]+'）可預約時段';
+        $('mb_durRow').style.display='none'; $('mb_form').style.display='none'; $('mb_msg').innerHTML='';
+        renderSlots();
+      }
+      function renderSlots(){
+        var bks=dayBookings(selDate), h='';
+        for(var m=540;m<1260;m+=30){
+          var st=blockedCell(m,bks), sel=(selStart!=null&&selDur!=null&&m>=selStart&&m<selStart+selDur*60);
+          var bg=st==='booked'?'#e3ddd0':(st==='buffer'?'#eee9dd':'#e9f5ea'), bd=st==='free'?'#bcdcc0':'#ddd6c6';
+          if(sel){bg='#A9803F';bd='#A9803F';}
+          h+='<div data-m="'+m+'" class="mbslot" style="cursor:'+(st==='free'?'pointer':'default')+';font-size:.78rem;padding:7px 4px;border:1px solid '+bd+';border-radius:7px;background:'+bg+';color:'+(sel?'#fff':(st==='free'?'#2a6b34':'#9a8c66'))+';width:62px;text-align:center">'+fmt(m)+'</div>';
+        }
+        $('mb_slots').innerHTML=h;
+        [].slice.call($('mb_slots').querySelectorAll('.mbslot')).forEach(function(c){
+          if(blockedCell(+c.getAttribute('data-m'),bks)==='free') c.onclick=function(){pickStart(+c.getAttribute('data-m'));};
+        });
+      }
+      function pickStart(m){
+        selStart=m; selDur=null; var bks=dayBookings(selDate), durs=[1,1.5,2,2.5,3], h='';
+        durs.forEach(function(d){
+          var end=m+d*60, ok=(end<=1260)&&!conflict(m,end,bks);
+          h+='<button type="button" data-d="'+d+'" '+(ok?'':'disabled')+' style="margin:0 6px 6px 0;padding:7px 12px;border:1px solid '+(ok?'#A9803F':'#ddd')+';border-radius:20px;background:#fff;color:'+(ok?'#A9803F':'#ccc')+';cursor:'+(ok?'pointer':'not-allowed')+'">'+d+' 小時</button>';
+        });
+        $('mb_durs').innerHTML=h; $('mb_durRow').style.display='block'; $('mb_form').style.display='none';
+        [].slice.call($('mb_durs').querySelectorAll('button')).forEach(function(btn){ if(!btn.disabled) btn.onclick=function(){pickDur(+btn.getAttribute('data-d'));}; });
+        renderSlots();
+      }
+      function pickDur(d){
+        selDur=d; renderSlots();
+        $('mb_cost').textContent=selDate+' '+fmt(selStart)+'–'+fmt(selStart+d*60)+'｜共 '+d+' 小時 · 費用 NT$'+(d*RATE);
+        $('mb_form').style.display='block';
+      }
+      $('mb_prev').onclick=function(){view.setMonth(view.getMonth()-1);loadMonth();};
+      $('mb_next').onclick=function(){view.setMonth(view.getMonth()+1);loadMonth();};
+      $('mb_venue').onchange=loadMonth;
+      $('mb_submit').onclick=function(){
+        if(selStart==null||selDur==null) return;
+        var data={venue:$('mb_venue').value,date:selDate,start:fmt(selStart),end:fmt(selStart+selDur*60),name:$('mb_name').value.trim(),phone:$('mb_phone').value.trim(),company:$('mb_company').value.trim(),email:$('mb_email').value.trim()};
+        if(!data.name||!data.phone){$('mb_msg').innerHTML='<span style="color:#c0392b">請填寫姓名與電話。</span>';return;}
+        var btn=$('mb_submit'); btn.disabled=true; btn.textContent='送出中…';
+        fetch(EP,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(r){return r.json();}).then(function(j){
+          btn.disabled=false; btn.textContent='送出預約申請';
+          if(j.ok){alert('✅ '+j.message+'\n'+data.venue+' '+data.date+' '+data.start+'–'+data.end+'｜NT$'+j.cost);loadMonth();}
+          else{$('mb_msg').innerHTML='<span style="color:#c0392b">'+(j.error||'送出失敗')+'</span>';}
+        }).catch(function(){btn.disabled=false;btn.textContent='送出預約申請';$('mb_msg').innerHTML='<span style="color:#c0392b">送出失敗，請稍後再試或來電 0903-368-856。</span>';});
+      };
+      loadMonth();
+    })();
+    </script>
   </div></section>
 
   <section><div class="wrap">
