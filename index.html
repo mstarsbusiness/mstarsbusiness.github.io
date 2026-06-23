@@ -1082,5 +1082,6 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 </nav>
 <script id="hero-rotate">(function(){var bg=document.getElementById("heroBg");if(!bg)return;var s=[].slice.call(bg.querySelectorAll(".hslide"));if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove("on");i=(i+1)%s.length;s[i].classList.add("on");},5000);})();</script>
 <script id="anchor-compat">(function(){var map={about:"about",location:"venues",venues:"venues",services:"services",pricing:"pricing",fees:"pricing",faq:"faq",book:"booking",booking:"booking",contact:"contact"};function jump(){var h=(location.hash||"").replace("#","").toLowerCase();if(map[h]){var el=document.getElementById(map[h]);if(el){setTimeout(function(){el.scrollIntoView({behavior:"smooth"});},120);}}}window.addEventListener("hashchange",jump);if(document.readyState!=="loading"){jump();}else{document.addEventListener("DOMContentLoaded",jump);}})();</script>
+<script defer src="chat-widget.js"></script>
 </body>
 </html>
