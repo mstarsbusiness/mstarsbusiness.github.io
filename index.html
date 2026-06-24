@@ -472,11 +472,19 @@
   .locmap-item iframe{width:100%;height:300px;border:0;border-radius:12px;display:block}
   .locmap-nav{display:inline-block;margin-top:12px;color:var(--champagne-lt);font-size:.86rem;border-bottom:1px solid var(--hair);padding-bottom:3px;text-decoration:none}
   @media(max-width:760px){.locmap-grid{grid-template-columns:1fr}}
-  .langsw{display:inline-flex;gap:2px;align-items:center;margin-left:14px}
-  .langsw a{cursor:pointer;font-size:.72rem;letter-spacing:.05em;padding:3px 8px;border-radius:20px;color:inherit;opacity:.66;text-decoration:none;transition:.2s;font-family:'Noto Serif TC',serif}
-  .langsw a:hover{opacity:1}
-  .langsw a.cur{background:var(--champagne);color:var(--ink);opacity:1}
-  @media(max-width:900px){.langsw{margin:12px 0 0}}
+  .langsw{position:relative;display:inline-flex;align-items:center;flex-shrink:0}
+  .lang-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:0;background:none;color:#D8D2C4;cursor:pointer;opacity:.85;transition:.2s;padding:0}
+  .lang-btn:hover{opacity:1;color:#fff}
+  .lang-btn svg{width:21px;height:21px}
+  .lang-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:132px;background:var(--navbg);border:1px solid rgba(183,154,106,.3);border-radius:10px;padding:6px;flex-direction:column;gap:2px;display:none;box-shadow:0 12px 30px rgba(0,0,0,.32);z-index:120}
+  .lang-menu.open{display:flex}
+  .lang-menu a{cursor:pointer;font-size:.82rem;letter-spacing:.04em;padding:9px 14px;border-radius:7px;color:#D8D2C4;text-decoration:none;white-space:nowrap;transition:.2s}
+  .lang-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .lang-menu a.cur{color:#D4AE72;background:rgba(169,128,63,.18)}
+  html[lang="en"] .hero h1 span,html[lang="ja"] .hero h1 span{white-space:normal!important}
+  html[lang="en"] .hero h1,html[lang="ja"] .hero h1{font-size:clamp(2rem,5.2vw,4.2rem)!important;letter-spacing:.02em!important}
+  .nav>.menu{margin-left:auto}
+  .nav>.langsw{margin-left:14px}
   .post-detail{padding-top:120px}
   .post-detail .back{display:inline-flex;align-items:center;gap:10px;color:var(--stone);font-size:.84rem;letter-spacing:.16em;margin-bottom:36px;background:none;border:0}
   .post-detail .back:hover{color:var(--champagne)}
@@ -740,8 +748,15 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
       <a onclick="go('home','partners')">合作夥伴</a>
       <a onclick="go('home','faq')">常見問題</a>
       <a onclick="go('home','contact')" class="book">預約參觀</a>
-      <span class="langsw"><a data-l="zh" onclick="setLang('zh')">中</a><a data-l="en" onclick="setLang('en')">EN</a><a data-l="ja" onclick="setLang('ja')">日</a></span>
     </nav>
+    <div class="langsw">
+      <button class="lang-btn" id="langBtn" aria-label="Language 語言 言語" onclick="toggleLangMenu(event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 3.9 5.7 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.7-3.9-9S9.4 5.6 12 3z"/></svg></button>
+      <div class="lang-menu" id="langMenu">
+        <a data-l="zh" onclick="setLang('zh')">中文</a>
+        <a data-l="en" onclick="setLang('en')">English</a>
+        <a data-l="ja" onclick="setLang('ja')">日本語</a>
+      </div>
+    </div>
     <button class="burger" id="burger" aria-label="開啟選單"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -1109,7 +1124,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   "預約參觀":["Book a Tour","見学予約"],
   "台北信義":["Taipei Xinyi","台北・信義"],
   "黃金地段":["Prime Location","一等地"],
-  "小坪數":["Compact","コンパクト"],
+  "小坪數":["Compact ","コンパクト"],
   "共享辦公空間":["Shared Office Space","シェアオフィス"],
   "探索兩處據點":["Explore Our Venues","拠点を見る"],
   "或預約參觀 ↓":["or Book a Tour ↓","または見学予約 ↓"],
@@ -1306,8 +1321,11 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
     try{localStorage.setItem('ms_lang',lang);}catch(e){}
     var a=document.querySelectorAll('.langsw a');
     for(var j=0;j<a.length;j++) a[j].className=(a[j].getAttribute('data-l')===lang?'cur':'');
+    var lm=document.getElementById('langMenu'); if(lm) lm.classList.remove('open');
   }
   window.setLang=function(l){apply(l);};
+  window.toggleLangMenu=function(e){if(e)e.stopPropagation();var m=document.getElementById('langMenu');if(m)m.classList.toggle('open');};
+  document.addEventListener('click',function(e){var m=document.getElementById('langMenu');if(m&&e.target.closest&&!e.target.closest('.langsw'))m.classList.remove('open');});
   function init(){collect();var s='zh';try{s=localStorage.getItem('ms_lang')||'zh';}catch(e){}apply(s);}
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
