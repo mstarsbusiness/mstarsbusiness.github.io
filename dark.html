@@ -464,6 +464,14 @@
   .vmore-wrap{text-align:center;margin-top:34px}
   .vmore-btn{font-family:inherit;border:1px solid var(--champagne);color:var(--champagne-lt);background:none;cursor:pointer;padding:12px 32px;letter-spacing:.14em;font-size:.85rem;border-radius:30px;transition:.3s}
   .vmore-btn:hover{background:var(--champagne);color:var(--ink)}
+  .locmap{padding:62px 0;border-top:1px solid var(--hair)}
+  .locmap-title{text-align:center;font-size:1.15rem;letter-spacing:.06em;margin:0 0 28px}
+  .locmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;max-width:1080px;margin:0 auto;padding:0 24px}
+  .locmap-item h4{font-size:1.05rem;margin:0 0 4px;color:var(--champagne-lt)}
+  .locmap-item p{font-size:.85rem;opacity:.72;margin:0 0 12px;line-height:1.6}
+  .locmap-item iframe{width:100%;height:300px;border:0;border-radius:12px;display:block}
+  .locmap-nav{display:inline-block;margin-top:12px;color:var(--champagne-lt);font-size:.86rem;border-bottom:1px solid var(--hair);padding-bottom:3px;text-decoration:none}
+  @media(max-width:760px){.locmap-grid{grid-template-columns:1fr}}
   .post-detail{padding-top:120px}
   .post-detail .back{display:inline-flex;align-items:center;gap:10px;color:var(--stone);font-size:.84rem;letter-spacing:.16em;margin-bottom:36px;background:none;border:0}
   .post-detail .back:hover{color:var(--champagne)}
@@ -526,7 +534,7 @@
   }
   @media(max-width:640px){
     .wrap,.nav{padding-left:22px;padding-right:22px}
-    .menu{position:fixed;inset:0 0 0 auto;width:80%;max-width:320px;background:var(--ink-2);flex-direction:column;justify-content:center;gap:18px;transform:translateX(100%);transition:transform .4s;padding:40px;border-left:1px solid var(--hair)}
+    .menu{position:fixed;inset:0 0 0 auto;width:80%;max-width:320px;background:var(--navbg);flex-direction:column;justify-content:center;gap:18px;transform:translateX(100%);transition:transform .4s;padding:40px;border-left:1px solid var(--hair)}
     .menu.open{transform:none}.burger{display:flex}
     .burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
     .burger.x span:nth-child(2){opacity:0}.burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -723,6 +731,10 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
       <a onclick="go('home','faq')">常見問題</a>
       <a onclick="go('home','contact')" class="book">預約參觀</a>
     </nav>
+    <div class="langsw">
+      <button class="lang-btn" aria-label="Language 語言 言語" onclick="toggleLangMenu(event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 3.9 5.7 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.7-3.9-9S9.4 5.6 12 3z"/></svg></button>
+      <div class="lang-menu" id="langMenu"><a data-l="zh" onclick="setLang('zh')">中文</a><a data-l="en" onclick="setLang('en')">English</a><a data-l="ja" onclick="setLang('ja')">日本語</a></div>
+    </div>
     <button class="burger" id="burger" aria-label="開啟選單"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -997,6 +1009,24 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
     </div>
   </div></div></section>
 
+  <section class="locmap">
+    <h3 class="locmap-title">交通位置・歡迎蒞臨參觀</h3>
+    <div class="locmap-grid">
+      <div class="locmap-item">
+        <h4>信義館</h4>
+        <p>台北市信義區基隆路二段 145 號 10 樓・近捷運六張犁站</p>
+        <iframe src="https://maps.google.com/maps?q=辰星商務中心信義館&hl=zh-TW&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="辰星商務中心 信義館 Google 地圖"></iframe>
+        <a class="locmap-nav" href="https://maps.google.com/?q=台北市信義區基隆路二段145號10樓" target="_blank" rel="noopener">📍 開啟 Google 導航 →</a>
+      </div>
+      <div class="locmap-item">
+        <h4>世貿館</h4>
+        <p>台北市信義區基隆路一段 398 號 4 樓・近捷運台北 101／世貿站</p>
+        <iframe src="https://maps.google.com/maps?q=辰星商務中心世貿館&hl=zh-TW&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="辰星商務中心 世貿館 Google 地圖"></iframe>
+        <a class="locmap-nav" href="https://maps.google.com/?q=台北市信義區基隆路一段398號4樓" target="_blank" rel="noopener">📍 開啟 Google 導航 →</a>
+      </div>
+    </div>
+  </section>
+
   <footer><div class="wrap">
     <div class="foot">
       <div><a class="logo" onclick="go('home')"><span class="sealwrap"><img class="seal seal-img" src="images/img-23a7d345e5.png" alt="辰星商務中心 Morning Stars Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><svg class="seal seal-fb" viewBox="0 0 100 100" style="display:none"><use href="#mslogo"/></svg></span><span><b>辰星商務中心</b><small>Morning Stars</small></span></a><p>位於台北信義區黃金地段的小坪數共享辦公空間，為您的事業提供彈性、優質的工作場域。</p></div>
@@ -1054,6 +1084,8 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 </div>
 <button class="totop" id="totop" aria-label="回到頂端">↑</button>
 
+<script src="i18n.js"></script>
+
 <script>
   const $=s=>document.querySelector(s);
   let POSTS=[];
@@ -1078,7 +1110,8 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
       <button class="back" onclick="go('home','journal')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>返回貼文列表</button>
       <span class="ptag">${p.tag}</span><h1>${p.title}</h1><div class="date">${p.date}</div>
       ${p.img?`<div class="post-detail-img"><img src="${p.img}" alt="${p.title}" loading="lazy"></div>`:`<div class="ph" data-label="文章主圖"></div>`}
-      <div class="body">${p.body.map(t=>`<p>${t}</p>`).join("")}${p.link?`<a class="post-link" href="${p.link}" target="_blank" rel="noopener">${p.linkText||"查看更多 →"}</a>`:""}</div>`;
+      <div class="body">${p.body.map(t=>`<p>${t}</p>`).join("")}${p.link?`<a class="post-link" href="${p.link}" target="_blank" rel="noopener">${p.linkText||"查看更多 →"}</a>`:""}</div>
+      <section class="locmap"><h3 class="locmap-title">交通位置・歡迎蒞臨參觀</h3><div class="locmap-grid"><div class="locmap-item"><h4>信義館</h4><p>台北市信義區基隆路二段 145 號 10 樓・近捷運六張犁站</p><iframe src="https://maps.google.com/maps?q=辰星商務中心信義館&hl=zh-TW&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="辰星商務中心 信義館 Google 地圖"></iframe><a class="locmap-nav" href="https://maps.google.com/?q=台北市信義區基隆路二段145號10樓" target="_blank" rel="noopener">📍 開啟 Google 導航 →</a></div><div class="locmap-item"><h4>世貿館</h4><p>台北市信義區基隆路一段 398 號 4 樓・近捷運台北 101／世貿站</p><iframe src="https://maps.google.com/maps?q=辰星商務中心世貿館&hl=zh-TW&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="辰星商務中心 世貿館 Google 地圖"></iframe><a class="locmap-nav" href="https://maps.google.com/?q=台北市信義區基隆路一段398號4樓" target="_blank" rel="noopener">📍 開啟 Google 導航 →</a></div></div></section>`;
     if(location.hash!=="#post-"+p.id) history.pushState(null,"","#post-"+p.id);
     showPage("post"); window.scrollTo(0,0);
   }
