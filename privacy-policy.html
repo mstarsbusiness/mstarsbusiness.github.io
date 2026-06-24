@@ -29,11 +29,17 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4PKTJLRH2N");</script>
 </head>
 <body>
+<div class="langsw" style="position:fixed;top:16px;right:16px;z-index:60">
+  <button class="lang-btn" aria-label="Language 語言 言語" onclick="toggleLangMenu(event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 3.9 5.7 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.7-3.9-9S9.4 5.6 12 3z"/></svg></button>
+  <div class="lang-menu" id="langMenu"><a data-l="zh" onclick="setLang('zh')">中文</a><a data-l="en" onclick="setLang('en')">English</a><a data-l="ja" onclick="setLang('ja')">日本語</a></div>
+</div>
   <div class="wrap">
     <a class="back" href="index.html">← 返回辰星官網</a>
     <span class="kick">Privacy Policy</span>
     <h1>隱私權政策</h1>
     <div class="updated">辰星管理顧問有限公司 ・ 辰星商務中心 Morning Stars</div>
+
+    <p style="font-size:.82rem;color:var(--stone);font-style:italic;margin:0 0 28px">＊ 本政策以中文版為準；英文與日文版本僅供參考。</p>
 
     <p>辰星管理顧問有限公司暨其所營運之辰星商務中心（以下合稱「本單位」）重視您的個人資料與隱私權。為使您安心使用本網站及本單位之各項服務，謹依據《個人資料保護法》相關規定，說明本單位蒐集、處理及利用您個人資料之方式及您所得行使之權利如下。</p>
 
@@ -64,5 +70,6 @@
       © 2026 辰星商務中心 Morning Stars Ltd. All rights reserved.
     </div>
   </div>
+<script src="i18n.js"></script>
 </body>
 </html>
