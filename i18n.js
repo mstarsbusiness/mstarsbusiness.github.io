@@ -9,8 +9,8 @@
   /* ---- 注入樣式（地球鈕＋下拉＋主視覺多語換行）---- */
   var CSS = `
   .langsw{position:relative;display:inline-flex;align-items:center;flex-shrink:0}
-  .lang-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:0;background:none;color:#D8D2C4;cursor:pointer;opacity:.85;transition:.2s;padding:0}
-  .lang-btn:hover{opacity:1;color:#fff}
+  .lang-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:0;background:none;color:#C8A24A;cursor:pointer;opacity:.9;transition:.2s;padding:0}
+  .lang-btn:hover{opacity:1;color:#E0BE72}
   .lang-btn svg{width:21px;height:21px}
   .lang-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:132px;background:var(--navbg,#1A1712);border:1px solid rgba(183,154,106,.3);border-radius:10px;padding:6px;flex-direction:column;gap:2px;display:none;box-shadow:0 12px 30px rgba(0,0,0,.32);z-index:140}
   .lang-menu.open{display:flex}
@@ -206,7 +206,58 @@
   "步行 10 分鐘：嘟嘟房世貿站、愛馬屋 101 場、CITY PARKING 台北信基大樓站":["10-min walk: Dudu Fang WTC, Aimawu 101, CITY PARKING Xinji Bldg.","徒歩10分：嘟嘟房世貿、愛馬屋101、CITY PARKING 台北信基ビル"],
   "暖":["Warm","暖色"],
   "暗":["Dark","ダーク"],
-  "白":["Light","ライト"]
+  "白":["Light","ライト"],
+  /* ── 服務頁共用 & 借址登記 virtual-office ── */
+  "費用":["Pricing","料金"],
+  "首頁":["Home","ホーム"],
+  "據點":["Locations","拠点"],
+  "平日 10:00–17:00":["Weekdays 10:00–17:00","平日 10:00–17:00"],
+  "借址登記・虛擬辦公室":["Virtual Office · Registered Address","バーチャルオフィス・住所登記"],
+  "台北信義區的公司登記地址":["A Company Registration Address in Xinyi, Taipei","台北・信義区の会社登記住所"],
+  "／ 借址登記・虛擬辦公室":[" / Virtual Office · Registered Address"," / バーチャルオフィス・住所登記"],
+  "公司成立、營運上暫時無需實體辦公室？辰星提供位於台北信義區黃金地段的借址登記服務，地址符合專業形象，含郵件代收與記帳士配合，讓您用最低成本擁有一個體面的公司門面。":["Starting a company but don’t yet need a physical office? Morning Stars offers a registered business address in the prime Xinyi district of Taipei — a professional image with mail handling and partner bookkeeping, giving your company a respectable face at minimal cost.","会社設立後、当面は実オフィスが不要ですか？辰星は台北・信義区の一等地に住所登記サービスをご提供。プロフェッショナルな住所に郵便受付と提携記帳士のサポートを含み、最小限のコストで立派な会社の顔を実現します。"],
+  "所謂「借址登記」，就是將公司行號的工商登記地址設於辰星，無需承租整間實體辦公室，即可合法完成公司設立與營業登記。":["A “registered address” means using Morning Stars as your company’s official business-registration address — legally completing company formation and business registration without renting an entire physical office.","「住所登記」とは、会社の商業登記住所を辰星に置くこと。実オフィスを丸ごと借りずに、合法的に会社設立と営業登記を完了できます。"],
+  "對許多初創團隊、自由工作者、SOHO 族與電商賣家而言，事業初期最需要的不是一間昂貴的辦公室，而是一個":["For many startups, freelancers, home-based workers and e-commerce sellers, what matters most early on is not an expensive office, but ","多くのスタートアップ、フリーランス、SOHO、EC事業者にとって、創業初期に最も必要なのは高価なオフィスではなく、"],
+  "能登記、能收信、形象專業":["a registrable, mail-receiving, professional","登記でき、郵便を受け取れ、印象もプロフェッショナルな"],
+  "的地址。辰星位於台北市信義區基隆路，鄰近捷運六張犁站與台北 101／世貿站，是名片與官網上一看就放心的黃金地段門面。":[" address. Morning Stars is on Keelung Rd. in Xinyi, Taipei, near Liuzhangli MRT and Taipei 101 / WTC MRT — a prime-location front that looks reassuring on your business card and website.","住所です。辰星は台北・信義区の基隆路にあり、MRT六張犁駅と台北101／世貿駅に近接。名刺や公式サイトに載せても安心の一等地の門構えです。"],
+  "借址登記適合誰？":["Who is the virtual office for?","住所登記はどんな方に？"],
+  "剛成立公司、想用信義區地址提升專業形象的創業者":["Founders who just started a company and want a Xinyi address to boost their professional image","会社を設立したばかりで、信義区の住所でプロの印象を高めたい起業家"],
+  "在家工作、不想用住家地址做公司登記的 SOHO 與自由工作者":["Home-based SOHO workers and freelancers who don’t want to register with their home address","在宅勤務で、自宅住所で会社登記したくないSOHO・フリーランス"],
+  "電商、網路品牌、顧問與接案工作室等無需實體門市的事業":["E-commerce, online brands, consultants and freelance studios that don’t need a physical storefront","EC、ネットブランド、コンサル、受託スタジオなど実店舗が不要な事業"],
+  "外縣市或海外公司，需要一個台北據點收受公文與郵件":["Out-of-town or overseas companies needing a Taipei base to receive official documents and mail","地方・海外の企業で、公文書や郵便を受け取る台北拠点が必要な方"],
+  "服務內容":["What’s Included","サービス内容"],
+  "合法登記地址":["Legal Registered Address","合法な登記住所"],
+  "：提供台北信義區地址供公司、行號工商登記與營業登記使用。":[": A Taipei Xinyi address for company and business registration.","：台北・信義区の住所を会社・事業の商業登記および営業登記にご利用いただけます。"],
+  "郵件包裹代收":["Mail & Parcel Handling","郵便・荷物の受取代行"],
+  "：代收郵件、包裹、快遞與政府公文，透過 LINE 即時通知處理情形。":[": We receive mail, parcels, couriers and government documents, with real-time LINE notifications.","：郵便・荷物・宅配・公文書を代理受領し、LINEでリアルタイムにご連絡します。"],
+  "記帳士配合":["Partner Bookkeeper","記帳士の連携"],
+  "：合作專業記帳士，協助公司設立、變更登記、每月記帳與報稅。":[": Working with professional bookkeepers for company formation, change registration, monthly bookkeeping and tax filing.","：専門の記帳士と連携し、会社設立・変更登記・毎月の記帳と税務申告をサポート。"],
+  "彈性升級":["Flexible Upgrade","柔軟なアップグレード"],
+  "：日後需要實體空間時，可無痛升級為共享座位或獨立辦公室。":[": When you later need physical space, upgrade smoothly to a co-working seat or private office.","：将来実スペースが必要になれば、コワーキング席や個室オフィスへスムーズに移行できます。"],
+  "會議空間支援":["Meeting Space Support","会議スペースの利用"],
+  "：需與客戶會晤時，可預約租用會議室，比咖啡廳更專業、更不受打擾。":[": Book a meeting room to host clients — more professional and undisturbed than a café.","：来客時は会議室を予約可能。カフェより専門的で邪魔が入りません。"],
+  "含工商登記地址、郵件代收與 LINE 即時通知，可搭配記帳士辦理公司設立與記帳。":["Includes a business-registration address, mail handling and real-time LINE notifications; pair with a bookkeeper for company formation and accounting.","商業登記住所、郵便受付、LINEリアルタイム通知を含み、記帳士と組み合わせて会社設立や記帳にも対応。"],
+  "需要實體空間？":["Need physical space?","実スペースが必要ですか？"],
+  "事業成長後可彈性升級，從共享座位（月租 4,500 元起）到 1–6 人獨立辦公室（月租 10,000 元起）。":["Upgrade flexibly as your business grows — from a co-working seat (from NT$4,500/mo) to a 1–6 person private office (from NT$10,000/mo).","事業の成長に合わせて柔軟にアップグレード。コワーキング席（月額4,500〜）から1〜6名の個室オフィス（月額10,000〜）まで。"],
+  "看獨立辦公室 →":["See Private Offices →","個室オフィスを見る →"],
+  "＊ 實際方案內容可依您的需求洽詢調整，歡迎來電 0903-368-856 或加 LINE @mstars 諮詢。":["* Plans can be tailored to your needs — call 0903-368-856 or add LINE @mstars to inquire.","※プラン内容はご要望に応じて調整可能です。0903-368-856 またはLINE @mstars までお問い合わせください。"],
+  "借址登記可以用來做公司工商登記嗎？":["Can a registered address be used for company registration?","住所登記は会社の商業登記に使えますか？"],
+  "可以。辰星提供位於台北信義區的合法登記地址，可供公司行號辦理工商登記、營業登記之用，地址位於黃金地段、符合專業形象。":["Yes. Morning Stars provides a legal registered address in Xinyi, Taipei for company and business registration — in a prime location with a professional image.","はい。辰星は台北・信義区の合法な登記住所をご提供し、会社・事業の商業登記や営業登記に利用可能。一等地でプロフェッショナルな印象です。"],
+  "借址登記費用怎麼計算？":["How is the fee calculated?","料金はどのように計算されますか？"],
+  "採年繳制，NT$18,000 元起，平均每月約 1,500 元，已包含郵件代收與通知服務，無需額外費用。":["Billed annually from NT$18,000 (about NT$1,500/month), including mail handling and notifications — no extra charges.","年払い制でNT$18,000〜（月あたり約1,500）。郵便受付と通知サービスを含み、追加費用はかかりません。"],
+  "借址登記有提供郵件代收嗎？":["Does it include mail handling?","郵便の受取代行はありますか？"],
+  "有。辰星會代收您的郵件、包裹與快遞，並透過 LINE 即時通知，您可選擇親自領取或約定轉寄。":["Yes. We receive your mail, parcels and couriers and notify you in real time via LINE; you can pick up in person or arrange forwarding.","はい。郵便・荷物・宅配を代理受領し、LINEでリアルタイムにご連絡。直接受取または転送のご指定が可能です。"],
+  "可以協助公司設立與記帳嗎？":["Can you help with company formation and accounting?","会社設立や記帳のサポートはありますか？"],
+  "可以。辰星配合專業記帳士，協助公司設立、變更登記與每月記帳報稅流程，讓初創事業少走冤枉路。":["Yes. Morning Stars works with professional bookkeepers to assist with company formation, change registration and monthly bookkeeping and tax filing — helping startups avoid detours.","はい。辰星は専門の記帳士と連携し、会社設立・変更登記・毎月の記帳と税務申告をサポート。スタートアップの遠回りを防ぎます。"],
+  "其他服務":["Other Services","その他のサービス"],
+  "會議室租借 →":["Meeting Room Rental →","会議室レンタル →"],
+  "獨立辦公室出租 →":["Private Office Rental →","個室オフィス →"],
+  "兩處據點介紹 →":["About Our Venues →","拠点紹介 →"],
+  "最新貼文 →":["Journal →","お知らせ →"],
+  "用信義區地址，為事業開一個好頭":["Give your business a strong start with a Xinyi address","信義区の住所で、事業に良いスタートを"],
+  "歡迎來電或線上諮詢，我們將為您說明借址登記與公司設立流程。":["Call or message us — we’ll walk you through the registered-address and company-formation process.","お電話・オンラインでお気軽にご相談ください。住所登記と会社設立の流れをご説明します。"],
+  "線上諮詢":["Online Inquiry","オンライン相談"],
+  "致電 0903-368-856":["Call 0903-368-856","0903-368-856 へ電話"]
   };
 
   /* ---- 引擎 ---- */
