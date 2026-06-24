@@ -358,8 +358,8 @@
   header{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
   header{background:var(--navbg)}header.solid{background:var(--navbg);backdrop-filter:blur(14px);border-bottom-color:rgba(183,154,106,.25)}
   .nav{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:20px 40px}
-  .logo{display:flex;align-items:center;gap:13px}
-  .logo b{font-family:"Noto Serif TC",serif;font-size:1.14rem;letter-spacing:.16em;color:#F5F1E8;display:block;line-height:1.2;font-weight:500}
+  .logo{display:flex;align-items:center;gap:13px;flex-shrink:0}
+  .logo b{font-family:"Noto Serif TC",serif;font-size:1.14rem;letter-spacing:.16em;color:#F5F1E8;display:block;line-height:1.2;font-weight:500;white-space:nowrap}
   .logo small{font-family:"Cormorant Garamond",serif;font-size:.6rem;letter-spacing:.34em;color:var(--stone);text-transform:uppercase}
   .menu{display:flex;gap:26px;align-items:center}
   .menu a{font-size:.84rem;letter-spacing:.1em;color:#D8D2C4;position:relative;padding:6px 0;transition:color .3s;white-space:nowrap;flex-shrink:0}
@@ -1235,6 +1235,47 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   "台北市信義區基隆路二段 145 號 10 樓・近捷運六張犁站":["10F, No.145, Sec.2, Keelung Rd., Xinyi, Taipei · Near Liuzhangli MRT","台北市信義区基隆路二段145号10階・MRT六張犁駅近く"],
   "台北市信義區基隆路一段 398 號 4 樓・近捷運台北 101／世貿站":["4F, No.398, Sec.1, Keelung Rd., Xinyi, Taipei · Near Taipei 101 / WTC MRT","台北市信義区基隆路一段398号4階・MRT台北101／世貿駅近く"],
   "📍 開啟 Google 導航 →":["📍 Open in Google Maps →","📍 Googleマップで開く →"],
+  "即時訊息通知":["Instant Notifications","リアルタイム通知"],
+  "郵件包裹到件、訪客來訪，透過 LINE 即時通知，人不在也安心掌握。":["Get instant LINE alerts when mail, parcels or visitors arrive — stay in control even when you’re away.","郵便・荷物の到着や来客を、LINEでリアルタイムにお知らせ。不在でも安心して把握できます。"],
+  "彈性方案調整":["Flexible Plans","柔軟なプラン変更"],
+  "從共享座位到獨立辦公室，隨團隊規模升降級，不被長約綁死。":["Scale from a co-working seat to a private office as your team grows or shrinks — no long-term lock-in.","コワーキング席から個室オフィスまで、チーム規模に応じて変更可能。長期契約に縛られません。"],
+  "會晤與接待空間":["Meeting & Reception","商談・接客スペース"],
+  "需要體面地接待客戶？專為辦公而設的環境，比咖啡廳更專業、更不受打擾。":["Need to host clients professionally? A purpose-built office environment — more professional and undisturbed than a café.","クライアントをきちんとお迎えしたい時に。オフィス専用の環境で、カフェより専門的で邪魔が入りません。"],
+  "＊ 以上服務內容可依您的實際需求洽詢調整。":["* The services above can be tailored to your actual needs.","※上記の内容はご要望に応じて調整可能です。"],
+  "＊ 標示「請洽專員」之項目，由配合的專業夥伴依公司規模與個案報價；歡迎洽詢，辰星一站式為您安排。":["* Items marked ‘By Quote’ are priced by our partner professionals based on company size and case. Please inquire — Morning Stars arranges it all in one stop.","※「お見積り」と記載の項目は、提携専門家が会社規模や案件に応じてお見積りします。お気軽にお問い合わせください。辰星がワンストップで手配します。"],
+  "在地嚮導":["Local Guide","ローカルガイド"],
+  "世貿館・2個月前":["WTC · 2 months ago","世貿館・2か月前"],
+  "信義館・1年前":["Xinyi · 1 year ago","信義館・1年前"],
+  "信義館・1個月前":["Xinyi · 1 month ago","信義館・1か月前"],
+  "地點很方便，靠近 101 站，交通非常便利。工作空間舒適、安靜，很適合小團隊，整體環境讓人感覺很自在、很有生產力。有任何需求，工作人員都會積極協助解決，是一間很貼心、服務很周到的商務中心。":["A very convenient location near the Taipei 101 MRT station. The workspace is comfortable and quiet — great for small teams, relaxing and productive. The staff actively help with any need; a thoughtful, attentive business center.","台北101駅の近くでとても便利な立地。仕事空間は快適で静か、小規模チームに最適で、居心地よく生産的です。どんな要望にもスタッフが積極的に対応してくれる、心配りの行き届いたビジネスセンターです。"],
+  "鄰近捷運交通方便，室內採光佳而且環境整潔。工作人員口齒清晰邏輯也好，在對話中都不會有任何冗長緩詢，如果是新鮮創業人士可以來嘗試體驗看看。":["Close to the MRT and easy to reach, with great natural light and a tidy interior. The staff are articulate and clear; if you’re a new entrepreneur, it’s worth trying.","MRTに近く交通便利で、室内は採光が良く清潔です。スタッフは説明が明快で分かりやすく、これから起業する方は一度体験してみる価値があります。"],
+  "解說人員很溫柔又很專業，詢問過很多間，這裡服務態度最優秀，推推推。":["The staff were gentle and professional. I asked at many places, and the service here is the best — highly recommend!","案内スタッフは優しくとてもプロフェッショナル。何件も問い合わせましたが、ここの接客が一番です。おすすめ！"],
+  "離捷運站很近，工作人員服務很好，環境也很乾淨舒適~~":["Very close to the MRT, great service from the staff, and a clean, comfortable environment ~~","MRT駅からとても近く、スタッフの対応も良く、環境も清潔で快適です〜〜"],
+  "地理位置優越、交通便利，工作氛圍也非常棒，是個充滿正能量的辦公空間。":["Excellent location and convenient transport, with a wonderful working atmosphere — a positive, energizing office space.","立地に優れアクセスも便利。仕事の雰囲気も素晴らしく、ポジティブなエネルギーに満ちたオフィス空間です。"],
+  "地點好，空間又舒適。":["Great location and comfortable space.","立地が良く、空間も快適です。"],
+  "辰星商務人員服務很好，和善又細心解說，環境很乾淨舒適。":["The Morning Stars staff offer great service — friendly and attentive explanations, with a clean, comfortable environment.","辰星のスタッフは対応が良く、親切で丁寧に説明してくれます。環境も清潔で快適です。"],
+  "瀏覽所有最新貼文 →":["Browse all posts →","すべての記事を見る →"],
+  "同意「":["I agree to the ","「"],
+  "返回場館":["Back to Venues","拠点へ戻る"],
+  "信義館 ｜ 近捷運六張犁站辦公室":["Xinyi Branch ｜ Office near Liuzhangli MRT","信義館｜MRT六張犁駅近くのオフィス"],
+  "台北市信義區基隆路二段 145 號 10 樓":["10F, No.145, Sec.2, Keelung Rd., Xinyi Dist., Taipei","台北市信義区基隆路二段145号10階"],
+  "交通方式":["Getting Here","アクセス"],
+  "捷運六張犁站（步行 6 分鐘）":["Liuzhangli MRT (6-min walk)","MRT六張犁駅（徒歩6分）"],
+  "公車喬治商職站（基隆路幹線、1、207、254、282、284、292、611、758、935、950、1551）":["Bus: George Vocational School stop (Keelung Rd. Trunk; 1, 207, 254, 282, 284, 292, 611, 758, 935, 950, 1551)","バス：喬治商職停（基隆路幹線、1、207、254、282、284、292、611、758、935、950、1551）"],
+  "停車指南":["Parking","駐車案内"],
+  "本棟地下 B1：洪橋大樓機械式停車場，月租 4,000 起（洽管理員）":["Basement B1: Hongqiao Bldg. mechanical parking, from NT$4,000/mo (ask management)","地下B1：洪橋ビル機械式駐車場、月額4,000〜（管理員へお問い合わせ）"],
+  "步行 2 分鐘：俥亭基隆路戶外停車場、USPACE 台哥大電信大樓地下停車場":["2-min walk: Cheting Keelung Rd. outdoor lot; USPACE Taiwan Mobile Bldg. basement lot","徒歩2分：俥亭基隆路屋外駐車場、USPACE 台湾大哥大ビル地下駐車場"],
+  "附近多處步行 6 分鐘內可達的停車選擇":["Several more parking options within a 6-min walk","徒歩6分以内に複数の駐車場あり"],
+  "在地圖上開啟 →":["Open in Maps →","地図で開く →"],
+  "世貿館 ｜ 近台北101世貿站辦公室":["WTC Branch ｜ Office near Taipei 101 / WTC MRT","世貿館｜MRT台北101／世貿駅近くのオフィス"],
+  "台北市信義區基隆路一段 398 號 4 樓":["4F, No.398, Sec.1, Keelung Rd., Xinyi Dist., Taipei","台北市信義区基隆路一段398号4階"],
+  "捷運台北 101／世貿站（步行 5 分鐘）":["Taipei 101 / WTC MRT (5-min walk)","MRT台北101／世貿駅（徒歩5分）"],
+  "公車世貿中心（基隆路）站（284、292、611、950、基隆路幹線）":["Bus: WTC (Keelung Rd.) stop (284, 292, 611, 950, Keelung Rd. Trunk)","バス：世貿中心（基隆路）停（284、292、611、950、基隆路幹線）"],
+  "本棟地下 B1：國際世貿大樓機械式停車場，月租另洽":["Basement B1: International Trade Bldg. mechanical parking, monthly rate on request","地下B1：国際世貿ビル機械式駐車場、月額は要相談"],
+  "步行 10 分鐘：嘟嘟房世貿站、愛馬屋 101 場、CITY PARKING 台北信基大樓站":["10-min walk: Dudu Fang WTC, Aimawu 101, CITY PARKING Xinji Bldg.","徒歩10分：嘟嘟房世貿、愛馬屋101、CITY PARKING 台北信基ビル"],
+  "暖":["Warm","暖色"],
+  "暗":["Dark","ダーク"],
+  "白":["Light","ライト"],
   "共享座位":["Co-working Seat","コワーキング席"]
   };
   var idx={en:0,ja:1};
