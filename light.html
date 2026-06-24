@@ -104,6 +104,30 @@
           "name": "陳炳勳"
         },
         "reviewBody": "鄰近捷運交通方便，室內採光佳而且環境整潔，如果是新鮮創業人士可以來嘗試看看。"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "斯皮爾"
+        },
+        "reviewBody": "地理位置優越、交通便利，工作氛圍也非常棒，是個充滿正能量的辦公空間。"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "張品泱"
+        },
+        "reviewBody": "辰星商務人員服務很好，和善又細心解說，環境很乾淨舒適。"
       }
     ],
     "hasOfferCatalog": {
@@ -436,6 +460,10 @@
   .journal .more{text-align:center;margin-top:50px}
   .journal .more a{border:1px solid var(--champagne);color:var(--champagne-lt);padding:13px 34px;letter-spacing:.16em;font-size:.86rem;transition:.3s}
   .journal .more a:hover{background:var(--champagne);color:var(--ink)}
+  .vgrid.collapsed .vcard:not(.vc-top){display:none}
+  .vmore-wrap{text-align:center;margin-top:34px}
+  .vmore-btn{font-family:inherit;border:1px solid var(--champagne);color:var(--champagne-lt);background:none;cursor:pointer;padding:12px 32px;letter-spacing:.14em;font-size:.85rem;border-radius:30px;transition:.3s}
+  .vmore-btn:hover{background:var(--champagne);color:var(--ink)}
   .post-detail{padding-top:120px}
   .post-detail .back{display:inline-flex;align-items:center;gap:10px;color:var(--stone);font-size:.84rem;letter-spacing:.16em;margin-bottom:36px;background:none;border:0}
   .post-detail .back:hover{color:var(--champagne)}
@@ -785,9 +813,9 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   
   <section class="voices" id="voices"><div class="wrap">
     <div class="sec-head center reveal"><span class="idx">— Voices</span><h2>用戶評價<span class="en">Testimonials</span></h2></div>
-    <div class="vgrid">
+    <div class="vgrid collapsed" id="vgrid">
 
-      <div class="vcard reveal">
+      <div class="vcard reveal vc-top">
         <span class="vgsrc">Google Maps</span>
         <p class="vtxt">地點很方便，靠近 101 站，交通非常便利。工作空間舒適、安靜，很適合小團隊，整體環境讓人感覺很自在、很有生產力。有任何需求，工作人員都會積極協助解決，是一間很貼心、服務很周到的商務中心。</p>
         <div class="vmeta">
@@ -826,7 +854,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
         </div>
       </div>
 
-      <div class="vcard reveal">
+      <div class="vcard reveal vc-top">
         <span class="vgsrc">Google Maps</span>
         <p class="vtxt">離捷運站很近，工作人員服務很好，環境也很乾淨舒適~~</p>
         <div class="vmeta">
@@ -839,7 +867,47 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
         </div>
       </div>
 
+      <div class="vcard reveal vc-top">
+        <span class="vgsrc">Google Maps</span>
+        <p class="vtxt">地理位置優越、交通便利，工作氛圍也非常棒，是個充滿正能量的辦公空間。</p>
+        <div class="vmeta">
+          <div class="vavatar">斯</div>
+          <div>
+            <div class="vstars">★★★★★</div>
+            <div class="vname">斯皮爾</div>
+            <div class="vtype">世貿館・2個月前</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vcard reveal">
+        <span class="vgsrc">Google Maps</span>
+        <p class="vtxt">地點好，空間又舒適。</p>
+        <div class="vmeta">
+          <div class="vavatar">P</div>
+          <div>
+            <div class="vstars">★★★★★</div>
+            <div class="vname">Pierce Yu</div>
+            <div class="vtype">世貿館・2個月前</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vcard reveal">
+        <span class="vgsrc">Google Maps</span>
+        <p class="vtxt">辰星商務人員服務很好，和善又細心解說，環境很乾淨舒適。</p>
+        <div class="vmeta">
+          <div class="vavatar">張</div>
+          <div>
+            <div class="vstars">★★★★★</div>
+            <div class="vname">張品泱</div>
+            <div class="vtype">信義館・1年前</div>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <div class="vmore-wrap reveal"><button class="vmore-btn" id="vmoreBtn" onclick="toggleVoices()" aria-expanded="false">查看更多評價 ▾</button></div>
   </div></section>
 
 <section class="booking" id="booking"><div class="wrap">
@@ -995,12 +1063,19 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
   const $=s=>document.querySelector(s);
   let POSTS=[];
   function renderPosts(){
-    $("#postGrid").innerHTML=POSTS.map(p=>`
+    $("#postGrid").innerHTML=POSTS.slice(0,3).map(p=>`
       <article class="post reveal" onclick="openPost('${p.id}')">
         ${p.img?`<div class="post-thumb"><img src="${p.img}" alt="${p.title}" loading="lazy"></div>`:`<div class="ph" data-label="貼文配圖"></div>`}
         <div class="pbody"><span class="ptag">${p.tag}</span><h3>${p.title}</h3><span class="date">${p.date}</span></div>
       </article>`).join("");
     observeReveals();
+  }
+  function toggleVoices(){
+    const g=document.getElementById('vgrid'),b=document.getElementById('vmoreBtn');
+    const collapsed=g.classList.toggle('collapsed');
+    if(!collapsed){g.querySelectorAll('.vcard').forEach(c=>c.classList.add('in'));}
+    b.textContent=collapsed?'查看更多評價 ▾':'收合評價 ▴';
+    b.setAttribute('aria-expanded',String(!collapsed));
   }
   function openPost(id){
     const p=POSTS.find(x=>x.id===id); if(!p)return;
