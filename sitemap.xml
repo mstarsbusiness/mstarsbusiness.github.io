@@ -37,6 +37,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.morning-stars.com.tw/posts/4bdd0898-0b02-44fc-b587-f95dff076955.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.morning-stars.com.tw/posts/f44bdeaa-0b93-47fe-b32b-4b880a5ca114.html</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -45,12 +51,6 @@
   <url>
     <loc>https://www.morning-stars.com.tw/posts/d47ee4b1-7669-4ac8-b427-a60edc9c6fde.html</loc>
     <lastmod>2026-06-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.morning-stars.com.tw/posts/4bdd0898-0b02-44fc-b587-f95dff076955.html</loc>
-    <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
