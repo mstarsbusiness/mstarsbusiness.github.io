@@ -81,8 +81,64 @@
   ]
 }
 </script>
+<style>
+/* ===== 辰星 lux 精品風（scoped body.lux；不動 pages.css）===== */
+body.lux{--espresso:#3B2F1E;--ivory:#FAF8F3;--gold:#C9A24B;--brown-txt:#3B2F1E;--brown-soft:#5A4A34;--cream:#EDE6D8;--hair-gold:rgba(201,162,75,.34);background:var(--ivory)}
+body.lux header.top{background:rgba(46,37,24,.94);border-bottom:1px solid rgba(201,162,75,.18)}
+body.lux .brand b{color:#F5EFE1}
+body.lux .topnav a:hover{color:var(--gold)}
+body.lux .topnav .book{border:1px solid var(--gold);color:var(--gold);border-radius:0}
+body.lux .topnav .book:hover{background:var(--gold);color:var(--espresso)}
+body.lux .hero2{background:linear-gradient(180deg,rgba(59,47,30,.62),rgba(28,22,14,.86)),url('images/xinyi-03.jpg') center/cover no-repeat;padding:120px 0 96px;border-bottom:1px solid var(--hair-gold)}
+body.lux .hero2 .kick{color:var(--gold);letter-spacing:.44em}
+body.lux .hero2 h1{color:#FAF8F3;letter-spacing:.05em}
+body.lux .hero2 p.sub{color:#E7DECC}
+body.lux .crumb{color:var(--brown-soft)}
+body.lux .crumb a:hover{color:var(--gold)}
+body.lux main section{border-bottom:0;padding:72px 0;background:var(--ivory);color:var(--brown-txt)}
+body.lux main section:nth-of-type(even){background:var(--espresso);color:var(--cream)}
+body.lux h2.sec{position:relative;padding-bottom:16px;margin-bottom:30px;color:var(--brown-txt)}
+body.lux h2.sec::after{content:"";position:absolute;left:0;bottom:0;width:52px;height:2px;background:var(--gold)}
+body.lux .lead,body.lux h3{color:var(--brown-txt)}
+body.lux strong{color:var(--espresso)}
+body.lux main section:nth-of-type(even) h2.sec,body.lux main section:nth-of-type(even) h3{color:#F3ECDD}
+body.lux main section:nth-of-type(even) .lead,body.lux main section:nth-of-type(even) p,body.lux main section:nth-of-type(even) li{color:#DCD3C1}
+body.lux main section:nth-of-type(even) strong{color:var(--gold)}
+body.lux ul.feat li{border-bottom:1px solid var(--hair-gold);padding:15px 0 15px 30px}
+body.lux ul.feat li::before{width:16px;height:2px;border-radius:0;background:var(--gold);top:26px}
+body.lux main section:nth-of-type(even) ul.feat li{border-color:rgba(237,230,216,.14)}
+body.lux .cards .card{background:var(--ivory);border:1px solid var(--hair-gold);border-radius:0;box-shadow:none}
+body.lux .card .en,body.lux .rate{color:var(--gold)}
+body.lux main section:nth-of-type(even) .card,body.lux main section:nth-of-type(even) .card h3,body.lux main section:nth-of-type(even) .card p{color:var(--brown-txt)}
+body.lux .faqs details{border-bottom:1px solid var(--hair-gold)}
+body.lux .faqs summary{color:var(--espresso)}
+body.lux .faqs summary::before{color:var(--gold)}
+body.lux .faqs .ans{color:var(--brown-soft)}
+body.lux main section:nth-of-type(even) .faqs summary{color:#F3ECDD}
+body.lux main section:nth-of-type(even) .faqs .ans{color:#DCD3C1}
+body.lux main section:nth-of-type(even) .faqs details{border-color:rgba(237,230,216,.16)}
+body.lux .related{gap:30px}
+body.lux .related a{border:0;border-bottom:1px solid var(--hair-gold);border-radius:0;padding:10px 2px;color:var(--brown-soft)}
+body.lux .related a:hover{border-color:var(--gold);color:var(--gold)}
+body.lux main section:nth-of-type(even) .related a{color:#DCD3C1;border-color:rgba(237,230,216,.24)}
+body.lux .post-card{background:var(--ivory);border:1px solid var(--hair-gold);border-radius:0;box-shadow:none}
+body.lux .post-card:hover{transform:none;box-shadow:none;border-color:var(--gold)}
+body.lux .post-card h3{color:var(--brown-txt)}
+body.lux .post-tag{color:var(--gold);border-color:var(--hair-gold);border-radius:0}
+body.lux .post-card .date,body.lux .post-meta{color:var(--brown-soft)}
+body.lux .cta{background:var(--espresso)}
+body.lux .cta h2{color:#F5EFE1}body.lux .cta p{color:#D8CFBE}
+body.lux .btn{border:1px solid var(--gold);color:var(--gold);border-radius:0;letter-spacing:.18em}
+body.lux .btn:hover,body.lux .btn.solid{background:var(--gold);color:var(--espresso);border-color:var(--gold)}
+body.lux .locmap{background:var(--ivory);border-top:1px solid var(--hair-gold)}
+body.lux .locmap .locmap-item h4{color:var(--gold)}
+body.lux .locmap-item iframe{border-radius:0!important;border:1px solid var(--hair-gold)}
+body.lux .locmap-nav{color:var(--gold);border-color:var(--gold)}
+body.lux footer.ft{background:var(--espresso);border-top:1px solid var(--hair-gold)}
+body.lux footer.ft b{color:#F5EFE1}body.lux footer.ft a:hover{color:var(--gold)}
+</style>
 </head>
-<body>
+<body class="lux">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html"><b>辰星商務中心</b><small>Morning Stars</small></a>

@@ -21,6 +21,96 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/pages.css">
+<style>
+/* ===== 精品商務 scoped 改造：僅作用於 body.lux（本頁），不影響其他子頁與 pages.css ===== */
+body.lux{
+  --espresso:#3B2F1E;--ivory:#FAF8F3;--gold:#C9A24B;
+  --brown-txt:#3B2F1E;--brown-soft:#5A4A34;--cream:#EDE6D8;
+  --hair-gold:rgba(201,162,75,.34);
+  background:var(--ivory);
+}
+/* 頁首 */
+body.lux header.top{background:rgba(46,37,24,.94);border-bottom:1px solid rgba(201,162,75,.18)}
+body.lux .brand b{color:#F5EFE1}
+body.lux .topnav a:hover{color:var(--gold)}
+body.lux .topnav .book{border:1px solid var(--gold);color:var(--gold);border-radius:0}
+body.lux .topnav .book:hover{background:var(--gold);color:var(--espresso)}
+/* Hero：大圖 + 深棕遮罩 */
+body.lux .hero2{
+  background:linear-gradient(180deg,rgba(59,47,30,.64),rgba(28,22,14,.86)),url('images/xinyi-03.jpg') center/cover no-repeat;
+  padding:132px 0 108px;
+}
+body.lux .hero2 .kick{color:var(--gold);letter-spacing:.44em}
+body.lux .hero2 h1{color:#FAF8F3;letter-spacing:.05em}
+body.lux .hero2 p.sub{color:#E7DECC}
+/* 麵包屑 */
+body.lux .crumb{color:var(--brown-soft)}
+body.lux .crumb a:hover{color:var(--gold)}
+/* 段落交替底色（深棕／象牙白） */
+body.lux main section{border-bottom:0;padding:76px 0}
+body.lux .seg-ivory{background:var(--ivory);color:var(--brown-txt)}
+body.lux .seg-brown{background:var(--espresso);color:var(--cream)}
+/* 標題：金色細線收尾 */
+body.lux h2.sec{position:relative;padding-bottom:16px;margin-bottom:30px;color:var(--brown-txt)}
+body.lux h2.sec::after{content:"";position:absolute;left:0;bottom:0;width:52px;height:2px;background:var(--gold)}
+body.lux .lead{color:var(--brown-txt)}
+body.lux h3{color:var(--brown-txt)}
+body.lux strong{color:var(--espresso)}
+body.lux .seg-brown h2.sec,body.lux .seg-brown h3{color:#F3ECDD}
+body.lux .seg-brown p,body.lux .seg-brown .lead,body.lux .seg-brown li{color:#DCD3C1}
+body.lux .seg-brown strong{color:var(--gold)}
+/* 條列：金色短線取代圓點 + 金色細分隔線 */
+body.lux ul.feat li{border-bottom:1px solid var(--hair-gold);padding:15px 0 15px 30px}
+body.lux ul.feat li::before{width:16px;height:2px;border-radius:0;background:var(--gold);top:26px}
+body.lux .seg-brown ul.feat li{border-color:rgba(237,230,216,.14)}
+/* 兩處據點：左右大圖 + 文字 */
+body.lux .venue-split{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:8px}
+body.lux .venue{display:flex;flex-direction:column}
+body.lux .venue figure{overflow:hidden;border:1px solid var(--hair-gold)}
+body.lux .venue img{width:100%;height:320px;object-fit:cover;transition:transform .8s ease}
+body.lux .venue:hover img{transform:scale(1.04)}
+body.lux .venue .en{font-family:"Cormorant Garamond",serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-size:.86rem;margin:20px 0 4px}
+body.lux .venue h3{margin:0 0 8px}
+body.lux .venue p{font-size:.95rem;margin:0}
+/* 設備：文字 + 大圖 */
+body.lux .svc-split{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:stretch}
+body.lux .svc-split figure{overflow:hidden;border:1px solid var(--hair-gold)}
+body.lux .svc-split img{width:100%;height:100%;min-height:320px;object-fit:cover}
+@media(max-width:760px){body.lux .venue-split{grid-template-columns:1fr;gap:40px}body.lux .svc-split{grid-template-columns:1fr}}
+/* FAQ */
+body.lux .faqs details{border-bottom:1px solid var(--hair-gold)}
+body.lux .faqs summary{color:var(--espresso)}
+body.lux .faqs summary::before{color:var(--gold)}
+body.lux .faqs .ans{color:var(--brown-soft)}
+/* 其他服務：改為金線文字連結 */
+body.lux .related{gap:30px}
+body.lux .related a{border:0;border-bottom:1px solid var(--hair-gold);border-radius:0;padding:10px 2px;color:var(--brown-soft)}
+body.lux .related a:hover{border-color:var(--gold);color:var(--gold)}
+/* CTA */
+body.lux .cta{background:var(--espresso)}
+body.lux .cta h2{color:#F5EFE1}
+body.lux .cta p{color:#D8CFBE}
+body.lux .btn{border:1px solid var(--gold);color:var(--gold);border-radius:0;letter-spacing:.18em}
+body.lux .btn:hover{background:var(--gold);color:var(--espresso)}
+body.lux .btn.solid{background:var(--gold);color:var(--espresso);border-color:var(--gold)}
+/* 地圖區 */
+body.lux .locmap{background:var(--ivory);border-top:1px solid var(--hair-gold)}
+body.lux .locmap .locmap-item h4{color:var(--gold)}
+body.lux .locmap-item iframe{border-radius:0;border:1px solid var(--hair-gold)}
+body.lux .locmap-nav{color:var(--gold);border-color:var(--gold)}
+/* Footer */
+body.lux footer.ft{background:var(--espresso);border-top:1px solid var(--hair-gold)}
+body.lux footer.ft b{color:#F5EFE1}
+body.lux footer.ft a:hover{color:var(--gold)}
+/* 預約區：去圓角、金色細節、價格襯線 */
+body.lux #booking-wtc input,
+body.lux #booking-wtc select,
+body.lux #booking-wtc button,
+body.lux #booking-wtc .mbcell,
+body.lux #booking-wtc .mbslot,
+body.lux #mb_day,body.lux #mb_form{border-radius:2px !important}
+body.lux #mb_cost{font-family:"Noto Serif TC",serif;font-size:1.06rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -76,7 +166,7 @@
 }
 </script>
 </head>
-<body>
+<body class="lux">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html"><b>辰星商務中心</b><small>Morning Stars</small></a>
@@ -105,7 +195,7 @@
 <div class="wrap"><div class="crumb"><a href="index.html">首頁</a> ／ 會議室租借</div></div>
 
 <main>
-  <section><div class="wrap">
+  <section class="seg-ivory"><div class="wrap">
     <p class="lead">在信義商圈找一間隨租隨用、交通便利的會議室，辰星是個剛剛好的選擇。</p>
     <p>不論是與客戶簡報、團隊內部開會、遠距視訊、面試新人，或舉辦小型講座與教育訓練，辰星會議室都能提供安靜、專業的環境。兩處據點皆位於台北市信義區基隆路，<strong>近捷運台北 101／世貿站與六張犁站</strong>，客戶與來賓抵達都方便。</p>
     <h3>適合的使用情境</h3>
@@ -117,15 +207,17 @@
     </ul>
   </div></section>
 
-  <section><div class="wrap">
+  <section class="seg-brown"><div class="wrap">
     <h2 class="sec">兩處據點</h2>
-    <div class="cards">
-      <div class="card">
+    <div class="venue-split">
+      <div class="venue">
+        <figure><img src="images/xinyi-04.jpg" alt="辰星商務中心 信義館會議室 原木長桌" loading="lazy"></figure>
         <span class="en">Xinyi</span>
         <h3>信義館</h3>
         <p>基隆路二段 145 號 10 樓，近捷運六張犁站（步行 6 分鐘）。進駐客戶可跨館預約世貿館會議室。</p>
       </div>
-      <div class="card">
+      <div class="venue">
+        <figure><img src="images/wtc-meeting-01.jpg" alt="辰星商務中心 世貿館會議室" loading="lazy"></figure>
         <span class="en">WTC</span>
         <h3>世貿館</h3>
         <p>基隆路一段 398 號 4 樓，近捷運台北 101／世貿站（步行 5 分鐘），提供對外會議室租借服務。</p>
@@ -133,11 +225,11 @@
     </div>
   </div></section>
 
-  <section id="booking-wtc"><div class="wrap">
+  <section id="booking-wtc" class="seg-ivory"><div class="wrap">
     <h2 class="sec">線上預約會議室（信義館 / 世貿館）</h2>
     <p class="lead">選擇館別與日期查看空檔，挑好時段、填寫聯絡方式即可送出預約申請。送出後專員會與您聯繫並請您完成付款，款項確認後預約即正式成立。若需協助，歡迎來電 0903-368-856 或加 LINE @mstars。</p>
 
-    <div style="background:#fbf7ef;border:1px solid #e6d6b0;border-radius:10px;padding:14px 16px;margin:18px 0;font-size:.9rem;line-height:1.85;color:#6b5a36">
+    <div style="background:#fff;border:1px solid rgba(201,162,75,.34);border-left:3px solid #C9A24B;border-radius:2px;padding:16px 18px;margin:18px 0;font-size:.9rem;line-height:1.85;color:#5A4A34">
       <b>📌 預約須知</b><br>
       1. <b>付款後預約方為確定</b>：外部使用者送出預約後，請依專員通知完成付款，款項確認後預約才正式成立。<br>
       2. <b>預約一經確認，恕不取消</b>；如需更改時段，請提前來電 0903-368-856 或加 LINE @mstars 洽詢。<br>
@@ -148,9 +240,9 @@
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
         <label style="font-size:.88rem;color:#6b5a36">館別 <select id="mb_venue" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"><option value="信義館">信義館</option><option value="世貿館">世貿館</option></select></label>
         <div style="display:flex;align-items:center;gap:10px;margin-left:auto">
-          <button type="button" id="mb_prev" style="width:36px;height:36px;border:1px solid #d8cdb6;background:#fff;border-radius:8px;cursor:pointer;font-size:1.2rem;color:#A9803F">&lsaquo;</button>
+          <button type="button" id="mb_prev" style="width:36px;height:36px;border:1px solid #d8cdb6;background:#fff;border-radius:8px;cursor:pointer;font-size:1.2rem;color:#C9A24B">&lsaquo;</button>
           <span id="mb_month" style="font-weight:700;color:#6b5a36;min-width:130px;text-align:center"></span>
-          <button type="button" id="mb_next" style="width:36px;height:36px;border:1px solid #d8cdb6;background:#fff;border-radius:8px;cursor:pointer;font-size:1.2rem;color:#A9803F">&rsaquo;</button>
+          <button type="button" id="mb_next" style="width:36px;height:36px;border:1px solid #d8cdb6;background:#fff;border-radius:8px;cursor:pointer;font-size:1.2rem;color:#C9A24B">&rsaquo;</button>
         </div>
       </div>
       <div id="mb_grid"></div>
@@ -160,14 +252,14 @@
         <div style="font-size:.82rem;color:#9a8c66;margin:8px 0">綠＝可預約、灰＝已約/緩衝。請點選「開始時段」，再選「時長」。</div>
         <div id="mb_durRow" style="display:none;margin-top:4px;font-size:.9rem;color:#6b5a36">時長：<span id="mb_durs"></span></div>
         <div id="mb_form" style="display:none;margin-top:12px;background:#faf6ee;border:1px solid #ecdfc4;border-radius:10px;padding:14px">
-          <div id="mb_cost" style="font-weight:700;color:#A9803F;margin-bottom:10px"></div>
+          <div id="mb_cost" style="font-weight:700;color:#C9A24B;margin-bottom:10px"></div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <label style="font-size:.85rem;color:#6b5a36">姓名 *<br><input id="mb_name" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
             <label style="font-size:.85rem;color:#6b5a36">電話 *<br><input id="mb_phone" inputmode="tel" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
             <label style="font-size:.85rem;color:#6b5a36">公司（選填）<br><input id="mb_company" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
             <label style="font-size:.85rem;color:#6b5a36">Email（選填）<br><input id="mb_email" inputmode="email" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
           </div>
-          <button type="button" id="mb_submit" style="margin-top:14px;padding:12px 28px;background:#A9803F;color:#fff;border:0;border-radius:9px;font-weight:700;cursor:pointer">送出預約申請</button>
+          <button type="button" id="mb_submit" style="margin-top:14px;padding:12px 28px;background:#C9A24B;color:#3B2F1E;border:0;border-radius:9px;font-weight:700;cursor:pointer">送出預約申請</button>
           <div id="mb_msg" style="margin-top:10px;font-size:.9rem"></div>
         </div>
       </div>
@@ -206,7 +298,7 @@
         for(var b=0;b<first;b++) h+='<div></div>';
         for(var d=1;d<=days;d++){
           var ds=y+'-'+pad(mo+1)+'-'+pad(d), past=ds<today, has=dayHasBk(ds), cur=ds===selDate;
-          h+='<div data-d="'+ds+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#A9803F':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+((has&&!past)?'<div style="font-size:.62rem;color:#A9803F">'+mbT('booked')+'</div>':'')+'</div>';
+          h+='<div data-d="'+ds+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#C9A24B':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+((has&&!past)?'<div style="font-size:.62rem;color:#C9A24B">'+mbT('booked')+'</div>':'')+'</div>';
         }
         h+='</div>'; $('mb_grid').innerHTML=h;
         [].slice.call($('mb_grid').querySelectorAll('.mbcell')).forEach(function(c){
@@ -229,8 +321,8 @@
         for(var m=540;m<1260;m+=30){
           var st=blockedCell(m,bks), sel=(selStart!=null&&selDur!=null&&m>=selStart&&m<selStart+selDur*60);
           var bg=st==='booked'?'#e3ddd0':(st==='buffer'?'#eee9dd':'#e9f5ea'), bd=st==='free'?'#bcdcc0':'#ddd6c6';
-          if(sel){bg='#A9803F';bd='#A9803F';}
-          h+='<div data-m="'+m+'" class="mbslot" style="cursor:'+(st==='free'?'pointer':'default')+';font-size:.78rem;padding:7px 4px;border:1px solid '+bd+';border-radius:7px;background:'+bg+';color:'+(sel?'#fff':(st==='free'?'#2a6b34':'#9a8c66'))+';width:62px;text-align:center">'+fmt(m)+'</div>';
+          if(sel){bg='#C9A24B';bd='#C9A24B';}
+          h+='<div data-m="'+m+'" class="mbslot" style="cursor:'+(st==='free'?'pointer':'default')+';font-size:.78rem;padding:7px 4px;border:1px solid '+bd+';border-radius:7px;background:'+bg+';color:'+(sel?'#3B2F1E':(st==='free'?'#2a6b34':'#9a8c66'))+';width:62px;text-align:center">'+fmt(m)+'</div>';
         }
         $('mb_slots').innerHTML=h;
         [].slice.call($('mb_slots').querySelectorAll('.mbslot')).forEach(function(c){
@@ -241,7 +333,7 @@
         selStart=m; selDur=null; var bks=dayBookings(selDate), durs=[1,1.5,2,2.5,3], h='';
         durs.forEach(function(d){
           var end=m+d*60, ok=(end<=1260)&&!conflict(m,end,bks);
-          h+='<button type="button" data-d="'+d+'" '+(ok?'':'disabled')+' style="margin:0 6px 6px 0;padding:7px 12px;border:1px solid '+(ok?'#A9803F':'#ddd')+';border-radius:20px;background:#fff;color:'+(ok?'#A9803F':'#ccc')+';cursor:'+(ok?'pointer':'not-allowed')+'">'+d+mbT('hr')+'</button>';
+          h+='<button type="button" data-d="'+d+'" '+(ok?'':'disabled')+' style="margin:0 6px 6px 0;padding:7px 12px;border:1px solid '+(ok?'#C9A24B':'#ddd')+';border-radius:20px;background:#fff;color:'+(ok?'#C9A24B':'#ccc')+';cursor:'+(ok?'pointer':'not-allowed')+'">'+d+mbT('hr')+'</button>';
         });
         $('mb_durs').innerHTML=h; $('mb_durRow').style.display='block'; $('mb_form').style.display='none';
         [].slice.call($('mb_durs').querySelectorAll('button')).forEach(function(btn){ if(!btn.disabled) btn.onclick=function(){pickDur(+btn.getAttribute('data-d'));}; });
@@ -271,19 +363,24 @@
     </script>
   </div></section>
 
-  <section><div class="wrap">
+  <section class="seg-brown"><div class="wrap">
     <h2 class="sec">設備與服務</h2>
-    <ul class="feat">
-      <li>高速 Wi-Fi 網路與 24 小時獨立冷氣</li>
-      <li>多功能事務機（列印、影印、掃描）</li>
-      <li>免費咖啡、茶包與飲水、茶水空間</li>
-      <li>櫃檯協助接待訪客、郵件代收與 LINE 通知</li>
-      <li>跨館彈性使用，依需求自由調度</li>
-    </ul>
-    <p style="margin-top:18px;font-size:.9rem;color:var(--stone)">＊ 收費與可預約時段依館別與時段而定，歡迎線上預約或來電 0903-368-856、加 LINE @mstars 洽詢。</p>
+    <div class="svc-split">
+      <div>
+        <ul class="feat">
+          <li>高速 Wi-Fi 網路與 24 小時獨立冷氣</li>
+          <li>多功能事務機（列印、影印、掃描）</li>
+          <li>免費咖啡、茶包與飲水、茶水空間</li>
+          <li>櫃檯協助接待訪客、郵件代收與 LINE 通知</li>
+          <li>跨館彈性使用，依需求自由調度</li>
+        </ul>
+        <p style="margin-top:18px;font-size:.9rem">＊ 收費與可預約時段依館別與時段而定，歡迎線上預約或來電 0903-368-856、加 LINE @mstars 洽詢。</p>
+      </div>
+      <figure><img src="images/xinyi-05.jpg" alt="辰星商務中心 茶水區 咖啡與飲水" loading="lazy"></figure>
+    </div>
   </div></section>
 
-  <section><div class="wrap">
+  <section class="seg-ivory"><div class="wrap">
     <h2 class="sec">常見問題</h2>
     <div class="faqs">
       <details open><summary>會議室如何預約？</summary><div class="ans">可至官網「會議室線上預約」區，於日曆中點選可預約時段直接完成預約，或來電 0903-368-856、加 LINE @mstars 洽詢。</div></details>
@@ -293,7 +390,7 @@
     </div>
   </div></section>
 
-  <section><div class="wrap">
+  <section class="seg-ivory"><div class="wrap">
     <h2 class="sec">其他服務</h2>
     <div class="related">
       <a href="virtual-office.html">借址登記・虛擬辦公室 →</a>
@@ -317,10 +414,10 @@
 .locmap{padding:56px 20px;border-top:1px solid rgba(169,128,63,.25)}
 .locmap .locmap-title{text-align:center;font-size:1.15rem;letter-spacing:.06em;margin:0 0 28px;font-weight:600}
 .locmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;max-width:1080px;margin:0 auto}
-.locmap-item h4{font-size:1.05rem;margin:0 0 4px;color:#A9803F}
+.locmap-item h4{font-size:1.05rem;margin:0 0 4px;color:#C9A24B}
 .locmap-item p{font-size:.85rem;opacity:.72;margin:0 0 12px;line-height:1.6}
 .locmap-item iframe{width:100%;height:300px;border:0;border-radius:12px;display:block}
-.locmap-nav{display:inline-block;margin-top:12px;color:#A9803F;font-size:.86rem;border-bottom:1px solid rgba(169,128,63,.4);padding-bottom:3px;text-decoration:none}
+.locmap-nav{display:inline-block;margin-top:12px;color:#C9A24B;font-size:.86rem;border-bottom:1px solid rgba(169,128,63,.4);padding-bottom:3px;text-decoration:none}
 @media(max-width:760px){.locmap-grid{grid-template-columns:1fr}}
 </style>
   <h3 class="locmap-title">兩處據點・交通位置</h3>
