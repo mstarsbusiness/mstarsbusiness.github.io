@@ -184,26 +184,29 @@
       function todayStr(){return new Date(Date.now()+8*3600000).toISOString().slice(0,10);}
       function toMin(s){var m=/^(\d{1,2}):(\d{2})$/.exec(s);return (+m[1])*60+(+m[2]);}
       function fmt(m){return pad(Math.floor(m/60))+':'+pad(m%60);}
-      var WK=['日','一','二','三','四','五','六'];
+      var MB={wk:{zh:['日','一','二','三','四','五','六'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']},loading:{zh:'載入中…',en:'Loading…',ja:'読み込み中…'},loadFail:{zh:'載入失敗，請稍後再試。',en:'Failed to load. Please try again later.',ja:'読み込みに失敗しました。時間をおいて再度お試しください。'},booked:{zh:'有預約',en:'Booked',ja:'予約あり'},slots:{zh:'可預約時段',en:'Available Times',ja:'予約可能時間'},hr:{zh:' 小時',en:' hr',ja:' 時間'},total:{zh:'｜共 ',en:'｜Total ',ja:'｜計 '},totalHr:{zh:' 小時 · 費用 NT$',en:' hr · NT$',ja:' 時間 · 料金 NT$'}};
+      function mbL(){try{return localStorage.getItem('ms_lang')||'zh';}catch(e){return 'zh';}}
+      function mbT(k){return (MB[k]&&MB[k][mbL()])||MB[k].zh;}
+      function mbWK(){return MB.wk[mbL()]||MB.wk.zh;}
       function loadMonth(){
         var ym=view.getFullYear()+'-'+pad(view.getMonth()+1);
         $('mb_month').textContent=view.getFullYear()+' 年 '+(view.getMonth()+1)+' 月';
-        $('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#9a8c66">載入中…</div>';
+        $('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#9a8c66">'+mbT('loading')+'</div>';
         $('mb_day').style.display='none';
         fetch(EP+'?venue='+encodeURIComponent($('mb_venue').value)+'&month='+ym).then(function(r){return r.json();}).then(function(j){
           monthData=(j&&j.bookings)||[]; renderGrid();
-        }).catch(function(){$('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#c0392b">載入失敗，請稍後再試。</div>';});
+        }).catch(function(){$('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#c0392b">'+mbT('loadFail')+'</div>';});
       }
       function dayHasBk(ds){return monthData.some(function(b){return b.date===ds;});}
       function renderGrid(){
         var y=view.getFullYear(), mo=view.getMonth();
         var first=new Date(y,mo,1).getDay(), days=new Date(y,mo+1,0).getDate(), today=todayStr();
         var h='<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px">';
-        for(var i=0;i<7;i++) h+='<div style="text-align:center;font-size:.8rem;color:#9a8c66;padding:4px 0">'+WK[i]+'</div>';
+        for(var i=0;i<7;i++) h+='<div style="text-align:center;font-size:.8rem;color:#9a8c66;padding:4px 0">'+mbWK()[i]+'</div>';
         for(var b=0;b<first;b++) h+='<div></div>';
         for(var d=1;d<=days;d++){
           var ds=y+'-'+pad(mo+1)+'-'+pad(d), past=ds<today, has=dayHasBk(ds), cur=ds===selDate;
-          h+='<div data-d="'+ds+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#A9803F':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+((has&&!past)?'<div style="font-size:.62rem;color:#A9803F">有預約</div>':'')+'</div>';
+          h+='<div data-d="'+ds+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#A9803F':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+((has&&!past)?'<div style="font-size:.62rem;color:#A9803F">'+mbT('booked')+'</div>':'')+'</div>';
         }
         h+='</div>'; $('mb_grid').innerHTML=h;
         [].slice.call($('mb_grid').querySelectorAll('.mbcell')).forEach(function(c){
@@ -217,7 +220,7 @@
       function selectDay(ds){
         selDate=ds; selStart=null; selDur=null; renderGrid();
         $('mb_day').style.display='block';
-        $('mb_dayTitle').textContent=ds+'（'+WK[new Date(ds+'T12:00:00Z').getUTCDay()]+'）可預約時段';
+        $('mb_dayTitle').textContent=ds+'（'+mbWK()[new Date(ds+'T12:00:00Z').getUTCDay()]+'）'+mbT('slots');
         $('mb_durRow').style.display='none'; $('mb_form').style.display='none'; $('mb_msg').innerHTML='';
         renderSlots();
       }
@@ -238,7 +241,7 @@
         selStart=m; selDur=null; var bks=dayBookings(selDate), durs=[1,1.5,2,2.5,3], h='';
         durs.forEach(function(d){
           var end=m+d*60, ok=(end<=1260)&&!conflict(m,end,bks);
-          h+='<button type="button" data-d="'+d+'" '+(ok?'':'disabled')+' style="margin:0 6px 6px 0;padding:7px 12px;border:1px solid '+(ok?'#A9803F':'#ddd')+';border-radius:20px;background:#fff;color:'+(ok?'#A9803F':'#ccc')+';cursor:'+(ok?'pointer':'not-allowed')+'">'+d+' 小時</button>';
+          h+='<button type="button" data-d="'+d+'" '+(ok?'':'disabled')+' style="margin:0 6px 6px 0;padding:7px 12px;border:1px solid '+(ok?'#A9803F':'#ddd')+';border-radius:20px;background:#fff;color:'+(ok?'#A9803F':'#ccc')+';cursor:'+(ok?'pointer':'not-allowed')+'">'+d+mbT('hr')+'</button>';
         });
         $('mb_durs').innerHTML=h; $('mb_durRow').style.display='block'; $('mb_form').style.display='none';
         [].slice.call($('mb_durs').querySelectorAll('button')).forEach(function(btn){ if(!btn.disabled) btn.onclick=function(){pickDur(+btn.getAttribute('data-d'));}; });
@@ -246,7 +249,7 @@
       }
       function pickDur(d){
         selDur=d; renderSlots();
-        $('mb_cost').textContent=selDate+' '+fmt(selStart)+'–'+fmt(selStart+d*60)+'｜共 '+d+' 小時 · 費用 NT$'+(d*RATE);
+        $('mb_cost').textContent=selDate+' '+fmt(selStart)+'–'+fmt(selStart+d*60)+mbT('total')+d+mbT('totalHr')+(d*RATE);
         $('mb_form').style.display='block';
       }
       $('mb_prev').onclick=function(){view.setMonth(view.getMonth()-1);loadMonth();};
