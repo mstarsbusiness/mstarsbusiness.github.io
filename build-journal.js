@@ -2,16 +2,14 @@
 /*
  * 辰星商務中心 — 貼文靜態頁 / Journal 列表 / sitemap 產生器
  * ---------------------------------------------------------------
+ * 【2026-07-05 修正版】STATIC_PAGES 補齊 crm / privacy / terms / 兩館相簿頁。
+ * 原版清單缺這 5 頁，CMS 一發文重生 sitemap.xml 就會把 7/4 手動補的頁面洗掉。
+ * 使用方式：把本檔改名為 build-journal.js，上傳 GitHub repo 根目錄覆蓋原檔。
+ * ---------------------------------------------------------------
  * 用途：讀取 data/posts.json，產生可被搜尋引擎索引的靜態頁面：
  *   - journal.html            （貼文總覽列表）
  *   - posts/<id>.html         （每篇貼文獨立頁）
  *   - sitemap.xml             （含首頁、服務頁、journal、各貼文）
- *
- * 使用方式（在本資料夾執行）：
- *   node build-journal.js
- *
- * 之後若用 CMS 後台（/admin）新增或修改貼文（會更新 data/posts.json），
- * 只要再跑一次  node build-journal.js  重新產生即可，再上傳 GitHub。
  */
 const fs = require('fs');
 const path = require('path');
@@ -20,14 +18,19 @@ const SITE = 'https://www.morning-stars.com.tw';
 const ROOT = __dirname;
 const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">';
 
-// 靜態頁清單（給 sitemap 用）
+// 靜態頁清單（給 sitemap 用）——2026-07-05 補齊全站頁面
 const STATIC_PAGES = [
   { loc: SITE + '/',                     changefreq: 'weekly',  priority: '1.0' },
   { loc: SITE + '/virtual-office.html',  changefreq: 'monthly', priority: '0.9' },
   { loc: SITE + '/private-office.html',  changefreq: 'monthly', priority: '0.9' },
   { loc: SITE + '/meeting-room.html',    changefreq: 'monthly', priority: '0.9' },
+  { loc: SITE + '/crm.html',             changefreq: 'monthly', priority: '0.8' },
   { loc: SITE + '/journal.html',         changefreq: 'weekly',  priority: '0.7' },
-  { loc: SITE + '/privacy-policy.html',  changefreq: 'yearly',  priority: '0.3' }
+  { loc: SITE + '/' + encodeURIComponent('辰星場館相簿-信義館.html'), changefreq: 'monthly', priority: '0.7' },
+  { loc: SITE + '/' + encodeURIComponent('辰星場館相簿-世貿館.html'), changefreq: 'monthly', priority: '0.7' },
+  { loc: SITE + '/privacy.html',         changefreq: 'yearly',  priority: '0.3' },
+  { loc: SITE + '/privacy-policy.html',  changefreq: 'yearly',  priority: '0.3' },
+  { loc: SITE + '/terms.html',           changefreq: 'yearly',  priority: '0.3' }
 ];
 
 function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
