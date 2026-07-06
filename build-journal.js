@@ -28,7 +28,7 @@ const STATIC_PAGES = [
   { loc: SITE + '/journal.html',         changefreq: 'weekly',  priority: '0.7' },
   { loc: SITE + '/' + encodeURIComponent('辰星場館相簿-信義館.html'), changefreq: 'monthly', priority: '0.7' },
   { loc: SITE + '/' + encodeURIComponent('辰星場館相簿-世貿館.html'), changefreq: 'monthly', priority: '0.7' },
-  { loc: SITE + '/privacy.html',         changefreq: 'yearly',  priority: '0.3' },
+  // privacy.html 已設 noindex（CRM/OAuth 驗證專用頁），不進 sitemap——主站隱私權政策以 privacy-policy.html 為代表（2026-07-05）
   { loc: SITE + '/privacy-policy.html',  changefreq: 'yearly',  priority: '0.3' },
   { loc: SITE + '/terms.html',           changefreq: 'yearly',  priority: '0.3' }
 ];
