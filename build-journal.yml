@@ -43,5 +43,9 @@ jobs:
             echo "沒有變更，略過提交。"
           else
             git commit -m "chore: 自動重生 journal 與貼文頁 [skip ci]"
-            git push
+            # 先與遠端 rebase 再推，避免 CMS 連續 commit 造成 non-fast-forward 而失敗；失敗自動重試
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && { echo "推送成功"; break; }
+              echo "第 $i 次推送失敗，5 秒後重試…"; sleep 5
+            done
           fi
