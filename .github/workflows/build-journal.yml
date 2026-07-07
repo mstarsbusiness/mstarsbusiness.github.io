@@ -42,7 +42,9 @@ jobs:
           if git diff --cached --quiet; then
             echo "沒有變更，略過提交。"
           else
-            git commit -m "chore: 自動重生 journal 與貼文頁 [skip ci]"
+            # 注意：不可加 [skip ci]，否則會連 deploy.yml(FTP 到 www) 一起跳過，導致重生的 journal 沒被部署到正式站。
+            # 重生只改 journal.html/posts/sitemap，不在 build-journal 的觸發 paths 內，故不會讓本工作流程自己重跑（無迴圈風險）。
+            git commit -m "chore: 自動重生 journal 與貼文頁"
             # 先與遠端 rebase 再推，避免 CMS 連續 commit 造成 non-fast-forward 而失敗；失敗自動重試
             for i in 1 2 3; do
               git pull --rebase origin main && git push && { echo "推送成功"; break; }
