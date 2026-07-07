@@ -1,231 +1,302 @@
 #!/usr/bin/env node
 /*
- * 辰星商務中心 — 貼文靜態頁 / Journal 列表 / sitemap 產生器
- * ---------------------------------------------------------------
- * 【2026-07-05 修正版】STATIC_PAGES 補齊 crm / privacy / terms / 兩館相簿頁。
- * 原版清單缺這 5 頁，CMS 一發文重生 sitemap.xml 就會把 7/4 手動補的頁面洗掉。
- * 使用方式：把本檔改名為 build-journal.js，上傳 GitHub repo 根目錄覆蓋原檔。
- * ---------------------------------------------------------------
- * 用途：讀取 data/posts.json，產生可被搜尋引擎索引的靜態頁面：
- *   - journal.html            （貼文總覽列表）
- *   - posts/<id>.html         （每篇貼文獨立頁）
- *   - sitemap.xml             （含首頁、服務頁、journal、各貼文）
+ * 辰星商務中心：由 data/posts.json 產生貼文頁、Journal 與 sitemap。
+ * 維護原則：Journal / posts/*.html 為輸出檔，若要改版型請改這支產生器與 assets/pages.css。
  */
 const fs = require('fs');
 const path = require('path');
 
-const SITE = 'https://www.morning-stars.com.tw';
 const ROOT = __dirname;
-const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">';
+const SITE = 'https://www.morning-stars.com.tw';
+const BRAND = '辰星商務中心 Morning Stars';
+const DEFAULT_IMAGE = '/images/og-cover.jpg';
 
-// 靜態頁清單（給 sitemap 用）——2026-07-05 補齊全站頁面
-const STATIC_PAGES = [
-  { loc: SITE + '/',                     changefreq: 'weekly',  priority: '1.0' },
-  { loc: SITE + '/virtual-office.html',  changefreq: 'monthly', priority: '0.9' },
-  { loc: SITE + '/private-office.html',  changefreq: 'monthly', priority: '0.9' },
-  { loc: SITE + '/meeting-room.html',    changefreq: 'monthly', priority: '0.9' },
-  { loc: SITE + '/crm.html',             changefreq: 'monthly', priority: '0.8' },
-  { loc: SITE + '/journal.html',         changefreq: 'weekly',  priority: '0.7' },
-  { loc: SITE + '/' + encodeURIComponent('辰星場館相簿-信義館.html'), changefreq: 'monthly', priority: '0.7' },
-  { loc: SITE + '/' + encodeURIComponent('辰星場館相簿-世貿館.html'), changefreq: 'monthly', priority: '0.7' },
-  // privacy.html 已設 noindex（CRM/OAuth 驗證專用頁），不進 sitemap——主站隱私權政策以 privacy-policy.html 為代表（2026-07-05）
-  { loc: SITE + '/privacy-policy.html',  changefreq: 'yearly',  priority: '0.3' },
-  { loc: SITE + '/terms.html',           changefreq: 'yearly',  priority: '0.3' }
-];
+const esc = value => String(value == null ? '' : value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
 
-function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function bodyToParas(body){
-  if (Array.isArray(body)) return body.map(t => String(t).trim()).filter(Boolean);
-  return String(body || '').split(/\r?\n+/).map(t => t.trim()).filter(Boolean);
-}
-// "2026.06" -> "2026-06-01"；"2026.06.18" -> "2026-06-18"
-function isoDate(d){
-  const parts = String(d || '').split(/[.\/-]/).map(x => x.trim()).filter(Boolean);
+const paras = value => (Array.isArray(value) ? value : String(value || '').split(/\r?\n+/))
+  .map(item => String(item).trim())
+  .filter(Boolean);
+
+const plainText = value => paras(value).join(' ').replace(/\s+/g, ' ').trim();
+
+const excerpt = (value, length = 118) => {
+  const text = plainText(value);
+  return text.length > length ? `${text.slice(0, length)}…` : text;
+};
+
+const isoDate = value => {
+  const parts = String(value || '').split(/[./-]/).filter(Boolean);
   if (!parts.length) return '';
-  const y = parts[0];
-  const m = (parts[1] || '01').padStart(2, '0');
-  const day = (parts[2] || '01').padStart(2, '0');
-  return `${y}-${m}-${day}`;
-}
+  return `${parts[0]}-${(parts[1] || '01').padStart(2, '0')}-${(parts[2] || '01').padStart(2, '0')}`;
+};
 
-function header(prefix){
-  return `<header class="top"><div class="wrap">
-  <a class="brand" href="${prefix}index.html"><b>辰星商務中心</b><small>Morning Stars</small></a>
-  <nav class="topnav">
-    <a class="lnk" href="${prefix}index.html#services">服務</a>
-    <a class="lnk" href="${prefix}virtual-office.html">借址登記</a>
-    <a class="lnk" href="${prefix}meeting-room.html">會議室</a>
-    <a class="lnk" href="${prefix}journal.html">最新貼文</a>
-    <a class="book" href="${prefix}index.html#contact">預約參觀</a>
-  </nav>
-</div></header>`;
-}
-function footer(prefix){
-  return `<footer class="ft"><div class="wrap">
-  <div class="cols"><b>辰星商務中心 Morning Stars</b>
-    <div style="margin-top:10px">電話 0903-368-856</div>
-    <div>Email mstars.business@gmail.com</div>
-    <div>LINE @mstars</div></div>
-  <div class="cols"><b>據點</b>
-    <div style="margin-top:10px">信義館｜基隆路二段 145 號 10 樓</div>
-    <div>世貿館｜基隆路一段 398 號 4 樓</div>
-    <div>平日 10:00–17:00</div></div>
-  <div class="cols"><b>服務</b>
-    <div style="margin-top:10px"><a href="${prefix}virtual-office.html">借址登記・虛擬辦公室</a></div>
-    <div><a href="${prefix}meeting-room.html">會議室租借</a></div>
-    <div><a href="${prefix}private-office.html">獨立辦公室</a></div>
-    <div><a href="${prefix}journal.html">最新貼文</a></div></div>
-</div>
-<div class="wrap" style="margin-top:24px;font-size:.78rem;color:#6E6250">© 2026 辰星商務中心 Morning Stars Ltd. All rights reserved.</div></footer>`;
-}
+const displayDate = value => String(value || '').replace(/\./g, '.');
 
-function postPage(p){
-  const paras = bodyToParas(p.body);
-  const desc = paras.join(' ').slice(0, 150);
-  const url = `${SITE}/posts/${p.id}.html`;
-  const img = p.img ? (p.img.startsWith('http') ? p.img : SITE + p.img) : `${SITE}/images/og-cover.jpg`;
-  const ld = {
+const readingMinutes = value => {
+  const count = plainText(value).length;
+  return Math.max(1, Math.ceil(count / 450));
+};
+
+const localImageExists = value => {
+  if (!value || /^https?:\/\//i.test(value)) return Boolean(value);
+  const clean = String(value).replace(/^\/+/, '').replace(/\//g, path.sep);
+  return fs.existsSync(path.join(ROOT, clean));
+};
+
+const safeImagePath = value => localImageExists(value) ? value : DEFAULT_IMAGE;
+
+const absoluteImageUrl = value => {
+  const safe = safeImagePath(value);
+  return /^https?:\/\//i.test(safe) ? safe : SITE + safe;
+};
+
+const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">`;
+
+const header = prefix => `<header class="top">
+  <div class="wrap">
+    <a class="brand" href="${prefix}index.html" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none"><img src="${prefix}images/img-23a7d345e5.png" alt="辰星商務中心 Logo" style="height:36px;width:36px;object-fit:contain"><span><b>辰星商務中心</b><small>Morning Stars</small></span></a>
+    <nav class="topnav" aria-label="主要導覽">
+      <a class="lnk" href="${prefix}office-guide.html">方案指南</a>
+      <a class="lnk" href="${prefix}virtual-office.html">借址登記</a>
+      <a class="lnk" href="${prefix}private-office.html">獨立辦公室</a>
+      <a class="lnk" href="${prefix}meeting-room.html">會議室</a>
+      <a class="book" href="${prefix}index.html#contact">預約參觀</a>
+    </nav>
+  </div>
+</header>`;
+
+const footer = prefix => `<footer class="ft">
+  <div class="wrap">
+    <div class="cols">
+      <b>辰星商務中心 Morning Stars</b>
+      <div>電話 0903-368-856</div>
+      <div>Email mstars.business@gmail.com</div>
+      <div>LINE @mstars</div>
+    </div>
+    <div class="cols">
+      <b>服務</b>
+      <div><a href="${prefix}office-guide.html">辦公方案選擇指南</a></div>
+      <div><a href="${prefix}virtual-office.html">借址登記</a></div>
+      <div><a href="${prefix}private-office.html">獨立辦公室</a></div>
+      <div><a href="${prefix}meeting-room.html">會議室租借</a></div>
+    </div>
+  </div>
+</footer>`;
+
+function postPage(post, allPosts) {
+  const text = paras(post.body);
+  const description = excerpt(post.body, 155);
+  const url = `${SITE}/posts/${post.id}.html`;
+  const displayImage = safeImagePath(post.img);
+  const image = absoluteImageUrl(post.img);
+  const relatedPosts = allPosts.filter(item => item.id !== post.id).slice(0, 3);
+  const schema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    headline: p.title,
-    image: img,
-    datePublished: isoDate(p.date),
-    dateModified: isoDate(p.date),
-    author: { '@type': 'Organization', name: '辰星商務中心 Morning Stars' },
-    publisher: {
-      '@type': 'Organization',
-      name: '辰星商務中心 Morning Stars',
-      logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-dark.png` }
-    },
+    headline: post.title,
+    description,
+    image,
+    datePublished: isoDate(post.date),
+    dateModified: isoDate(post.date),
+    inLanguage: 'zh-Hant',
     mainEntityOfPage: url,
-    articleSection: p.tag || '最新消息',
-    description: desc
+    author: { '@type': 'Organization', name: BRAND, url: `${SITE}/` },
+    publisher: { '@type': 'Organization', name: BRAND, logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-dark.png` } }
   };
-  const bodyHtml = paras.map(t => `<p>${esc(t)}</p>`).join('\n      ');
-  const linkHtml = p.link ? `\n      <p><a class="btn solid" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkText || '查看更多 →')}</a></p>` : '';
-  const imgHtml = p.img ? `<div class="post-hero-img"><img src="${esc(p.img)}" alt="${esc(p.title)}"></div>` : '';
+
   return `<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${esc(p.title)}｜辰星商務中心 最新貼文</title>
-<meta name="description" content="${esc(desc)}">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(post.title)}｜辰星商務中心 Journal</title>
+<meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${url}">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="${BRAND}">
 <meta property="og:type" content="article">
-<meta property="og:title" content="${esc(p.title)}｜辰星商務中心">
-<meta property="og:description" content="${esc(desc)}">
+<meta property="og:title" content="${esc(post.title)}｜辰星商務中心 Journal">
+<meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${esc(img)}">
-<meta property="og:site_name" content="辰星商務中心 Morning Stars">
-<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="${esc(image)}">
+<meta property="og:site_name" content="${BRAND}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-${FONTS}
+<link rel="icon" href="../favicon.svg">
+${fonts}
 <link rel="stylesheet" href="../assets/pages.css">
-<script type="application/ld+json">
-${JSON.stringify(ld, null, 2)}
-</script>
+<script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
 ${header('../')}
-<div class="wrap"><div class="crumb"><a href="../index.html">首頁</a> ／ <a href="../journal.html">最新貼文</a> ／ ${esc(p.title)}</div></div>
-<main>
-  <article class="wrap" style="padding:30px 24px 50px">
-    <span class="post-tag">${esc(p.tag || '最新消息')}</span>
-    <h1 style="font-family:'Noto Serif TC',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.4;color:#3A2E22;margin-bottom:8px">${esc(p.title)}</h1>
-    <div class="post-meta">${esc(p.date)}</div>
-    ${imgHtml}
-    <div style="margin-top:18px">
-      ${bodyHtml}${linkHtml}
-    </div>
-    <div class="related" style="margin-top:36px">
-      <a href="../journal.html">← 返回貼文列表</a>
-      <a href="../index.html#contact">預約參觀 →</a>
-    </div>
-  </article>
+<main class="journal-shell">
+  <div class="wrap">
+    <nav class="crumb" aria-label="麵包屑"><a href="../index.html">首頁</a> ／ <a href="../journal.html">最新貼文</a> ／ ${esc(post.title)}</nav>
+    <article class="article-layout">
+      <aside class="article-aside">
+        <a class="back-link" href="../journal.html">← 返回 Journal</a>
+        <div class="aside-card">
+          <span>Need a space?</span>
+          <b>想找信義區辦公空間？</b>
+          <p>可從借址登記、獨立辦公室或會議室開始比較。</p>
+          <a href="../office-guide.html">看方案指南</a>
+        </div>
+      </aside>
+      <article class="article-card">
+        <div class="article-kicker">${esc(post.tag || '最新消息')}</div>
+        <h1>${esc(post.title)}</h1>
+        <div class="article-meta">
+          <span>${esc(displayDate(post.date))}</span>
+          <span>${readingMinutes(post.body)} 分鐘閱讀</span>
+          <span>辰星商務中心</span>
+        </div>
+        <p class="article-summary">${esc(description)}</p>
+        <div class="post-hero-img"><img src="${esc(displayImage)}" alt="${esc(post.title)}" loading="eager" decoding="async"></div>
+        <div class="article-body">${text.map(item => `<p>${esc(item)}</p>`).join('')}</div>
+        ${post.link ? `<p class="article-action"><a class="btn solid" href="${esc(post.link)}" target="_blank" rel="noopener">${esc(post.linkText || '查看更多')}</a></p>` : ''}
+        <div class="article-cta">
+          <span>下一步</span>
+          <h2>想把辦公空間也整理好嗎？</h2>
+          <p>辰星提供信義區借址登記、獨立辦公室、共享座位與會議室租借，適合個人工作者與 1–6 人小型團隊。</p>
+          <div class="related">
+            <a href="../office-guide.html">比較辦公方案</a>
+            <a href="../virtual-office.html">借址登記</a>
+            <a href="../index.html#contact">預約參觀 →</a>
+          </div>
+        </div>
+      </article>
+    </article>
+    ${relatedPosts.length ? `<section class="more-posts"><div class="section-head"><span>More Stories</span><h2>延伸閱讀</h2></div><div class="post-grid compact">${relatedPosts.map(card).join('')}</div></section>` : ''}
+  </div>
 </main>
 ${footer('../')}
 </body>
-</html>
-`;
+</html>`;
 }
 
-function journalIndex(posts){
-  const cards = posts.map(p => {
-    const thumb = p.img
-      ? `<div class="thumb"><img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy"></div>`
-      : '';
-    return `    <a class="post-card" href="posts/${esc(p.id)}.html">
-      ${thumb}
-      <div class="pb"><span class="post-tag">${esc(p.tag || '最新消息')}</span><h3>${esc(p.title)}</h3><span class="date">${esc(p.date)}</span></div>
-    </a>`;
-  }).join('\n');
+function card(post, options = {}) {
+  const displayImage = safeImagePath(post.img);
+  const href = `${options.prefix || ''}posts/${esc(post.id)}.html`;
+  return `<a class="post-card ${options.featured ? 'featured' : ''}" href="${href}">
+    <div class="thumb"><img src="${esc(displayImage)}" alt="${esc(post.title)}" loading="lazy" decoding="async"></div>
+    <div class="pb">
+      <span class="post-tag">${esc(post.tag || '最新消息')}</span>
+      <h3>${esc(post.title)}</h3>
+      <p>${esc(excerpt(post.body, options.featured ? 140 : 82))}</p>
+      <span class="date">${esc(displayDate(post.date))} ・ ${readingMinutes(post.body)} 分鐘閱讀</span>
+    </div>
+  </a>`;
+}
+
+function journalPage(posts) {
+  const [featured, ...rest] = posts;
+  const categories = [...new Set(posts.map(post => post.tag).filter(Boolean))];
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: '辰星商務中心 Journal',
+    description: '辰星商務中心最新消息、信義區商圈情報、創業與辦公空間知識。',
+    url: `${SITE}/journal.html`,
+    inLanguage: 'zh-Hant',
+    publisher: { '@type': 'Organization', name: BRAND, url: `${SITE}/` }
+  };
+
   return `<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>最新貼文 Journal｜辰星商務中心 台北信義共享辦公空間</title>
-<meta name="description" content="辰星商務中心最新消息、場館動態與講座活動。台北信義區共享辦公空間、借址登記、會議室租借與獨立辦公室的第一手資訊。">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>最新貼文 Journal｜辰星商務中心・信義區辦公空間與創業資訊</title>
+<meta name="description" content="辰星商務中心 Journal，整理場館動態、信義區商圈情報、借址登記、共享辦公室、會議室租借與創業經營資訊。">
 <link rel="canonical" href="${SITE}/journal.html">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="${BRAND}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="最新貼文 Journal｜辰星商務中心">
-<meta property="og:description" content="辰星商務中心最新消息、場館動態與講座活動。">
+<meta property="og:description" content="場館動態、信義區商圈情報與辦公空間知識。">
 <meta property="og:url" content="${SITE}/journal.html">
 <meta property="og:image" content="${SITE}/images/og-cover.jpg">
-<meta property="og:site_name" content="辰星商務中心 Morning Stars">
-<meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-${FONTS}
+<link rel="icon" href="favicon.svg">
+${fonts}
 <link rel="stylesheet" href="assets/pages.css">
+<script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
 ${header('')}
-<section class="hero2"><div class="wrap">
-  <div class="kick">Journal</div>
-  <h1>最新貼文</h1>
-  <p class="sub">場館動態、最新消息與講座活動——辰星商務中心的第一手資訊。</p>
-</div></section>
-<div class="wrap"><div class="crumb"><a href="index.html">首頁</a> ／ 最新貼文</div></div>
-<main><section><div class="wrap">
-  <div class="post-grid">
-${cards}
+<section class="journal-hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="kick">Journal</div>
+      <h1>辰星最新貼文與辦公靈感</h1>
+      <p class="sub">整理場館動態、信義區商圈情報、借址登記與辦公空間選擇知識，讓搜尋引擎與 AI 都更容易理解辰星能幫上什麼忙。</p>
+      <div class="hero-pills">${categories.map(item => `<span>${esc(item)}</span>`).join('')}</div>
+    </div>
+    <div class="hero-panel">
+      <span>Quick Answer</span>
+      <p>如果你正在找台北信義區辦公空間，可先閱讀方案指南，再依需求選擇借址登記、獨立辦公室或會議室租借。</p>
+      <a href="office-guide.html">查看辦公方案指南 →</a>
+    </div>
   </div>
-</div></section></main>
+</section>
+<main>
+  ${featured ? `<section class="featured-post"><div class="wrap"><div class="section-head"><span>Featured</span><h2>精選文章</h2></div>${card(featured, { featured: true })}</div></section>` : ''}
+  <section>
+    <div class="wrap">
+      <div class="section-head"><span>All Posts</span><h2>所有貼文</h2></div>
+      <div class="post-grid">${rest.map(post => card(post)).join('')}</div>
+    </div>
+  </section>
+  <section class="journal-guide">
+    <div class="wrap guide-strip">
+      <div>
+        <span>Choose smarter</span>
+        <h2>不知道該選借址、辦公室還是會議室？</h2>
+        <p>我們把常見需求整理成一頁比較表，適合讓 Google 與 AI 搜尋直接抓到答案，也適合訪客快速判斷。</p>
+      </div>
+      <a class="btn solid" href="office-guide.html">看方案指南</a>
+    </div>
+  </section>
+</main>
 ${footer('')}
 </body>
-</html>
-`;
+</html>`;
 }
 
-function sitemap(posts){
+function sitemap(posts) {
   const today = new Date().toISOString().slice(0, 10);
-  const urls = STATIC_PAGES.map(pg =>
-    `  <url>\n    <loc>${pg.loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${pg.changefreq}</changefreq>\n    <priority>${pg.priority}</priority>\n  </url>`
-  );
-  posts.forEach(p => {
-    urls.push(`  <url>\n    <loc>${SITE}/posts/${p.id}.html</loc>\n    <lastmod>${isoDate(p.date) || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`);
+  const pages = [
+    ['/', '1.0', 'weekly'],
+    ['/virtual-office.html', '.9', 'monthly'],
+    ['/private-office.html', '.9', 'monthly'],
+    ['/meeting-room.html', '.9', 'monthly'],
+    ['/office-guide.html', '.9', 'monthly'],
+    ['/journal.html', '.7', 'weekly'],
+    ['/crm.html', '.6', 'monthly'],
+    [`/${encodeURIComponent('辰星場館相簿-信義館.html')}`, '.7', 'monthly'],
+    [`/${encodeURIComponent('辰星場館相簿-世貿館.html')}`, '.7', 'monthly'],
+    ['/privacy-policy.html', '.3', 'yearly'],
+    ['/terms.html', '.3', 'yearly']
+  ];
+  const urls = pages.map(([url, priority, frequency]) => `<url><loc>${SITE}${url}</loc><lastmod>${today}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`);
+  posts.forEach(post => {
+    urls.push(`<url><loc>${SITE}/posts/${esc(post.id)}.html</loc><lastmod>${isoDate(post.date) || today}</lastmod><changefreq>monthly</changefreq><priority>.6</priority></url>`);
   });
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join('')}</urlset>`;
 }
 
-// ---- run ----
-const raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'posts.json'), 'utf8'));
-const posts = (raw && raw.posts ? raw.posts : (Array.isArray(raw) ? raw : []))
-  .filter(p => p && p.id);
+const data = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'posts.json'), 'utf8'));
+const posts = (Array.isArray(data) ? data : data.posts || []).filter(post => post && post.id);
+const output = path.join(ROOT, 'posts');
 
-const postsDir = path.join(ROOT, 'posts');
-fs.mkdirSync(postsDir, { recursive: true });
-posts.forEach(p => {
-  fs.writeFileSync(path.join(postsDir, `${p.id}.html`), postPage(p));
-  console.log('  ✓ posts/' + p.id + '.html');
-});
-fs.writeFileSync(path.join(ROOT, 'journal.html'), journalIndex(posts));
-console.log('  ✓ journal.html');
+fs.mkdirSync(output, { recursive: true });
+posts.forEach(post => fs.writeFileSync(path.join(output, `${post.id}.html`), postPage(post, posts)));
+fs.writeFileSync(path.join(ROOT, 'journal.html'), journalPage(posts));
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap(posts));
-console.log('  ✓ sitemap.xml');
-console.log(`完成：共產生 ${posts.length} 篇貼文頁。`);
+
+console.log(`完成：產生 ${posts.length} 篇貼文、Journal 與 sitemap。`);
