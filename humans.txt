@@ -1,0 +1,18 @@
+/* TEAM */
+Site: 辰星商務中心 Morning Stars
+Contact: mstars.business@gmail.com
+Phone: 0903-368-856
+LINE: @mstars
+Location: 台北市信義區
+
+/* SITE */
+Language: zh-Hant
+Primary domain: https://www.morning-stars.com.tw/
+Services: 借址登記、虛擬辦公室、獨立辦公室、共享座位、會議室租借
+AI-readable guide: https://www.morning-stars.com.tw/llms.txt
+Sitemap: https://www.morning-stars.com.tw/sitemap.xml
+
+/* MAINTENANCE */
+Public upload folder: 辰星網站-CMS版/上傳到GitHub
+Build posts: node build-journal.js
+Validate: node validate-site.js
