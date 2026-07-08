@@ -67,6 +67,7 @@ const header = prefix => `<header class="top">
       <a class="lnk" href="${prefix}private-office.html">獨立辦公室</a>
       <a class="lnk" href="${prefix}meeting-room.html">會議室</a>
       <a class="book" href="${prefix}index.html#contact">預約參觀</a>
+      <div class="langsw"><button class="lang-btn" aria-label="Language 語言 言語" onclick="toggleLangMenu(event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 3.9 5.7 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.7-3.9-9S9.4 5.6 12 3z"/></svg></button><div class="lang-menu" id="langMenu"><a data-l="zh" onclick="setLang('zh')">中文</a><a data-l="en" onclick="setLang('en')">English</a><a data-l="ja" onclick="setLang('ja')">日本語</a></div></div>
     </nav>
   </div>
 </header>`;
@@ -175,6 +176,7 @@ ${header('../')}
   </div>
 </main>
 ${footer('../')}
+<script src="../i18n.js"></script>
 </body>
 </html>`;
 }
@@ -264,6 +266,7 @@ ${header('')}
   </section>
 </main>
 ${footer('')}
+<script src="i18n.js"></script>
 </body>
 </html>`;
 }
@@ -298,5 +301,3 @@ fs.mkdirSync(output, { recursive: true });
 posts.forEach(post => fs.writeFileSync(path.join(output, `${post.id}.html`), postPage(post, posts)));
 fs.writeFileSync(path.join(ROOT, 'journal.html'), journalPage(posts));
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap(posts));
-
-console.log(`完成：產生 ${posts.length} 篇貼文、Journal 與 sitemap。`);
