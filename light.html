@@ -733,6 +733,7 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 <link rel="apple-touch-icon" href="images/logo-dark.png">
 <meta name="twitter:image" content="https://www.morning-stars.com.tw/images/og-cover.jpg">
 <style id="theme-switch-css">.theme-switch{position:fixed;left:18px;bottom:18px;z-index:200;display:flex;gap:6px;background:rgba(26,23,18,.42);padding:6px;border-radius:30px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.theme-switch a{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.55);font-family:'Noto Serif TC',serif;transition:.2s}.theme-switch a:hover,.theme-switch a.cur{background:#A9803F;border-color:#A9803F}</style>
+<style id="mobile-contact-css">.mobile-contact-bar{position:fixed;left:14px;right:14px;bottom:12px;z-index:210;display:none;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:8px;background:rgba(26,23,18,.9);border:1px solid rgba(205,172,106,.38);box-shadow:0 18px 50px rgba(0,0,0,.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.mobile-contact-bar a{display:flex;align-items:center;justify-content:center;min-height:42px;border:1px solid rgba(205,172,106,.45);color:#F5E7C8;font-size:.86rem;letter-spacing:.08em;background:rgba(255,249,239,.05);text-decoration:none}.mobile-contact-bar a.primary{background:#A9803F;color:#FFF9EF;border-color:#A9803F;font-weight:500}@media(max-width:760px){body{padding-bottom:76px}.mobile-contact-bar{display:grid}.theme-switch{bottom:78px!important}}</style>
 <style id="hero-carousel-css">.hero .bg .hslide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}.hero .bg .hslide.on{opacity:1}.hero .bg .hslide img{width:100%;height:100%;object-fit:cover;display:block}</style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PKTJLRH2N"></script>
@@ -1237,6 +1238,11 @@ body.lux .venues,body.lux .extra,body.lux .journal,body.lux .contact{border-top:
 
 <script id="booking-script"></script>
 
+<div class="mobile-contact-bar" aria-label="快速聯絡">
+  <a href="tel:0903368856">電話</a>
+  <a class="primary" href="https://line.me/R/ti/p/@mstars" target="_blank" rel="noopener">LINE</a>
+  <a onclick="go('home','contact')">預約</a>
+</div>
 <nav class="theme-switch" aria-label="網站配色切換">
   <a href="index.html" title="暖金亮色版">暖</a>
   <a href="dark.html" title="暗夜畫廊版">暗</a>

@@ -90,6 +90,12 @@ const footer = prefix => `<footer class="ft">
   </div>
 </footer>`;
 
+const mobileContactBar = prefix => `<div class="mobile-contact-bar" aria-label="快速聯絡">
+  <a href="tel:0903368856">電話</a>
+  <a class="primary" href="https://line.me/R/ti/p/@mstars" target="_blank" rel="noopener">LINE</a>
+  <a href="${prefix}index.html#contact">預約</a>
+</div>`;
+
 function postPage(post, allPosts) {
   const text = paras(post.body);
   const description = excerpt(post.body, 155);
@@ -172,10 +178,11 @@ ${header('../')}
         </div>
       </article>
     </article>
-    ${relatedPosts.length ? `<section class="more-posts"><div class="section-head"><span>More Stories</span><h2>延伸閱讀</h2></div><div class="post-grid compact">${relatedPosts.map(card).join('')}</div></section>` : ''}
+    ${relatedPosts.length ? `<section class="more-posts"><div class="section-head"><span>More Stories</span><h2>延伸閱讀</h2></div><div class="post-grid compact">${relatedPosts.map(post => card(post, { prefix: '../' })).join('')}</div></section>` : ''}
   </div>
 </main>
 ${footer('../')}
+${mobileContactBar('../')}
 <script src="../i18n.js"></script>
 </body>
 </html>`;
@@ -266,6 +273,7 @@ ${header('')}
   </section>
 </main>
 ${footer('')}
+${mobileContactBar('')}
 <script src="i18n.js"></script>
 </body>
 </html>`;
