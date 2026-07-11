@@ -49,7 +49,8 @@
   .msc-typing span:nth-child(2){animation-delay:.2s;}.msc-typing span:nth-child(3){animation-delay:.4s;}\
   @keyframes mscb{0%,60%,100%{opacity:.3;}30%{opacity:1;}}\
   .msc-note{font-size:10.5px;color:#aaa;text-align:center;padding:4px 0 8px;background:#fff;}\
-  @media(max-width:480px){.msc-panel{right:8px;bottom:8px;height:calc(100vh - 80px);}.msc-bubble{right:14px;bottom:14px;}}';
+  @media(max-width:760px){.msc-bubble{bottom:84px;}}\
+  @media(max-width:480px){.msc-panel{right:8px;bottom:8px;height:calc(100vh - 80px);}.msc-bubble{right:14px;bottom:84px;}}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
   // ---- DOM ----
@@ -118,7 +119,22 @@
 
   function open() { panel.classList.add('open'); bubble.style.display = 'none'; if (!body.childNodes.length) renderHistory(); setTimeout(function () { input.focus(); }, 50); }
   function close() { panel.classList.remove('open'); bubble.style.display = 'flex'; }
-  bubble.onclick = open;
+  // ---- 泡泡可拖曳移動（手指/滑鼠皆可，位置會記住、跨頁保留）----
+  (function (el) {
+    var POS = 'ms_chat_pos_v1', down = false, moved = false, sx = 0, sy = 0, ox = 0, oy = 0, W = 60, H = 60;
+    function cx(x) { return Math.max(6, Math.min(x, window.innerWidth - W - 6)); }
+    function cy(y) { return Math.max(6, Math.min(y, window.innerHeight - H - 6)); }
+    function pt(e) { return (e.touches && e.touches[0]) ? e.touches[0] : e; }
+    function place(l, t) { el.style.left = cx(l) + 'px'; el.style.top = cy(t) + 'px'; el.style.right = 'auto'; el.style.bottom = 'auto'; }
+    function start(e) { var p = pt(e), r = el.getBoundingClientRect(); down = true; moved = false; W = r.width; H = r.height; sx = p.clientX; sy = p.clientY; ox = r.left; oy = r.top; }
+    function move(e) { if (!down) return; var p = pt(e), dx = p.clientX - sx, dy = p.clientY - sy; if (Math.abs(dx) + Math.abs(dy) > 6) moved = true; if (moved) { place(ox + dx, oy + dy); if (e.cancelable) e.preventDefault(); } }
+    function end() { if (!down) return; down = false; if (moved) { var r = el.getBoundingClientRect(); try { localStorage.setItem(POS, JSON.stringify({ x: r.left, y: r.top })); } catch (e) {} } else { open(); } }
+    el.addEventListener('mousedown', start); window.addEventListener('mousemove', move); window.addEventListener('mouseup', end);
+    el.addEventListener('touchstart', start, { passive: true }); window.addEventListener('touchmove', move, { passive: false }); window.addEventListener('touchend', end);
+    window.addEventListener('resize', function () { if (el.style.left) place(parseInt(el.style.left, 10), parseInt(el.style.top, 10)); });
+    try { var s = JSON.parse(localStorage.getItem(POS) || 'null'); if (s && typeof s.x === 'number') place(s.x, s.y); } catch (e) {}
+    el.style.cursor = 'grab';
+  })(bubble);
   panel.querySelector('.x').onclick = close;
   sendBtn.onclick = function () { send(); };
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); send(); } });
