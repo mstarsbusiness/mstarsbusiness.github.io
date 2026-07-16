@@ -1,2 +1,7 @@
 # 辰星官網 — 自訂錯誤頁
 ErrorDocument 404 /404.html
+
+# 純文字檔（llms.txt / robots.txt / humans.txt）宣告 UTF-8，
+# 避免瀏覽器與 AI 爬蟲讀到中文亂碼。（2026-07-16 每日健檢發現 llms.txt 未帶 charset）
+AddType "text/plain; charset=UTF-8" .txt
+AddCharset UTF-8 .txt
