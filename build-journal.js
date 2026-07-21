@@ -243,7 +243,7 @@ ${header('')}
     <div class="hero-copy">
       <div class="kick">Journal</div>
       <h1>辰星最新貼文與辦公靈感</h1>
-      <p class="sub">整理場館動態、信義區商圈情報、借址登記與辦公空間選擇知識，讓搜尋引擎與 AI 都更容易理解辰星能幫上什麼忙。</p>
+      <p class="sub">場館動態、信義區商圈情報，以及借址登記與辦公空間的選擇知識——在辰星，找辦公室這件事可以更清楚、更省心。</p>
       <div class="hero-pills">${categories.map(item => `<span>${esc(item)}</span>`).join('')}</div>
     </div>
     <div class="hero-panel">
