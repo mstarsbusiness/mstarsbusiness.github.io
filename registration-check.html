@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公司登記可行性檢核｜辰星商務中心</title>
+<meta name="description" content="輸入您的行業或營業項目，立即查詢是否適合以辰星商務中心地址辦理公司設址（借址）登記：可辦、需附條件或不建議，並說明原因。">
+<style>
+  :root{ --gold:#b8912f; --gold-d:#8f6f1f; --ink:#26221c; --ink-soft:#6b6152; --line:#e7e0d2; --bg:#faf7f0; --card:#fff; --ok:#2e7d46; --warn:#c9871f; --no:#c0392b; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  .wrap{max-width:680px;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:23px;margin:0 0 4px;color:var(--ink)}
+  .sub{color:var(--ink-soft);font-size:14px;margin:0 0 22px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 2px 14px rgba(120,100,50,.06)}
+  label{font-weight:600;font-size:14px;display:block;margin-bottom:8px}
+  .inrow{display:flex;gap:8px;flex-wrap:wrap}
+  input[type=text]{flex:1;min-width:200px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit}
+  input[type=text]:focus{outline:none;border-color:var(--gold)}
+  button{padding:12px 20px;border:none;border-radius:10px;background:var(--gold);color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+  button:hover{background:var(--gold-d)}
+  .chips{margin:14px 0 2px;display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:20px;background:#fdfbf6;cursor:pointer;color:var(--ink-soft)}
+  .chip:hover{border-color:var(--gold);color:var(--gold-d)}
+  #result{margin-top:18px}
+  .verdict{border-radius:14px;padding:18px 18px 16px;border:1px solid var(--line)}
+  .v-ok{background:#eef7f0;border-color:#bfe0c8}
+  .v-warn{background:#fdf5e6;border-color:#f0dcae}
+  .v-no{background:#fdeeec;border-color:#f2c7c0}
+  .v-head{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:6px}
+  .v-ok .v-head{color:var(--ok)} .v-warn .v-head{color:var(--warn)} .v-no .v-head{color:var(--no)}
+  .v-body{font-size:14.5px;color:var(--ink)}
+  .v-body b{color:var(--ink)}
+  .cond{margin-top:10px;padding:11px 13px;background:rgba(255,255,255,.65);border-radius:9px;font-size:13.5px}
+  .cta{margin-top:16px;padding:15px;border-radius:12px;background:#26221c;color:#fff;font-size:14px}
+  .cta a{color:#f0d074;font-weight:600;text-decoration:none}
+  .disc{margin-top:20px;font-size:12px;color:var(--ink-soft);line-height:1.6}
+  .badge{font-size:11px;padding:2px 8px;border-radius:6px;background:rgba(0,0,0,.06);color:var(--ink-soft);font-weight:500}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>公司登記可行性檢核</h1>
+  <p class="sub">輸入您的行業或營業項目，立即了解是否適合用辰星地址辦理公司設址（借址）登記。<br>同業常來者不拒、兩年後被國稅局駁回；我們選擇一開始就跟您講清楚。</p>
+
+  <div class="box">
+    <label for="q">您的行業／營業項目</label>
+    <div class="inrow">
+      <input id="q" type="text" placeholder="例如：管理顧問、電商、室內設計、餐飲、房仲…" autocomplete="off">
+      <button onclick="check()">查詢</button>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div id="result"></div>
+  </div>
+
+  <p class="disc">
+    ※ 本工具為實務參考，非稅務或法律意見。台灣沒有法律「明文禁止借址登記」；會不會過，取決於①目的事業主管機關對特許業是否要求實體場所／專任人員，②國稅局稽徵實務對稅額結構或需實地查核行業的認定。實際個案仍以會計師、記帳士或所屬稽徵機關（辰星兩館為財政部臺北國稅局信義分局）認定為準。資料版本 2026-07。
+  </p>
+</div>
+
+<script>
+/* 行業別可行性資料（濃縮自辰星「行業別登記可行性資料庫 v1.0」） */
+var DB=[
+  // 不可
+  {kw:["房仲","不動產仲介","仲介經紀","代銷","房屋仲介","不動產經紀"],name:"不動產仲介／代銷",v:"no",reason:"屬特許業，法規要求每一營業處所須有實際處所、專任經紀人並繳營業保證金（每處 25 萬），純虛擬借址無法通過設立許可。"},
+  {kw:["人力仲介","派遣","人力派遣","就業服務","獵頭"],name:"人力仲介／派遣",v:"no",reason:"屬特許業，須先取得私立就業服務機構許可，並有固定營業處所、法定資本額與保證金要求，純借址無法通過。"},
+  {kw:["補習","補習班","文理","才藝班"],name:"短期補習班",v:"no",reason:"依設立準則須為對外招生的『固定場址』，並符合面積、消防、建物用途規定，無法以純借址辦理。"},
+  {kw:["日照","長照","照顧","安養","照護"],name:"日間照顧／長照機構",v:"no",reason:"屬特許業，須有符合設施、面積、逃生標準的實體場所，無法純借址。"},
+  {kw:["診所","醫療","牙醫","中醫","醫美","醫療機構"],name:"診所／醫療機構",v:"no",reason:"依醫療法及設置標準須有符合空間、消防、建物用途的實體場所，無法純借址。"},
+  {kw:["餐飲","餐廳","餐館","小吃","飲料","咖啡廳","食品販售"],name:"餐飲／餐館",v:"no",reason:"須以實際營業地登記、受明火與衛生稽查、並辦食品業者登錄，無法純借址。"},
+  {kw:["食品製造","製造","工廠","加工","生產"],name:"食品／各類製造業",v:"no",reason:"涉及機器設備生產須辦工廠登記，商務中心用地不得設生產線。"},
+  {kw:["營造","綜合營造","專業營造","建築工程","土木工程"],name:"綜合／專業營造業",v:"no",reason:"屬特許業，法定須配置『繼續性在職、不得兼任』的專任工程人員，與無人上班的登記地址本質衝突。"},
+  {kw:["殯葬","禮儀","生命禮儀"],name:"殯葬服務業",v:"no",reason:"屬特許業，須有實體辦公空間，無法純借址。"},
+  {kw:["免用統一發票","免用發票","小規模","攤販"],name:"申請免用統一發票之小規模營業人",v:"no",reason:"採查定課徵須國稅局實地勘查，借址現場無從查定，通常不予核可。若走使用統一發票則另當別論。"},
+  // 需附條件
+  {kw:["電商","網拍","網路拍賣","網路銷售","網路商店","蝦皮","momo"],name:"電商／網路拍賣",v:"warn",reason:"可借址登記，屬明確可辦的業別之一。",cond:"稅籍登記時要登記網域名稱與各平台會員帳號，並在銷售網頁明顯處揭露營業人名稱與統一編號（財政部 112 年新制）。網路銷售貨物月銷 8 萬／勞務 4 萬達起徵點須辦稅籍登記。"},
+  {kw:["出口","進口","國際貿易","貿易商","進出口"],name:"進出口貿易業",v:"warn",reason:"法規未禁止借址，但出口零稅率退稅、進口需倉儲配合海關，易被要求查核。",cond:"建議備妥實際營運事證（交易憑證、金流、倉儲／物流合約），且勿申請免用統一發票。一般進銷正常的貿易服務多可順利借址。"},
+  {kw:["建設","建商","不動產開發","開發","營建","推案"],name:"建設公司／不動產開發",v:"warn",reason:"法律未禁止，但推案期進項大、銷項遞延，帳面結構性大額留抵易觸發國稅局查核。",cond:"需備妥實際營運事證；因稅額結構天生易被查核，建議個案由專員評估，或考慮採實體辦公空間較穩妥。"},
+  {kw:["土木包工","包工"],name:"土木包工業",v:"warn",reason:"門檻低於綜合／專業營造（不強制專任工程人員），但仍為特許業、仍須地址查核。",cond:"需個案評估，並經主管機關審查與地址查核。"},
+  {kw:["室內設計","室內裝修","裝修","裝潢","設計裝修"],name:"室內設計／裝修",v:"warn",reason:"純『設計』一般可以借址；但若含施工／裝修工程，可能觸及專業營造或土木包工（特許、需查核）。",cond:"若貴公司只做設計規劃，多可借址；若含實際施工工程，建議由專員依營業項目個案確認。"},
+  // 可
+  {kw:["顧問","管理顧問","企管顧問","諮詢"],name:"管理顧問業",v:"ok",reason:"一般可以借址登記，屬辰星主要客群。"},
+  {kw:["軟體","資訊","科技","軟體開發","app","系統開發","程式"],name:"資訊軟體服務業",v:"ok",reason:"一般可以借址登記。"},
+  {kw:["設計","產品設計","平面設計","品牌設計","視覺設計"],name:"設計業",v:"ok",reason:"一般可以借址登記（純設計；若含施工另見『室內裝修』）。"},
+  {kw:["廣告","行銷","公關","媒體","數位行銷"],name:"廣告／行銷服務業",v:"ok",reason:"一般可以借址登記。"},
+  {kw:["貿易","批發","買賣","一般貿易","國內貿易"],name:"一般貿易／買賣服務",v:"ok",reason:"進銷正常、使用統一發票、留抵不過高者一般可以借址登記。"},
+  {kw:["投資","投資顧問","資本","控股"],name:"投資／控股",v:"ok",reason:"一般可以借址登記。"},
+  {kw:["文創","工作室","創作","攝影","文化"],name:"文創／工作室",v:"ok",reason:"一般可以借址登記（若涉實體門市或製造另議）。"}
+];
+var CHIPS=["管理顧問","電商","室內設計","餐飲","房仲","國際貿易","資訊軟體","建設公司","營造","廣告行銷"];
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function render(chips){var h="";chips.forEach(function(c){h+='<span class="chip" onclick="document.getElementById(\''+"q"+'\').value=\''+c+'\';check()">'+esc(c)+'</span>';});document.getElementById('chips').innerHTML=h;}
+render(CHIPS);
+function match(q){
+  q=q.trim().toLowerCase();
+  if(!q) return null;
+  for(var i=0;i<DB.length;i++){ for(var j=0;j<DB[i].kw.length;j++){ if(q.indexOf(DB[i].kw[j].toLowerCase())>=0) return DB[i]; } }
+  return null;
+}
+var CTA='<div class="cta">想確認貴公司的個案狀況，或預約現場參觀？<br>加 LINE <a href="https://line.me/R/ti/p/@mstars">@mstars</a>　·　電 <a href="tel:0903368856">0903-368-856</a>　·　由專員為您說明。</div>';
+function check(){
+  var q=document.getElementById('q').value;
+  var r=document.getElementById('result');
+  if(!q.trim()){ r.innerHTML=''; return; }
+  var m=match(q);
+  if(!m){
+    r.innerHTML='<div class="verdict v-warn"><div class="v-head">🔎 需個案確認</div><div class="v-body">我們沒有直接對應到「'+esc(q)+'」這個項目。多數一般服務業（顧問、設計、軟體、貿易服務等）都可以借址登記，但仍需依您的實際營業項目個案確認。歡迎讓專員為您看看。</div></div>'+CTA;
+    return;
+  }
+  var cls=m.v==='ok'?'v-ok':(m.v==='no'?'v-no':'v-warn');
+  var icon=m.v==='ok'?'✅ 一般可以借址登記':(m.v==='no'?'⚠️ 不建議／通常無法借址':'🟡 可以，但需附條件');
+  var badge=m.v==='ok'?'可辦':(m.v==='no'?'不建議':'需附條件');
+  var body='<div class="v-body"><b>'+esc(m.name)+'</b> <span class="badge">'+badge+'</span><br>'+esc(m.reason);
+  if(m.cond) body+='<div class="cond"><b>可辦的關鍵條件：</b>'+esc(m.cond)+'</div>';
+  body+='</div>';
+  r.innerHTML='<div class="verdict '+cls+'"><div class="v-head">'+icon+'</div>'+body+'</div>'+CTA;
+}
+document.getElementById('q').addEventListener('keydown',function(e){ if(e.key==='Enter') check(); });
+</script>
+</body>
+</html>
