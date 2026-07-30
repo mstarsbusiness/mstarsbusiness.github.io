@@ -841,6 +841,51 @@ header.solid .menu a.book{border-color:var(--champagne)!important}
 body.lux{--champagne:#C9A24B;--champagne-lt:#CDB488;--hair:rgba(201,162,75,.24)}
 body.lux *{border-radius:0!important}
 </style>
+<style id="presentation-polish-20260730">
+/* Presentation polish — 2026-07-30: visual/typography only */
+html{text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{text-rendering:optimizeLegibility;font-kerning:normal;font-feature-settings:"kern";letter-spacing:.012em}
+.wrap{width:min(100%,1180px)}
+.nav{min-height:74px;height:auto;gap:18px}
+.logo{min-width:0}.logo b{line-height:1.24;text-wrap:balance}.logo small{line-height:1.2}
+.menu{gap:clamp(12px,1.45vw,24px)}
+.menu a{line-height:1.35;padding:7px 0}
+.menu a.book{min-height:42px;display:inline-flex;align-items:center;justify-content:center}
+.hero h1,.sec-head h2{text-wrap:balance}
+.hero h1{letter-spacing:.035em}
+.hero-content{max-width:920px}
+.hero .kick{line-height:1.45;text-wrap:balance}
+.hero .cta,.cta-sub,.journal .more a,.post-link,.submit,.bk-tab,.vmore-btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+section{padding-top:clamp(78px,8vw,118px);padding-bottom:clamp(78px,8vw,118px)}
+.sec-head{margin-bottom:clamp(34px,4vw,56px)}
+.sec-head h2{line-height:1.18}
+.sec-head .en{line-height:1.35}
+.about .lead,.contact .lead{font-size:clamp(1.22rem,2vw,1.56rem);line-height:1.95;text-wrap:pretty}
+.about p,.svc p,.xcard p,.price p,.post h3,.faq-a,.foot p{line-height:1.86}
+.svc,.xcard,.price,.post,.vcard,.pcard,.os-card{transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.svc:hover,.xcard:hover,.price:hover,.post:hover,.pcard:hover,.os-card:hover{box-shadow:0 18px 52px rgba(58,46,34,.075)}
+.venue .cap{padding:clamp(26px,4vw,42px)}
+.venue .cap h3{line-height:1.35;text-wrap:balance}
+.svc-grid,.extra-grid,.price-grid,.post-grid,.vgrid,.pgrid{gap:clamp(20px,2.6vw,34px)}
+.price,.xcard,.vcard,.pcard{padding:clamp(24px,3vw,38px)}
+.faq-q{min-height:76px;line-height:1.55}
+.faq-a div{line-height:1.9}
+.field input,.field select,.field textarea{min-height:44px}
+.foot{align-items:start}.foot a{line-height:1.5;padding:2px 0}
+@media(max-width:1100px){.menu{gap:12px}.menu a{font-size:.78rem!important;letter-spacing:.035em!important}.menu a.book{padding:9px 16px!important}}
+@media(max-width:900px){.nav{min-height:68px}.hero-content{max-width:760px}.about-grid,.contact-grid{gap:46px}}
+@media(max-width:640px){
+  .wrap,.nav{padding-left:20px!important;padding-right:20px!important}
+  .hero h1{font-size:clamp(2.25rem,12vw,3.65rem)!important;line-height:1.18!important}
+  .hero .kick{font-size:clamp(1.06rem,6vw,1.46rem)!important;letter-spacing:.18em!important}
+  .hero h1 .en{letter-spacing:.18em!important}
+  section{padding-top:72px;padding-bottom:72px}
+  .sec-head h2{font-size:clamp(1.85rem,9vw,2.5rem)!important}
+  .menu a{font-size:.92rem!important}
+  .price,.xcard,.vcard,.pcard{padding:24px 22px}
+  .contact .info div{display:block}.contact .info div span:last-child{text-align:left;display:block;margin-top:4px}
+}
+</style>
 </head>
 <body class="lux">
 

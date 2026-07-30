@@ -180,3 +180,73 @@ footer.ft .cols div{margin-bottom:6px}
   .article-meta span{display:block}
   .article-meta span+span::before{display:none}
 }
+
+/* Presentation polish — 2026-07-30
+   Scope: typography, rhythm, touch comfort and visual consistency only.
+   Do not encode business copy, pricing, SEO metadata or script behavior here. */
+html{text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{text-rendering:optimizeLegibility;font-kerning:normal;font-feature-settings:"kern";letter-spacing:.012em}
+.wrap{width:min(100%,var(--maxw));padding-left:clamp(20px,4vw,32px);padding-right:clamp(20px,4vw,32px)}
+header.top{box-shadow:0 10px 34px rgba(0,0,0,.08)}
+header.top .wrap{min-height:66px;height:auto;padding-top:10px;padding-bottom:10px;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand .blogo{width:40px;height:40px;object-fit:contain;flex:none}
+.brand b{font-size:clamp(.98rem,1.5vw,1.08rem);letter-spacing:.14em}
+.brand small{letter-spacing:.28em;color:#B9A98D}
+.topnav{gap:clamp(12px,1.6vw,22px);font-size:clamp(.78rem,.95vw,.86rem);line-height:1.35}
+.topnav a{padding:6px 0}
+.topnav .book{min-height:38px;display:inline-flex;align-items:center;justify-content:center;padding:8px 15px}
+.hero2{padding:clamp(76px,9vw,118px) 0 clamp(58px,7vw,88px)}
+.hero2 .kick{font-size:clamp(.78rem,1.2vw,.92rem);letter-spacing:.34em}
+.hero2 h1{max-width:860px;text-wrap:balance}
+.hero2 p.sub{font-size:clamp(1rem,1.55vw,1.12rem);line-height:1.9;max-width:760px}
+main section{padding-top:clamp(54px,7vw,78px);padding-bottom:clamp(54px,7vw,78px)}
+h2.sec{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.36;text-wrap:balance}
+.lead{font-size:clamp(1.12rem,2vw,1.32rem);line-height:1.92;text-wrap:pretty}
+p,li{font-size:clamp(.96rem,1.1vw,1.02rem)}
+.answer-lead{font-size:clamp(1.06rem,1.8vw,1.2rem);line-height:2.02;padding:clamp(20px,3vw,28px);border-left-width:4px}
+.card,.decision,.fit-card,.post-card,.aside-card,.article-card,.hero-panel{border-color:rgba(58,46,34,.12)}
+.card,.decision,.fit-card{padding:clamp(22px,3vw,30px)}
+.card h3,.decision h3,.fit-card h3{line-height:1.5;text-wrap:balance}
+.fit-grid{gap:clamp(16px,2.2vw,24px)}
+.fit-card{position:relative;overflow:hidden}
+.fit-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,transparent,rgba(169,128,63,.55),transparent);opacity:.7}
+.fit-card.accent::after{background:linear-gradient(90deg,transparent,rgba(205,172,106,.85),transparent)}
+.fit-card span,.decision>span,.card .en,.post-tag{letter-spacing:.2em}
+.next-step-note{line-height:1.9;padding:clamp(18px,2.5vw,24px)}
+.btn,.related a,.mobile-contact-bar a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.btn{padding:13px 28px;line-height:1.35}
+.related a{line-height:1.45}
+.faqs summary{line-height:1.6}
+.faqs .ans{line-height:1.92}
+.table-scroll{border-radius:4px}
+.compare th,.compare td{line-height:1.72}
+.article-card{max-width:100%}
+.article-body{font-size:clamp(1rem,1.25vw,1.06rem)}
+.article-body p{text-wrap:pretty}
+footer.ft{line-height:1.75}
+footer.ft .wrap{align-items:flex-start}
+footer.ft a{display:inline-block;padding:2px 0}
+@media(max-width:1040px){
+  .topnav{gap:12px;font-size:.78rem;letter-spacing:.05em}
+  .topnav .book{padding:7px 12px}
+}
+@media(max-width:760px){
+  header.top .wrap{min-height:62px}
+  .brand small{font-size:.52rem}
+  .hero2{text-align:left}
+  .crumb{padding:14px 0;font-size:.78rem}
+  .cards,.post-grid{gap:18px}
+  .card,.decision,.fit-card{padding:22px}
+  .mobile-contact-bar{left:10px;right:10px;bottom:10px;gap:6px}
+  .mobile-contact-bar a{font-size:.82rem;letter-spacing:.05em}
+}
+@media(max-width:520px){
+  .wrap{padding-left:18px;padding-right:18px}
+  .hero2 .kick{letter-spacing:.26em}
+  .hero2 h1{font-size:clamp(1.82rem,9vw,2.45rem);line-height:1.34}
+  .hero2 p.sub{font-size:.98rem}
+  .btn{width:100%;max-width:320px}
+  .related a{width:100%;justify-content:flex-start}
+  .answer-lead{margin-bottom:28px}
+}
