@@ -224,7 +224,45 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       </div>
     </div>
     <p class="next-step-note">若你不確定該選借址、共享座位或獨立辦公室，可以直接加 LINE @mstars，告訴我們「是否要登記、是否會來辦公、預計幾人使用」，辰星會協助你快速判斷。</p>
-    <p style="text-align:center;margin-top:22px"><a class="btn" href="registration-check.html">🔎 先查你的行業能不能借址登記 →</a></p>
+    <style>
+      #regcheck{margin-top:28px}
+      #regcheck h3{margin:0 0 4px}
+      #regcheck .regc-tool{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:22px;box-shadow:0 3px 18px rgba(58,46,34,.06);max-width:760px}
+      #regcheck .regc-tool label{font-weight:500;font-size:.95rem;display:block;margin-bottom:10px;color:#3A2E22}
+      #regcheck .regc-inrow{display:flex;gap:10px;flex-wrap:wrap}
+      #regcheck .regc-inrow input{flex:1;min-width:200px;padding:13px 15px;border:1px solid #d8cdb8;border-radius:9px;font-size:1rem;font-family:inherit;background:#fff;color:#3A2E22}
+      #regcheck .regc-inrow input:focus{outline:none;border-color:var(--champagne)}
+      #regcheck .regc-inrow .btn{margin:0;cursor:pointer;white-space:nowrap}
+      #regcheck .chips{margin:16px 0 2px;display:flex;flex-wrap:wrap;gap:8px}
+      #regcheck .chip{font-size:.85rem;padding:6px 13px;border:1px solid var(--hair);border-radius:20px;background:#FBF8F1;cursor:pointer;color:var(--stone)}
+      #regcheck .chip:hover{border-color:var(--champagne);color:var(--champagne-lt)}
+      #regcheck #regc-result{margin-top:18px;max-width:760px}
+      #regcheck .verdict{border-radius:13px;padding:18px;border:1px solid var(--hair)}
+      #regcheck .v-ok{background:#eef6ef;border-color:#c6dece}
+      #regcheck .v-warn{background:#fdf6e7;border-color:#eeddb0}
+      #regcheck .v-no{background:#fceeeb;border-color:#f0cdc4}
+      #regcheck .v-head{font-size:1.12rem;font-weight:600;font-family:"Noto Serif TC",serif;margin-bottom:6px}
+      #regcheck .v-ok .v-head{color:#2e7d46}#regcheck .v-warn .v-head{color:#b9781a}#regcheck .v-no .v-head{color:#b23b30}
+      #regcheck .v-body{font-size:.95rem;color:#3A2E22;line-height:1.85}
+      #regcheck .cond{margin-top:10px;padding:12px 14px;background:#FBF8F1;border-radius:9px;font-size:.9rem;color:#3A2E22}
+      #regcheck .badge{font-size:.72rem;padding:2px 9px;border-radius:6px;background:rgba(58,46,34,.08);color:var(--stone)}
+      #regcheck .tool-cta{margin-top:16px;padding:16px 18px;border-radius:12px;background:var(--navbg);color:#F2ECE0;font-size:.92rem;line-height:1.8}
+      #regcheck .tool-cta a{color:#CDAC6A;font-weight:500}
+    </style>
+    <div id="regcheck">
+      <h3>🔎 先查：你的行業能不能借址登記？</h3>
+      <p style="margin:0 0 14px;font-size:.94rem">輸入您的行業或營業項目，立即看「可辦／需附條件／不建議」與原因。</p>
+      <div class="regc-tool">
+        <label for="regc-q">您的行業／營業項目</label>
+        <div class="regc-inrow">
+          <input id="regc-q" type="text" placeholder="例如：管理顧問、電商、室內設計、餐飲、房仲…" autocomplete="off">
+          <button class="btn solid" onclick="regcCheck()">查詢</button>
+        </div>
+        <div class="chips" id="regc-chips"></div>
+        <div id="regc-result"></div>
+      </div>
+      <p style="margin-top:12px;font-size:.8rem;opacity:.85">※ 實務參考，非稅務／法律意見，個案以會計師或國稅局認定為準。完整說明頁：<a class="text-link" href="registration-check.html">公司登記可行性檢核 →</a></p>
+    </div>
   </div></section>
 
   <section><div class="wrap">
@@ -334,6 +372,58 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
   <a class="primary" href="https://line.me/R/ti/p/@mstars" target="_blank" rel="noopener">LINE</a>
   <a href="index.html#contact">預約</a>
 </div>
+<script>
+/* 借址登記頁內嵌「登記可行性檢核」（命名空間化，避免與頁面其他程式衝突）*/
+(function(){
+  var DB=[
+    {kw:["房仲","不動產仲介","仲介經紀","代銷","房屋仲介","不動產經紀"],name:"不動產仲介／代銷",v:"no",reason:"屬特許業，須實體處所＋專任經紀人＋保證金（每處 25 萬），純借址無法通過設立許可。"},
+    {kw:["人力仲介","派遣","人力派遣","就業服務","獵頭"],name:"人力仲介／派遣",v:"no",reason:"屬特許業，須私立就業服務機構許可＋固定營業處所＋資本額保證金，純借址無法通過。"},
+    {kw:["補習","補習班","文理","才藝班"],name:"短期補習班",v:"no",reason:"依設立準則須為對外招生的固定場址，並符合面積、消防、建物用途規定。"},
+    {kw:["日照","長照","照顧","安養","照護"],name:"日間照顧／長照機構",v:"no",reason:"屬特許業，須有符合設施、面積、逃生標準的實體場所。"},
+    {kw:["診所","醫療","牙醫","中醫","醫美","醫療機構"],name:"診所／醫療機構",v:"no",reason:"依醫療法及設置標準須有符合空間、消防、建物用途的實體場所。"},
+    {kw:["餐飲","餐廳","餐館","小吃","飲料","咖啡廳","食品販售"],name:"餐飲／餐館",v:"no",reason:"須以實際營業地登記、受明火與衛生稽查、並辦食品業者登錄。"},
+    {kw:["食品製造","製造","工廠","加工","生產"],name:"食品／各類製造業",v:"no",reason:"涉及機器設備生產須辦工廠登記，商務中心用地不得設生產線。"},
+    {kw:["營造","綜合營造","專業營造","建築工程","土木工程"],name:"綜合／專業營造業",v:"no",reason:"屬特許業，法定須配置繼續性在職、不得兼任的專任工程人員，與空殼登記地址衝突。"},
+    {kw:["殯葬","禮儀","生命禮儀"],name:"殯葬服務業",v:"no",reason:"屬特許業，須有實體辦公空間。"},
+    {kw:["免用統一發票","免用發票","小規模","攤販"],name:"申請免用統一發票之小規模營業人",v:"no",reason:"採查定課徵須實地勘查，借址現場無從查定，通常不予核可。"},
+    {kw:["電商","網拍","網路拍賣","網路銷售","網路商店","蝦皮","momo"],name:"電商／網路拍賣",v:"warn",reason:"可借址登記，屬明確可辦的業別之一。",cond:"稅籍登記時要登記網域名稱與各平台會員帳號，並在銷售網頁明顯處揭露營業人名稱與統一編號（財政部 112 年新制）。"},
+    {kw:["出口","進口","國際貿易","貿易商","進出口"],name:"進出口貿易業",v:"warn",reason:"法規未禁止借址，但退稅／倉儲查核風險較高。",cond:"建議備妥實際營運事證（交易憑證、金流、倉儲/物流合約），且勿申請免用統一發票。"},
+    {kw:["建設","建商","不動產開發","開發","營建","推案"],name:"建設公司／不動產開發",v:"warn",reason:"法律未禁止，但推案期結構性大額留抵易觸發國稅局查核。",cond:"需備妥實際營運事證；建議個案由專員評估，或考慮採實體辦公空間較穩妥。"},
+    {kw:["土木包工","包工"],name:"土木包工業",v:"warn",reason:"門檻低於綜合/專業營造，但仍為特許業、仍須地址查核。",cond:"需個案評估，並經主管機關審查與地址查核。"},
+    {kw:["室內設計","室內裝修","裝修","裝潢","設計裝修"],name:"室內設計／裝修",v:"warn",reason:"純設計一般可以借址；但若含施工／裝修工程，可能觸及專業營造或土木包工。",cond:"只做設計規劃多可借址；含實際施工工程建議由專員依營業項目個案確認。"},
+    {kw:["顧問","管理顧問","企管顧問","諮詢"],name:"管理顧問業",v:"ok",reason:"一般可以借址登記，屬辰星主要客群。"},
+    {kw:["軟體","資訊","科技","軟體開發","app","系統開發","程式"],name:"資訊軟體服務業",v:"ok",reason:"一般可以借址登記。"},
+    {kw:["設計","產品設計","平面設計","品牌設計","視覺設計"],name:"設計業",v:"ok",reason:"一般可以借址登記（純設計；含施工另見室內裝修）。"},
+    {kw:["廣告","行銷","公關","媒體","數位行銷"],name:"廣告／行銷服務業",v:"ok",reason:"一般可以借址登記。"},
+    {kw:["貿易","批發","買賣","一般貿易","國內貿易"],name:"一般貿易／買賣服務",v:"ok",reason:"進銷正常、使用統一發票、留抵不過高者一般可以借址登記。"},
+    {kw:["投資","投資顧問","資本","控股"],name:"投資／控股",v:"ok",reason:"一般可以借址登記。"},
+    {kw:["文創","工作室","創作","攝影","文化"],name:"文創／工作室",v:"ok",reason:"一般可以借址登記（若涉實體門市或製造另議）。"}
+  ];
+  var CHIPS=["管理顧問","電商","室內設計","餐飲","房仲","國際貿易","資訊軟體","建設公司","營造","廣告行銷"];
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  function match(q){q=String(q||'').trim().toLowerCase();if(!q)return null;for(var i=0;i<DB.length;i++){for(var j=0;j<DB[i].kw.length;j++){if(q.indexOf(DB[i].kw[j].toLowerCase())>=0)return DB[i];}}return null;}
+  var CTA='<div class="tool-cta">想確認貴公司的個案狀況，或預約現場參觀？<br>加 LINE <a href="https://line.me/R/ti/p/@mstars">@mstars</a>　·　電 <a href="tel:0903368856">0903-368-856</a>　·　由專員為您說明。</div>';
+  function doCheck(){
+    var q=document.getElementById('regc-q').value, r=document.getElementById('regc-result');
+    if(!q.trim()){r.innerHTML='';return;}
+    var m=match(q);
+    if(!m){r.innerHTML='<div class="verdict v-warn"><div class="v-head">🔎 需個案確認</div><div class="v-body">我們沒有直接對應到「'+esc(q)+'」這個項目。多數一般服務業（顧問、設計、軟體、貿易服務等）都可以借址登記，仍建議個案確認。</div></div>'+CTA;return;}
+    var cls=m.v==='ok'?'v-ok':(m.v==='no'?'v-no':'v-warn');
+    var icon=m.v==='ok'?'✅ 一般可以借址登記':(m.v==='no'?'⚠️ 不建議／通常無法借址':'🟡 可以，但需附條件');
+    var badge=m.v==='ok'?'可辦':(m.v==='no'?'不建議':'需附條件');
+    var body='<div class="v-body"><b>'+esc(m.name)+'</b> <span class="badge">'+badge+'</span><br>'+esc(m.reason);
+    if(m.cond)body+='<div class="cond"><b>可辦的關鍵條件：</b>'+esc(m.cond)+'</div>';
+    body+='</div>';
+    r.innerHTML='<div class="verdict '+cls+'"><div class="v-head">'+icon+'</div>'+body+'</div>'+CTA;
+  }
+  window.regcCheck=doCheck;
+  window.regcFill=function(c){var el=document.getElementById('regc-q');if(el){el.value=c;doCheck();}};
+  var ch=document.getElementById('regc-chips');
+  if(ch)ch.innerHTML=CHIPS.map(function(c){return '<span class="chip" onclick="regcFill(\''+c+'\')">'+esc(c)+'</span>';}).join('');
+  var qi=document.getElementById('regc-q');
+  if(qi)qi.addEventListener('keydown',function(e){if(e.key==='Enter')doCheck();});
+})();
+</script>
 <script src="i18n.js"></script>
 <script defer src="chat-widget.js"></script>
 </body>
