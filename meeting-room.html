@@ -243,6 +243,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       <b>📌 預約須知</b><br>
       1. <b>付款後預約方為確定</b>：外部使用者送出預約後，請依專員通知完成付款，款項確認後預約才正式成立。<br>
       2. <b>預約一經確認，恕不取消</b>；如需更改時段，請提前來電 0903-368-856 或加 LINE @mstars 洽詢。<br>
+      3. 開放時間：<b>信義館＝上班日（週一至週五）10:00–18:00</b>（大樓門禁管制，假日與晚間無法進出）；世貿館＝每日 09:00–21:00。<br>
       3. 不同客戶的預約之間保留 1 小時緩衝時間；進駐／設址客戶享每月贈送時數，超出部分每小時 400 元。
     </div>
 
@@ -300,6 +301,9 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         }).catch(function(){$('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#c0392b">'+mbT('loadFail')+'</div>';});
       }
       function dayHasBk(ds){return monthData.some(function(b){return b.date===ds;});}
+      /* 信義館限制（2026-07-31）：僅上班日（週一至週五）10:00–18:00 可預約（大樓門禁）；世貿館不受限 */
+      function isXinyi(){return $('mb_venue').value==='信義館';}
+      function isWknd(ds){var g=new Date(ds+'T12:00:00Z').getUTCDay();return g===0||g===6;}
       function renderGrid(){
         var y=view.getFullYear(), mo=view.getMonth();
         var first=new Date(y,mo,1).getDay(), days=new Date(y,mo+1,0).getDate(), today=todayStr();
@@ -307,13 +311,13 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         for(var i=0;i<7;i++) h+='<div style="text-align:center;font-size:.8rem;color:#9a8c66;padding:4px 0">'+mbWK()[i]+'</div>';
         for(var b=0;b<first;b++) h+='<div></div>';
         for(var d=1;d<=days;d++){
-          var ds=y+'-'+pad(mo+1)+'-'+pad(d), past=ds<today, has=dayHasBk(ds), cur=ds===selDate;
-          h+='<div data-d="'+ds+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#C9A24B':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+((has&&!past)?'<div style="font-size:.62rem;color:#C9A24B">'+mbT('booked')+'</div>':'')+'</div>';
+          var ds=y+'-'+pad(mo+1)+'-'+pad(d), wknd=isXinyi()&&isWknd(ds), past=ds<today||wknd, has=dayHasBk(ds), cur=ds===selDate;
+          h+='<div data-d="'+ds+'" data-off="'+(past?1:0)+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#C9A24B':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+(wknd&&ds>=today?'<div style="font-size:.62rem;color:#b9a887">門禁</div>':((has&&!past)?'<div style="font-size:.62rem;color:#C9A24B">'+mbT('booked')+'</div>':''))+'</div>';
         }
         h+='</div>'; $('mb_grid').innerHTML=h;
         [].slice.call($('mb_grid').querySelectorAll('.mbcell')).forEach(function(c){
           var ds=c.getAttribute('data-d');
-          if(ds && ds>=today) c.onclick=function(){selectDay(ds);};
+          if(ds && ds>=today && c.getAttribute('data-off')!=='1') c.onclick=function(){selectDay(ds);};
         });
       }
       function dayBookings(ds){return monthData.filter(function(b){return b.date===ds;}).map(function(b){return {s:toMin(b.start),e:toMin(b.end)};});}
@@ -328,7 +332,8 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       }
       function renderSlots(){
         var bks=dayBookings(selDate), h='';
-        for(var m=540;m<1260;m+=30){
+        var mrO=isXinyi()?600:540, mrC=isXinyi()?1080:1260;   // 信義館 10:00–18:00；世貿館 09:00–21:00
+        for(var m=mrO;m<mrC;m+=30){
           var st=blockedCell(m,bks), sel=(selStart!=null&&selDur!=null&&m>=selStart&&m<selStart+selDur*60);
           var bg=st==='booked'?'#e3ddd0':(st==='buffer'?'#eee9dd':'#e9f5ea'), bd=st==='free'?'#bcdcc0':'#ddd6c6';
           if(sel){bg='#C9A24B';bd='#C9A24B';}
@@ -342,7 +347,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       function pickStart(m){
         selStart=m; selDur=null; var bks=dayBookings(selDate), durs=[1,1.5,2,2.5,3], h='';
         durs.forEach(function(d){
-          var end=m+d*60, ok=(end<=1260)&&!conflict(m,end,bks);
+          var end=m+d*60, ok=(end<=(isXinyi()?1080:1260))&&!conflict(m,end,bks);
           h+='<button type="button" data-d="'+d+'" '+(ok?'':'disabled')+' style="margin:0 6px 6px 0;padding:7px 12px;border:1px solid '+(ok?'#C9A24B':'#ddd')+';border-radius:20px;background:#fff;color:'+(ok?'#C9A24B':'#ccc')+';cursor:'+(ok?'pointer':'not-allowed')+'">'+d+mbT('hr')+'</button>';
         });
         $('mb_durs').innerHTML=h; $('mb_durRow').style.display='block'; $('mb_form').style.display='none';
