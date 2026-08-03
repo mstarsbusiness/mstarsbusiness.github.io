@@ -9,12 +9,11 @@ on:
       - 'images/uploads/**'
       - 'build-journal.js'
   workflow_dispatch:   # 也可以在 Actions 分頁手動按一下執行
-  schedule:
-    - cron: '30 1 * * *'   # 每天台灣約 09:30 自動重生 journal，補抓任何漏掉的發文
 
+# contents:write → 可提交重生檔；actions:write → 可主動觸發 deploy.yml（FTP 部署）
 permissions:
   contents: write
-  actions: write        # 用來主動觸發 deploy.yml（見最後一步）
+  actions: write
 
 concurrency:
   group: build-journal
@@ -43,28 +42,20 @@ jobs:
           if git diff --cached --quiet; then
             echo "沒有變更，略過提交。"
           else
-            # 注意：不可加 [skip ci]，否則會連 deploy.yml(FTP 到 www) 一起跳過，導致重生的 journal 沒被部署到正式站。
-            # 重生只改 journal.html/posts/sitemap，不在 build-journal 的觸發 paths 內，故不會讓本工作流程自己重跑（無迴圈風險）。
-            git commit -m "chore: 自動重生 journal 與貼文頁"
-            # 先與遠端 rebase 再推，避免 CMS 連續 commit 造成 non-fast-forward 而失敗；失敗自動重試
-            for i in 1 2 3; do
-              git pull --rebase origin main && git push && { echo "推送成功"; break; }
-              echo "第 $i 次推送失敗，5 秒後重試…"; sleep 5
-            done
+            git commit -m "chore: 自動重生 journal 與貼文頁 [skip ci]"
+            git push
           fi
-      # ⚠️ 根治「每次都要手動 Re-run」的關鍵步驟（2026-07-21 新增）
-      # GitHub 規則：用內建 GITHUB_TOKEN 推的 commit「不會」觸發其他 workflow，
-      # 所以上面重生 journal 的 commit 不會叫醒 deploy.yml（FTP→捕夢網），
-      # 導致檔案只留在 repo、網站永遠不更新（每次都得人工 Re-run）。
-      # 但 workflow_dispatch 是該規則的「例外」——可用 API 明確觸發，不需 PAT。
-      - name: 觸發 FTP 部署到 www（deploy.yml）
+
+      # ★ 關鍵修正（2026-08-03）：github-actions[bot] 用內建 token 推的 commit 不會叫醒
+      #   deploy.yml，故重生後「主動」呼叫 deploy.yml 的 workflow_dispatch 觸發 FTP 部署。
+      #   （這一步本身不加 [skip ci]，且需上方 permissions: actions: write。）
+      - name: 觸發 FTP 部署（deploy.yml）
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "呼叫 deploy.yml 進行 FTP 部署…"
-          curl -sS -f -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          curl -sS -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy.yml/dispatches" \
-            -d '{"ref":"main"}' \
-            && echo "✅ 已觸發 FTP 部署（請到 Actions 看 Deploy to PUMO via FTP）" \
-            || { echo "⚠️ 觸發失敗，請手動到 Actions 執行 Deploy to PUMO via FTP"; exit 1; }
+            -d '{"ref":"main"}'
