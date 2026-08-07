@@ -288,6 +288,8 @@ function sitemap(posts) {
     ['/meeting-room.html', '.9', 'monthly'],
     ['/office-guide.html', '.9', 'monthly'],
     ['/registration-check.html', '.8', 'monthly'],
+    ['/en/virtual-office.html', '.8', 'monthly'],   // 英文版（2026-08-07 新增，供英文搜尋流量）
+    ['/en/meeting-room.html', '.8', 'monthly'],
     ['/journal.html', '.7', 'weekly'],
     ['/crm.html', '.6', 'monthly'],
     [`/${encodeURIComponent('辰星場館相簿-信義館.html')}`, '.7', 'monthly'],
