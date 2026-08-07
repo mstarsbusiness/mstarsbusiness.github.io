@@ -462,7 +462,17 @@
     for(var j=0;j<a.length;j++) a[j].className=(a[j].getAttribute('data-l')===lang?'cur':'');
     var lm=document.getElementById('langMenu'); if(lm) lm.classList.remove('open');
   }
-  window.setLang=function(l){apply(l);};
+  /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
+     避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
+  var EN_PAGES={'meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
+  function enPageForHere(){
+    var f=(location.pathname.split('/').pop()||'').toLowerCase();
+    return EN_PAGES[f]||null;
+  }
+  window.setLang=function(l){
+    if(l==='en'){ var u=enPageForHere(); if(u){ try{localStorage.setItem('ms_lang','en');}catch(e){} location.href=u; return; } }
+    apply(l);
+  };
   window.toggleLangMenu=function(e){if(e)e.stopPropagation();var m=document.getElementById('langMenu');if(m)m.classList.toggle('open');};
   document.addEventListener('click',function(e){var m=document.getElementById('langMenu');if(m&&e.target.closest&&!e.target.closest('.langsw'))m.classList.remove('open');});
   function init(){collect();var s='zh';try{s=localStorage.getItem('ms_lang')||'zh';}catch(e){}apply(s);}
