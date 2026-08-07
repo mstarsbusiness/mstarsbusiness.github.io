@@ -18,7 +18,8 @@ const ROOT = __dirname;
 const PAGES = [
   'index.html', 'virtual-office.html', 'private-office.html', 'meeting-room.html',
   'office-guide.html', 'registration-check.html', 'crm.html',
-  'terms.html', 'privacy-policy.html', '404.html',
+  'terms.html', 'privacy-policy.html', 'privacy.html', '404.html',
+  'journal.html', 'dark.html', 'light.html',
   '辰星場館相簿-信義館.html', '辰星場館相簿-世貿館.html',
 ];
 
@@ -54,11 +55,27 @@ function visibleChinese(file) {
   const html = fs.readFileSync(path.join(ROOT, file), 'utf8');
   let body = html.slice(html.indexOf('<body'));
   body = body.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '');
-  return body
-    .replace(/<[^>]+>/g, '\n')
-    .split('\n')
-    .map((s) => s.trim())
-    .filter((s) => s && /[一-鿿]/.test(s));
+  // journal 的貼文卡片（標題/摘要/日期）是「內容」——由 build-journal 自動產生、每發文就變，
+  // 不透過字典翻譯（中文部落格維持中文為合理設計），故剝除不檢查。
+  if (file === 'journal.html') {
+    body = body.replace(/<a class="post-card[\s\S]*?<\/a>/g, '');
+  }
+  // ⚠️ 必須與 i18n.js 引擎的判讀方式一致：
+  //    引擎走訪的是「文字節點」＝兩個標籤之間的整段文字，只做首尾 trim，
+  //    段落中間的換行與空白會保留在 key 裡。
+  //    （早期版本用 \n 切段，導致跨行的句子被切成兩半、字典 key 對不上而「補了也沒生效」。）
+  const nodes = [];
+  const re = />([^<]+)</g;
+  let m;
+  while ((m = re.exec(body)) !== null) {
+    const raw = m[1];
+    const key = raw.trim();
+    if (key && /[一-鿿]/.test(key)) nodes.push(key);
+  }
+  // 屬性值（placeholder / aria-label / title / alt）引擎也會翻譯
+  const attrRe = /(?:placeholder|aria-label|title|alt)="([^"]*[一-鿿][^"]*)"/g;
+  while ((m = attrRe.exec(body)) !== null) nodes.push(m[1].trim());
+  return nodes;
 }
 
 const dict = loadDictKeys();
@@ -92,5 +109,28 @@ if (allMissing.size === 0) {
     console.log(`     ↳ ${pages.join(', ')}`);
   }
   console.log('\n把上面清單交給 Claude，會補進 i18n.js 的字典。');
+}
+console.log('========================================');
+
+/* ---- 快取檢查：改完 i18n.js 一定要 bump 版本號，否則訪客瀏覽器會一直用舊字典 ---- */
+const htmls = fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'));
+const vers = new Set();
+let noVer = [];
+for (const f of htmls) {
+  const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  const m = src.match(/src="(?:\.\.\/)?i18n\.js(\?v=(\d+))?"/);
+  if (!m) continue;
+  if (!m[2]) noVer.push(f); else vers.add(m[2]);
+}
+console.log('\n【快取檢查】i18n.js 版本參數');
+if (noVer.length) {
+  console.log('🔴 下列頁面引用 i18n.js 沒有 ?v= 版本號，訪客會讀到舊字典：');
+  noVer.forEach((f) => console.log('   - ' + f));
+} else if (vers.size > 1) {
+  console.log('🟡 版本號不一致：' + [...vers].join(' / ') + '（建議全站統一）');
+} else {
+  console.log('✅ 全站統一為 ?v=' + [...vers][0]);
+  console.log('   ⚠️ 每次修改 i18n.js 後，請把所有頁面的 ?v= 換成當天日期（例 ?v=20260808），');
+  console.log('      否則回訪的訪客瀏覽器會沿用快取中的舊字典，新翻譯不會生效。');
 }
 console.log('========================================');

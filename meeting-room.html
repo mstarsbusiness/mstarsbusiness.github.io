@@ -290,13 +290,13 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       function todayStr(){return new Date(Date.now()+8*3600000).toISOString().slice(0,10);}
       function toMin(s){var m=/^(\d{1,2}):(\d{2})$/.exec(s);return (+m[1])*60+(+m[2]);}
       function fmt(m){return pad(Math.floor(m/60))+':'+pad(m%60);}
-      var MB={wk:{zh:['日','一','二','三','四','五','六'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']},loading:{zh:'載入中…',en:'Loading…',ja:'読み込み中…'},loadFail:{zh:'載入失敗，請稍後再試。',en:'Failed to load. Please try again later.',ja:'読み込みに失敗しました。時間をおいて再度お試しください。'},booked:{zh:'有預約',en:'Booked',ja:'予約あり'},slots:{zh:'可預約時段',en:'Available Times',ja:'予約可能時間'},hr:{zh:' 小時',en:' hr',ja:' 時間'},total:{zh:'｜共 ',en:'｜Total ',ja:'｜計 '},totalHr:{zh:' 小時 · 費用 NT$',en:' hr · NT$',ja:' 時間 · 料金 NT$'}};
+      var MB={wk:{zh:['日','一','二','三','四','五','六'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']},loading:{zh:'載入中…',en:'Loading…',ja:'読み込み中…'},loadFail:{zh:'載入失敗，請稍後再試。',en:'Failed to load. Please try again later.',ja:'読み込みに失敗しました。時間をおいて再度お試しください。'},closed:{zh:'門禁',en:'Closed',ja:'入館不可'},mon:{en:['January','February','March','April','May','June','July','August','September','October','November','December']},booked:{zh:'有預約',en:'Booked',ja:'予約あり'},slots:{zh:'可預約時段',en:'Available Times',ja:'予約可能時間'},hr:{zh:' 小時',en:' hr',ja:' 時間'},total:{zh:'｜共 ',en:'｜Total ',ja:'｜計 '},totalHr:{zh:' 小時 · 費用 NT$',en:' hr · NT$',ja:' 時間 · 料金 NT$'}};
       function mbL(){try{return localStorage.getItem('ms_lang')||'zh';}catch(e){return 'zh';}}
       function mbT(k){return (MB[k]&&MB[k][mbL()])||MB[k].zh;}
       function mbWK(){return MB.wk[mbL()]||MB.wk.zh;}
       function loadMonth(){
         var ym=view.getFullYear()+'-'+pad(view.getMonth()+1);
-        $('mb_month').textContent=view.getFullYear()+' 年 '+(view.getMonth()+1)+' 月';
+        $('mb_month').textContent=(mbL()==='en'?(MB.mon.en[view.getMonth()]+' '+view.getFullYear()):(view.getFullYear()+' 年 '+(view.getMonth()+1)+' 月'));
         $('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#9a8c66">'+mbT('loading')+'</div>';
         $('mb_day').style.display='none';
         fetch(EP+'?venue='+encodeURIComponent($('mb_venue').value)+'&month='+ym).then(function(r){return r.json();}).then(function(j){
@@ -315,7 +315,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         for(var b=0;b<first;b++) h+='<div></div>';
         for(var d=1;d<=days;d++){
           var ds=y+'-'+pad(mo+1)+'-'+pad(d), wknd=isXinyi()&&isWknd(ds), past=ds<today||wknd, has=dayHasBk(ds), cur=ds===selDate;
-          h+='<div data-d="'+ds+'" data-off="'+(past?1:0)+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#C9A24B':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+(wknd&&ds>=today?'<div style="font-size:.62rem;color:#b9a887">門禁</div>':((has&&!past)?'<div style="font-size:.62rem;color:#C9A24B">'+mbT('booked')+'</div>':''))+'</div>';
+          h+='<div data-d="'+ds+'" data-off="'+(past?1:0)+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#C9A24B':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+(wknd&&ds>=today?'<div style="font-size:.62rem;color:#b9a887">'+mbT('closed')+'</div>':((has&&!past)?'<div style="font-size:.62rem;color:#C9A24B">'+mbT('booked')+'</div>':''))+'</div>';
         }
         h+='</div>'; $('mb_grid').innerHTML=h;
         [].slice.call($('mb_grid').querySelectorAll('.mbcell')).forEach(function(c){
@@ -513,7 +513,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
   <a class="primary" href="https://line.me/R/ti/p/@mstars" target="_blank" rel="noopener">LINE</a>
   <a href="#booking-wtc">預約</a>
 </div>
-<script src="i18n.js"></script>
+<script src="i18n.js?v=20260807"></script>
 <script defer src="chat-widget.js"></script>
 </body>
 </html>
