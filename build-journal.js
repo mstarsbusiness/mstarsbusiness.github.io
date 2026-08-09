@@ -183,7 +183,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20260808"></script>
+<script src="../i18n.js?v=20260809"></script>
 </body>
 </html>`;
 }
@@ -274,7 +274,7 @@ ${header('')}
 </main>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20260808"></script>
+<script src="i18n.js?v=20260809"></script>
 </body>
 </html>`;
 }
