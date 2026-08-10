@@ -453,6 +453,8 @@
 
   /* 第七批:會議室頁贈送時數寫明（2026-08-09 口徑修正:座位客戶每月贈20小時） */
   Object.assign(T, {"3. 不同客戶的預約之間保留 1 小時緩衝時間；": ["3. A one-hour buffer is kept between different customers' bookings; ", "3. 異なるお客様のご予約の間には1時間のバッファを設けています。"], "設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時": ["registered-address clients receive 6 complimentary hours per month, and shared-desk clients 20 hours", "住所登記のお客様は毎月6時間、シェアデスクのお客様は毎月20時間を無料進呈"], "（當月計、不累積），獨立辦公室租戶免費使用，超出部分每小時 400 元。": [" (counted within the month, not carried over). Private office tenants use meeting rooms free of charge; additional hours are NT$400 per hour.", "（当月内で計算、繰り越し不可）。個室オフィスのご入居者は無料でご利用いただけます。超過分は1時間 NT$400 です。"]});
+
+Object.assign(T, {"月租 NT$4,500 起（押金兩個月）":["From NT$4,500 / month (2-month deposit)","月額 NT$4,500〜（保証金2ヶ月分）"]}); // 2026-08-10 座位押金
   var idx={en:0,ja:1};
   var items=[];
   var seen=(typeof WeakSet!=='undefined')?new WeakSet():null;   // 已登記的文字節點（重複掃描時去重）
