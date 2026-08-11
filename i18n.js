@@ -455,6 +455,17 @@
   Object.assign(T, {"3. 不同客戶的預約之間保留 1 小時緩衝時間；": ["3. A one-hour buffer is kept between different customers' bookings; ", "3. 異なるお客様のご予約の間には1時間のバッファを設けています。"], "設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時": ["registered-address clients receive 6 complimentary hours per month, and shared-desk clients 20 hours", "住所登記のお客様は毎月6時間、シェアデスクのお客様は毎月20時間を無料進呈"], "（當月計、不累積），獨立辦公室租戶免費使用，超出部分每小時 400 元。": [" (counted within the month, not carried over). Private office tenants use meeting rooms free of charge; additional hours are NT$400 per hour.", "（当月内で計算、繰り越し不可）。個室オフィスのご入居者は無料でご利用いただけます。超過分は1時間 NT$400 です。"]});
 
 Object.assign(T, {"月租 NT$4,500 起（押金兩個月）":["From NT$4,500 / month (2-month deposit)","月額 NT$4,500〜（保証金2ヶ月分）"]}); // 2026-08-10 座位押金
+
+Object.assign(T, { // 2026-08-11 會議室離峰＋座位含設籍
+"🕐 離峰優惠：":["🕐 Off-Peak Offer: ","🕐 オフピーク割引："],
+"平日 12:00 前（兩館）與世貿館 18:00–21:00 時段，每小時只要 NT$300；另有離峰套票 10 小時 NT$2,800（限離峰時段使用、預繳制、購買日起 3 個月內有效，請洽現場專員）。":["Weekdays before 12:00 (both branches) and 18:00–21:00 at the WTC Branch: only NT$300/hour. An off-peak package — 10 hours for NT$2,800 — is also available (off-peak use only, prepaid, valid for 3 months from purchase; please ask our staff).","平日12:00前（両館）と世貿館18:00–21:00の時間帯は1時間わずかNT$300。オフピーク回数券（10時間NT$2,800）もご用意（オフピーク限定・前払い・購入日から3ヶ月有効、スタッフまでお問い合わせください）。"],
+"4. 不同客戶的預約之間保留 1 小時緩衝時間；":["4. A 1-hour buffer is kept between bookings from different customers; ","4. 異なるお客様の予約の間には1時間のバッファを設けます；"],
+"：平日 12:00 前（兩館）＋世貿館 18:00–21:00 每小時 300 元（整段預約皆在離峰時段內才適用）；離峰套票 10 小時 NT$2,800（限離峰、預繳、購買日起 3 個月內有效，請洽專員）。":[": weekdays before 12:00 (both branches) and 18:00–21:00 at the WTC Branch — NT$300/hour (applies only when the entire booking falls within off-peak hours); off-peak package 10 hours NT$2,800 (off-peak only, prepaid, valid 3 months from purchase — ask our staff).","：平日12:00前（両館）＋世貿館18:00–21:00は1時間300元（予約全体がオフピーク時間内の場合のみ適用）；オフピーク回数券10時間NT$2,800（オフピーク限定・前払い・購入日から3ヶ月有効、スタッフまで）。"],
+"：會議室僅供商務與成人活動使用（會議、面試、諮詢、教育訓練、小型講座）；不提供兒童課程、親子活動、托育或補習班等用途。":[": meeting rooms are for business and adult activities only (meetings, interviews, consultations, training, small seminars); not available for children's classes, parent-child activities, childcare or cram schools.","：会議室はビジネス・成人向け活動専用です（会議・面接・相談・研修・小規模セミナー）。子ども向け教室、親子イベント、託児、塾などの用途にはご利用いただけません。"],
+"月租 NT$4,500 起（含公司登記地址；押金兩個月）":["From NT$4,500/month (company registration address included; 2-month deposit)","月額NT$4,500〜（会社登記住所込み・保証金2ヶ月分）"]
+});
+Object.assign(T, {"年繳方案內含":["Included with annual plan","年払いプランに含む"]}); // 2026-08-11 座位設籍規則
+Object.assign(T, {"年繳內含／月繳可加購":["Included with annual plan / add-on for monthly","年払いは込み／月払いは追加可"]}); // 2026-08-11b
   var idx={en:0,ja:1};
   var items=[];
   var seen=(typeof WeakSet!=='undefined')?new WeakSet():null;   // 已登記的文字節點（重複掃描時去重）
