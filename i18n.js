@@ -466,6 +466,12 @@ Object.assign(T, { // 2026-08-11 會議室離峰＋座位含設籍
 });
 Object.assign(T, {"年繳方案內含":["Included with annual plan","年払いプランに含む"]}); // 2026-08-11 座位設籍規則
 Object.assign(T, {"年繳內含／月繳可加購":["Included with annual plan / add-on for monthly","年払いは込み／月払いは追加可"]}); // 2026-08-11b
+
+Object.assign(T, { // 2026-08-13 借址首期/押金/含稅口徑補齊
+"若您需要台北信義區的公司或行號登記地址，但不需要每天使用固定辦公桌，借址登記通常是成本較低的選擇。辰星年繳 NT$18,000 起（首期含押金 NT$1,500 共 NT$19,500、含稅），包含登記地址、郵件包裹代收與 LINE 到件通知。":["If you need a company registration address in Taipei's Xinyi District but don't need a desk every day, a registered address is usually the most economical option. Morning Stars starts from NT$18,000/year (first payment NT$19,500 incl. a one-time NT$1,500 deposit, tax included), covering the registered address, mail and parcel handling, and LINE arrival notifications.","台北・信義区の会社登記住所が必要で、毎日固定席を使わない方には、住所登記が最も経済的な選択です。年額NT$18,000〜（初回はNT$1,500の保証金を含むNT$19,500・税込）で、登記住所・郵便荷物の受取・LINE到着通知が含まれます。"],
+"首期＝年費 18,000＋押金 1,500＝19,500 元（含稅）":["First payment = NT$18,000 annual fee + NT$1,500 deposit = NT$19,500 (tax incl.)","初回＝年会費18,000＋保証金1,500＝19,500元（税込）"],
+"採年繳制：年費 NT$18,000＋押金 NT$1,500＝首期 NT$19,500（含稅；年費開立統一發票、押金開立收據），第二年起每年只繳 18,000（押金只收一次）。已包含郵件代收與通知服務，無需額外費用。":["Billed annually: NT$18,000 annual fee + NT$1,500 deposit = NT$19,500 for the first year (tax included; a uniform invoice is issued for the annual fee and a receipt for the deposit). From the second year you only pay NT$18,000/year (the deposit is one-time). Mail handling and notifications are included at no extra cost.","年払い制：年会費NT$18,000＋保証金NT$1,500＝初回NT$19,500（税込。年会費は統一發票、保証金は領収書を発行）。2年目以降は年額18,000のみ（保証金は初回のみ）。郵便受取・通知サービス込みで追加費用はありません。"]
+});
   var idx={en:0,ja:1};
   var items=[];
   var seen=(typeof WeakSet!=='undefined')?new WeakSet():null;   // 已登記的文字節點（重複掃描時去重）
