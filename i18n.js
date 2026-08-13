@@ -472,6 +472,11 @@ Object.assign(T, { // 2026-08-13 借址首期/押金/含稅口徑補齊
 "首期＝年費 18,000＋押金 1,500＝19,500 元（含稅）":["First payment = NT$18,000 annual fee + NT$1,500 deposit = NT$19,500 (tax incl.)","初回＝年会費18,000＋保証金1,500＝19,500元（税込）"],
 "採年繳制：年費 NT$18,000＋押金 NT$1,500＝首期 NT$19,500（含稅；年費開立統一發票、押金開立收據），第二年起每年只繳 18,000（押金只收一次）。已包含郵件代收與通知服務，無需額外費用。":["Billed annually: NT$18,000 annual fee + NT$1,500 deposit = NT$19,500 for the first year (tax included; a uniform invoice is issued for the annual fee and a receipt for the deposit). From the second year you only pay NT$18,000/year (the deposit is one-time). Mail handling and notifications are included at no extra cost.","年払い制：年会費NT$18,000＋保証金NT$1,500＝初回NT$19,500（税込。年会費は統一發票、保証金は領収書を発行）。2年目以降は年額18,000のみ（保証金は初回のみ）。郵便受取・通知サービス込みで追加費用はありません。"]
 });
+
+Object.assign(T, { // 2026-08-13 關於辰星·成立年與誠信經營
+"辰星自 2021 年創立至今，深耕台北信義區已邁入第 6 年，從單一據點成長為信義館、世貿館兩處據點。我們秉持「誠信與誠心」經營——價格公開透明、含稅金額與發票收據白紙黑字，合約誠實揭露，不做短期生意。":["Founded in 2021, Morning Stars is now in its 6th year serving Taipei's Xinyi District, having grown from a single location into two branches — Xinyi and World Trade. We run this business on integrity and sincerity: transparent pricing with tax-inclusive amounts, invoices and receipts in black and white, honest contracts, and no short-term tricks.","辰星は2021年の創業以来、台北・信義区に根ざして6年目を迎え、単一拠点から信義館・世貿館の2拠点へと成長しました。「誠実と真心」を信条に、税込価格・發票と領収書を明記した透明な料金体系、誠実な契約内容で、短期的な商売は一切いたしません。"],
+"每一位客戶進駐前，我們都會當面深入洽談：了解您的產業與實際需求，才推薦真正合適的方案。這份用心的把關，也讓與辰星為鄰的每一家公司更安心。":["Before any client moves in, we sit down for an in-depth, face-to-face consultation — understanding your industry and actual needs before recommending the right plan. This careful vetting also gives every company at Morning Stars greater peace of mind about their neighbours.","ご入居前には必ず対面でじっくりお話を伺い、業種と実際のニーズを理解した上で最適なプランをご提案します。この丁寧な審査が、辰星に入居するすべての企業の安心にもつながっています。"]
+});
   var idx={en:0,ja:1};
   var items=[];
   var seen=(typeof WeakSet!=='undefined')?new WeakSet():null;   // 已登記的文字節點（重複掃描時去重）
