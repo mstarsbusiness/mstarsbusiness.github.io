@@ -191,7 +191,7 @@ ${mobileContactBar('../')}
 function card(post, options = {}) {
   const displayImage = safeImagePath(post.img);
   const href = `${options.prefix || ''}posts/${esc(post.id)}.html`;
-  return `<a class="post-card ${options.featured ? 'featured' : ''}" href="${href}">
+  return `<a class="post-card ${options.featured ? 'featured' : ''}" data-tag="${esc(post.tag || '最新消息')}" href="${href}">
     <div class="thumb"><img src="${esc(displayImage)}" alt="${esc(post.title)}" loading="lazy" decoding="async"></div>
     <div class="pb">
       <span class="post-tag">${esc(post.tag || '最新消息')}</span>
@@ -244,7 +244,7 @@ ${header('')}
       <div class="kick">Journal</div>
       <h1>辰星最新貼文與辦公靈感</h1>
       <p class="sub">場館動態、信義區商圈情報，以及借址登記與辦公空間的選擇知識——在辰星，找辦公室這件事可以更清楚、更省心。</p>
-      <div class="hero-pills">${categories.map(item => `<span>${esc(item)}</span>`).join('')}</div>
+      <div class="hero-pills" id="tagPills"><button type="button" class="tag-pill is-on" data-t="__all">全部</button>${categories.map(item => `<button type="button" class="tag-pill" data-t="${esc(item)}">${esc(item)}</button>`).join('')}</div>
     </div>
     <div class="hero-panel">
       <span>Quick Answer</span>
@@ -257,8 +257,9 @@ ${header('')}
   ${featured ? `<section class="featured-post"><div class="wrap"><div class="section-head"><span>Featured</span><h2>精選文章</h2></div>${card(featured, { featured: true })}</div></section>` : ''}
   <section>
     <div class="wrap">
-      <div class="section-head"><span>All Posts</span><h2>所有貼文</h2></div>
-      <div class="post-grid">${rest.map(post => card(post)).join('')}</div>
+      <div class="section-head"><span>All Posts</span><h2 id="allPostsTitle">所有貼文</h2></div>
+      <div class="post-grid" id="postGrid">${rest.map(post => card(post)).join('')}</div>
+      <p id="noPost" style="display:none;text-align:center;color:#9a8c66;padding:26px 0">這個分類目前沒有其他文章，換一個分類看看吧 😊</p>
     </div>
   </section>
   <section class="journal-guide">
@@ -272,6 +273,38 @@ ${header('')}
     </div>
   </section>
 </main>
+<style>
+.hero-pills .tag-pill{font:inherit;font-size:.86rem;letter-spacing:.04em;color:#C9A24B;background:transparent;border:1px solid rgba(201,162,75,.42);border-radius:999px;padding:7px 16px;cursor:pointer;transition:.18s}
+.hero-pills .tag-pill:hover{background:rgba(201,162,75,.14)}
+.hero-pills .tag-pill.is-on{background:#C9A24B;color:#241B10;border-color:#C9A24B;font-weight:600}
+</style>
+<script>
+(function(){
+  var pills=document.getElementById('tagPills'), grid=document.getElementById('postGrid'),
+      none=document.getElementById('noPost'), ttl=document.getElementById('allPostsTitle'),
+      feat=document.querySelector('.featured-post');
+  if(!pills||!grid) return;
+  function apply(t){
+    var cards=grid.querySelectorAll('.post-card'), n=0;
+    cards.forEach(function(c){
+      var ok=(t==='__all')||(c.getAttribute('data-tag')===t);
+      c.style.display=ok?'':'none'; if(ok)n++;
+    });
+    if(ttl) ttl.textContent=(t==='__all')?'所有貼文':t;
+    if(none) none.style.display=n?'none':'block';
+    if(feat) feat.style.display=(t==='__all')?'':'none';
+    pills.querySelectorAll('.tag-pill').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-t')===t); });
+    try{ history.replaceState(null,'',(t==='__all')?location.pathname:(location.pathname+'?tag='+encodeURIComponent(t))); }catch(e){}
+  }
+  pills.addEventListener('click',function(e){
+    var b=e.target.closest('.tag-pill'); if(!b) return;
+    apply(b.getAttribute('data-t'));
+    var head=document.querySelector('#allPostsTitle'); if(head) head.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  var q=new URLSearchParams(location.search).get('tag');
+  if(q) apply(q);
+})();
+</script>
 ${footer('')}
 ${mobileContactBar('')}
 <script src="i18n.js?v=20260814"></script>
