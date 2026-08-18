@@ -477,6 +477,9 @@ Object.assign(T, { // 2026-08-13 關於辰星·成立年與誠信經營
 "辰星自 2021 年創立至今，深耕台北信義區已邁入第 6 年，從單一據點成長為信義館、世貿館兩處據點。我們秉持「誠信與誠心」經營——價格公開透明、含稅金額與發票收據白紙黑字，合約誠實揭露，不做短期生意。":["Founded in 2021, Morning Stars is now in its 6th year serving Taipei's Xinyi District, having grown from a single location into two branches — Xinyi and World Trade. We run this business on integrity and sincerity: transparent pricing with tax-inclusive amounts, invoices and receipts in black and white, honest contracts, and no short-term tricks.","辰星は2021年の創業以来、台北・信義区に根ざして6年目を迎え、単一拠点から信義館・世貿館の2拠点へと成長しました。「誠実と真心」を信条に、税込価格・發票と領収書を明記した透明な料金体系、誠実な契約内容で、短期的な商売は一切いたしません。"],
 "每一位客戶進駐前，我們都會當面深入洽談：了解您的產業與實際需求，才推薦真正合適的方案。這份用心的把關，也讓與辰星為鄰的每一家公司更安心。":["Before any client moves in, we sit down for an in-depth, face-to-face consultation — understanding your industry and actual needs before recommending the right plan. This careful vetting also gives every company at Morning Stars greater peace of mind about their neighbours.","ご入居前には必ず対面でじっくりお話を伺い、業種と実際のニーズを理解した上で最適なプランをご提案します。この丁寧な審査が、辰星に入居するすべての企業の安心にもつながっています。"]
 });
+Object.assign(T, { // 2026-08-18 會議室容納人數（老闆確認兩館皆 6–8 人）
+"👥 容納人數：兩館會議室每間皆可容納 6 至 8 人，適合小型商務會議、面試、顧問諮詢與一對一洽談；如需 10 人以上場地，建議另尋較大型會議空間。":["👥 Capacity: each meeting room at both branches seats 6 to 8 people — ideal for small business meetings, interviews, consultations and one-on-one discussions. For groups of 10 or more, we suggest a larger venue.","👥 収容人数：両館とも会議室は1室あたり6〜8名までご利用いただけます。少人数の商談・面接・コンサルティング・1対1のお打ち合わせに最適です。10名以上の場合は、より大きな会場をご検討ください。"]
+});
   var idx={en:0,ja:1};
   var items=[];
   var seen=(typeof WeakSet!=='undefined')?new WeakSet():null;   // 已登記的文字節點（重複掃描時去重）
