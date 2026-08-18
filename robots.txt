@@ -33,4 +33,13 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
 Sitemap: https://www.morning-stars.com.tw/sitemap.xml
