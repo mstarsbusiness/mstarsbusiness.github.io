@@ -256,6 +256,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
     <div id="regcheck">
       <h3>🔎 先查：你的行業能不能借址登記？</h3>
       <p style="margin:0 0 14px;font-size:.94rem">輸入您的行業或營業項目，立即看「可辦／需附條件／不建議」與原因。</p>
+      <p style="margin:0 0 14px;font-size:.9rem;color:var(--stone,#8a8072)">依財政部信義國稅局規定，國際貿易公司（出口／進出口）無法在本中心地址設立登記；特別是有出口退稅需求的公司，亦無法以本址辦理退稅。純進口或國內貿易歡迎與專員個案確認。</p>
       <div class="regc-tool">
         <label for="regc-q">您的行業／營業項目</label>
         <div class="regc-inrow">
@@ -399,7 +400,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
     {kw:["殯葬","禮儀","生命禮儀"],name:"殯葬服務業",v:"no",reason:"屬特許業，須有實體辦公空間。"},
     {kw:["免用統一發票","免用發票","小規模","攤販"],name:"申請免用統一發票之小規模營業人",v:"no",reason:"採查定課徵須實地勘查，借址現場無從查定，通常不予核可。"},
     {kw:["電商","網拍","網路拍賣","網路銷售","網路商店","蝦皮","momo"],name:"電商／網路拍賣",v:"warn",reason:"可借址登記，屬明確可辦的業別之一。",cond:"稅籍登記時要登記網域名稱與各平台會員帳號，並在銷售網頁明顯處揭露營業人名稱與統一編號（財政部 112 年新制）。"},
-    {kw:["出口","進出口","國際貿易","貿易商"],name:"出口／進出口貿易業",v:"no",reason:"依財政部信義國稅局相關規定，本中心地址不得供經營或申請登記涉及出口貿易之營業項目使用（合約明文約定）。",cond:"若您為純進口或國內貿易，歡迎與專員個案確認。"},
+    {kw:["出口","進出口","國際貿易","貿易商","退稅"],name:"國際貿易（出口／進出口）",v:"no",reason:"依財政部信義國稅局相關規定，本中心地址不得供國際貿易公司（出口／進出口貿易營業項目）設立登記使用（合約明文約定）；特別是有出口退稅需求的公司，無法在本址設立登記、也無法以本址辦理退稅。",cond:"若您為純進口或國內貿易，歡迎與專員個案確認。"},
     {kw:["進口"],name:"進口貿易（純進口）",v:"warn",reason:"進口需倉儲配合海關查核；且不得涉及出口貿易項目。",cond:"建議備妥實際營運事證，且勿申請免用統一發票。"},
     {kw:["建設","建商","不動產開發","開發","營建","推案"],name:"建設公司／不動產開發",v:"warn",reason:"法律未禁止，但推案期結構性大額留抵易觸發國稅局查核。",cond:"需備妥實際營運事證；建議個案由專員評估，或考慮採實體辦公空間較穩妥。"},
     {kw:["土木包工","包工"],name:"土木包工業",v:"warn",reason:"門檻低於綜合/專業營造，但仍為特許業、仍須地址查核。",cond:"需個案評估，並經主管機關審查與地址查核。"},
@@ -437,7 +438,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
   if(qi)qi.addEventListener('keydown',function(e){if(e.key==='Enter')doCheck();});
 })();
 </script>
-<script src="i18n.js?v=20260819"></script>
+<script src="i18n.js?v=20260820"></script>
 <script defer src="chat-widget.js"></script>
 </body>
 </html>

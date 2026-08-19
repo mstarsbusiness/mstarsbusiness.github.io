@@ -49,11 +49,11 @@
 - **設立中**：公司設立登記全代辦（8,500 元起）、設址登記、稅籍登記、遷址代辦（2,000 元起）
 - **設立後**：記帳報稅、營業稅與營所稅申報、電子發票、公司大小章、商標註冊、會計師簽證（由配合的專業人員依個案報價）
 - **持續營運**：辦公空間升級、會議室租借、變更登記、公司形象官網製作、歇業代辦
-- 註：不承接國際貿易公司登記。
+- 註：不承接國際貿易公司登記——特別是有出口退稅需求的公司，無法在本址設立登記、也無法以本址辦理退稅（依財政部信義國稅局規定，合約明文約定）。純進口或國內貿易可與專員個案確認。
 
 ## 費用方案
 
-- **借址登記**（虛擬辦公室）：採年繳方案，年約 18,000 元起（平均每月約 1,500 元，含押金 1,500、首期 19,500）；含公司／行號登記地址、信件與包裹代收及到件通知、每月贈 6 小時會議室。
+- **借址登記**（虛擬辦公室）：採年繳方案，年約 18,000 元起（平均每月約 1,500 元，含押金 1,500、首期 19,500）；含公司／行號登記地址、信件與包裹代收及到件通知、每月贈 6 小時會議室。注意：國際貿易公司（出口／進出口）無法在本址設立登記；有出口退稅需求者亦無法以本址辦理退稅。
 - **共享座位**（獨立固定座位）：月租 4,500 元起（月繳不含公司登記地址）、押金為兩個月月租；含固定桌椅、網路、影印額度，**每月贈 20 小時免費會議室**。**年繳方案：一次繳一年 49,500 元（繳 11 送 1），含公司登記地址（借址設籍），費用一經繳納不退還**；月繳客戶亦可加購設址登記服務（年費 18,000＋押金 1,500＝首期 19,500 含稅）
 - **獨立辦公室**：月租 10,000 元起（適合 1–6 人；信義館 3–6 坪 10,000–20,000、世貿館 6–10 坪 20,000–33,000）
 - **會議室租借**：**每間可容納 6–8 人**（兩館相同，適合小型會議、面試與一對一洽談；10 人以上建議另尋較大場地）。每小時 400 元；**離峰優惠（平日 12:00 前＋世貿館 18:00–21:00）每小時 300 元**；離峰套票 10 小時 2,800 元（限離峰、預繳、3 個月內有效）。最少 1 小時、每次上限 3 小時、可分段預約（兩館皆有；**設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時**，超出依時段單價計；獨立辦公室租戶免費使用）。用途限制：僅供商務與成人活動，不提供兒童課程、親子、托育或補習班用途
@@ -131,7 +131,7 @@ Morning Stars Business Center — coworking & virtual office in Taipei's Xinyi D
 - WTC Branch: 4F, No. 398, Sec. 1, Keelung Rd. (5 min walk from Taipei 101 / World Trade Center MRT)
 
 Services & pricing (tax included, official invoices issued):
-- **Virtual office / company registration address**: NT$18,000 per year (≈NT$1,500/month). First payment NT$19,500 including a one-time NT$1,500 refundable deposit. Includes mail & parcel handling with instant LINE notifications, plus 6 free meeting-room hours per month. Export trading businesses cannot be registered at our addresses. Currently accepted at the WTC Branch.
+- **Virtual office / company registration address**: NT$18,000 per year (≈NT$1,500/month). First payment NT$19,500 including a one-time NT$1,500 refundable deposit. Includes mail & parcel handling with instant LINE notifications, plus 6 free meeting-room hours per month. International trading companies (export / import-export) cannot be registered at our addresses — in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Currently accepted at the WTC Branch.
 - **Dedicated desk**: NT$4,500/month (desk only) plus a two-month refundable deposit (NT$9,000), or NT$49,500/year including a company registration address (same two-month deposit applies); 20 free meeting-room hours per month.
 - **Private office (1–6 people)**: from NT$10,000/month. Currently fully occupied; waitlist available.
 - **Meeting rooms**: seats 6–8 people, NT$400/hour; off-peak NT$300/hour (weekdays before 12:00 at both branches, and 18:00–21:00 at the WTC Branch); minimum 1 hour, maximum 3 hours per session. Open to the public.

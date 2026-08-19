@@ -454,6 +454,7 @@
   /* 第七批:會議室頁贈送時數寫明（2026-08-09 口徑修正:座位客戶每月贈20小時） */
   Object.assign(T, {"3. 不同客戶的預約之間保留 1 小時緩衝時間；": ["3. A one-hour buffer is kept between different customers' bookings; ", "3. 異なるお客様のご予約の間には1時間のバッファを設けています。"], "設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時": ["registered-address clients receive 6 complimentary hours per month, and shared-desk clients 20 hours", "住所登記のお客様は毎月6時間、シェアデスクのお客様は毎月20時間を無料進呈"], "（當月計、不累積），獨立辦公室租戶免費使用，超出部分每小時 400 元。": [" (counted within the month, not carried over). Private office tenants use meeting rooms free of charge; additional hours are NT$400 per hour.", "（当月内で計算、繰り越し不可）。個室オフィスのご入居者は無料でご利用いただけます。超過分は1時間 NT$400 です。"]});
 
+Object.assign(T, {"依財政部信義國稅局規定，國際貿易公司（出口／進出口）無法在本中心地址設立登記；特別是有出口退稅需求的公司，亦無法以本址辦理退稅。純進口或國內貿易歡迎與專員個案確認。":["Under National Taxation Bureau (Xinyi) rules, international trading companies (export / import-export) cannot register at our address; in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Pure import or domestic trading is welcome to confirm case-by-case with our staff.","財政部信義国税局の規定により、国際貿易会社（輸出／輸出入）は当センターの住所での設立登記ができません。特に輸出還付（税金還付）が必要な会社は、当住所での登記・還付手続きのいずれもできません。輸入専業・国内取引の方は個別にご相談ください。"]}); // 2026-08-19 國際貿易退稅限制
 Object.assign(T, {"押金兩個月":["Two-month deposit","保証金2ヶ月分"]}); // 2026-08-19 座位押金標示
 Object.assign(T, {"月租 NT$4,500 起（押金兩個月）":["From NT$4,500 / month (2-month deposit)","月額 NT$4,500〜（保証金2ヶ月分）"]}); // 2026-08-10 座位押金
 
