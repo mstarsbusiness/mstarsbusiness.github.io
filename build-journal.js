@@ -183,7 +183,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20260818"></script>
+<script src="../i18n.js?v=20260819"></script>
 </body>
 </html>`;
 }
@@ -307,7 +307,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20260818"></script>
+<script src="i18n.js?v=20260819"></script>
 </body>
 </html>`;
 }
@@ -325,6 +325,7 @@ function sitemap(posts) {
     ['/en/meeting-room.html', '.8', 'monthly'],
     ['/journal.html', '.7', 'weekly'],
     ['/crm.html', '.6', 'monthly'],
+    ['/video.html', '.7', 'monthly'],              // 影片導覽（2026-08-18 新增）
     [`/${encodeURIComponent('辰星場館相簿-信義館.html')}`, '.7', 'monthly'],
     [`/${encodeURIComponent('辰星場館相簿-世貿館.html')}`, '.7', 'monthly'],
     ['/privacy-policy.html', '.3', 'yearly'],

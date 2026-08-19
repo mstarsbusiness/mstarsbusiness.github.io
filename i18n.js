@@ -240,7 +240,7 @@
   "：需與客戶會晤時，可預約租用會議室，比咖啡廳更專業、更不受打擾。":[": Book a meeting room to host clients — more professional and undisturbed than a café.","：来客時は会議室を予約可能。カフェより専門的で邪魔が入りません。"],
   "含工商登記地址、郵件代收與 LINE 即時通知，可搭配記帳士辦理公司設立與記帳。":["Includes a business-registration address, mail handling and real-time LINE notifications; pair with a bookkeeper for company formation and accounting.","商業登記住所、郵便受付、LINEリアルタイム通知を含み、記帳士と組み合わせて会社設立や記帳にも対応。"],
   "需要實體空間？":["Need physical space?","実スペースが必要ですか？"],
-  "事業成長後可彈性升級，從共享座位（月租 4,500 元起）到 1–6 人獨立辦公室（月租 10,000 元起）。":["Upgrade flexibly as your business grows — from a co-working seat (from NT$4,500/mo) to a 1–6 person private office (from NT$10,000/mo).","事業の成長に合わせて柔軟にアップグレード。コワーキング席（月額4,500〜）から1〜6名の個室オフィス（月額10,000〜）まで。"],
+  "事業成長後可彈性升級，從共享座位（月租 4,500 元起、押金兩個月）到 1–6 人獨立辦公室（月租 10,000 元起）。":["Upgrade flexibly as your business grows — from a co-working seat (from NT$4,500/mo plus a two-month deposit) to a 1–6 person private office (from NT$10,000/mo).","事業の成長に合わせて柔軟にアップグレード。コワーキング席（月額4,500〜・保証金2ヶ月分）から1〜6名の個室オフィス（月額10,000〜）まで。"],
   "看獨立辦公室 →":["See Private Offices →","個室オフィスを見る →"],
   "＊ 實際方案內容可依您的需求洽詢調整，歡迎來電 0903-368-856 或加 LINE @mstars 諮詢。":["* Plans can be tailored to your needs — call 0903-368-856 or add LINE @mstars to inquire.","※プラン内容はご要望に応じて調整可能です。0903-368-856 またはLINE @mstars までお問い合わせください。"],
   "借址登記可以用來做公司工商登記嗎？":["Can a registered address be used for company registration?","住所登記は会社の商業登記に使えますか？"],
@@ -454,6 +454,7 @@
   /* 第七批:會議室頁贈送時數寫明（2026-08-09 口徑修正:座位客戶每月贈20小時） */
   Object.assign(T, {"3. 不同客戶的預約之間保留 1 小時緩衝時間；": ["3. A one-hour buffer is kept between different customers' bookings; ", "3. 異なるお客様のご予約の間には1時間のバッファを設けています。"], "設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時": ["registered-address clients receive 6 complimentary hours per month, and shared-desk clients 20 hours", "住所登記のお客様は毎月6時間、シェアデスクのお客様は毎月20時間を無料進呈"], "（當月計、不累積），獨立辦公室租戶免費使用，超出部分每小時 400 元。": [" (counted within the month, not carried over). Private office tenants use meeting rooms free of charge; additional hours are NT$400 per hour.", "（当月内で計算、繰り越し不可）。個室オフィスのご入居者は無料でご利用いただけます。超過分は1時間 NT$400 です。"]});
 
+Object.assign(T, {"押金兩個月":["Two-month deposit","保証金2ヶ月分"]}); // 2026-08-19 座位押金標示
 Object.assign(T, {"月租 NT$4,500 起（押金兩個月）":["From NT$4,500 / month (2-month deposit)","月額 NT$4,500〜（保証金2ヶ月分）"]}); // 2026-08-10 座位押金
 
 Object.assign(T, { // 2026-08-11 會議室離峰＋座位含設籍
