@@ -183,7 +183,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20260819"></script>
+<script src="../i18n.js?v=20260822"></script>
 </body>
 </html>`;
 }
@@ -307,7 +307,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20260819"></script>
+<script src="i18n.js?v=20260822"></script>
 </body>
 </html>`;
 }
@@ -321,6 +321,9 @@ function sitemap(posts) {
     ['/meeting-room.html', '.9', 'monthly'],
     ['/office-guide.html', '.9', 'monthly'],
     ['/registration-check.html', '.8', 'monthly'],
+    ['/meeting-room-price.html', '.8', 'monthly'],   // AI 事實頁（2026-08-22 新增）
+    ['/mail-handling.html', '.8', 'monthly'],        // AI 事實頁（2026-08-22 新增）
+    ['/en/index.html', '.9', 'monthly'],             // 英文首頁（2026-08-22 新增）
     ['/en/virtual-office.html', '.8', 'monthly'],   // 英文版（2026-08-07 新增，供英文搜尋流量）
     ['/en/meeting-room.html', '.8', 'monthly'],
     ['/journal.html', '.7', 'weekly'],

@@ -541,7 +541,7 @@ Object.assign(T, { // 2026-08-18 會議室容納人數（老闆確認兩館皆 6
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
-  var EN_PAGES={'meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
+  var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
   function enPageForHere(){
     var f=(location.pathname.split('/').pop()||'').toLowerCase();
     return EN_PAGES[f]||null;
