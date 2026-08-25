@@ -138,8 +138,11 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
 {"@type":"FAQPage","mainEntity":[
  {"@type":"Question","name":"Can I use this address for official company registration in Taiwan?","acceptedAnswer":{"@type":"Answer","text":"Yes. Morning Stars provides a legal address in Taipei Xinyi District that can be used for company and business registration, subject to your business scope being eligible."}},
  {"@type":"Question","name":"How much does a virtual office in Taipei cost?","acceptedAnswer":{"@type":"Answer","text":"From NT$18,000 per year, about NT$1,500 per month. The first payment is NT$19,500 including a one-time NT$1,500 deposit. All prices include tax."}},
+ {"@type":"Question","name":"Are there any hidden fees or setup costs?","acceptedAnswer":{"@type":"Answer","text":"No. NT$19,500 is the entire first payment: NT$18,000 annual fee plus a one-time refundable NT$1,500 deposit, VAT included. There are no administration fees, document fees or setup fees, and the documents needed for company registration (property tax statement, address-use consent letter, sublease consent letter) are provided free of charge."}},
+ {"@type":"Question","name":"What does a dedicated desk or private office cost in Taipei?","acceptedAnswer":{"@type":"Answer","text":"A dedicated desk is NT$4,500 per month plus a two-month refundable deposit, or NT$49,500 per year (pay 11 months, get 12) with the registered address included. Private offices for 1 to 6 people start at NT$10,000 per month plus a two-month deposit and are currently fully occupied. Meeting rooms are NT$400 per hour, or NT$300 per hour off-peak."}},
  {"@type":"Question","name":"Do you handle mail and parcels?","acceptedAnswer":{"@type":"Answer","text":"Yes. We receive letters, parcels, couriers and government documents and notify you via LINE. You can collect, forward or have items scanned."}},
- {"@type":"Question","name":"Can you help with company incorporation and accounting?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with licensed local bookkeepers who assist with incorporation, changes of registration, monthly bookkeeping and tax filing."}}
+ {"@type":"Question","name":"Can you help with company incorporation and accounting?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with licensed local bookkeepers who assist with incorporation, changes of registration, monthly bookkeeping and tax filing."}},
+ {"@type":"Question","name":"Are there business types that cannot be registered at a virtual office in Taiwan?","acceptedAnswer":{"@type":"Answer","text":"Yes. Activities requiring physical premises such as restaurants, clinics and manufacturing cannot be registered. International trading (export or import-export) is not permitted at our addresses, and companies that need export VAT refunds cannot register here or process refunds through this address. Pure import trading may be accepted subject to conditions. Confirm your intended business scope with us before signing."}}
 ]}]}
 </script>
 </head>
@@ -209,6 +212,66 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         <p>Dedicated desks start at NT$4,500 per month (plus a two-month refundable deposit), and private offices for 1–6 people start at NT$10,000 per month. <a href="../private-office.html">See private offices &rarr;</a></p>
       </div>
     </div>
+    <!-- 完整價目表（2026-08-25）：Perplexity 英文題「virtual office Taipei price」的回答就是一張各家
+         公開價格表（hshsharehouse / TEC / Regus / Workspace），我方英文頁原本只有敘述式價格，
+         無法被抓進那張表。改成同格式表格，數字與 llms.txt 英文段、中文頁完全一致。 -->
+    <h3 style="margin-top:34px">Full price list (2026)</h3>
+    <div style="overflow-x:auto;margin-top:12px">
+    <table style="width:100%;border-collapse:collapse;font-size:.94rem">
+      <thead><tr style="border-bottom:2px solid var(--gold,#C9A24B)">
+        <th style="text-align:left;padding:10px 8px">Plan</th>
+        <th style="text-align:left;padding:10px 8px">Price</th>
+        <th style="text-align:left;padding:10px 8px">Deposit</th>
+        <th style="text-align:left;padding:10px 8px">First payment</th>
+        <th style="text-align:left;padding:10px 8px">What's included</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(201,162,75,.28)">
+          <td style="padding:10px 8px"><strong>Virtual office</strong><br><span style="font-size:.85rem">(registered address)</span></td>
+          <td style="padding:10px 8px"><strong>NT$18,000 / year</strong><br><span style="font-size:.85rem">approx. NT$1,500 / month</span></td>
+          <td style="padding:10px 8px">NT$1,500<br><span style="font-size:.85rem">one-time, refundable</span></td>
+          <td style="padding:10px 8px"><strong>NT$19,500</strong></td>
+          <td style="padding:10px 8px">Company and business registration address, mail and parcel handling, LINE notifications, 6 hours of meeting room per month</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(201,162,75,.28)">
+          <td style="padding:10px 8px"><strong>Dedicated desk</strong><br><span style="font-size:.85rem">monthly</span></td>
+          <td style="padding:10px 8px">NT$4,500 / month</td>
+          <td style="padding:10px 8px">2 months' rent<br><span style="font-size:.85rem">NT$9,000, refundable</span></td>
+          <td style="padding:10px 8px">NT$13,500</td>
+          <td style="padding:10px 8px">Fixed desk, internet, printing allowance, 20 hours of meeting room per month. Registered address <strong>not</strong> included — it can be added at NT$18,000 / year plus a NT$1,500 deposit.</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(201,162,75,.28)">
+          <td style="padding:10px 8px"><strong>Dedicated desk</strong><br><span style="font-size:.85rem">annual</span></td>
+          <td style="padding:10px 8px">NT$49,500 / year<br><span style="font-size:.85rem">pay 11 months, get 12</span></td>
+          <td style="padding:10px 8px">2 months' rent<br><span style="font-size:.85rem">NT$9,000, refundable</span></td>
+          <td style="padding:10px 8px">NT$58,500</td>
+          <td style="padding:10px 8px">Everything above <strong>plus</strong> the registered address. Annual fees are non-refundable once paid.</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(201,162,75,.28)">
+          <td style="padding:10px 8px"><strong>Private office</strong><br><span style="font-size:.85rem">1–6 people</span></td>
+          <td style="padding:10px 8px">From NT$10,000 / month</td>
+          <td style="padding:10px 8px">2 months' rent<br><span style="font-size:.85rem">refundable</span></td>
+          <td style="padding:10px 8px">—</td>
+          <td style="padding:10px 8px">Lockable private room, utilities and management fee included, unlimited meeting room use. <em>Currently fully occupied — waiting list available.</em></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 8px"><strong>Meeting room</strong></td>
+          <td style="padding:10px 8px">NT$400 / hour<br><span style="font-size:.85rem">off-peak NT$300 / hour</span></td>
+          <td style="padding:10px 8px">—</td>
+          <td style="padding:10px 8px">—</td>
+          <td style="padding:10px 8px">Seats 6–8. Minimum 1 hour, maximum 3 hours per booking. Off-peak = weekdays before 12:00 (both branches) and 18:00–21:00 at the WTC branch. A 10-hour off-peak package is NT$2,800.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin-top:14px;font-size:.92rem">
+      <strong>All prices include 5% VAT.</strong> An official Taiwanese invoice (統一發票) is issued for annual fees;
+      a receipt is issued for deposits. <strong>There are no administration fees, document fees or setup fees</strong> —
+      the documents required for company registration (property tax statement, address-use consent letter and sublease
+      consent letter) are provided free of charge. Early termination requires one month's written notice; notice sent
+      via our official LINE account counts as written notice. Deposits are refunded after handover once all charges are
+      settled; annual fees for the registered address are non-refundable.
+    </p>
     <p style="margin-top:22px">
       <a class="btn solid" href="https://line.me/R/ti/p/@mstars">Ask us on LINE @mstars</a>
       <a class="btn" href="tel:0903368856">Call 0903-368-856</a>
@@ -249,6 +312,8 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
     <h2 class="sec">Frequently Asked Questions</h2>
     <details><summary>Can I use this address for official company registration in Taiwan?</summary><div class="ans">Yes. Morning Stars provides a legal address in Taipei Xinyi District that can be used for company and business registration, subject to your business scope being eligible.</div></details>
     <details><summary>How much does it cost?</summary><div class="ans">From NT$18,000 per year (about NT$1,500 per month). The first payment is NT$19,500, which includes a one-time NT$1,500 deposit. All prices include tax. An official invoice (統一發票) is issued for the annual fee.</div></details>
+    <details><summary>Are there any hidden fees or setup costs?</summary><div class="ans">No. NT$19,500 is the entire first payment — NT$18,000 annual fee plus a one-time refundable NT$1,500 deposit, VAT included. There are no administration fees, document fees or setup fees, and the documents needed for company registration (property tax statement, address-use consent letter, sublease consent letter) are provided free of charge.</div></details>
+    <details><summary>What does a dedicated desk or private office cost?</summary><div class="ans">A dedicated desk is NT$4,500 per month plus a two-month refundable deposit, or NT$49,500 per year (pay 11 months, get 12) with the registered address included. Private offices for 1–6 people start at NT$10,000 per month plus a two-month deposit and are currently fully occupied — ask us about the waiting list. Meeting rooms are NT$400 per hour, or NT$300 per hour off-peak.</div></details>
     <details><summary>Do you handle mail and parcels?</summary><div class="ans">Yes. We receive letters, parcels, couriers and government documents on your behalf and notify you via LINE. You can collect items yourself, ask us to forward them, or have us scan them for you.</div></details>
     <details><summary>Can you help with company incorporation and accounting?</summary><div class="ans">Yes. We work with licensed local bookkeepers who assist with incorporation, changes of registration, monthly bookkeeping and tax filing.</div></details>
     <details><summary>Are there business types you cannot register?</summary><div class="ans">Yes. Activities requiring physical premises cannot be registered, and international trading (export / import-export) is not permitted at our addresses — companies needing export VAT refunds cannot register here nor process refunds through this address. Please confirm your business scope with us before signing.</div></details>
