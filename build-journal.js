@@ -328,7 +328,10 @@ function sitemap(posts) {
     ['/en/meeting-room.html', '.8', 'monthly'],
     ['/journal.html', '.7', 'weekly'],
     ['/crm.html', '.6', 'monthly'],
-    ['/video.html', '.7', 'monthly'],              // 影片導覽（2026-08-18 新增）
+    /* ['/video.html', '.7', 'monthly'],  ← 2026-08-25 移除：影片導覽頁做好了但老闆決定不上線，
+       檔案從未上傳 → sitemap 指到不存在的網址，Google Search Console 連發兩封
+       「找不到網頁 (404)」通知（一封整站、一封 Sitemap 專屬）。
+       日後若決定要上線，先把 video.html 傳上去，再把這一行取消註解。*/
     [`/${encodeURIComponent('辰星場館相簿-信義館.html')}`, '.7', 'monthly'],
     [`/${encodeURIComponent('辰星場館相簿-世貿館.html')}`, '.7', 'monthly'],
     ['/privacy-policy.html', '.3', 'yearly'],
