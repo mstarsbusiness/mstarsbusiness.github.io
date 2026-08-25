@@ -255,7 +255,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       1. <b>付款後預約方為確定</b>：外部使用者送出預約後，請依專員通知完成付款，款項確認後預約才正式成立。<br>
       2. <b>預約一經確認，恕不取消</b>；如需更改時段，請提前來電 0903-368-856 或加 LINE @mstars 洽詢。<br>
       3. 開放時間：<b>信義館＝上班日（週一至週五）10:00–18:00</b>（大樓門禁管制，假日與晚間無法進出）；世貿館＝每日 09:00–21:00。<br>
-      4. 不同客戶的預約之間保留 1 小時緩衝時間；<b>設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時</b>（當月計、不累積），獨立辦公室租戶免費使用，超出部分每小時 400 元。<br>
+      4. 不同客戶的預約之間保留 30 分鐘緩衝時間；<b>設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時</b>（當月計、不累積），獨立辦公室租戶免費使用，超出部分每小時 400 元。<br>
       5. <b>離峰優惠</b>：平日 12:00 前（兩館）＋世貿館 18:00–21:00 每小時 300 元（整段預約皆在離峰時段內才適用）；離峰套票 10 小時 NT$2,800（限離峰、預繳、購買日起 3 個月內有效，請洽專員）。<br>
       6. <b>用途限制</b>：會議室僅供商務與成人活動使用（會議、面試、諮詢、教育訓練、小型講座）；不提供兒童課程、親子活動、托育或補習班等用途。
     </div>
@@ -292,7 +292,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
     <script>
     (function(){
       var EP='https://morning-stars-right.netlify.app/.netlify/functions/meeting-book';
-      var BUF=60, RATE=400;
+      var BUF=30, RATE=400;   /* 不同客戶之間的緩衝（2026-08-25 老闆改 60→30 分鐘，一館只有一間會議室，60 分太吃可售時段） */
       function mbRate(venue,dateStr,sMin,eMin){ var g=new Date(dateStr+'T12:00:00Z').getUTCDay(); var wd=(g>=1&&g<=5); if(wd&&eMin<=720)return 300; if(venue==='世貿館'&&sMin>=1080)return 300; return 400; }
       var $=function(id){return document.getElementById(id);};
       var view=new Date(); view.setDate(1);
@@ -301,7 +301,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       function todayStr(){return new Date(Date.now()+8*3600000).toISOString().slice(0,10);}
       function toMin(s){var m=/^(\d{1,2}):(\d{2})$/.exec(s);return (+m[1])*60+(+m[2]);}
       function fmt(m){return pad(Math.floor(m/60))+':'+pad(m%60);}
-      var MB={wk:{zh:['日','一','二','三','四','五','六'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']},loading:{zh:'載入中…',en:'Loading…',ja:'読み込み中…'},loadFail:{zh:'載入失敗，請稍後再試。',en:'Failed to load. Please try again later.',ja:'読み込みに失敗しました。時間をおいて再度お試しください。'},closed:{zh:'門禁',en:'Closed',ja:'入館不可'},mon:{en:['January','February','March','April','May','June','July','August','September','October','November','December']},booked:{zh:'有預約',en:'Booked',ja:'予約あり'},slots:{zh:'可預約時段',en:'Available Times',ja:'予約可能時間'},hr:{zh:' 小時',en:' hr',ja:' 時間'},total:{zh:'｜共 ',en:'｜Total ',ja:'｜計 '},totalHr:{zh:' 小時 · 費用 NT$',en:' hr · NT$',ja:' 時間 · 料金 NT$'},offpeak:{zh:'（離峰優惠 300/hr）',en:' (off-peak NT$300/hr)',ja:'（オフピーク割引 300/hr）'}};
+      var MB={wk:{zh:['日','一','二','三','四','五','六'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']},loading:{zh:'載入中…',en:'Loading…',ja:'読み込み中…'},loadFail:{zh:'載入失敗，請稍後再試。',en:'Failed to load. Please try again later.',ja:'読み込みに失敗しました。時間をおいて再度お試しください。'},closed:{zh:'門禁',en:'Closed',ja:'入館不可'},mon:{en:['January','February','March','April','May','June','July','August','September','October','November','December']},booked:{zh:'有預約',en:'Booked',ja:'予約あり'},full:{zh:'額滿',en:'Full',ja:'満員'},slots:{zh:'可預約時段',en:'Available Times',ja:'予約可能時間'},hr:{zh:' 小時',en:' hr',ja:' 時間'},total:{zh:'｜共 ',en:'｜Total ',ja:'｜計 '},totalHr:{zh:' 小時 · 費用 NT$',en:' hr · NT$',ja:' 時間 · 料金 NT$'},offpeak:{zh:'（離峰優惠 300/hr）',en:' (off-peak NT$300/hr)',ja:'（オフピーク割引 300/hr）'},noSlot:{zh:'這一天已經沒有可預約的時段了（每場預約前後各保留 30 分鐘緩衝，最短預約 1 小時）。請改選其他日期，或來電 0903-368-856、加 LINE @mstars，我們幫您安排。',en:'No time slots are available on this date (a 30-minute buffer is reserved before and after each booking; minimum booking is 1 hour). Please choose another date, or contact us at +886-903-368-856 / LINE @mstars.',ja:'この日は予約可能な時間帯がありません（各予約の前後に30分のバッファ、最短1時間から）。別の日をお選びいただくか、0903-368-856 または LINE @mstars までご連絡ください。'}};
       function mbL(){try{return localStorage.getItem('ms_lang')||'zh';}catch(e){return 'zh';}}
       function mbT(k){return (MB[k]&&MB[k][mbL()])||MB[k].zh;}
       function mbWK(){return MB.wk[mbL()]||MB.wk.zh;}
@@ -315,6 +315,14 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         }).catch(function(){$('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#c0392b">'+mbT('loadFail')+'</div>';});
       }
       function dayHasBk(ds){return monthData.some(function(b){return b.date===ds;});}
+      /* 這一天還有沒有任何「約得滿 1 小時」的空檔（含前後各 30 分鐘緩衝）。
+         用來在月曆直接標「額滿」，客戶不用一格一格點進去才發現整天都是灰的。*/
+      function dayFree(ds){
+        var bks=dayBookings(ds), o=isXinyi()?600:540, c=isXinyi()?1080:1260;
+        var minM=(ds===todayStr())?(nowMinTW()+30):-1;
+        for(var m=o;m<c;m+=30){ if(slotState(m,bks,c,minM)==='free') return true; }
+        return false;
+      }
       /* 信義館限制（2026-07-31）：僅上班日（週一至週五）10:00–18:00 可預約（大樓門禁）；世貿館不受限 */
       function isXinyi(){return $('mb_venue').value==='信義館';}
       function isWknd(ds){var g=new Date(ds+'T12:00:00Z').getUTCDay();return g===0||g===6;}
@@ -326,7 +334,11 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         for(var b=0;b<first;b++) h+='<div></div>';
         for(var d=1;d<=days;d++){
           var ds=y+'-'+pad(mo+1)+'-'+pad(d), wknd=isXinyi()&&isWknd(ds), past=ds<today||wknd, has=dayHasBk(ds), cur=ds===selDate;
-          h+='<div data-d="'+ds+'" data-off="'+(past?1:0)+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#C9A24B':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':'#fff'))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+(wknd&&ds>=today?'<div style="font-size:.62rem;color:#b9a887">'+mbT('closed')+'</div>':((has&&!past)?'<div style="font-size:.62rem;color:#C9A24B">'+mbT('booked')+'</div>':''))+'</div>';
+          var full=(!past&&!dayFree(ds));   // 整天沒有可預約時段 → 直接標「額滿」，客戶不必點進去才發現
+          var tag=(wknd&&ds>=today)?'<div style="font-size:.62rem;color:#b9a887">'+mbT('closed')+'</div>'
+                 :(full?'<div style="font-size:.62rem;color:#b06a3b">'+mbT('full')+'</div>'
+                 :((has&&!past)?'<div style="font-size:.62rem;color:#C9A24B">'+mbT('booked')+'</div>':''));
+          h+='<div data-d="'+ds+'" data-off="'+(past?1:0)+'" class="mbcell" style="cursor:'+(past?'default':'pointer')+';border:1px solid '+(cur?'#C9A24B':'#e7e0d2')+';border-radius:9px;min-height:46px;padding:6px;background:'+(cur?'#faf2e2':(past?'#f1efe9':(full?'#faf6f2':'#fff')))+';color:'+(past?'#c9c2b4':'#3a3026')+';text-align:center"><div style="font-weight:600">'+d+'</div>'+tag+'</div>';
         }
         h+='</div>'; $('mb_grid').innerHTML=h;
         [].slice.call($('mb_grid').querySelectorAll('.mbcell')).forEach(function(c){
@@ -344,18 +356,31 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         $('mb_durRow').style.display='none'; $('mb_form').style.display='none'; $('mb_msg').innerHTML='';
         renderSlots();
       }
+      function nowMinTW(){var d=new Date(Date.now()+8*3600000);return d.getUTCHours()*60+d.getUTCMinutes();}
+      /* 一格能不能點，除了「本身沒被佔用」，還要「至少約得滿 1 小時」。
+         少了這一層，會出現格子是綠的、點下去每個時長卻都不能選——客戶只會覺得系統壞了。
+         另外當天已經過去的時段也要關掉（後端只擋過去的日期，不擋過去的鐘點）。*/
+      function slotState(m,bks,close,minM){
+        if(m<minM) return 'past';
+        var st=blockedCell(m,bks);
+        if(st==='free'&&(m+60>close||conflict(m,m+60,bks))) return 'buffer';
+        return st;
+      }
       function renderSlots(){
-        var bks=dayBookings(selDate), h='';
+        var bks=dayBookings(selDate), h='', freeCount=0;
         var mrO=isXinyi()?600:540, mrC=isXinyi()?1080:1260;   // 信義館 10:00–18:00；世貿館 09:00–21:00
+        var minM=(selDate===todayStr())?(nowMinTW()+30):-1;   // 當天只開放「現在之後、留 30 分準備時間」的時段
         for(var m=mrO;m<mrC;m+=30){
-          var st=blockedCell(m,bks), sel=(selStart!=null&&selDur!=null&&m>=selStart&&m<selStart+selDur*60);
-          var bg=st==='booked'?'#e3ddd0':(st==='buffer'?'#eee9dd':'#e9f5ea'), bd=st==='free'?'#bcdcc0':'#ddd6c6';
+          var st=slotState(m,bks,mrC,minM), sel=(selStart!=null&&selDur!=null&&m>=selStart&&m<selStart+selDur*60);
+          if(st==='free') freeCount++;
+          var bg=st==='booked'?'#e3ddd0':(st==='free'?'#e9f5ea':'#eee9dd'), bd=st==='free'?'#bcdcc0':'#ddd6c6';
           if(sel){bg='#C9A24B';bd='#C9A24B';}
           h+='<div data-m="'+m+'" class="mbslot" style="cursor:'+(st==='free'?'pointer':'default')+';font-size:.78rem;padding:7px 4px;border:1px solid '+bd+';border-radius:7px;background:'+bg+';color:'+(sel?'#3B2F1E':(st==='free'?'#2a6b34':'#9a8c66'))+';width:62px;text-align:center">'+fmt(m)+'</div>';
         }
+        if(!freeCount) h+='<div style="flex:1 0 100%;font-size:.85rem;color:#b06a3b;background:#fdf4ec;border:1px solid #f0d9c4;border-radius:8px;padding:10px 12px">'+mbT('noSlot')+'</div>';
         $('mb_slots').innerHTML=h;
         [].slice.call($('mb_slots').querySelectorAll('.mbslot')).forEach(function(c){
-          if(blockedCell(+c.getAttribute('data-m'),bks)==='free') c.onclick=function(){pickStart(+c.getAttribute('data-m'));};
+          if(slotState(+c.getAttribute('data-m'),bks,mrC,minM)==='free') c.onclick=function(){pickStart(+c.getAttribute('data-m'));};
         });
       }
       function pickStart(m){
@@ -524,7 +549,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
   <a class="primary" href="https://line.me/R/ti/p/@mstars" target="_blank" rel="noopener">LINE</a>
   <a href="#booking-wtc">預約</a>
 </div>
-<script src="i18n.js?v=20260822"></script>
+<script src="i18n.js?v=20260825"></script>
 <script defer src="chat-widget.js"></script>
 </body>
 </html>
