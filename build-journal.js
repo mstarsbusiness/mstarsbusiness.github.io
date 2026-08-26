@@ -169,7 +169,7 @@ ${header('../')}
         <div class="article-cta">
           <span>下一步</span>
           <h2>想把辦公空間也整理好嗎？</h2>
-          <p>辰星提供信義區借址登記、獨立辦公室、共享座位與會議室租借，適合個人工作者與 1–6 人小型團隊。</p>
+          <p>辰星提供信義區借址登記、獨立辦公室、共享座位與會議室租借，適合個人工作者與 1–8 人小型團隊。</p>
           <div class="related">
             <a href="../office-guide.html">比較辦公方案</a>
             <a href="../virtual-office.html">借址登記</a>
@@ -183,7 +183,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20260826"></script>
+<script src="../i18n.js?v=20260827"></script>
 </body>
 </html>`;
 }
@@ -307,7 +307,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20260826"></script>
+<script src="i18n.js?v=20260827"></script>
 </body>
 </html>`;
 }
