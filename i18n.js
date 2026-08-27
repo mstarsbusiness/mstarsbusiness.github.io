@@ -498,6 +498,10 @@ Object.assign(T, { // 2026-08-26b 行業檢核 v2.0 漏補句（8/22 改版遺�
 "※ 本工具為實務參考，非稅務或法律意見。台灣沒有法律「明文禁止借址登記」；能否通過取決於①目的事業主管機關對特許業是否要求實體場所／專任人員，②國稅局稽徵實務對稅額結構或需實地查核行業的認定。實際個案仍以會計師、記帳士或所屬稽徵機關（辰星兩館為財政部臺北國稅局信義分局）認定為準。資料版本 v2.0（2026-08-22）：收錄 61 項行業，營業項目代碼依 GCIS 代碼表 V8.0（115.06.08）。":["※ This tool is a practical reference, not tax or legal advice. No Taiwanese law explicitly prohibits virtual-office registration; approval depends on (1) whether the competent authority for a licensed industry requires physical premises or full-time staff, and (2) how the tax bureau's audit practice assesses the tax structure or industries requiring on-site inspection. Individual cases are ultimately determined by your accountant, bookkeeper, or the tax office in charge (for both Morning Stars locations: Xinyi Branch, National Taxation Bureau of Taipei). Data version v2.0 (2026-08-22): 61 industries, business codes per GCIS code table V8.0 (2026-06-08).","※ 本ツールは実務上の参考であり、税務・法律上の助言ではありません。台湾には住所貸し登記を明文で禁止する法律はなく、可否は①許認可業種に対する主管機関の実体場所・専任人員の要求、②税額構造や実地調査が必要な業種に対する国税局の実務判断によります。個別案件は会計士・記帳士または所轄税務機関（辰星両館は財政部台北国税局信義分局）の認定が最終となります。データ版 v2.0（2026-08-22）：61 業種収録、営業項目コードは GCIS コード表 V8.0（115.06.08）準拠。"],
 "例如：管理顧問、電商、室內設計、餐飲、房仲、營造、出口貿易…":["e.g. management consulting, e-commerce, interior design, food & beverage, real estate agency, construction, export trading…","例：経営コンサル、EC、インテリアデザイン、飲食、不動産仲介、建設、輸出貿易…"],
 });
+Object.assign(T, { // 2026-08-26c 公司設立一站式連結句
+"：合作專業記帳士，協助公司設立、變更登記、每月記帳與報稅。流程與費用透明說明見":[": we work with licensed bookkeepers for incorporation, registration changes, and monthly bookkeeping and tax filing. See the transparent process and fees at","：提携の記帳士が会社設立・変更登記・毎月の記帳と税務申告をサポート。流れと費用の詳細は"],
+"公司設立一站式服務":["Company Setup One-Stop Service","会社設立ワンストップサービス"],
+});
   var idx={en:0,ja:1};
   var items=[];
   var seen=(typeof WeakSet!=='undefined')?new WeakSet():null;   // 已登記的文字節點（重複掃描時去重）
