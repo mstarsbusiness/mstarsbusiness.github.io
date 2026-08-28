@@ -277,10 +277,11 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         <div id="mb_durRow" style="display:none;margin-top:4px;font-size:.9rem;color:#6b5a36">時長：<span id="mb_durs"></span></div>
         <div id="mb_form" style="display:none;margin-top:12px;background:#faf6ee;border:1px solid #ecdfc4;border-radius:10px;padding:14px">
           <div id="mb_cost" style="font-weight:700;color:#C9A24B;margin-bottom:10px"></div>
+          <div id="mb_member" style="display:none;font-size:.88rem;line-height:1.55;border:1px solid #bfe3cd;background:#eaf7ee;color:#1a7f37;border-radius:8px;padding:9px 11px;margin-bottom:10px"></div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <label style="font-size:.85rem;color:#6b5a36">姓名 *<br><input id="mb_name" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
+            <label style="font-size:.85rem;color:#6b5a36">姓名 *<br><input id="mb_name" oninput="mbQuoteSoon()" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
             <label style="font-size:.85rem;color:#6b5a36">電話 *<br><input id="mb_phone" inputmode="tel" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
-            <label style="font-size:.85rem;color:#6b5a36">公司名稱<br><input id="mb_company" placeholder="既有客戶請務必填寫" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
+            <label style="font-size:.85rem;color:#6b5a36">公司名稱<br><input id="mb_company" placeholder="既有客戶請務必填寫" oninput="mbQuoteSoon()" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
             <label style="font-size:.85rem;color:#6b5a36">Email（選填）<br><input id="mb_email" inputmode="email" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
           </div>
           <button type="button" id="mb_submit" style="margin-top:14px;padding:12px 28px;background:#C9A24B;color:#3B2F1E;border:0;border-radius:9px;font-weight:700;cursor:pointer">送出預約申請</button>
@@ -395,12 +396,56 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       }
       function pickDur(d){
         selDur=d; renderSlots();
-        var _r=mbRate($('mb_venue').value,selDate,selStart,selStart+d*60); $('mb_cost').textContent=selDate+' '+fmt(selStart)+'–'+fmt(selStart+d*60)+mbT('total')+d+mbT('totalHr')+(d*_r)+(_r===300?mbT('offpeak'):'');
+        var _r=mbRate($('mb_venue').value,selDate,selStart,selStart+d*60);
+        mbBaseTxt=selDate+' '+fmt(selStart)+'–'+fmt(selStart+d*60)+mbT('total')+d+mbT('totalHr')+(d*_r)+(_r===300?mbT('offpeak'):'');
+        $('mb_cost').textContent=mbBaseTxt;
         $('mb_form').style.display='block';
+        mbQuoteSoon();
       }
       $('mb_prev').onclick=function(){view.setMonth(view.getMonth()-1);loadMonth();};
       $('mb_next').onclick=function(){view.setMonth(view.getMonth()+1);loadMonth();};
       $('mb_venue').onchange=loadMonth;
+      /* ── 即時報價（2026-08-28）──────────────────────────────
+         客戶填公司名／姓名時就先查是不是既有客戶，畫面直接顯示「免費」或實際金額，
+         不要一直掛著牌價 NT$400 讓既有客戶誤會。輸入停 500ms 才打一次，避免逐字送。*/
+      var mbBaseTxt='', mbQuoteTimer=null, mbQuoteSeq=0;
+      window.mbQuoteSoon=function(){
+        clearTimeout(mbQuoteTimer);
+        mbQuoteTimer=setTimeout(mbQuote,500);
+      };
+      function mbQuote(){
+        if(!selDate||selStart==null||!selDur) return;
+        var co=$('mb_company').value.trim(), nm=$('mb_name').value.trim();
+        var box=$('mb_member'); if(!box) return;
+        if(co.length<2 && nm.length<2){ box.style.display='none'; $('mb_cost').textContent=mbBaseTxt; return; }
+        var seq=++mbQuoteSeq;
+        var u=EP+'?quote=1&venue='+encodeURIComponent($('mb_venue').value)+'&date='+selDate
+              +'&start='+fmt(selStart)+'&end='+fmt(selStart+selDur*60)
+              +'&company='+encodeURIComponent(co)+'&name='+encodeURIComponent(nm);
+        fetch(u).then(function(r){return r.json();}).then(function(j){
+          if(seq!==mbQuoteSeq) return;                 // 只採用最後一次的結果
+          if(!j||j.error){ box.style.display='none'; return; }
+          if(j.member){
+            var who=j.custName?('【'+j.custName+'】'):'您的公司';
+            var msg;
+            if(j.note==='office') msg='✅ 已比對到既有客戶 '+who+'：辦公室租戶會議室免費使用 😊';
+            else if(j.note==='free') msg='✅ 已比對到既有客戶 '+who+'：本次可使用每月贈送時數，<b>免費</b> 😊';
+            else msg='✅ 已比對到既有客戶 '+who+'：本月贈送時數已用完，本次費用 <b>NT$'+j.cost+'</b>';
+            box.innerHTML=msg; box.style.background='#eaf7ee'; box.style.borderColor='#bfe3cd'; box.style.color='#1a7f37';
+            box.style.display='block';
+            $('mb_cost').textContent=selDate+' '+fmt(selStart)+'–'+fmt(selStart+selDur*60)
+              +mbT('total')+selDur+mbT('hr')+(j.cost>0?(' · NT$'+j.cost):' · 免費（贈送時數）');
+          } else if(j.ambiguous){
+            box.innerHTML='ℹ️ 這個名稱對應到多家公司，送出後我們會與您確認是哪一家，費用以確認後為準。';
+            box.style.background='#fdf6e3'; box.style.borderColor='#ecd9b0'; box.style.color='#8a6d1a';
+            box.style.display='block';
+            $('mb_cost').textContent=mbBaseTxt;
+          } else {
+            box.style.display='none'; $('mb_cost').textContent=mbBaseTxt;
+          }
+        }).catch(function(){ box.style.display='none'; });
+      }
+
       $('mb_submit').onclick=function(){
         if(selStart==null||selDur==null) return;
         var data={venue:$('mb_venue').value,date:selDate,start:fmt(selStart),end:fmt(selStart+selDur*60),name:$('mb_name').value.trim(),phone:$('mb_phone').value.trim(),company:$('mb_company').value.trim(),email:$('mb_email').value.trim()};
