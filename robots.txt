@@ -1,21 +1,56 @@
-User-agent: *
-Allow: /
-Disallow: /admin/
+# robots.txt — 辰星商務中心 Morning Stars
+# https://www.morning-stars.com.tw/robots.txt
+# 最後更新：2026-08-29
+#
+# 策略：辰星是在地服務業，內容沒有需要保護的智慧財產，核心目標是「被 AI 推薦」。
+# 因此對所有 AI 爬蟲一律放行——包含訓練型（GPTBot、ClaudeBot）。
+# 進訓練資料的好處是：使用者問「台北信義區借址登記」時，模型不必即時檢索也可能提到辰星。
+# 大型媒體封鎖訓練型是為了保護內容資產，辰星沒有這個顧慮。
+#
+# ⚠️ 不要在這裡 Disallow dark.html / light.html：
+#    那兩頁已經有 canonical 指向首頁，robots 一擋，爬蟲就讀不到 canonical，
+#    反而可能把它們當獨立網址留在索引裡（只是抓不到內容）。canonical 與 Disallow 二擇一，已選 canonical。
+# ⚠️ 也不要 Disallow /*?utm_ 或 /*?fbclid：
+#    FB 廣告帶 fbclid 進來的落地頁會被 GSC 標成「已封鎖」一直報錯，參數重複本來就由 canonical 處理。
 
-# AI 搜尋與引用型爬蟲：允許探索公開內容
+# ── 一般搜尋引擎 ─────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# ── AI 檢索型爬蟲（使用者提問當下即時取頁）──────
+# 這一組是「被 AI 推薦」的關鍵，絕對不能封鎖
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: Perplexity-User
 Allow: /
 
+User-agent: MistralAI-User
+Allow: /
+
+# ── AI 訓練型爬蟲（辰星選擇放行，理由見上）──────
 User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: Google-Extended
@@ -33,13 +68,11 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-User-agent: Claude-SearchBot
+# ── 全域規則 ─────────────────────────────────
+User-agent: *
 Allow: /
 
-User-agent: Perplexity-User
-Allow: /
-
-User-agent: bingbot
-Allow: /
+# 不需被索引的路徑
+Disallow: /admin/
 
 Sitemap: https://www.morning-stars.com.tw/sitemap.xml

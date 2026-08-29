@@ -183,7 +183,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20260828"></script>
+<script src="../i18n.js?v=20260829"></script>
 </body>
 </html>`;
 }
@@ -307,7 +307,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20260828"></script>
+<script src="i18n.js?v=20260829"></script>
 </body>
 </html>`;
 }
@@ -316,6 +316,12 @@ function sitemap(posts) {
   const today = new Date().toISOString().slice(0, 10);
   const pages = [
     ['/', '1.0', 'weekly'],
+    /* 兩館獨立據點頁（2026-08-29 新增，SPEC-GEO P1）
+       在此之前兩館只是首頁的錨點區塊，導致：每館掛不了自己的 LocalBusiness schema、
+       兩個 Google 商家檔案沒有各自的到達頁、「六張犁 辦公室」與「世貿站 辦公室」
+       兩組完全不同的搜尋意圖擠在同一頁互相競爭。優先級僅次於首頁。 */
+    ['/wtc.html', '.9', 'monthly'],
+    ['/xinyi.html', '.9', 'monthly'],
     ['/virtual-office.html', '.9', 'monthly'],
     ['/private-office.html', '.9', 'monthly'],
     ['/meeting-room.html', '.9', 'monthly'],
