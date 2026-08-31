@@ -273,7 +273,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       <div id="mb_day" style="display:none;margin-top:18px;border-top:1px solid #eee;padding-top:16px">
         <h3 id="mb_dayTitle" style="font-size:1rem;margin:0 0 10px;color:#6b5a36"></h3>
         <div id="mb_slots" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
-        <div style="font-size:.82rem;color:#9a8c66;margin:8px 0">綠＝可預約、灰＝已約/緩衝。請點選「開始時段」，再選「時長」。</div>
+        <div style="font-size:.82rem;color:#9a8c66;margin:8px 0">綠＝可預約、灰＝已約/緩衝、<span style="text-decoration:line-through">淡灰刪除線</span>＝今天已過去的時段。請點選「開始時段」，再選「時長」。</div>
         <div id="mb_durRow" style="display:none;margin-top:4px;font-size:.9rem;color:#6b5a36">時長：<span id="mb_durs"></span></div>
         <div id="mb_form" style="display:none;margin-top:12px;background:#faf6ee;border:1px solid #ecdfc4;border-radius:10px;padding:14px">
           <div id="mb_cost" style="font-weight:700;color:#C9A24B;margin-bottom:10px"></div>
@@ -299,10 +299,30 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
       var view=new Date(); view.setDate(1);
       var monthData=[]; var selDate='', selStart=null, selDur=null;
       function pad(n){return (n<10?'0':'')+n;}
-      function todayStr(){return new Date(Date.now()+8*3600000).toISOString().slice(0,10);}
+      /* ★ 以「伺服器時間」為準（2026-08-31 修）
+         原本 todayStr()／nowMinTW() 都讀 Date.now()，也就是**客戶手機自己的時鐘**。
+         手機時間不準（手動設過、自動校時失敗）就會直接影響「今天哪些時段還能訂」——
+         2026-08-31 有客戶手機快了約 3.5 小時，世貿館整個上午都變灰、只剩下午兩點後，
+         他以為訂滿了。**可以賣哪些時段，不該取決於客戶的手機準不準。**
+         做法：每次抓月份資料時，後端會一併回傳台灣的 today/now；之後用
+         「伺服器時間 ＋ 這支頁面自己經過的毫秒」推算現在，裝置時鐘再怎麼歪都不影響。
+         拿不到伺服器時間時（例如離線）才退回裝置時鐘，行為與從前相同。*/
+      var srvToday='', srvNowMin=null, srvAt=0;
+      function setSrvTime(j){
+        if(!j||!j.today||!j.now) return;
+        var m=/^(\d{1,2}):(\d{2})$/.exec(j.now); if(!m) return;
+        srvToday=j.today; srvNowMin=(+m[1])*60+(+m[2]); srvAt=Date.now();
+      }
+      function todayStr(){
+        if(srvToday){
+          var passed=Math.floor((Date.now()-srvAt)/60000);
+          if(srvNowMin+passed < 1440) return srvToday;   // 還沒跨日就直接用伺服器那天
+        }
+        return new Date(Date.now()+8*3600000).toISOString().slice(0,10);
+      }
       function toMin(s){var m=/^(\d{1,2}):(\d{2})$/.exec(s);return (+m[1])*60+(+m[2]);}
       function fmt(m){return pad(Math.floor(m/60))+':'+pad(m%60);}
-      var MB={wk:{zh:['日','一','二','三','四','五','六'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']},loading:{zh:'載入中…',en:'Loading…',ja:'読み込み中…'},loadFail:{zh:'載入失敗，請稍後再試。',en:'Failed to load. Please try again later.',ja:'読み込みに失敗しました。時間をおいて再度お試しください。'},closed:{zh:'門禁',en:'Closed',ja:'入館不可'},mon:{en:['January','February','March','April','May','June','July','August','September','October','November','December']},booked:{zh:'有預約',en:'Booked',ja:'予約あり'},full:{zh:'額滿',en:'Full',ja:'満員'},slots:{zh:'可預約時段',en:'Available Times',ja:'予約可能時間'},hr:{zh:' 小時',en:' hr',ja:' 時間'},total:{zh:'｜共 ',en:'｜Total ',ja:'｜計 '},totalHr:{zh:' 小時 · 費用 NT$',en:' hr · NT$',ja:' 時間 · 料金 NT$'},offpeak:{zh:'（離峰優惠 300/hr）',en:' (off-peak NT$300/hr)',ja:'（オフピーク割引 300/hr）'},noSlot:{zh:'這一天已經沒有可預約的時段了（每場預約前後各保留 30 分鐘緩衝，最短預約 1 小時）。請改選其他日期，或來電 0903-368-856、加 LINE @mstars，我們幫您安排。',en:'No time slots are available on this date (a 30-minute buffer is reserved before and after each booking; minimum booking is 1 hour). Please choose another date, or contact us at +886-903-368-856 / LINE @mstars.',ja:'この日は予約可能な時間帯がありません（各予約の前後に30分のバッファ、最短1時間から）。別の日をお選びいただくか、0903-368-856 または LINE @mstars までご連絡ください。'}};
+      var MB={wk:{zh:['日','一','二','三','四','五','六'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']},loading:{zh:'載入中…',en:'Loading…',ja:'読み込み中…'},loadFail:{zh:'載入失敗，請稍後再試。',en:'Failed to load. Please try again later.',ja:'読み込みに失敗しました。時間をおいて再度お試しください。'},closed:{zh:'門禁',en:'Closed',ja:'入館不可'},mon:{en:['January','February','March','April','May','June','July','August','September','October','November','December']},booked:{zh:'有預約',en:'Booked',ja:'予約あり'},full:{zh:'額滿',en:'Full',ja:'満員'},slots:{zh:'可預約時段',en:'Available Times',ja:'予約可能時間'},hr:{zh:' 小時',en:' hr',ja:' 時間'},total:{zh:'｜共 ',en:'｜Total ',ja:'｜計 '},totalHr:{zh:' 小時 · 費用 NT$',en:' hr · NT$',ja:' 時間 · 料金 NT$'},offpeak:{zh:'（離峰優惠 300/hr）',en:' (off-peak NT$300/hr)',ja:'（オフピーク割引 300/hr）'},pastTip:{zh:'這個時段已經過了，無法線上預約',en:'This time has already passed',ja:'この時間はすでに過ぎています'},bufTip:{zh:'前後預約的 30 分鐘緩衝時間',en:'30-minute buffer between bookings',ja:'予約前後の30分バッファ'},pastNote:{zh:'⏰ 今天 {t} 之前的時段已無法線上預約（每筆預約需保留 30 分鐘準備時間）。需要更早的時段，請來電 0903-368-856 或加 LINE @mstars，我們幫您安排。',en:'⏰ Slots before {t} today can no longer be booked online (30 minutes of lead time is required). For earlier times, please call +886-903-368-856 or add LINE @mstars.',ja:'⏰ 本日 {t} より前の時間帯はオンライン予約できません（30分の準備時間が必要）。それより早い時間をご希望の場合は 0903-368-856 または LINE @mstars までご連絡ください。'},noSlot:{zh:'這一天已經沒有可預約的時段了（每場預約前後各保留 30 分鐘緩衝，最短預約 1 小時）。請改選其他日期，或來電 0903-368-856、加 LINE @mstars，我們幫您安排。',en:'No time slots are available on this date (a 30-minute buffer is reserved before and after each booking; minimum booking is 1 hour). Please choose another date, or contact us at +886-903-368-856 / LINE @mstars.',ja:'この日は予約可能な時間帯がありません（各予約の前後に30分のバッファ、最短1時間から）。別の日をお選びいただくか、0903-368-856 または LINE @mstars までご連絡ください。'}};
       function mbL(){try{return localStorage.getItem('ms_lang')||'zh';}catch(e){return 'zh';}}
       function mbT(k){return (MB[k]&&MB[k][mbL()])||MB[k].zh;}
       function mbWK(){return MB.wk[mbL()]||MB.wk.zh;}
@@ -312,7 +332,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         $('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#9a8c66">'+mbT('loading')+'</div>';
         $('mb_day').style.display='none';
         fetch(EP+'?venue='+encodeURIComponent($('mb_venue').value)+'&month='+ym).then(function(r){return r.json();}).then(function(j){
-          monthData=(j&&j.bookings)||[]; renderGrid();
+          setSrvTime(j); monthData=(j&&j.bookings)||[]; renderGrid();
         }).catch(function(){$('mb_grid').innerHTML='<div style="padding:20px;text-align:center;color:#c0392b">'+mbT('loadFail')+'</div>';});
       }
       function dayHasBk(ds){return monthData.some(function(b){return b.date===ds;});}
@@ -357,7 +377,10 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         $('mb_durRow').style.display='none'; $('mb_form').style.display='none'; $('mb_msg').innerHTML='';
         renderSlots();
       }
-      function nowMinTW(){var d=new Date(Date.now()+8*3600000);return d.getUTCHours()*60+d.getUTCMinutes();}
+      function nowMinTW(){
+        if(srvNowMin!=null) return srvNowMin + Math.floor((Date.now()-srvAt)/60000);
+        var d=new Date(Date.now()+8*3600000);return d.getUTCHours()*60+d.getUTCMinutes();
+      }
       /* 一格能不能點，除了「本身沒被佔用」，還要「至少約得滿 1 小時」。
          少了這一層，會出現格子是綠的、點下去每個時長卻都不能選——客戶只會覺得系統壞了。
          另外當天已經過去的時段也要關掉（後端只擋過去的日期，不擋過去的鐘點）。*/
@@ -374,9 +397,21 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         for(var m=mrO;m<mrC;m+=30){
           var st=slotState(m,bks,mrC,minM), sel=(selStart!=null&&selDur!=null&&m>=selStart&&m<selStart+selDur*60);
           if(st==='free') freeCount++;
-          var bg=st==='booked'?'#e3ddd0':(st==='free'?'#e9f5ea':'#eee9dd'), bd=st==='free'?'#bcdcc0':'#ddd6c6';
+          /* 「已過去」要跟「已被訂走／緩衝」長得不一樣。
+             以前三種都是差不多的灰，客戶看到一片灰只會以為訂滿了或系統壞掉，
+             不會想到是時間已經過了（2026-08-31 客訴）。*/
+          var past=(st==='past');
+          var bg=past?'#f6f4ef':(st==='booked'?'#e3ddd0':(st==='free'?'#e9f5ea':'#eee9dd'));
+          var bd=past?'#ece8de':(st==='free'?'#bcdcc0':'#ddd6c6');
           if(sel){bg='#C9A24B';bd='#C9A24B';}
-          h+='<div data-m="'+m+'" class="mbslot" style="cursor:'+(st==='free'?'pointer':'default')+';font-size:.78rem;padding:7px 4px;border:1px solid '+bd+';border-radius:7px;background:'+bg+';color:'+(sel?'#3B2F1E':(st==='free'?'#2a6b34':'#9a8c66'))+';width:62px;text-align:center">'+fmt(m)+'</div>';
+          var tip=past?mbT('pastTip'):(st==='booked'?mbT('booked'):(st==='buffer'?mbT('bufTip'):''));
+          h+='<div data-m="'+m+'" class="mbslot"'+(tip?' title="'+tip+'"':'')+' style="cursor:'+(st==='free'?'pointer':'default')+';font-size:.78rem;padding:7px 4px;border:1px solid '+bd+';border-radius:7px;background:'+bg+';color:'+(sel?'#3B2F1E':(st==='free'?'#2a6b34':(past?'#c3bcae':'#9a8c66')))+(past?';text-decoration:line-through':'')+';width:62px;text-align:center">'+fmt(m)+'</div>';
+        }
+        /* 今天若有時段是「已經過了」而非被訂走，直接講清楚，並把客戶導向電話——
+           不然他只會關掉頁面，我們也不知道錯過了一筆生意。*/
+        if(minM>0){
+          var pastN=0; for(var q=mrO;q<mrC;q+=30){ if(q<minM) pastN++; }
+          if(pastN) h+='<div style="flex:1 0 100%;order:-1;font-size:.82rem;color:#8a6d1a;background:#fdf6e3;border:1px solid #ecd9b0;border-radius:8px;padding:9px 12px;margin-bottom:4px">'+mbT('pastNote').replace('{t}',fmt(Math.ceil(minM/30)*30))+'</div>';
         }
         if(!freeCount) h+='<div style="flex:1 0 100%;font-size:.85rem;color:#b06a3b;background:#fdf4ec;border:1px solid #f0d9c4;border-radius:8px;padding:10px 12px">'+mbT('noSlot')+'</div>';
         $('mb_slots').innerHTML=h;
