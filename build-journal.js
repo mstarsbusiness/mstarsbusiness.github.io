@@ -21,7 +21,23 @@ const paras = value => (Array.isArray(value) ? value : String(value || '').split
   .map(item => String(item).trim())
   .filter(Boolean);
 
-const plainText = value => paras(value).join(' ').replace(/\s+/g, ' ').trim();
+const stripMdLinks = value => String(value == null ? '' : value)
+  .replace(/\[([^\]\n]{1,80})\]\(([^)\s]*)\)/g, '$1');
+
+const plainText = value => paras(value).map(stripMdLinks).join(' ').replace(/\s+/g, ' ').trim();
+
+/* 內文段落渲染：先 esc（防 XSS）再把 Markdown 連結 [文字](網址) 轉成 <a>。
+   2026-09-01 GEO 週報抓到：後台發文的內文連結一直以純文字顯示（8/24、8/28、8/31 三篇），
+   內部連結權重全斷——因為這裡從來沒做過 markdown 轉換，只有 esc。
+   安全邊界：只轉 http(s):// 與站內相對路徑（xxx.html / /path），其他協定（javascript: 等）原樣保留不轉。
+   esc 已把引號轉成 &quot;，href 不可能被跳出屬性。外部連結自動加 target=_blank rel=noopener。 */
+const renderPara = value => esc(value).replace(
+  /\[([^\]\n]{1,80})\]\(([^)\s]+)\)/g,
+  (m, label, href) => {
+    if (!/^(https?:\/\/|\/|[a-z0-9][a-z0-9-]*\.html)/i.test(href)) return m;
+    const ext = /^https?:\/\//i.test(href) && href.indexOf('morning-stars.com.tw') < 0;
+    return `<a href="${href}"${ext ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
+  });
 
 const excerpt = (value, length = 118) => {
   const text = plainText(value);
@@ -164,7 +180,7 @@ ${header('../')}
         </div>
         <p class="article-summary">${esc(description)}</p>
         <div class="post-hero-img"><img src="${esc(displayImage)}" alt="${esc(post.title)}" loading="eager" decoding="async"></div>
-        <div class="article-body">${text.map(item => `<p>${esc(item)}</p>`).join('')}</div>
+        <div class="article-body">${text.map(item => `<p>${renderPara(item)}</p>`).join('')}</div>
         ${post.link ? `<p class="article-action"><a class="btn solid" href="${esc(post.link)}" target="_blank" rel="noopener">${esc(post.linkText || '查看更多')}</a></p>` : ''}
         <div class="article-cta">
           <span>下一步</span>
@@ -183,7 +199,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20260830"></script>
+<script src="../i18n.js?v=20260901"></script>
 </body>
 </html>`;
 }
@@ -307,7 +323,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20260830"></script>
+<script src="i18n.js?v=20260901"></script>
 </body>
 </html>`;
 }

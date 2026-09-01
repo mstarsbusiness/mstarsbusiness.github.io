@@ -507,6 +507,16 @@ Object.assign(T, { // 2026-08-26c 公司設立一站式連結句
 "：合作專業記帳士，協助公司設立、變更登記、每月記帳與報稅。流程與費用透明說明見":[": we work with licensed bookkeepers for incorporation, registration changes, and monthly bookkeeping and tax filing. See the transparent process and fees at","：提携の記帳士が会社設立・変更登記・毎月の記帳と税務申告をサポート。流れと費用の詳細は"],
 "公司設立一站式服務":["Company Setup One-Stop Service","会社設立ワンストップサービス"],
 });
+Object.assign(T, { // 2026-09-01 GEO週報：押金/滿租改獨立可見句（private-office.html）
+"共享座位月租 NT$4,500 起，另收押金兩個月（NT$9,000）。":["Co-working seats start at NT$4,500/month, plus a two-month deposit (NT$9,000).","コワーキングシートは月額 NT$4,500 から。別途 2 ヶ月分の保証金（NT$9,000）を頂戴します。"],
+"兩館獨立辦公室目前已全數滿租，歡迎來電 0903-368-856 登記候補。":["Private offices at both locations are currently fully leased; call 0903-368-856 to join the waiting list.","両館の個室オフィスは現在満室です。0903-368-856 までお電話いただければキャンセル待ちにご登録いたします。"],
+});
+Object.assign(T, { // 2026-09-01b 會議室圖例（8/31 伺服器時間改版時被 span 拆碎的三段）＋公司欄 placeholder
+"綠＝可預約、灰＝已約/緩衝、":["Green = available, grey = booked/buffer, ","緑＝予約可、グレー＝予約済み/バッファ、"],
+"淡灰刪除線":["light-grey strikethrough","薄いグレーの取り消し線"],
+"＝今天已過去的時段。請點選「開始時段」，再選「時長」。":["= today's past time slots. Tap a start time, then choose a duration.","＝本日すでに過ぎた時間帯です。開始時刻をタップしてから利用時間をお選びください。"],
+"既有客戶請務必填寫":["Existing clients: please fill this in","既存のお客様は必ずご記入ください"],
+});
   var idx={en:0,ja:1};
   var items=[];
   var seen=(typeof WeakSet!=='undefined')?new WeakSet():null;   // 已登記的文字節點（重複掃描時去重）
