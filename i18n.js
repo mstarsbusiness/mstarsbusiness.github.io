@@ -573,6 +573,14 @@ Object.assign(T, { // 2026-09-01b 會議室圖例（8/31 伺服器時間改版�
       if(busy) return;
       clearTimeout(tid); tid=setTimeout(refresh,120);   // 合併連續變動，避免頻繁重掃
     }).observe(document.body,{childList:true,subtree:true,characterData:true});
+
+Object.assign(T, { // 2026-09-02 事實頁入口（mail-handling / meeting-room-price 原為孤兒頁，僅三頁互連）
+"📮 信件與包裹代收服務完整說明 →":["📮 Full guide to our mail & parcel handling service (Chinese) →","📮 郵便物・宅配便受取サービスの詳細（中国語）→"],
+"💰 會議室費用與計費規則完整說明 →":["💰 Full meeting-room pricing & billing rules (Chinese) →","💰 会議室の料金・計算ルールの詳細（中国語）→"],
+"信件代收說明":["Mail handling guide","郵便受取のご案内"],
+"會議室費用說明":["Meeting room pricing","会議室料金のご案内"],
+"公司設立一站式說明":["Company setup one-stop guide","会社設立ワンストップのご案内"],
+});
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
