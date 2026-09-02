@@ -260,3 +260,38 @@ body.lux .topnav .book{
   .head{padding-top:64px;padding-bottom:42px}
   .gal{padding-top:42px}
 }
+
+/* ═══ 頁首對齊主頁基準（2026-09-02b 老闆指正：各頁上緣邊寬大小不一、字體顏色不均）═══
+   主頁量測值：列高 74px（上下內距 18px）、logo 42px、品牌字 1.14rem "Noto Serif TC"
+   #F5F1E8、副標 Cormorant .6rem、選單字 .84rem #D8D2C4、預約鈕金框 #A9803F 字 #CDAC6A。
+   所有子頁 header.top 一律套用同一組數值。 */
+header.top .wrap,header.top>div{min-height:74px;display:flex;align-items:center}
+header.top{padding-top:0;padding-bottom:0}
+header.top .brand{gap:13px}
+header.top .blogo{width:42px!important;height:42px!important}
+header.top .brand b,header.top .btxt b{font-family:"Noto Serif TC",serif!important;font-size:1.14rem!important;letter-spacing:.16em!important;color:#F5F1E8!important;font-weight:500!important;line-height:1.2}
+header.top .btxt small,header.top .brand small{font-family:"Cormorant Garamond",serif!important;font-size:.6rem!important;letter-spacing:.34em!important;color:#B9AE97!important;text-transform:uppercase;display:block}
+header.top .topnav{gap:26px}
+header.top .lnk,header.top .topnav a.lnk{font-size:.84rem!important;letter-spacing:.1em!important;color:#D8D2C4!important;font-weight:400!important}
+header.top .lnk:hover,header.top .topnav a.lnk:hover{color:#CDAC6A!important}
+header.top .book,header.top .topnav a.book{border:1px solid #A9803F!important;color:#CDAC6A!important;letter-spacing:.2em!important;font-size:.84rem!important;padding:10px 22px!important;border-radius:0!important;background:transparent}
+header.top .book:hover{background:#A9803F!important;color:#1A1712!important}
+@media(max-width:760px){
+  header.top .wrap,header.top>div{min-height:60px}
+  header.top .blogo{width:34px!important;height:34px!important}
+  header.top .brand b,header.top .btxt b{font-size:1rem!important;letter-spacing:.1em!important}
+}
+
+/* ═══ 全站字級／框架統一（2026-09-02c 老闆指示：字體、大小、間隔、顏色、框架均等）═══
+   量測發現四套並存的字級（h1 24~30.4px／h2 18.4~24.8／內文 13.1~16.5），統一為單一響應式階層：
+   h1 = clamp(1.9rem,4vw,2.6rem)（與服務頁 hero 相同曲線）
+   h2 = clamp(1.35rem,2.4vw,1.55rem)
+   內文 = .98rem，行高 1.85
+   內容框（卡片/表格/摺疊）圓角一律 2px。journal 與貼文頁未接本檔，維持原樣。 */
+h1{font-size:clamp(1.9rem,4vw,2.6rem)!important;line-height:1.28}
+h2{font-size:clamp(1.35rem,2.4vw,1.55rem)!important;line-height:1.42}
+.wrap p{font-size:.98rem;line-height:1.85}
+.card,details,.step,.box,.wrap table{border-radius:2px!important}
+.wrap table{overflow:hidden}
+/* 條款/CRM 文件頁的段落色與其他淺底頁的次要文字統一 */
+.doc p,.doc li{color:#6B6256}
