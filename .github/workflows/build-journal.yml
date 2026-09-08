@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: build-journal
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
