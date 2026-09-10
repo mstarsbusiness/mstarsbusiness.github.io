@@ -3,7 +3,7 @@
 > 位於台北市信義區的共享辦公空間，提供黃金地段的小坪數辦公方案。
 
 - 官方名稱：辰星商務中心 Morning Stars
-- 資訊更新：2026-09-08
+- 資訊更新：2026-09-10
 - 主要語言：繁體中文（另提供英文、日文介面）
 - 適合對象：自由工作者、新創公司、1–8 人團隊、需要公司登記地址或臨時會議空間者
 
@@ -146,7 +146,7 @@ Morning Stars Business Center — coworking & virtual office in Taipei's Xinyi D
 - WTC Branch: 4F, No. 398, Sec. 1, Keelung Rd. (5 min walk from Taipei 101 / World Trade Center MRT)
 
 Services & pricing (tax included, official invoices issued):
-- **Virtual office / company registration address**: NT$18,000 per year (≈NT$1,500/month). First payment NT$19,500 including a one-time NT$1,500 refundable deposit. Includes mail & parcel handling with instant LINE notifications, plus 6 free meeting-room hours per month. International trading companies (export / import-export) cannot be registered at our addresses — in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Currently accepted at the WTC Branch (NT$18,000/yr). The Xinyi Branch is fully booked; two places are expected to open in late September at NT$1,800/month (NT$21,600/yr + NT$1,500 deposit) — waiting-list registration welcome.
+- **Virtual office / company registration address**: NT$18,000 per year (≈NT$1,500/month). First payment NT$19,500 including a one-time NT$1,500 refundable deposit. Includes mail & parcel handling with instant LINE notifications, plus 6 free meeting-room hours per month. International trading companies (export / import-export) cannot be registered at our addresses — in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Currently accepted at the WTC Branch (NT$18,000/yr). The Xinyi Branch is fully booked; two places are expected to open in late September, billed annually at NT$21,600/yr (≈NT$1,800/month) plus a NT$1,800 deposit, i.e. NT$23,400 first payment — waiting-list registration welcome.
 - **Dedicated desk**: NT$4,500/month (desk only) plus a two-month refundable deposit (NT$9,000), or NT$49,500/year including a company registration address (same two-month deposit applies); 20 free meeting-room hours per month.
 - **Private office (1–8 people)**: from NT$10,000/month. Currently fully occupied; waitlist available.
 - **Meeting rooms**: seats 6–8 people, NT$400/hour; off-peak NT$300/hour (weekdays before 12:00 at both branches, and 18:00–21:00 at the WTC Branch); minimum 1 hour, maximum 3 hours per session. Open to the public.
