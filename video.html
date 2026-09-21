@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>辰星商務中心 影片導覽｜台北信義區共享辦公室・公司登記地址</title>
+<meta name="description" content="辰星商務中心形象影片與兩館空間導覽：信義館、世貿館實景，公司登記地址、獨立座位、會議室方案一次看懂。">
+<link rel="canonical" href="https://www.morning-stars.com.tw/video.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap"></noscript>
+<style>
+:root{
+  --ink:#F7F3EC; --ink-2:#EFE8DA; --bone:#3A2E22; --bone-dim:#473A2B;
+  --champagne:#C9A24B; --champagne-lt:#A9803F; --stone:#6E6250;
+  --stage:#14110D; --hair:rgba(247,243,236,.16);
+  /* 後備鏈：Google Fonts 載不到時（離線／被擋）仍要有像樣的中文襯線 */
+  --serif:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU","MingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",sans-serif;
+  --disp:"Cormorant Garamond","Baskerville","Georgia","Noto Serif TC",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--stage); color:var(--ink);
+  font-family:var(--sans); -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- 版面 ---------- */
+.wrap{max-width:1280px;margin:0 auto;padding:28px 20px 64px}
+.pagehead{text-align:center;margin:8px 0 22px}
+.pagehead .mark{display:block;margin:0 auto 14px}
+.pagehead h1{
+  font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.6vw,30px);
+  letter-spacing:.06em;margin:0 0 6px;color:var(--ink)
+}
+.pagehead p{margin:0;color:var(--stone);font-size:14px;letter-spacing:.04em}
+.pagehead p b{color:var(--champagne);font-weight:500}
+
+/* ---------- 片單選擇 ---------- */
+.films{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 16px}
+.films button{
+  font-family:var(--sans);font-size:13.5px;letter-spacing:.05em;
+  color:var(--ink-2);background:transparent;
+  border:1px solid var(--hair);border-radius:999px;
+  padding:9px 18px;cursor:pointer;transition:.25s;
+}
+.films button:hover{border-color:var(--champagne);color:#fff}
+.films button[aria-selected="true"]{
+  background:var(--champagne);border-color:var(--champagne);color:#1A1712;font-weight:500
+}
+
+/* ---------- 舞台 ---------- */
+.stage{
+  position:relative;width:100%;aspect-ratio:16/9;
+  background:#0d0b08;border:1px solid var(--hair);border-radius:4px;
+  overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55);
+  cursor:pointer;
+}
+#shots{position:absolute;inset:0;z-index:1}   /* 自成堆疊脈絡：鏡頭永遠在壓暗漸層(z:3)之下 */
+#caps{position:absolute;inset:0;z-index:5;pointer-events:none}
+.shot{position:absolute;inset:0;opacity:0;will-change:opacity}
+.shot img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;will-change:transform;transform-origin:center
+}
+/* 讓文字永遠讀得到的漸層壓底 */
+.stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:
+    linear-gradient(to top,rgba(10,8,6,.80) 0%,rgba(10,8,6,.30) 26%,rgba(10,8,6,0) 52%),
+    linear-gradient(to bottom,rgba(10,8,6,.42) 0%,rgba(10,8,6,0) 26%);
+}
+
+/* 片頭/片尾 品牌卡 */
+.card{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(120% 90% at 50% 40%,#241d15 0%,#14110D 62%,#0d0b08 100%);
+}
+.card .cmark{margin-bottom:20px}
+.card h2{font-family:var(--serif);font-weight:600;font-size:clamp(22px,3.4vw,40px);letter-spacing:.14em;margin:0 0 10px}
+.card .en{font-family:var(--disp);font-size:clamp(13px,1.5vw,18px);letter-spacing:.42em;color:var(--champagne);margin:0 0 26px;text-transform:uppercase}
+.card .lines{font-size:clamp(11.5px,1.35vw,14.5px);line-height:2.1;color:var(--ink-2);letter-spacing:.05em}
+.card .lines b{color:var(--champagne);font-weight:500}
+.card .rule{width:52px;height:1px;background:var(--champagne);opacity:.6;margin:18px auto}
+
+/* ---------- 字卡 ---------- */
+.cap{
+  position:absolute;z-index:5;max-width:min(78%,720px);
+  opacity:0;pointer-events:none;
+  text-shadow:0 2px 24px rgba(0,0,0,.75),0 1px 4px rgba(0,0,0,.6);
+}
+.cap.bl{left:clamp(20px,4.2%,54px);bottom:clamp(46px,10%,90px);text-align:left}
+.cap.br{right:clamp(20px,4.2%,54px);bottom:clamp(46px,10%,90px);text-align:right}
+.cap.cc{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:min(86%,820px)}
+.cap .eyebrow{
+  font-family:var(--sans);font-weight:500;
+  font-size:clamp(9.5px,1.05vw,12.5px);letter-spacing:.38em;
+  color:var(--champagne);margin:0 0 12px;text-transform:uppercase
+}
+.cap .t{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(19px,3.1vw,40px);line-height:1.34;letter-spacing:.045em;
+  margin:0;color:#fff
+}
+.cap .s{
+  font-family:var(--sans);font-weight:300;
+  font-size:clamp(11.5px,1.45vw,17px);line-height:1.85;letter-spacing:.06em;
+  margin:12px 0 0;color:var(--ink-2)
+}
+.cap .s b{color:var(--champagne);font-weight:500}
+.cap .hair{width:38px;height:1px;background:var(--champagne);margin:14px 0 0;opacity:.75}
+.cap.br .hair{margin-left:auto}
+.cap.cc .hair{margin-left:auto;margin-right:auto}
+
+/* 常駐浮水印 */
+.wm{
+  position:absolute;z-index:6;left:clamp(18px,3.6%,46px);top:clamp(16px,3.4%,40px);
+  display:flex;align-items:center;gap:9px;opacity:.72
+}
+.wm span{font-family:var(--disp);font-size:clamp(10px,1.15vw,13px);letter-spacing:.3em;color:var(--ink-2);text-transform:uppercase}
+
+/* ---------- 控制列 ---------- */
+.bar{
+  position:absolute;z-index:8;left:0;right:0;bottom:0;
+  display:flex;align-items:center;gap:14px;
+  padding:12px clamp(14px,2.6%,26px) 13px;
+  background:linear-gradient(to top,rgba(8,6,4,.86),rgba(8,6,4,0));
+  opacity:0;transition:opacity .3s
+}
+.stage:hover .bar,.stage.paused .bar,.stage.touch .bar{opacity:1}
+.bar button{
+  background:none;border:0;color:var(--ink);cursor:pointer;
+  padding:4px;display:flex;align-items:center;line-height:0;opacity:.9;transition:.2s
+}
+.bar button:hover{opacity:1;color:var(--champagne)}
+.track{
+  flex:1;height:3px;background:rgba(247,243,236,.22);border-radius:2px;
+  position:relative;cursor:pointer
+}
+.fill{position:absolute;left:0;top:0;bottom:0;background:var(--champagne);border-radius:2px;width:0}
+.time{font-family:var(--disp);font-size:12.5px;letter-spacing:.12em;color:var(--ink-2);min-width:78px;text-align:right}
+
+/* 大播放鍵 */
+.big{
+  position:absolute;z-index:7;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:76px;height:76px;border-radius:50%;
+  border:1px solid rgba(247,243,236,.5);background:rgba(12,9,7,.42);
+  backdrop-filter:blur(3px);
+  display:none;align-items:center;justify-content:center;cursor:pointer;transition:.25s
+}
+.stage.paused .big{display:flex}
+.big:hover{background:var(--champagne);border-color:var(--champagne)}
+.big svg{margin-left:4px}
+.big:hover svg{color:#1A1712}
+
+/* ---------- 影片下方說明 ---------- */
+.note{
+  margin:18px auto 0;max-width:820px;text-align:center;
+  font-size:13px;line-height:2;color:var(--stone);letter-spacing:.04em
+}
+.note b{color:var(--ink-2);font-weight:400}
+.cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 0}
+.cta a{
+  font-size:13.5px;letter-spacing:.06em;text-decoration:none;padding:11px 24px;border-radius:999px;
+  border:1px solid var(--champagne);color:var(--champagne);transition:.25s
+}
+.cta a.solid{background:var(--champagne);color:#1A1712;font-weight:500}
+.cta a:hover{background:var(--champagne);color:#1A1712}
+
+
+/* ---------- 口白字幕 ---------- */
+#sub{
+  position:absolute;z-index:6;left:50%;transform:translateX(-50%);
+  bottom:clamp(44px,8.4%,74px);width:min(88%,860px);text-align:center;
+  opacity:0;transition:opacity .3s;pointer-events:none
+}
+#sub span{
+  display:inline-block;
+  font-family:var(--sans);font-weight:400;
+  font-size:clamp(12px,1.5vw,18px);line-height:1.7;letter-spacing:.05em;
+  color:#fff;background:rgba(10,8,6,.52);
+  padding:6px 16px;border-radius:3px;
+  text-shadow:0 1px 8px rgba(0,0,0,.8)
+}
+#sub.on{opacity:1}
+/* 有字幕時，字卡整體往上讓位 */
+.stage.has-sub .cap.bl,.stage.has-sub .cap.br{bottom:clamp(92px,18%,158px)}
+
+
+@media (max-width:640px){
+  /* 手機改 4:3：素材本來就是 3:2 / 4:3，少裁切且畫面大得多 */
+  .stage{aspect-ratio:4/3}
+
+  .stage.has-sub .cap.bl,.stage.has-sub .cap.br{bottom:86px}
+
+  .wrap{padding:18px 12px 44px}
+  .cap.bl,.cap.br{bottom:58px;max-width:86%}
+  .bar{gap:10px}
+  .time{min-width:66px;font-size:11.5px}
+  .big{width:60px;height:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  .shot img{transition:none!important}
+}
+</style>
+<style>
+.capin{transform:translateY(14px);will-change:transform,opacity}
+.stage.loading::before{
+  content:"載入影片素材…";position:absolute;z-index:9;left:50%;top:50%;
+  transform:translate(-50%,-50%);font-size:12.5px;letter-spacing:.22em;color:#6E6250
+}
+</style>
+</head>
+<body>
+<!-- 品牌標誌（梅花＋八角星，取自現場品牌牆） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <mask id="msStarCut">
+    <rect x="0" y="0" width="100" height="100" fill="#fff"/>
+    <path d="M50.00 33.50 L52.37 44.27 L61.67 38.33 L55.73 47.63 L66.50 50.00 L55.73 52.37 L61.67 61.67 L52.37 55.73 L50.00 66.50 L47.63 55.73 L38.33 61.67 L44.27 52.37 L33.50 50.00 L44.27 47.63 L38.33 38.33 L47.63 44.27 Z" fill="#000"/>
+  </mask>
+  <symbol id="msMark" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="3"/>
+    <g fill="currentColor" mask="url(#msStarCut)">
+      <circle cx="50.00" cy="32.50" r="19.5"/><circle cx="66.64" cy="44.59" r="19.5"/>
+      <circle cx="60.29" cy="64.16" r="19.5"/><circle cx="39.71" cy="64.16" r="19.5"/>
+      <circle cx="33.36" cy="44.59" r="19.5"/>
+    </g>
+  </symbol>
+</defs></svg>
+
+<div class="wrap">
+
+  <header class="pagehead">
+    <svg class="mark" width="46" height="46" style="color:var(--champagne)"><use href="#msMark"/></svg>
+    <h1>辰星商務中心　影片導覽</h1>
+    <p>台北信義區．<b>信義館</b>／<b>世貿館</b>　實景拍攝，非示意圖</p>
+  </header>
+
+  <nav class="films" id="films" role="tablist" aria-label="影片選擇"></nav>
+
+  <div class="stage" id="stage" role="region" aria-label="影片播放區">
+    <div class="wm"><svg width="20" height="20" style="color:var(--champagne)"><use href="#msMark"/></svg><span>Morning Stars</span></div>
+    <div id="shots"></div>
+    <div id="caps"></div>
+    <div id="sub"></div>
+
+    <button class="big" id="big" aria-label="播放">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <div class="bar">
+      <button id="pp" aria-label="播放／暫停"></button>
+
+      <button id="rs" aria-label="重新播放">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      </button>
+      <div class="track" id="track"><div class="fill" id="fill"></div></div>
+      <div class="time" id="time">0:00 / 0:00</div>
+    </div>
+  </div>
+
+  <p class="note" id="note"></p>
+
+  <div class="cta">
+    <a class="solid" href="virtual-office.html">公司登記地址方案</a>
+    <a href="meeting-room.html">會議室預約</a>
+    <a href="tel:+886903368856">預約參觀 0903-368-856</a>
+  </div>
+</div>
+
+
+
+<script>
+(function(){
+"use strict";
+
+/* =========================================================================
+   辰星商務中心 官網影片引擎（2026-09-19 重建：純文字＋動態畫面，無主播、無口白音訊）
+   素材＝兩館實拍照片（images/gallery/*），以鏡頭運動＋字卡組成影片。
+   價格與名額口徑須與 netlify/lib/knowledge.js 一致，改價時兩邊都要改。
+   名額（額滿/候補）會變動，標記 [名額] 的字卡是變動時要檢查的地方。
+   ========================================================================= */
+
+var X = 'images/gallery/xinyi/', W = 'images/gallery/wtc/';
+
+var FILMS = [
+{
+  id:'brand', name:'品牌形象片', len:'約 50 秒',
+  note:'放在官網首頁的主影片。<b>兩館實景＋完整價格</b>，讓客戶看完就知道我們是誰、在哪裡、多少錢。',
+  shots:[
+    {card:{h:'辰星商務中心', en:'Morning Stars', lines:
+      '台北信義區　·　信義館／世貿館<br>自 2021 年創立，邁入第 6 年'}, dur:4.2,
+     vo:'您好，歡迎認識辰星商務中心。'},
+    {img:"images/gallery/xinyi/xinyi-02.jpg", dur:4.0, kb:'in',
+     vo:'我們在台北信義區，有兩個據點。'},
+    {img:"images/gallery/wtc/wtc-03.jpg", dur:4.2, kb:'panR',
+     cap:{eyebrow:'世貿館', t:'基隆路一段 398 號 4 樓', s:'台北 101／世貿站　·　<b>24 小時門禁進出</b>', pos:'bl'},
+     vo:'世貿館，就在台北 101／世貿站旁。'},
+    {img:"images/gallery/xinyi/xinyi-04.jpg", dur:4.2, kb:'panL',
+     cap:{eyebrow:'信義館', t:'基隆路二段 145 號 10 樓', s:'六張犁站　·　現場人員 週一至週五 10:00-17:00', pos:'br'},
+     vo:'信義館，走出六張犁站就到。'},
+    {img:"images/gallery/wtc/wtc-08.jpg", dur:4.4, kb:'in',
+     cap:{eyebrow:'公司登記地址', t:'年費 18,000 ＋ 押金 1,500', s:'首期 <b>19,500 元（含稅）</b>　·　第二年起每年 18,000', pos:'bl'},
+     vo:'公司登記地址，首期 19,500 元。'},
+    {img:"images/gallery/xinyi/xinyi-08.jpg", dur:4.6, kb:'panR',
+     cap:{eyebrow:'獨立座位', t:'每月 4,500 元', s:'年繳 <b>49,500（繳 11 送 1）</b>，已含公司登記地址', pos:'bl'},
+     vo:'獨立座位，一個月 4,500 元。'},
+    {img:"images/gallery/xinyi/xinyi-06.jpg", dur:4.3, kb:'tiltU',
+     cap:{eyebrow:'會議室', t:'每小時 400 元．離峰 300 元', s:'每間 6-8 人　·　<b>週末與國定假日全天離峰</b>（世貿館）', pos:'br'},
+     vo:'會議室每小時 400 元，離峰時段 300 元。'},
+    {img:"images/gallery/wtc/wtc-04.jpg", dur:4.3, kb:'tiltD',
+     cap:{eyebrow:'都已經含在裡面了', t:'咖啡、茶點、信件代收', s:'<b>郵件代收不另外收費</b>', pos:'br'},
+     vo:'咖啡、茶點、信件代收，都已包含。'},
+    {img:"images/gallery/wtc/wtc-09.jpg", dur:4.6, kb:'panR',
+     cap:{eyebrow:'我們的堅持', t:'價格含稅，白紙黑字', s:'不臨時加價，也沒有隱藏費用', pos:'bl'},
+     vo:'價格含稅，白紙黑字，絕不臨時加價。'},
+    {img:"images/gallery/xinyi/xinyi-09.jpg", dur:4.3, kb:'in',
+     cap:{t:'每位客戶進駐前，都當面深入洽談', s:'把關鄰居，也把關你的公司地址', pos:'cc'},
+     vo:'每位客戶進駐前，我們都當面談過。'},
+    {card:{h:'辰星商務中心', en:'Morning Stars', lines:
+      '信義館　台北市信義區基隆路二段 145 號 10 樓　·　六張犁站<br>'+
+      '世貿館　台北市信義區基隆路一段 398 號 4 樓　·　台北 101／世貿站<br>'+
+      '官方 LINE <b>@mstars</b>　·　<b>0903-368-856</b>　·　www.morning-stars.com.tw'}, dur:6.5,
+     vo:'歡迎預約參觀。電話 0903-368-856。'}
+  ]
+},
+{
+  id:'xinyi', name:'信義館 空間導覽', len:'約 40 秒',
+  note:'信義館 8 個空間逐一走過。<b>近六張犁站</b>，大樓門禁時間為上班日 10:00-18:00。',
+  shots:[
+    {img:"images/gallery/xinyi/xinyi-02.jpg", dur:4.2, kb:'in',   cap:{eyebrow:'01 / 08', t:'大門入口・品牌形象牆', pos:'bl'},
+     vo:'這裡是信義館，六張犁站步行就到。'},
+    {img:"images/gallery/xinyi/xinyi-03.jpg", dur:4.2, kb:'in',   cap:{eyebrow:'02 / 08', t:'開放共享區・長桌空間', pos:'bl'},
+     vo:'開放共享區，採光好，也很安靜。'},
+    {img:"images/gallery/xinyi/xinyi-04.jpg", dur:4.2, kb:'panL', cap:{eyebrow:'03 / 08', t:'共享長桌・交流空間', pos:'br'},
+     vo:'長桌可以工作，也方便彼此交流。'},
+    {img:"images/gallery/xinyi/xinyi-05.jpg", dur:4.2, kb:'panR', cap:{eyebrow:'04 / 08', t:'茶水區・冰箱與飲水設備', pos:'bl'},
+     vo:'茶水區有飲水機和冰箱，隨時取用。'},
+    {img:"images/gallery/xinyi/xinyi-06.jpg", dur:4.2, kb:'tiltU',cap:{eyebrow:'05 / 08', t:'六人辦公室・臨窗木桌', pos:'br'},
+     vo:'六人辦公室，臨窗木桌，視野開闊。'},
+    {img:"images/gallery/xinyi/xinyi-07.jpg", dur:4.2, kb:'panR', cap:{eyebrow:'06 / 08', t:'八人會議空間・綠意點綴', pos:'bl'},
+     vo:'會議空間，可以容納 6 到 8 人。'},
+    {img:"images/gallery/xinyi/xinyi-08.jpg", dur:4.4, kb:'panR', cap:{eyebrow:'07 / 08', t:'臨窗雙人桌・城市景觀', pos:'bl'},
+     vo:'臨窗座位，看得到台北的天際線。'},
+    {img:"images/gallery/xinyi/xinyi-09.jpg", dur:4.2, kb:'out',  cap:{eyebrow:'08 / 08', t:'玻璃隔間辦公區', pos:'br'},
+     vo:'玻璃隔間辦公區，獨立又不封閉。'},
+    {card:{h:'信義館', en:'Xinyi Venue', lines:
+      '台北市信義區基隆路二段 145 號 10 樓<br>捷運六張犁站　·　現場人員 週一至週五 10:00-17:00<br>官方 LINE <b>@mstars</b>　·　<b>0903-368-856</b>'}, dur:5.5,
+     vo:'歡迎預約時間，來現場走一趟。'}
+  ]
+},
+{
+  id:'wtc', name:'世貿館 空間導覽', len:'約 40 秒',
+  note:'世貿館 8 個空間逐一走過。<b>台北 101／世貿站旁，24 小時可進出</b>，會議室每日 09:00-21:00。',
+  shots:[
+    {img:"images/gallery/wtc/wtc-02.jpg", dur:4.2, kb:'in',   cap:{eyebrow:'01 / 08', t:'入口招牌・品牌牆', pos:'bl'},
+     vo:'這裡是世貿館，台北 101／世貿站旁。'},
+    {img:"images/gallery/wtc/wtc-03.jpg", dur:4.2, kb:'panR', cap:{eyebrow:'02 / 08', t:'公共區域・開放空間', pos:'bl'},
+     vo:'公共區域開闊，24 小時可以進出。'},
+    {img:"images/gallery/wtc/wtc-04.jpg", dur:4.2, kb:'tiltD',cap:{eyebrow:'03 / 08', t:'吧台・咖啡點心區', pos:'br'},
+     vo:'吧台有咖啡、茶包和點心，自由取用。'},
+    {img:"images/gallery/wtc/wtc-05.jpg", dur:4.2, kb:'in',   cap:{eyebrow:'04 / 08', t:'六人辦公室・簡約空間', pos:'bl'},
+     vo:'六人辦公室，簡約而且好用。'},
+    {img:"images/gallery/wtc/wtc-06.jpg", dur:4.2, kb:'panR', cap:{eyebrow:'05 / 08', t:'會議室・洽談空間', pos:'br'},
+     vo:'會議室適合小型洽談。'},
+    {img:"images/gallery/wtc/wtc-07.jpg", dur:4.2, kb:'panL', cap:{eyebrow:'06 / 08', t:'會議室・簡報設備', pos:'bl'},
+     vo:'也備有簡報設備。'},
+    {img:"images/gallery/wtc/wtc-08.jpg", dur:4.2, kb:'in',   cap:{eyebrow:'07 / 08', t:'獨立辦公室・玻璃隔間', pos:'br'},
+     vo:'獨立辦公室，採玻璃隔間。'},
+    {img:"images/gallery/wtc/wtc-09.jpg", dur:4.4, kb:'panR', cap:{eyebrow:'08 / 08', t:'臨窗座位・城市景觀', pos:'bl'},
+     vo:'臨窗座位，一邊工作一邊看城市。'},
+    {card:{h:'世貿館', en:'WTC Venue', lines:
+      '台北市信義區基隆路一段 398 號 4 樓<br>捷運台北 101／世貿站　·　<b>24 小時門禁進出</b><br>官方 LINE <b>@mstars</b>　·　<b>0903-368-856</b>'}, dur:5.5,
+     vo:'會議室每天 09:00 到 21:00 開放。'}
+  ]
+},
+{
+  id:'virtual', name:'公司登記地址 說明', len:'約 42 秒',
+  note:'把「借址登記」講清楚的說明片，可放在<b>公司登記地址</b>服務頁。目前設址服務由<b>世貿館</b>承接。',
+  shots:[
+    {img:"images/gallery/wtc/wtc-02.jpg", dur:4.6, kb:'in',
+     cap:{eyebrow:'Virtual Office', t:'公司登記地址，怎麼運作？', s:'40 秒說清楚，沒有小字', pos:'cc'},
+     vo:'公司登記地址，40 秒幫您說清楚。'},
+    {img:"images/gallery/wtc/wtc-08.jpg", dur:4.8, kb:'in',
+     cap:{eyebrow:'① 費用', t:'年費 18,000 ＋ 押金 1,500', s:'首期 <b>19,500 元</b>　·　<b>此為含稅價，不再另加 5%</b>', pos:'bl'},
+     vo:'年費 18,000、押金 1,500，首期 19,500。'},
+    {img:"images/gallery/wtc/wtc-03.jpg", dur:4.4, kb:'panR',
+     cap:{eyebrow:'② 憑證', t:'年費開統一發票，押金開收據', s:'年費 18,000 含稅、可報帳', pos:'bl'},
+     vo:'這是含稅價，不會再另外加 5%。'},
+    {img:"images/gallery/wtc/wtc-04.jpg", dur:4.4, kb:'tiltD',
+     cap:{eyebrow:'③ 信件', t:'郵件代收已包含，不另外收費', s:'到件我們拍照通知，可自取、轉寄或代拆掃描', pos:'br'},
+     vo:'郵件代收已經包含，不另外收費。'},
+    {img:"images/gallery/wtc/wtc-06.jpg", dur:4.4, kb:'panR',
+     cap:{eyebrow:'④ 會議室', t:'每月贈 6 小時', s:'當月計、不累積　·　超出每小時 400 元（離峰 300）', pos:'bl'},
+     vo:'每個月還贈送 6 小時會議室。'},
+    {img:"images/gallery/wtc/wtc-05.jpg", dur:4.4, kb:'in',
+     cap:{eyebrow:'⑤ 續約', t:'第二年起每年 18,000', s:'<b>押金只收一次</b>，續約不必再繳', pos:'bl'},
+     vo:'第二年起每年 18,000，押金只收一次。'},
+    {img:"images/gallery/wtc/wtc-07.jpg", dur:4.4, kb:'panL',
+     cap:{eyebrow:'⑥ 先確認再收件', t:'特許行業請先與我們確認', s:'能不能登記，我們會先幫你查清楚才收費', pos:'br'},
+     vo:'特許行業，我們會先幫您確認。'},
+    {img:"images/gallery/wtc/wtc-09.jpg", dur:4.6, kb:'panR',
+     cap:{t:'設址服務由世貿館承接', s:'台北 101／世貿站旁，門牌完整、地址好看', pos:'bl'},
+     vo:'設址服務目前由世貿館承接。'},
+    {card:{h:'歡迎先來看看', en:'Book a Visit', lines:
+      '世貿館　台北市信義區基隆路一段 398 號 4 樓<br>平日 10:00-17:00 現場專員為您說明<br>官方 LINE <b>@mstars</b>　·　<b>0903-368-856</b>　·　www.morning-stars.com.tw'}, dur:6,
+     vo:'歡迎先來看看。電話 0903-368-856。'}
+  ]
+}
+];
+
+/* ---------------- 引擎 ---------------- */
+var KB = {
+  "in":   [{s:1.03,x:0,y:0},   {s:1.19,x:0,y:0}],
+  "out":  [{s:1.19,x:0,y:0},   {s:1.03,x:0,y:0}],
+  "panR": [{s:1.16,x:3.6,y:0}, {s:1.10,x:-3.6,y:0}],
+  "panL": [{s:1.16,x:-3.6,y:0},{s:1.10,x:3.6,y:0}],
+  "tiltU":[{s:1.16,x:0,y:3.6}, {s:1.10,x:0,y:-3.6}],
+  "tiltD":[{s:1.16,x:0,y:-3.6},{s:1.10,x:0,y:3.6}]
+};
+var FADE = 0.85, CAP_IN = 0.45, CAP_FADE = 0.55;
+var RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+var stage=document.getElementById('stage'), shotsEl=document.getElementById('shots'),
+    capsEl=document.getElementById('caps'), filmsEl=document.getElementById('films'),
+    noteEl=document.getElementById('note'), fill=document.getElementById('fill'),
+    timeEl=document.getElementById('time'), track=document.getElementById('track'),
+    pp=document.getElementById('pp'), rs=document.getElementById('rs'), big=document.getElementById('big'),
+    subEl=document.getElementById('sub');
+
+var cur=null, shots=[], caps=[], total=0, t=0, playing=false, last=0, raf=0, subIdx=-2;
+
+var ICON_PLAY='<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+var ICON_PAUSE='<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+
+function esc(s){ return s==null ? '' : String(s); }
+function mmss(x){ x=Math.max(0,x); var m=Math.floor(x/60), s=Math.floor(x%60); return m+':'+(s<10?'0':'')+s; }
+
+function buildFilm(f){
+  shotsEl.innerHTML=''; capsEl.innerHTML=''; shots=[]; caps=[]; total=0; subIdx=-2;
+  var hasSub=false;
+  f.shots.forEach(function(sh,i){
+    var st=total; total+=sh.dur;
+    var el=document.createElement('div');
+    el.className='shot'; el.style.zIndex=i;
+    if(sh.card){
+      el.innerHTML='<div class="card">'+
+        '<svg class="cmark" width="54" height="54" style="color:var(--champagne)"><use href="#msMark"/></svg>'+
+        '<h2>'+esc(sh.card.h)+'</h2><div class="en">'+esc(sh.card.en)+'</div>'+
+        '<div class="rule"></div><div class="lines">'+sh.card.lines+'</div></div>';
+    } else {
+      /* 用 createElement 而非字串拼接：避免產生假的 src="..." 字面值被靜態檢查誤判 */
+      var im=document.createElement('img');
+      im.alt=''; im.loading=(i<2 ? 'eager' : 'lazy'); im.src=sh.img;
+      el.appendChild(im);
+    }
+    shotsEl.appendChild(el);
+    shots.push({el:el, img:el.querySelector('img'), st:st, en:st+sh.dur, kb:KB[sh.kb]||KB["in"], vo:sh.vo||''});
+    if(sh.vo) hasSub=true;
+
+    if(sh.cap){
+      var c=document.createElement('div');
+      c.className='cap '+(sh.cap.pos||'bl');
+      c.innerHTML='<div class="capin">'+
+        (sh.cap.eyebrow ? '<p class="eyebrow">'+esc(sh.cap.eyebrow)+'</p>' : '')+
+        (sh.cap.t ? '<p class="t">'+sh.cap.t+'</p>' : '')+
+        (sh.cap.s ? '<p class="s">'+sh.cap.s+'</p>' : '<div class="hair"></div>')+
+        '</div>';
+      capsEl.appendChild(c);
+      caps.push({el:c, box:c.querySelector('.capin'), st:st+CAP_IN, en:st+sh.dur-0.3});
+    }
+  });
+  total+=FADE;
+  stage.classList.toggle('has-sub', hasSub);
+}
+
+function frame(){
+  var i,s,o,p,k,a,b,tr;
+  for(i=0;i<shots.length;i++){
+    s=shots[i];
+    if(t < s.st-0.01 || t > s.en+FADE){
+      if(s.el.style.opacity!=='0') s.el.style.opacity='0';
+      continue;
+    }
+    if(i===0)              o=(t < s.en) ? 1 : 1-(t-s.en)/FADE;   /* 首格不淡入，暫停時才有畫面可看 */
+    else if(t < s.st+FADE) o=(t-s.st)/FADE;
+    else if(t < s.en)      o=1;
+    else                   o=1-(t-s.en)/FADE;
+    s.el.style.opacity=Math.max(0,Math.min(1,o)).toFixed(3);
+    if(s.img){
+      p=Math.max(0,Math.min(1,(t-s.st)/(s.en-s.st)));
+      k=s.kb; a=k[0]; b=k[1];
+      if(RM){
+        tr='scale(1.04)';
+      } else {
+        tr='translate('+(a.x+(b.x-a.x)*p).toFixed(3)+'%,'+(a.y+(b.y-a.y)*p).toFixed(3)+'%) '+
+           'scale('+(a.s+(b.s-a.s)*p).toFixed(4)+')';
+      }
+      s.img.style.transform=tr;
+    }
+  }
+  for(i=0;i<caps.length;i++){
+    var c=caps[i], co;
+    if(t < c.st || t > c.en+CAP_FADE)  co=0;
+    else if(t < c.st+CAP_FADE)         co=(t-c.st)/CAP_FADE;
+    else if(t < c.en)                  co=1;
+    else                               co=1-(t-c.en)/CAP_FADE;
+    co=Math.max(0,Math.min(1,co));
+    c.el.style.opacity=co.toFixed(3);
+    c.box.style.transform='translateY('+((1-co)*14).toFixed(2)+'px)';
+  }
+
+  /* 旁白字幕（純文字）：跟著當前鏡頭切換 */
+  var act=-1;
+  for(i=0;i<shots.length;i++){ if(t>=shots[i].st && t<shots[i].en){ act=i; break; } }
+  if(act!==subIdx){
+    subIdx=act;
+    var txt=(act>=0) ? shots[act].vo : '';
+    if(txt){ subEl.innerHTML='<span></span>'; subEl.firstChild.textContent=txt; subEl.classList.add('on'); }
+    else   { subEl.classList.remove('on'); }
+  }
+
+  fill.style.width=(total ? (t/total*100) : 0).toFixed(2)+'%';
+  timeEl.textContent=mmss(t)+' / '+mmss(total);
+}
+
+function tick(now){
+  if(!playing) return;
+  if(!last) last=now;
+  var dt=(now-last)/1000; last=now;
+  if(dt>0.25) dt=1/60;          /* 分頁切走再回來不要一次跳掉好幾秒 */
+  t += dt;
+  if(t>=total){ t=total; frame(); pause(true); return; }
+  frame();
+  raf=requestAnimationFrame(tick);
+}
+function play(){
+  if(t>=total) t=0;
+  playing=true; last=0;
+  stage.classList.remove('paused');
+  pp.innerHTML=ICON_PAUSE; big.setAttribute('aria-label','暫停');
+  cancelAnimationFrame(raf);
+  raf=requestAnimationFrame(tick);
+}
+function pause(ended){
+  playing=false; cancelAnimationFrame(raf);
+  stage.classList.add('paused'); pp.innerHTML=ICON_PLAY;
+  big.setAttribute('aria-label', ended ? '重新播放' : '播放');
+}
+function toggle(){ if(playing) pause(); else play(); }
+function seek(x){
+  t=Math.max(0,Math.min(total,x)); last=0;
+  frame();
+}
+
+function load(idx, autoplay){
+  cur=FILMS[idx];
+  [].forEach.call(filmsEl.children, function(b,i){
+    b.setAttribute('aria-selected', i===idx ? 'true' : 'false');
+  });
+  noteEl.innerHTML='<b>'+cur.name+'</b>　'+cur.len+'　—　'+cur.note;
+  pause(); buildFilm(cur); t=0; frame();
+  stage.classList.add('loading');
+
+  var imgs=cur.shots.filter(function(s){ return s.img; }).map(function(s){ return s.img; });
+  var left=imgs.length, done=false;
+  function go(){
+    if(done) return;
+    done=true; stage.classList.remove('loading');
+    if(autoplay!==false) play();
+  }
+  if(!left){ go(); return; }
+  imgs.forEach(function(src){
+    var im=new Image();
+    im.onload=im.onerror=function(){ if(--left<=0) go(); };
+    im.src=src;
+  });
+  setTimeout(go, 6000);   /* 保險：素材慢也不會卡住 */
+}
+
+FILMS.forEach(function(f,i){
+  var b=document.createElement('button');
+  b.type='button'; b.setAttribute('role','tab'); b.textContent=f.name;
+  b.onclick=function(){ load(i,true); };
+  filmsEl.appendChild(b);
+});
+
+pp.onclick=function(e){ e.stopPropagation(); toggle(); };
+big.onclick=function(e){ e.stopPropagation(); toggle(); };
+rs.onclick=function(e){ e.stopPropagation(); seek(0); play(); };
+stage.onclick=function(){ toggle(); };
+track.onclick=function(e){
+  e.stopPropagation();
+  var r=track.getBoundingClientRect();
+  seek((e.clientX-r.left)/r.width*total);
+};
+document.addEventListener('keydown', function(e){
+  if(e.code==='Space'){ e.preventDefault(); toggle(); }
+  else if(e.code==='ArrowRight') seek(t+5);
+  else if(e.code==='ArrowLeft')  seek(t-5);
+});
+if(matchMedia('(hover:none)').matches) stage.classList.add('touch');
+
+var wasPlaying=false;
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(es){
+    var vis=es[0].isIntersecting;
+    if(!vis && playing){ wasPlaying=true; pause(); }
+    else if(vis && wasPlaying && t<total){ wasPlaying=false; play(); }
+  }, {threshold:0.25}).observe(stage);
+}
+
+var hidPlaying=false;
+document.addEventListener('visibilitychange', function(){
+  if(document.hidden){ if(playing){ hidPlaying=true; pause(); } }
+  else if(hidPlaying && t<total){ hidPlaying=false; play(); }
+});
+
+load(0, true);
+})();
+</script>
+</body>
+</html>

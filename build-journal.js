@@ -72,11 +72,11 @@ const absoluteImageUrl = value => {
 
 const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">`;
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap"></noscript>`;
 
 const header = prefix => `<header class="top">
   <div class="wrap">
-    <a class="brand" href="${prefix}index.html" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none"><img src="${prefix}images/img-23a7d345e5.png" alt="辰星商務中心 Logo" style="height:36px;width:36px;object-fit:contain"><span><b>辰星商務中心</b><small>Morning Stars</small></span></a>
+    <a class="brand" href="${prefix}index.html" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none"><img src="${prefix}images/logo-192.png" alt="辰星商務中心 Logo" style="height:36px;width:36px;object-fit:contain"><span><b>辰星商務中心</b><small>Morning Stars</small></span></a>
     <nav class="topnav" aria-label="主要導覽">
       <a class="lnk" href="${prefix}office-guide.html">方案指南</a>
       <a class="lnk" href="${prefix}virtual-office.html">借址登記</a>
@@ -351,10 +351,7 @@ function sitemap(posts) {
     ['/en/meeting-room.html', '.8', 'monthly'],
     ['/journal.html', '.7', 'weekly'],
     ['/crm.html', '.6', 'monthly'],
-    /* ['/video.html', '.7', 'monthly'],  ← 2026-08-25 移除：影片導覽頁做好了但老闆決定不上線，
-       檔案從未上傳 → sitemap 指到不存在的網址，Google Search Console 連發兩封
-       「找不到網頁 (404)」通知（一封整站、一封 Sitemap 專屬）。
-       日後若決定要上線，先把 video.html 傳上去，再把這一行取消註解。*/
+    ['/video.html', '.7', 'monthly'],   // 影片導覽（2026-09-19 重啟：8/25 曾因檔案未上傳致 GSC 404 而註解，這次 video.html 要與本檔同批上傳）
     [`/${encodeURIComponent('辰星場館相簿-信義館.html')}`, '.7', 'monthly'],
     [`/${encodeURIComponent('辰星場館相簿-世貿館.html')}`, '.7', 'monthly'],
     ['/privacy-policy.html', '.3', 'yearly'],
