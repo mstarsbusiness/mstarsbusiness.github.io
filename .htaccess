@@ -1,6 +1,15 @@
 # 辰星官網 — 自訂錯誤頁
 ErrorDocument 404 /404.html
 
+# 舊網址導回（2026-09-25 Search Console「找不到網頁 (404)」）：
+# 早期貼文內文用相對路徑連服務頁（例：office-guide.html），在 /posts/ 底下會變成
+# /posts/office-guide.html 這種根本不存在的網址；9/13 已把內文連結全部改成完整網址，
+# 但 Google 已記住舊網址 → 301 導回正確頁面，保住連結價值並讓報表結案。
+# 貼文檔名一律是 UUID，不會和下列服務頁同名，導向不會誤傷真的貼文。
+<IfModule mod_alias.c>
+RedirectMatch 301 ^/posts/(office-guide|virtual-office|private-office|meeting-room|meeting-room-price|registration-check|company-setup|mail-handling|wtc|xinyi|journal|index)\.html$ https://www.morning-stars.com.tw/$1.html
+</IfModule>
+
 # 純文字檔（llms.txt / robots.txt / humans.txt）宣告 UTF-8，
 # 避免瀏覽器與 AI 爬蟲讀到中文亂碼。（2026-07-16 每日健檢發現 llms.txt 未帶 charset）
 AddType "text/plain; charset=UTF-8" .txt
