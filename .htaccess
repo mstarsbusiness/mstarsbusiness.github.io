@@ -8,6 +8,13 @@ ErrorDocument 404 /404.html
 # 貼文檔名一律是 UUID，不會和下列服務頁同名，導向不會誤傷真的貼文。
 <IfModule mod_alias.c>
 RedirectMatch 301 ^/posts/(office-guide|virtual-office|private-office|meeting-room|meeting-room-price|registration-check|company-setup|mail-handling|wtc|xinyi|journal|index)\.html$ https://www.morning-stars.com.tw/$1.html
+
+# 已移除的舊貼文（2026-09-25 老闆指示清掉）：檔案已從 repo 刪除，網址 301 導到同題目的現存貼文，
+# 不留 404、保住既有排名。① 9/10 重複發的「借址登記的信件包裹怎麼收？」→ 9/2 原文
+# ②「世貿站附近會議室一小時多少錢？」舊版 → 8/14 版 ③「台北市設址登記是什麼？和借址一樣嗎？」→ 8/18「商務中心借址登記是什麼？」
+Redirect 301 /posts/332a0b44-f332-4ce4-b418-68b597e94177.html https://www.morning-stars.com.tw/posts/3b328087-1d64-474d-80cc-51a9ec7aaa6e.html
+Redirect 301 /posts/cca1bd3e-ba35-436d-93e7-7915f5ab3166.html https://www.morning-stars.com.tw/posts/968ea4f9-a04a-47c0-875d-25b8febad707.html
+Redirect 301 /posts/a11340fb-3aa2-4d1a-8a0d-06b3b057fe33.html https://www.morning-stars.com.tw/posts/ea985636-f9a8-476e-992d-444be757baef.html
 </IfModule>
 
 # 純文字檔（llms.txt / robots.txt / humans.txt）宣告 UTF-8，
