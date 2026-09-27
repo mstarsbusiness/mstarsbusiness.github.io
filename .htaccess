@@ -1,6 +1,25 @@
 # 辰星官網 — 自訂錯誤頁
 ErrorDocument 404 /404.html
 
+# 網址統一（2026-09-27 依〈SEO＋GEO 網站工程師執行說明書〉P0）：正式網址只有一個
+#   https://www.morning-stars.com.tw/ —— 不帶 www 與 /index.html 一律 301 導過來，
+#   避免 Google/Bing/AI 把同一頁當成多個網址、Backlink 權重分散。
+# ⚠️ 三個不要動的理由：
+#   ① index.html→/ 一定要用 THE_REQUEST 判斷「外部請求」——首頁本來就由 index.html
+#      內部服務（DirectoryIndex），直接 RewriteRule 會無限轉址、全站掛掉。
+#   ② http→https 主機層已經在做（實測 http 一律 301 到 https），這裡刻意不再寫一條，
+#      虛擬主機上 %{HTTPS} 變數若讀不到會變成轉址迴圈。
+#   ③ 包在 IfModule 裡＝主機沒開 mod_rewrite 也不會讓全站 500。
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# /index.html → /（只攔外部請求；放在前面＝non-www 的 /index.html 一跳就到位，不串兩層轉址）
+RewriteCond %{THE_REQUEST} \s/+index\.html[?\s] [NC]
+RewriteRule ^index\.html$ https://www.morning-stars.com.tw/ [R=301,L]
+# 不帶 www → www
+RewriteCond %{HTTP_HOST} ^morning-stars\.com\.tw$ [NC]
+RewriteRule ^(.*)$ https://www.morning-stars.com.tw/$1 [R=301,L]
+</IfModule>
+
 # 舊網址導回（2026-09-25 Search Console「找不到網頁 (404)」）：
 # 早期貼文內文用相對路徑連服務頁（例：office-guide.html），在 /posts/ 底下會變成
 # /posts/office-guide.html 這種根本不存在的網址；9/13 已把內文連結全部改成完整網址，
