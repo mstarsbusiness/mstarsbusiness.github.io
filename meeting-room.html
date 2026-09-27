@@ -506,6 +506,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         fetch(EP,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(r){return r.json();}).then(function(j){
           btn.disabled=false; btn.textContent='送出預約申請';
           if(j.ok){
+            if(window.msTrack)msTrack('booking_submit',{venue:data.venue,matched:j.matched?'yes':'no'});/*GA4 2026-09-27*/
             var head = j.matched ? '✅ 預約已成立' : '✅ 已收到預約申請';
             var cost = (j.cost>0) ? ('｜NT$'+j.cost) : (j.matched ? '｜使用贈送時數・免費' : '｜NT$0');
             alert(head+'\n\n'+j.message+'\n\n'+data.venue+' '+data.date+' '+data.start+'–'+data.end+cost);
@@ -654,5 +655,6 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
 </div>
 <script src="i18n.js?v=20260925"></script>
 <script defer src="chat-widget.js"></script>
+<script src="assets/ms-track.js?v=20260927" defer></script>
 </body>
 </html>

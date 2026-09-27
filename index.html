@@ -1888,6 +1888,7 @@ footer{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
     const texts=f.querySelectorAll("input[type=text],input[type=tel],input[type=email]");
     const items=[...f.querySelectorAll(".opts input:checked")].map(c=>c.parentElement.textContent.trim()).join("、");
     const data={venue:venue,name:texts[0].value,tel:texts[1].value,email:texts[2].value,items:items,msg:f.querySelector("textarea").value,gender:title};
+    if(window.msTrack)msTrack("form_submit",{venue:venue});/*GA4 2026-09-27*/
     if(GAS_URL){
       try{
         await fetch(GAS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(data)});
@@ -1919,5 +1920,6 @@ footer{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
 <script id="hero-rotate">(function(){var bg=document.getElementById("heroBg");if(!bg)return;var s=[].slice.call(bg.querySelectorAll(".hslide"));if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove("on");i=(i+1)%s.length;s[i].classList.add("on");},5000);})();</script>
 <script id="anchor-compat">(function(){var map={about:"about",location:"venues",venues:"venues",services:"services",pricing:"pricing",fees:"pricing",faq:"faq",book:"booking",booking:"booking",contact:"contact"};function jump(){var h=(location.hash||"").replace("#","").toLowerCase();if(map[h]){var el=document.getElementById(map[h]);if(el){setTimeout(function(){el.scrollIntoView({behavior:"smooth"});},120);}}}window.addEventListener("hashchange",jump);if(document.readyState!=="loading"){jump();}else{document.addEventListener("DOMContentLoaded",jump);}})();</script>
 <script defer src="chat-widget.js"></script>
+<script src="assets/ms-track.js?v=20260927" defer></script>
 </body>
 </html>
