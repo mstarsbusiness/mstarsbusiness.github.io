@@ -581,6 +581,15 @@ Object.assign(T, { // 2026-09-02 事實頁入口（mail-handling / meeting-room-
 "會議室費用說明":["Meeting room pricing","会議室料金のご案内"],
 "公司設立一站式說明":["Company setup one-stop guide","会社設立ワンストップのご案内"],
 });
+Object.assign(T, { // 2026-09-29 世貿館會議室 LINE Pay 付款區（meeting-room.html·外來客戶付款方式）
+"💳 外來客戶付款方式（世貿館會議室）":["💳 Payment for External Guests (WTC Meeting Room)","💳 外部のお客様のお支払い方法（世貿館会議室）"],
+"外來（非進駐）客戶預約世貿館會議室，送出申請後可用以下任一方式付款：":["External (non-tenant) guests booking the World Trade Center Branch meeting room can pay by either method below after submitting a request:","外部（非入居）のお客様が世貿館会議室をご予約の場合、お申し込み送信後、以下のいずれかの方法でお支払いいただけます："],
+"① LINE Pay：掃描左方 QR Code，手機用戶可直接點 QR 圖開啟 LINE Pay 付款頁（收款商店：辰星管理顧問有限公司）。":["① LINE Pay: scan the QR code on the left, or tap the QR image on your phone to open the LINE Pay payment page (merchant: Morning Stars Ltd.).","① LINE Pay：左のQRコードをスキャン、またはスマートフォンでQR画像をタップしてLINE Pay決済ページを開けます（加盟店：辰星管理顧問有限公司）。"],
+"② 銀行匯款：國泰世華銀行(013) 1150-3500-6232（戶名：辰星管理顧問有限公司）。":["② Bank transfer: Cathay United Bank (013), account 1150-3500-6232 (account name: Morning Stars Ltd.).","② 銀行振込：国泰世華銀行(013) 1150-3500-6232（名義：辰星管理顧問有限公司）。"],
+"付款完成後，請加 LINE @mstars 傳送付款截圖與預約編號（MR 開頭），我們核對入帳後即為您確認預約。":["After payment, please add LINE @mstars and send us the payment screenshot together with your booking code (starting with MR); we will confirm your booking once the payment is verified.","お支払い後、LINE @mstars を追加のうえ、お支払いのスクリーンショットとご予約番号（MRで始まる）をお送りください。入金確認後、ご予約を確定いたします。"],
+"信義館會議室的付款方式，將由專員與您聯繫時說明。":["For Xinyi Branch meeting rooms, our staff will contact you with payment details.","信義館会議室のお支払い方法は、担当者よりご連絡の際にご案内いたします。"],
+"LINE Pay 付款 QR Code（辰星管理顧問有限公司）":["LINE Pay payment QR code (Morning Stars Ltd.)","LINE Pay 決済QRコード（辰星管理顧問有限公司）"],
+});
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
