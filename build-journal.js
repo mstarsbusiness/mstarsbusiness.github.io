@@ -199,8 +199,8 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20260929"></script>
-<script src="../assets/ms-track.js?v=20260929" defer></script>
+<script src="../i18n.js?v=20261004"></script>
+<script src="../assets/ms-track.js?v=20261004" defer></script>
 </body>
 </html>`;
 }
@@ -324,8 +324,8 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20260929"></script>
-<script src="assets/ms-track.js?v=20260929" defer></script>
+<script src="i18n.js?v=20261004"></script>
+<script src="assets/ms-track.js?v=20261004" defer></script>
 </body>
 </html>`;
 }
