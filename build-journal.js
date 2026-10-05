@@ -199,8 +199,8 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20261005"></script>
-<script src="../assets/ms-track.js?v=20261005" defer></script>
+<script src="../i18n.js?v=20261006"></script>
+<script src="../assets/ms-track.js?v=20261006" defer></script>
 </body>
 </html>`;
 }
@@ -284,7 +284,7 @@ ${header('')}
       <div>
         <span>Choose smarter</span>
         <h2>不知道該選借址、辦公室還是會議室？</h2>
-        <p>我們把常見需求整理成一頁比較表，適合讓 Google 與 AI 搜尋直接抓到答案，也適合訪客快速判斷。</p>
+        <p>我們把常見需求整理成一頁比較表，方便您快速判斷適合哪一種方案。</p>
       </div>
       <a class="btn solid" href="office-guide.html">看方案指南</a>
     </div>
@@ -324,8 +324,8 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20261005"></script>
-<script src="assets/ms-track.js?v=20261005" defer></script>
+<script src="i18n.js?v=20261006"></script>
+<script src="assets/ms-track.js?v=20261006" defer></script>
 </body>
 </html>`;
 }
