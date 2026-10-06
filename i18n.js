@@ -308,7 +308,7 @@
   "基本服務全包":["All Basic Services Included","基本サービス込み"],
   "：水電管理、每日清潔、郵件代收與 LINE 通知。":[": Utilities and management, daily cleaning, mail handling and LINE notifications.","：水道光熱・管理、毎日清掃、郵便受付とLINE通知。"],
   "會議室支援":["Meeting Room Access","会議室の利用"],
-  "：可預約會議室，信義館客戶並可跨館使用世貿館會議室。":[": Book meeting rooms; Xinyi members can also use the WTC meeting rooms across venues.","：会議室を予約可能。信義館のお客様は世貿館の会議室も拠点を越えてご利用いただけます。"],
+  "：兩館皆設有會議室，客戶可跨館預約使用。":[": Both branches have meeting rooms, and members can book either one.","：両館とも会議室があり、拠点を越えてご予約いただけます。"],
   "：配合專業記帳士，協助公司登記與記帳。":[": Working with professional bookkeepers to assist with company registration and accounting.","：専門の記帳士と連携し、会社登記や記帳をサポート。"],
   "1–8 人專屬空間，含共享空間與免費設備，水電與基本服務全包。":["A dedicated space for 1–8 people, including shared spaces and complimentary facilities, with utilities and basic services all included.","1〜8名の専用空間。共用スペースと無料設備を含み、水道光熱と基本サービス込み。"],
   "臨時辦公、短期專案或一人創業的彈性選擇，以座位計費。":["A flexible choice for ad-hoc work, short-term projects or solo founders — priced per seat.","スポット利用、短期プロジェクト、一人起業に柔軟な選択。席単位の料金です。"],
