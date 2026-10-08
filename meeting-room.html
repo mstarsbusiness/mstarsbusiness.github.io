@@ -297,7 +297,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
           <div id="mb_member" style="display:none;font-size:.88rem;line-height:1.55;border:1px solid #bfe3cd;background:#eaf7ee;color:#1a7f37;border-radius:8px;padding:9px 11px;margin-bottom:10px"></div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <label style="font-size:.85rem;color:#6b5a36">姓名 *<br><input id="mb_name" oninput="mbQuoteSoon()" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
-            <label style="font-size:.85rem;color:#6b5a36">電話 *<br><input id="mb_phone" inputmode="tel" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
+            <label style="font-size:.85rem;color:#6b5a36">電話 *<br><input id="mb_phone" type="tel" inputmode="tel" required maxlength="20" placeholder="09XX-XXX-XXX" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
             <label style="font-size:.85rem;color:#6b5a36">公司名稱<br><input id="mb_company" placeholder="既有客戶請務必填寫" oninput="mbQuoteSoon()" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
             <label style="font-size:.85rem;color:#6b5a36">Email（選填）<br><input id="mb_email" inputmode="email" style="padding:9px 10px;border:1px solid #d8cdb6;border-radius:8px;font-size:.95rem;font-family:inherit"></label>
           </div>
@@ -517,6 +517,8 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
         if(selStart==null||selDur==null) return;
         var data={venue:$('mb_venue').value,date:selDate,start:fmt(selStart),end:fmt(selStart+selDur*60),name:$('mb_name').value.trim(),phone:$('mb_phone').value.trim(),company:$('mb_company').value.trim(),email:$('mb_email').value.trim()};
         if(!data.name||!data.phone){$('mb_msg').innerHTML='<span style="color:#c0392b">請填寫姓名與電話。</span>';return;}
+        /* 2026-10-08 防呆：電話須為 8–15 碼數字（與首頁表單、meeting-book.js 同規則） */
+        if(!(function(v){var d=String(v||'').replace(/\D/g,'');return d.length>=8&&d.length<=15&&!/^(\d)\1+$/.test(d);})(data.phone)){$('mb_msg').innerHTML='<span style="color:#c0392b">請填寫正確的聯絡電話（至少 8 碼數字）。Please enter a valid phone number.</span>';$('mb_phone').focus();return;}
         var btn=$('mb_submit'); btn.disabled=true; btn.textContent='送出中…';
         fetch(EP,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(r){return r.json();}).then(function(j){
           btn.disabled=false; btn.textContent='送出預約申請';

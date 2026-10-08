@@ -1310,7 +1310,7 @@ footer{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
     <div class="reveal">
       <form id="cform">
         <div class="field"><label>請選擇據點</label><select required aria-label="請選擇據點"><option value="">請選擇…</option><option value="信義館">信義館</option><option value="世貿館">世貿館</option></select></div>
-        <div class="frow"><div class="field"><label>怎麼稱呼您</label><div class="opts" style="margin:4px 0 12px"><label><input type="radio" name="title" value="先生">先生</label><label><input type="radio" name="title" value="女士">女士</label></div><input type="text" placeholder="您的姓名" required></div><div class="field"><label>聯絡電話</label><input type="tel" placeholder="09XX-XXX-XXX" required></div></div>
+        <div class="frow"><div class="field"><label>怎麼稱呼您</label><div class="opts" style="margin:4px 0 12px"><label><input type="radio" name="title" value="先生">先生</label><label><input type="radio" name="title" value="女士">女士</label></div><input type="text" placeholder="您的姓名" required></div><div class="field"><label>聯絡電話</label><input type="tel" placeholder="09XX-XXX-XXX" required inputmode="tel" minlength="8" maxlength="20" oninput="this.setCustomValidity('')"></div></div>
         <div class="field"><label>E-mail</label><input type="email" placeholder="example@mail.com"></div>
         <div class="field"><label>諮詢項目</label><div class="opts"><label><input type="checkbox">辦公室</label><label><input type="checkbox">共享座位</label><label><input type="checkbox">借址登記</label><label><input type="checkbox">其他</label></div></div>
         <div class="field"><label>問題諮詢或意見反應</label><textarea placeholder="請輸入您的需求…"></textarea></div>
@@ -1690,6 +1690,10 @@ footer{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
     var title=(f.querySelector('input[name=title]:checked')||{}).value||"";
     const texts=f.querySelectorAll("input[type=text],input[type=tel],input[type=email]");
     const items=[...f.querySelectorAll(".opts input:checked")].map(c=>c.parentElement.textContent.trim()).join("、");
+    /* 2026-10-08 防呆：電話必填且須為 8–15 碼數字（type=tel 本身不驗格式，空白或亂打也會過）；meeting-room.html 與 meeting-book.js 同規則 */
+    const telOk=function(v){var d=String(v||'').replace(/\D/g,'');return d.length>=8&&d.length<=15&&!/^(\d)\1+$/.test(d);};
+    texts[1].setCustomValidity('');
+    if(!telOk(texts[1].value)){texts[1].setCustomValidity('請填寫正確的聯絡電話（至少 8 碼數字）Please enter a valid phone number.');texts[1].reportValidity();texts[1].focus();return;}
     const data={venue:venue,name:texts[0].value,tel:texts[1].value,email:texts[2].value,items:items,msg:f.querySelector("textarea").value,gender:title};
     if(window.msTrack)msTrack("form_submit",{venue:venue});/*GA4 2026-09-27*/
     if(GAS_URL){
