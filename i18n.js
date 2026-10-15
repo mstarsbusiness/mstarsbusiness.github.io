@@ -319,7 +319,6 @@
   "獨立辦公室月租多少？":["How much is the monthly rent for a private office?","個室オフィスの月額はいくらですか？"],
   "月租 NT$10,000 元起，實際金額視空間大小而定，已包含水電管理、辦公桌椅與基本服務。":["From NT$10,000/month; the actual amount depends on size and includes utilities and management, desks and chairs, and basic services.","月額NT$10,000〜。実際の金額は広さにより異なり、水道光熱・管理、デスク・椅子、基本サービスを含みます。"],
   "租金包含哪些？會有額外費用嗎？":["What does the rent include? Are there extra charges?","賃料には何が含まれますか？追加費用はありますか？"],
-  "租金已包含水電管理、辦公桌椅、空間設施及基本服務（收發、茶水、清潔、網路、冷氣等），若有公司借址登記需求也已包含，無需額外費用。":["Rent includes utilities and management, desks and chairs, facilities and basic services (mail, pantry, cleaning, internet, A/C, etc.). A business address, if needed, is also included — no extra charges.","賃料には水道光熱・管理、デスク・椅子、設備、基本サービス（郵便・給湯・清掃・ネット・空調等）が含まれます。会社の住所登記が必要な場合も含まれ、追加費用はかかりません。"],
   "需要簽長期合約嗎？":["Do I need to sign a long-term contract?","長期契約は必要ですか？"],
   "不需要。辰星提供彈性方案，可隨團隊規模升降級，從月繳到季繳、年繳皆可配合，不被長約綁死。":["No. Morning Stars offers flexible plans you can scale up or down with your team — monthly, quarterly or yearly — without being locked into a long contract.","いいえ。辰星はチーム規模に応じて変更できる柔軟なプランをご用意。月払い・四半期・年払いに対応し、長期契約に縛られません。"],
   "借址登記・虛擬辦公室 →":["Virtual Office →","バーチャルオフィス →"],
@@ -637,6 +636,19 @@ Object.assign(T, { // 2026-10-13 會議室頁改版（比較表／週末／設�
   "公司設立一站式｜設立登記全代辦 8,500 元起 →":["Company setup one-stop | Incorporation from NT$8,500 →", "会社設立ワンストップ｜設立登記代行 NT$8,500〜 →"],
   "借址登記｜年繳 NT$18,000 起（目前額滿・可候補）→":["Registered address | from NT$18,000/year (currently full, waiting list) →", "登記住所｜年額NT$18,000〜（現在満員・キャンセル待ち受付）→"],
   "獨立辦公室｜月租 NT$10,000 起（目前滿租・可候補）→":["Private office | from NT$10,000/month (currently full, waiting list) →", "個室オフィス｜月額NT$10,000〜（現在満室・キャンセル待ち受付）→"],
+});
+Object.assign(T, { // 2026-10-16 費用透明區塊（private-office 另外付費＋世貿館修繕團隊／virtual-office 其他費用 FAQ）
+"租金已包含水電管理、辦公桌椅、空間設施及基本服務（收發、茶水、清潔、網路、冷氣等），若有公司借址登記需求也已包含。另外付費的只有超過免費額度的影印與信件轉寄郵資，沒有行政費、文件費或管理費。":["Rent includes utilities and management, desks and chairs, facilities and basic services (mail, pantry, cleaning, internet, A/C, etc.). A business address, if needed, is also included. The only extra charges are printing beyond the free quota and postage for mail forwarding; there are no administrative, document or management fees.", "賃料には水道光熱・管理、デスク・椅子、設備、基本サービス（郵便・給湯・清掃・ネット・空調等）が含まれます。会社の住所登記が必要な場合も含まれます。別途費用は無料枠を超えたコピー代と郵便転送の郵送料のみで、事務手数料・書類費・管理費はかかりません。"],
+"租金以外，什麼時候會另外付費？":["Beyond the rent, when do you pay extra?", "賃料以外に費用がかかるのはどんな時？"],
+"租金已包含水電、網路、冷氣、每日清潔、郵件代收與事務機使用，下班後使用冷氣也不另外加價。需要另外付費的只有以下幾種情況：":["Rent already covers utilities, internet, air conditioning, daily cleaning, mail handling and use of the multifunction printer, and there is no surcharge for using the A/C after hours. You only pay extra in the following cases:", "賃料には水道光熱、ネット、空調、毎日の清掃、郵便物受取、複合機の利用が含まれ、営業時間外の空調利用にも追加料金はかかりません。別途費用が発生するのは次の場合のみです："],
+"影印超過免費額度：辦公室每月黑白 150 張、座位每月 50 張免費（影印與列印合計），超出的黑白每張 2 元，彩色每張 6 元（未稅）。":["Printing beyond the free quota: private offices get 150 black-and-white pages and seats get 50 pages free each month (copying and printing combined); beyond that, black-and-white is NT$2 per page and colour NT$6 per page (excluding tax).", "無料枠を超えたコピー：個室は毎月モノクロ150枚、座席は毎月50枚まで無料（コピーと印刷の合計）。超過分はモノクロ1枚2元、カラー1枚6元（税抜）です。"],
+"信件轉寄：郵資依實際金額收取，寄出後提供執據，月底一起結算，或從預存郵資扣抵。":["Mail forwarding: postage is charged at cost with a postal receipt provided after sending, settled at month-end or deducted from prepaid postage.", "郵便転送：郵送料は実費で、発送後に受領証をお渡しし、月末にまとめて精算するか、預かり郵送料から差し引きます。"],
+"押金：辦公室與座位押金皆為兩個月租金，點交無欠費後全額退還。":["Deposit: two months' rent for both private offices and seats, refunded in full after move-out inspection with no outstanding balance.", "保証金：個室・座席ともに賃料2か月分で、退去点検後に未払いがなければ全額返金します。"],
+"除此之外沒有行政費、文件費或管理費。":["Other than these, there are no administrative, document or management fees.", "これ以外に事務手数料・書類費・管理費はかかりません。"],
+"空間有狀況，誰來處理？":["Who handles it when something needs fixing?", "設備に不具合があったら誰が対応する？"],
+"辰星世貿館內就有自己的室內設計與修繕人員，空間或設備有問題，不必等總部派工單，現場就能判斷怎麼修，通常很快就能處理好。":["Our World Trade Center Branch has its own in-house interior design and maintenance staff. If something in the space or equipment needs attention, there is no waiting for a head-office work order — the on-site team decides how to fix it and usually sorts it out quickly.", "世貿館には自社の内装設計・修繕スタッフが常駐しています。空間や設備に問題があっても本部の作業指示を待つ必要はなく、現場で対応方法を判断し、通常すぐに解決できます。"],
+"借址登記除了年費和押金，還會有其他費用嗎？":["Apart from the annual fee and deposit, are there any other costs for a registered address?", "住所登記は年会費と保証金以外に費用がかかりますか？"],
+"除了年費與押金，不會有行政費、文件費或郵件代收費。只有在您需要時才會產生的費用有三種：信件轉寄的郵資（依實際金額收取並附執據）、使用事務機影印（黑白每張 2 元、彩色每張 6 元，未稅）、會議室使用超過每月贈送的 6 小時（每小時 400 元，離峰 300 元）。":["Beyond the annual fee and deposit, there are no administrative, document or mail-handling fees. Only three costs may arise, and only when you need them: postage for mail forwarding (charged at cost with a receipt), copying on the multifunction printer (NT$2 per black-and-white page, NT$6 per colour page, excluding tax), and meeting-room use beyond the 6 free hours each month (NT$400 per hour, NT$300 off-peak).", "年会費と保証金以外に、事務手数料・書類費・郵便受取料はかかりません。必要な場合にのみ発生する費用は3つです：郵便転送の郵送料（実費・受領証付き）、複合機でのコピー（モノクロ1枚2元、カラー1枚6元、税抜）、毎月無料の6時間を超える会議室利用（1時間400元、オフピーク300元）。"],
 });
 Object.assign(T, { // 2026-09-29 世貿館會議室 LINE Pay 付款區（meeting-room.html·外來客戶付款方式）
 "💳 外來客戶付款方式（世貿館會議室）":["💳 Payment for External Guests (WTC Meeting Room)","💳 外部のお客様のお支払い方法（世貿館会議室）"],
