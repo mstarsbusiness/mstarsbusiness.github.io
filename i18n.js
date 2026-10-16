@@ -634,7 +634,7 @@ Object.assign(T, { // 2026-10-13 會議室頁改版（比較表／週末／設�
   "要開新公司":["Starting a new company", "新しく会社を設立する"],
   "公司設立登記全代辦 8,500 元起，遷址與變更登記代辦各 2,000 元起，由配合記帳士承辦，辰星不加價、不抽成。":["Full company incorporation service from NT$8,500; address-change and amendment registrations from NT$2,000 each. Handled by our partner bookkeepers; Morning Stars adds no markup or commission.", "会社設立登記の全代行はNT$8,500から、住所移転・変更登記の代行は各NT$2,000から。提携記帳士が担当し、辰星は上乗せ・手数料なし。"],
   "公司設立一站式｜設立登記全代辦 8,500 元起 →":["Company setup one-stop | Incorporation from NT$8,500 →", "会社設立ワンストップ｜設立登記代行 NT$8,500〜 →"],
-  "借址登記｜年繳 NT$18,000 起（目前額滿・可候補）→":["Registered address | from NT$18,000/year (currently full, waiting list) →", "登記住所｜年額NT$18,000〜（現在満員・キャンセル待ち受付）→"],
+  "借址登記｜世貿館年繳 NT$18,000 起（尚有名額）→":["Registered address | WTC Branch from NT$18,000/year (places available) →", "登記住所｜世貿館 年額NT$18,000〜（空きあり）→"],
   "獨立辦公室｜月租 NT$10,000 起（目前滿租・可候補）→":["Private office | from NT$10,000/month (currently full, waiting list) →", "個室オフィス｜月額NT$10,000〜（現在満室・キャンセル待ち受付）→"],
 });
 Object.assign(T, { // 2026-10-16 費用透明區塊（private-office 另外付費＋世貿館修繕團隊／virtual-office 其他費用 FAQ）
