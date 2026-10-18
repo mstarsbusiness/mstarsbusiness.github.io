@@ -873,6 +873,51 @@ footer{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
   .contact .info div{padding:14px 0}
 }
 </style>
+<style id="frame-polish-20261018">
+/* 2026-10-18 框線統一：首頁所有按鈕／浮動框改同一套語言（直角、1px 金色細線、曜石黑玻璃、同高同字距）。
+   只動外觀，不動文字、連結、版面結構與 i18n。改按鈕樣式請改這一段，勿再往前面的舊樣式疊加。 */
+:root{--fp-gold:#A9803F;--fp-gold-hi:#C9A24B;--fp-gold-txt:#CDAC6A;--fp-ink:rgba(18,14,8,.86);--fp-line:rgba(201,162,75,.55);--fp-line-soft:rgba(201,162,75,.3);--fp-bone:#F5E7C8}
+/* ① 首屏按鈕組：主按鈕實心金、次按鈕細線；三顆同字級同字距 */
+.hero .cta{min-height:54px!important;padding:0 46px!important;background:var(--fp-gold)!important;border:1px solid var(--fp-gold)!important;color:#FFF9EF!important;font-size:.9rem!important;letter-spacing:.26em!important;font-weight:500!important;box-shadow:0 10px 34px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,249,239,.14)!important}
+.hero .cta:hover{background:var(--fp-gold-hi)!important;border-color:var(--fp-gold-hi)!important;transform:translateY(-2px)}
+.hero .cta-sub{margin-top:10px!important;min-height:36px!important}
+.hero-quick{margin-top:18px;gap:14px}
+.hero-quick a,.hero-quick a.primary{min-height:48px;min-width:204px;padding:0 28px;border-radius:0;font-size:.86rem;letter-spacing:.2em;font-weight:500;background:var(--fp-ink);color:var(--fp-bone);border:1px solid var(--fp-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.26)}
+.hero-quick a.primary{border-color:var(--fp-gold-hi);color:var(--fp-gold-hi)}
+.hero-quick a:hover,.hero-quick a.primary:hover{background:var(--fp-gold);border-color:var(--fp-gold);color:#FFF9EF;transform:translateY(-2px)}
+@media(min-width:761px){.scrollcue{display:none!important}}
+/* ② 場館卡片：專頁鈕與導航鈕改成同高的一對 */
+.venue .cap .enter,.venue .cap .venue-nav{display:inline-flex!important;align-items:center;justify-content:center;min-height:44px;margin-top:18px!important;padding:0 24px!important;font-size:.8rem!important;letter-spacing:.16em!important;vertical-align:middle;transition:.3s}
+.venue .cap .enter{background:rgba(18,14,8,.42)!important;border:1px solid var(--fp-gold-hi)!important;color:#E7CF95!important}
+.venue .cap .venue-nav{margin-left:10px!important;border:1px solid rgba(240,230,200,.32)!important;border-bottom-width:1px!important;color:rgba(245,231,200,.86)!important;background:rgba(18,14,8,.3)!important;padding-bottom:0!important}
+.venue:hover .cap .enter,.venue .cap .enter:hover{background:var(--fp-gold)!important;border-color:var(--fp-gold)!important;color:#FFF9EF!important}
+.venue .cap .venue-nav:hover{border-color:var(--fp-gold-hi)!important;color:#FFF9EF!important}
+/* ③ 右側 LINE／電話直條：置中、細金線、輕陰影 */
+.side-contact{top:50%;transform:translateY(-50%);gap:0;box-shadow:-10px 14px 38px rgba(0,0,0,.24)}
+.side-contact a,.side-contact a.primary{padding:18px 11px;border-radius:0;font-size:.78rem;letter-spacing:.34em;font-weight:500;border:1px solid var(--fp-line);border-right:0;background:var(--fp-ink);color:var(--fp-bone);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.side-contact a.primary{background:var(--fp-gold);border-color:var(--fp-gold);color:#FFF9EF}
+.side-contact a+a{border-top:0}
+.side-contact a:hover{background:var(--fp-gold-hi);border-color:var(--fp-gold-hi);color:#1A1712;transform:translateX(-3px)}
+/* ④ 回到頂端 */
+.totop{width:46px;height:46px;border-radius:0!important;background:var(--fp-ink)!important;border:1px solid var(--fp-line)!important;color:var(--fp-gold-txt)!important;box-shadow:0 10px 30px rgba(0,0,0,.24);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.totop:hover{background:var(--fp-gold)!important;border-color:var(--fp-gold)!important;color:#FFF9EF!important}
+/* ⑤ 線上客服泡泡：改曜石黑＋金色線條圖示（取代彩色表情符號），未讀點改金色 */
+.msc-bubble{width:58px!important;height:58px!important;border-radius:0!important;background:var(--fp-ink)!important;border:1px solid var(--fp-gold-hi)!important;box-shadow:0 14px 38px rgba(0,0,0,.34),inset 0 0 0 3px rgba(18,14,8,.86),inset 0 0 0 4px rgba(201,162,75,.28)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.msc-bubble>span:first-child{display:none!important}
+.msc-bubble::before{content:"";width:26px;height:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A24B' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.5 11.6a8.1 8.1 0 0 1-11.9 7.2L3.8 20.2l1.4-4.5a8.1 8.1 0 1 1 15.3-4.1z'/%3E%3Cpath d='M8.6 11.7h.01M12 11.7h.01M15.4 11.7h.01' stroke-width='2.2'/%3E%3C/svg%3E") center/contain no-repeat}
+.msc-bubble:hover{background:#1A1712!important;border-color:#E0BD75!important}
+.msc-bubble .dot{top:7px!important;right:7px!important;width:8px!important;height:8px!important;border-radius:0!important;background:var(--fp-gold-hi)!important;border:2px solid #1A1712!important;transform:rotate(45deg)}
+/* ⑥ 配色切換 */
+.theme-switch{padding:5px!important;gap:4px!important;border-radius:0!important;background:var(--fp-ink)!important;border:1px solid var(--fp-line-soft)!important;box-shadow:0 14px 38px rgba(0,0,0,.28)!important}
+.theme-switch a{width:30px!important;height:30px!important;border-radius:0!important;border:1px solid transparent!important;color:#D8D2C4!important;font-size:.78rem!important}
+.theme-switch a:hover{border-color:var(--fp-line)!important;background:transparent!important}
+.theme-switch a.cur{background:var(--fp-gold)!important;border-color:var(--fp-gold)!important;color:#FFF9EF!important}
+/* 手機版底部聯絡列：同一套框線 */
+.mobile-contact-bar{border-radius:0!important;border-color:var(--fp-line-soft)!important;background:rgba(18,14,8,.9)!important}
+.mobile-contact-bar a{border-radius:0!important;border-color:var(--fp-line)!important;letter-spacing:.12em!important}
+@media(max-width:760px){.venue .cap .enter,.venue .cap .venue-nav{margin:14px 3px 0!important}.venue .cap .enter,.venue .cap .venue-nav{padding:0 16px!important}}
+@media(prefers-reduced-motion:reduce){.hero .cta,.hero-quick a,.side-contact a,.venue .cap .enter{transition:none!important;transform:none!important}}
+</style>
 </head>
 <body class="lux">
 
