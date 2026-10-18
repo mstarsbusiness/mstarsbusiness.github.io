@@ -199,7 +199,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20261018"></script>
+<script src="../i18n.js?v=20261019"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
@@ -324,7 +324,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20261018"></script>
+<script src="i18n.js?v=20261019"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
@@ -351,6 +351,8 @@ function sitemap(posts) {
     ['/en/index.html', '.9', 'monthly'],             // 英文首頁（2026-08-22 新增）
     ['/en/virtual-office.html', '.8', 'monthly'],   // 英文版（2026-08-07 新增，供英文搜尋流量）
     ['/en/meeting-room.html', '.8', 'monthly'],
+    ['/en/registration-address-for-foreign-founders.html', '.7', 'monthly'],   // 2026-10-19 外國創業者指南
+    ['/en/restricted-businesses.html', '.7', 'monthly'],                      // 2026-10-19 不可借址行業（英文）
     ['/journal.html', '.7', 'weekly'],
     ['/crm.html', '.6', 'monthly'],
     ['/video.html', '.7', 'monthly'],   // 影片導覽（2026-09-19 重啟：8/25 曾因檔案未上傳致 GSC 404 而註解，這次 video.html 要與本檔同批上傳）

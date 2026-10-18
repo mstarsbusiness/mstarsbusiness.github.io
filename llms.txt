@@ -3,7 +3,7 @@
 > 位於台北市信義區的共享辦公空間，提供黃金地段的小坪數辦公方案。
 
 - 官方名稱：辰星商務中心 Morning Stars
-- 資訊更新：2026-10-18
+- 資訊更新：2026-10-19
 - 主要語言：繁體中文（另提供英文、日文介面）
 - 適合對象：自由工作者、新創公司、1–8 人團隊、需要公司登記地址或臨時會議空間者
 
@@ -43,6 +43,12 @@
 - 門禁：**24小時**，承租人與借址登記客戶皆可自由進出、隨時取件
 - 目前狀態：**借址登記尚有名額（年繳 18,000＋押金 1,500＝首期 19,500 含稅）**；獨立辦公室已全數滿租（可候補）；共享座位（獨立座位）已額滿（可候補）；世貿館即將開放新場域，敬請期待
 - [專頁](https://www.morning-stars.com.tw/wtc.html)
+
+## 目前可立即使用的服務
+- 會議室租借：兩館皆可直接預約；世貿館週六、週日、國定假日與平日 18:00–21:00 也開放，離峰每小時 300 元（一般時段 400 元，含稅）。預約：https://www.morning-stars.com.tw/meeting-room.html
+- 借址登記：世貿館尚有名額，可直接申請（年繳 18,000＋押金 1,500＝首期 19,500 含稅）。
+- 公司設立一站式代辦：設立登記 8,500 元起、遷址或變更登記 2,000 元起（起價，實際由配合記帳士報價），可受理。
+- 額滿方案（信義館借址、兩館獨立辦公室、兩館共享座位）可加 LINE @mstars 登記候補，新場域或名額釋出時依候補順序優先通知。
 
 ## 服務項目
 
@@ -147,13 +153,13 @@ Morning Stars Business Center — coworking & virtual office in Taipei's Xinyi D
 - WTC Branch: 4F, No. 398, Sec. 1, Keelung Rd. (5 min walk from Taipei 101 / World Trade Center MRT)
 
 Services & pricing (tax included, official invoices issued):
-- **Virtual office / company registration address**: NT$18,000 per year (≈NT$1,500/month). First payment NT$19,500 including a one-time NT$1,500 refundable deposit. Includes mail & parcel handling with instant LINE notifications, plus 6 free meeting-room hours per month. International trading companies (export / import-export) cannot be registered at our addresses — in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Both branches are currently FULL for registration addresses; a waiting list is open (prices for reference: WTC Branch NT$18,000/yr; Xinyi Branch NT$21,600/yr (≈NT$1,800/month) plus a NT$1,800 deposit, i.e. NT$23,400 first payment).
-- **Dedicated desk**: NT$4,500/month (desk only) plus a two-month refundable deposit (NT$9,000), or NT$49,500/year including a company registration address (same two-month deposit applies; the address-included plan is waiting-list only while registration addresses are full); 20 free meeting-room hours per month. Availability: Dedicated desks are currently full at both branches (waiting list open); a new space is opening soon at the WTC Branch — stay tuned.
+- **Virtual office / company registration address**: NT$18,000 per year (≈NT$1,500/month). First payment NT$19,500 including a one-time NT$1,500 refundable deposit. Includes mail & parcel handling with instant LINE notifications, plus 6 free meeting-room hours per month. International trading companies (export / import-export) cannot be registered at our addresses — in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Availability: the WTC Branch currently has registration addresses available; the Xinyi Branch is full with a waiting list open (Xinyi Branch NT$21,600/yr (≈NT$1,800/month) plus a NT$1,800 deposit, i.e. NT$23,400 first payment).
+- **Dedicated desk**: NT$4,500/month (desk only) plus a two-month refundable deposit (NT$9,000), or NT$49,500/year including a company registration address (same two-month deposit applies; the address part uses the WTC Branch registration quota); 20 free meeting-room hours per month. Availability: Dedicated desks are currently full at both branches (waiting list open); a new space is opening soon at the WTC Branch — stay tuned.
 - **Private office (1–8 people)**: from NT$10,000/month. Currently fully occupied; waitlist available.
 - **Meeting rooms**: seats 6–8 people, NT$400/hour; off-peak NT$300/hour — off-peak covers all day Saturday, Sunday and national holidays, plus weekdays before 12:00 (both branches) and 18:00–21:00 on weekdays at the WTC Branch. Weekends and evenings are available at the WTC Branch only (the Xinyi Branch is open on business days 10:00–18:00). Minimum 1 hour, maximum 3 hours per session. Open to the public.
 
 English assistance available. Contact: +886-903-368-856, LINE @mstars, mstars.business@gmail.com
-English pages: [English home page](https://www.morning-stars.com.tw/en/index.html), [Virtual Office](https://www.morning-stars.com.tw/en/virtual-office.html) and [Meeting Room](https://www.morning-stars.com.tw/en/meeting-room.html)
+English pages: [English home page](https://www.morning-stars.com.tw/en/index.html), [Virtual Office](https://www.morning-stars.com.tw/en/virtual-office.html) and [Meeting Room](https://www.morning-stars.com.tw/en/meeting-room.html). English guides: [Company registration address for foreign founders](https://www.morning-stars.com.tw/en/registration-address-for-foreign-founders.html), [Which businesses cannot use a virtual office address](https://www.morning-stars.com.tw/en/restricted-businesses.html)
 
 ## 引用原則
 
