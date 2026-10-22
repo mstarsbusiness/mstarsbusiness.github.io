@@ -105,6 +105,8 @@
   "免費":["Free","無料"],
   "請洽專員":["By Quote","お見積り"],
   "$8,500 起":["From $8,500","$8,500〜"],
+  "世貿館 年 18,000＋押金 1,500":["WTC: $18,000/yr + $1,500 deposit","世貿館：年18,000＋保証金1,500"],
+  "世貿館年繳 NT$18,000 元起":["WTC: from NT$18,000 / year","世貿館：年額NT$18,000〜"],
   "年 18,000＋押金 1,500":["$18,000/yr + $1,500 deposit","年18,000＋保証金1,500"],
   "$2,000 起":["From $2,000","$2,000〜"],
   "每小時 400":["$400 / hour","1時間400"],
@@ -477,6 +479,7 @@
   /* 第七批:會議室頁贈送時數寫明（2026-08-09 口徑修正:座位客戶每月贈20小時） */
   Object.assign(T, {"3. 不同客戶的預約之間保留 1 小時緩衝時間；": ["3. A one-hour buffer is kept between different customers' bookings; ", "3. 異なるお客様のご予約の間には1時間のバッファを設けています。"], "設址客戶每月贈 6 小時、共享座位客戶每月贈 20 小時": ["registered-address clients receive 6 complimentary hours per month, and shared-desk clients 20 hours", "住所登記のお客様は毎月6時間、シェアデスクのお客様は毎月20時間を無料進呈"], "（當月計、不累積），獨立辦公室租戶免費使用，超出部分每小時 400 元。": [" (counted within the month, not carried over). Private office tenants use meeting rooms free of charge; additional hours are NT$400 per hour.", "（当月内で計算、繰り越し不可）。個室オフィスのご入居者は無料でご利用いただけます。超過分は1時間 NT$400 です。"]});
 
+Object.assign(T, {"申請免用統一發票的小規模營業人，也無法以本中心地址辦理借址登記。":["Small-scale businesses applying for exemption from issuing uniform invoices also cannot register at our address.","統一発票の発行免除を申請する小規模営業者も、当センターの住所で登記することはできません。"]}); // 2026-10-22 健檢建議
 Object.assign(T, {"依財政部信義國稅局規定，國際貿易公司（出口／進出口）無法在本中心地址設立登記；特別是有出口退稅需求的公司，亦無法以本址辦理退稅。純進口或國內貿易歡迎與專員個案確認。":["Under National Taxation Bureau (Xinyi) rules, international trading companies (export / import-export) cannot register at our address; in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Pure import or domestic trading is welcome to confirm case-by-case with our staff.","財政部信義国税局の規定により、国際貿易会社（輸出／輸出入）は当センターの住所での設立登記ができません。特に輸出還付（税金還付）が必要な会社は、当住所での登記・還付手続きのいずれもできません。輸入専業・国内取引の方は個別にご相談ください。"]}); // 2026-08-19 國際貿易退稅限制
 Object.assign(T, {"押金兩個月":["Two-month deposit","保証金2ヶ月分"]}); // 2026-08-19 座位押金標示
 Object.assign(T, {"月租 NT$4,500 起（押金兩個月）":["From NT$4,500 / month (2-month deposit)","月額 NT$4,500〜（保証金2ヶ月分）"]}); // 2026-08-10 座位押金
@@ -528,7 +531,7 @@ Object.assign(T, { // 2026-08-26c 公司設立一站式連結句
 });
 Object.assign(T, { // 2026-09-01 GEO週報：押金/滿租改獨立可見句（private-office.html）
 "共享座位月租 NT$4,500 起，另收押金兩個月（NT$9,000）。":["Co-working seats start at NT$4,500/month, plus a two-month deposit (NT$9,000).","コワーキングシートは月額 NT$4,500 から。別途 2 ヶ月分の保証金（NT$9,000）を頂戴します。"],
-"兩館獨立辦公室目前已全數滿租，歡迎來電 0903-368-856 登記候補。":["Private offices at both locations are currently fully leased; call 0903-368-856 to join the waiting list.","両館の個室オフィスは現在満室です。0903-368-856 までお電話いただければキャンセル待ちにご登録いたします。"],
+"兩館獨立辦公室名額有限，歡迎來電 0903-368-856 洽詢。":["Private offices at both locations have limited availability; call 0903-368-856 to enquire.", "両館の個室オフィスは枠に限りがあります。0903-368-856 までお問い合わせください。"],
 });
 Object.assign(T, { // 2026-09-01b 會議室圖例（8/31 伺服器時間改版時被 span 拆碎的三段）＋公司欄 placeholder
 "綠＝可預約、灰＝已約/緩衝、":["Green = available, grey = booked/buffer, ","緑＝予約可、グレー＝予約済み/バッファ、"],
@@ -635,7 +638,7 @@ Object.assign(T, { // 2026-10-13 會議室頁改版（比較表／週末／設�
   "公司設立登記全代辦 8,500 元起，遷址與變更登記代辦各 2,000 元起，由配合記帳士承辦，辰星不加價、不抽成。":["Full company incorporation service from NT$8,500; address-change and amendment registrations from NT$2,000 each. Handled by our partner bookkeepers; Morning Stars adds no markup or commission.", "会社設立登記の全代行はNT$8,500から、住所移転・変更登記の代行は各NT$2,000から。提携記帳士が担当し、辰星は上乗せ・手数料なし。"],
   "公司設立一站式｜設立登記全代辦 8,500 元起 →":["Company setup one-stop | Incorporation from NT$8,500 →", "会社設立ワンストップ｜設立登記代行 NT$8,500〜 →"],
   "借址登記｜世貿館年繳 NT$18,000 起（尚有名額）→":["Registered address | WTC Branch from NT$18,000/year (places available) →", "登記住所｜世貿館 年額NT$18,000〜（空きあり）→"],
-  "獨立辦公室｜月租 NT$10,000 起（目前滿租・可候補）→":["Private office | from NT$10,000/month (currently full, waiting list) →", "個室オフィス｜月額NT$10,000〜（現在満室・キャンセル待ち受付）→"],
+  "獨立辦公室｜月租 NT$10,000 起（名額有限・歡迎洽詢）→":["Private office | from NT$10,000/month (limited availability — enquire) →", "個室オフィス｜月額NT$10,000〜（枠に限りあり・お問い合わせください）→"],
 });
 Object.assign(T, { // 2026-10-16 費用透明區塊（private-office 另外付費＋世貿館修繕團隊／virtual-office 其他費用 FAQ）
 "租金已包含水電管理、辦公桌椅、空間設施及基本服務（收發、茶水、清潔、網路、冷氣等），若有公司借址登記需求也已包含。另外付費的只有超過免費額度的影印與信件轉寄郵資，沒有行政費、文件費或管理費。":["Rent includes utilities and management, desks and chairs, facilities and basic services (mail, pantry, cleaning, internet, A/C, etc.). A business address, if needed, is also included. The only extra charges are printing beyond the free quota and postage for mail forwarding; there are no administrative, document or management fees.", "賃料には水道光熱・管理、デスク・椅子、設備、基本サービス（郵便・給湯・清掃・ネット・空調等）が含まれます。会社の住所登記が必要な場合も含まれます。別途費用は無料枠を超えたコピー代と郵便転送の郵送料のみで、事務手数料・書類費・管理費はかかりません。"],
@@ -651,17 +654,17 @@ Object.assign(T, { // 2026-10-16 費用透明區塊（private-office 另外付�
 "除了年費與押金，不會有行政費、文件費或郵件代收費。只有在您需要時才會產生的費用有三種：信件轉寄的郵資（依實際金額收取並附執據）、使用事務機影印（黑白每張 2 元、彩色每張 6 元，未稅）、會議室使用超過每月贈送的 6 小時（每小時 400 元，離峰 300 元）。":["Beyond the annual fee and deposit, there are no administrative, document or mail-handling fees. Only three costs may arise, and only when you need them: postage for mail forwarding (charged at cost with a receipt), copying on the multifunction printer (NT$2 per black-and-white page, NT$6 per colour page, excluding tax), and meeting-room use beyond the 6 free hours each month (NT$400 per hour, NT$300 off-peak).", "年会費と保証金以外に、事務手数料・書類費・郵便受取料はかかりません。必要な場合にのみ発生する費用は3つです：郵便転送の郵送料（実費・受領証付き）、複合機でのコピー（モノクロ1枚2元、カラー1枚6元、税抜）、毎月無料の6時間を超える会議室利用（1時間400元、オフピーク300元）。"],
 });
 Object.assign(T, { // 2026-10-19 名額狀態列（private-office／virtual-office／office-guide）＋會議室 FAQ 三題
-"目前名額：世貿館借址登記尚有名額，可直接申請；信義館已額滿，開放候補。新場域開放時，候補名單優先通知。":["Availability: the WTC Branch currently has registration addresses available and you can apply directly; the Xinyi Branch is full with a waiting list open. We notify the waiting list first when new space opens.","空き状況：世貿館の登記住所は空きがあり、すぐにお申し込みいただけます。信義館は満席のため、キャンセル待ちを受け付けています。新しいスペースが開いた際は、キャンセル待ちの方から優先してご連絡します。"],
+"目前名額：世貿館借址登記尚有名額，可直接申請；信義館名額有限，歡迎洽詢。":["Availability: the WTC Branch currently has registration addresses available and you can apply directly; the Xinyi Branch has limited availability — please contact us.", "空き状況：世貿館は登記住所に空きがあり、直接お申し込みいただけます。信義館は枠に限りがあります。お気軽にお問い合わせください。"],
 "需要開會或接待客戶？會議室可直接預約 →":["Need to hold a meeting or host a client? Meeting rooms can be booked directly →","会議や来客対応が必要ですか？会議室はすぐにご予約いただけます →"],
-"目前名額：兩館獨立辦公室皆已滿租、共享座位兩館皆額滿，開放候補；世貿館即將開放新場域，候補名單優先通知。":["Availability: private offices and dedicated desks are currently full at both branches, with a waiting list open. A new space is opening soon at the WTC Branch, and the waiting list will be notified first.","空き状況：個室オフィス・専用デスクともに両館満室のため、キャンセル待ちを受け付けています。世貿館では新しいスペースをまもなく開設予定で、キャンセル待ちの方から優先してご連絡します。"],
-"加入候補（LINE）":["Join the waiting list (LINE)","キャンセル待ちに登録（LINE）"],
+"目前名額：兩館獨立辦公室與共享座位名額有限，歡迎洽詢；世貿館即將開放新場域，敬請期待。":["Availability: private offices and dedicated desks at both branches have limited availability — please contact us. A new space is opening soon at the WTC Branch — stay tuned.", "空き状況：両館の個室オフィス・専用デスクは枠に限りがあります。お気軽にお問い合わせください。世貿館では新スペースを近日オープン予定です。"],
+"LINE 洽詢名額":["Ask about availability (LINE)", "LINEで空き状況を問い合わせる"],
 "辰星會議室可以容納幾個人？":["How many people can Morning Stars' meeting rooms hold?","辰星の会議室は何人まで利用できますか？"],
 "信義館與世貿館會議室每間皆可容納 6 至 8 人，適合小型商務會議、面試、顧問諮詢與一對一洽談。若需要 10 人以上的場地，建議另尋較大型會議空間。":["Each meeting room at the Xinyi and WTC branches seats 6 to 8 people — suitable for small business meetings, interviews, consultations and one-on-one discussions. For groups of 10 or more, we recommend a larger venue.","信義館・世貿館の会議室はいずれも6〜8名まで利用でき、小規模な商談、面接、コンサルティング、1対1の打ち合わせに適しています。10名以上の場合は、より広い会場をおすすめします。"],
 "平日晚上可以租會議室嗎？":["Can I book a meeting room on weekday evenings?","平日の夜に会議室を借りられますか？"],
 "可以，限世貿館：平日 18:00–21:00 開放預約，且屬離峰時段，每小時 300 元。信義館平日 18:00 後大樓門禁關閉，不開放預約。":["Yes, at the WTC Branch: weekdays 18:00–21:00 are bookable and count as off-peak at NT$300 per hour. The Xinyi Branch building is closed to visitors after 18:00 on weekdays, so it is not bookable then.","はい、世貿館のみ可能です。平日18:00〜21:00はご予約いただけ、オフピーク料金の1時間300元です。信義館は平日18:00以降ビルの入館が閉鎖されるため、予約できません。"],
 "會議室可以當面試場地嗎？":["Can the meeting room be used for interviews?","会議室を面接会場として使えますか？"],
 "可以。會議室是獨立的密閉空間，適合一對一或小組面試；以小時計費，單次 1 至 3 小時。世貿館平日晚間與週末也能預約，方便配合求職者的時間。":["Yes. The meeting room is a private, enclosed space suited to one-on-one or small-group interviews. It is billed by the hour, 1 to 3 hours per booking. The WTC Branch is also bookable on weekday evenings and weekends to fit candidates' schedules.","はい。会議室は独立した個室で、1対1や少人数の面接に適しています。1時間単位の料金で、1回1〜3時間までご利用いただけます。世貿館は平日の夜や週末も予約でき、応募者の都合に合わせやすくなっています。"],
-"目前名額：借址登記世貿館尚有名額、信義館額滿可候補；獨立辦公室與共享座位兩館皆額滿，開放候補；會議室兩館皆可直接預約。":["Availability: registration addresses are available at the WTC Branch, while the Xinyi Branch is full with a waiting list; private offices and dedicated desks are full at both branches with a waiting list open; meeting rooms at both branches can be booked directly.","空き状況：登記住所は世貿館に空きがあり、信義館は満席でキャンセル待ち受付中です。個室オフィスと専用デスクは両館とも満室でキャンセル待ち受付中、会議室は両館ともすぐにご予約いただけます。"],
+"目前名額：借址登記世貿館尚有名額；信義館借址、獨立辦公室與共享座位名額有限，歡迎洽詢；會議室兩館皆可直接預約。":["Availability: registered addresses are available at the WTC Branch; Xinyi Branch addresses, private offices and dedicated desks have limited availability — please contact us; meeting rooms at both branches can be booked directly.", "空き状況：世貿館の登記住所は空きあり。信義館の登記住所・個室オフィス・専用デスクは枠に限りがあります。お気軽にお問い合わせください。会議室は両館とも直接予約できます。"],
 });
 Object.assign(T, { // 2026-09-29 世貿館會議室 LINE Pay 付款區（meeting-room.html·外來客戶付款方式）
 "💳 外來客戶付款方式（世貿館會議室）":["💳 Payment for External Guests (WTC Meeting Room)","💳 外部のお客様のお支払い方法（世貿館会議室）"],
