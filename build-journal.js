@@ -164,10 +164,10 @@ ${header('../')}
       <aside class="article-aside">
         <a class="back-link" href="../journal.html">← 返回 Journal</a>
         <div class="aside-card">
-          <span>Need a space?</span>
-          <b>想找信義區辦公空間？</b>
-          <p>可從借址登記、獨立辦公室或會議室開始比較。</p>
-          <a href="../office-guide.html">看方案指南</a>
+          <span>Registered Address</span>
+          <b>需要台北的公司登記地址？</b>
+          <p>辰星世貿館提供借址登記，含郵件包裹代收與 LINE 到件通知。</p>
+          <a href="../virtual-office.html">看台北借址登記方案</a>
         </div>
       </aside>
       <article class="article-card">
@@ -184,12 +184,12 @@ ${header('../')}
         ${post.link ? `<p class="article-action"><a class="btn solid" href="${esc(post.link)}" target="_blank" rel="noopener">${esc(post.linkText || '查看更多')}</a></p>` : ''}
         <div class="article-cta">
           <span>下一步</span>
-          <h2>想把辦公空間也整理好嗎？</h2>
-          <p>辰星提供信義區借址登記、獨立辦公室、共享座位與會議室租借，適合個人工作者與 1–8 人小型團隊。</p>
+          <h2>需要台北信義區的公司登記地址嗎？</h2>
+          <p>辰星世貿館提供借址登記（公司登記地址），年繳制、含郵件包裹代收與 LINE 到件通知，並配合專業記帳士協助公司設立與遷址。</p>
           <div class="related">
+            <a href="../virtual-office.html">台北借址登記方案 →</a>
             <a href="../office-guide.html">比較辦公方案</a>
-            <a href="../virtual-office.html">借址登記</a>
-            <a href="../index.html#contact">預約參觀 →</a>
+            <a href="../index.html#contact">預約參觀</a>
           </div>
         </div>
       </article>
@@ -199,7 +199,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20261019"></script>
+<script src="../i18n.js?v=20261022"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
@@ -324,7 +324,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20261019"></script>
+<script src="i18n.js?v=20261022"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
