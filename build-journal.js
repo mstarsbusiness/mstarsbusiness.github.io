@@ -239,7 +239,7 @@ function journalPage(posts) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>最新貼文 Journal｜辰星商務中心・信義區辦公空間與創業資訊</title>
-<meta name="description" content="辰星商務中心 Journal，整理場館動態、信義區商圈情報、借址登記、共享辦公室、會議室租借與創業經營資訊。">
+<meta name="description" content="辰星商務中心 Journal：整理台北借址登記、公司設立、稅籍與營業登記、國稅局查核、信件代收等創業實務問答，以及信義區世貿館、信義館的場館動態與商圈情報。每篇開頭先給答案，再說明費用、流程與注意事項，幫助創業者快速做決定。">
 <link rel="canonical" href="${SITE}/journal.html">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="author" content="${BRAND}">
