@@ -691,6 +691,28 @@ Object.assign(T, { // 2026-10-24 借址主頁「為什麼選辰星」＋更新�
 "費用透明":["Transparent pricing","明朗な料金"],
 "：年費含稅，不另收行政費或郵件代收費；信件轉寄的郵資依實際金額收取。":[": The annual fee includes tax, with no admin or mail-handling fees; mail forwarding is charged at actual postage.","：年会費は税込で、事務手数料や郵便物受取料は不要。転送の郵送料のみ実費となります。"],
 });
+Object.assign(T, { // 2026-10-24 場館相簿新照片（世貿 10–12／信義 10–14）
+"接待品牌牆・入口迎賓":["Reception Brand Wall · Welcome Area", "受付ブランドウォール・エントランス"],
+"世貿館 接待品牌牆・入口迎賓":["WTC Branch — Reception Brand Wall · Welcome Area", "世貿館 受付ブランドウォール・エントランス"],
+"事務機・飲水與冰箱":["Printer · Water Dispenser & Fridge", "複合機・ウォーターサーバーと冷蔵庫"],
+"世貿館 事務機・飲水與冰箱":["WTC Branch — Printer · Water Dispenser & Fridge", "世貿館 複合機・ウォーターサーバーと冷蔵庫"],
+"信件代收櫃・專人管理":["Mail Cabinet · Staffed Mail Handling", "郵便物保管棚・スタッフが管理"],
+"世貿館 信件代收櫃・專人管理":["WTC Branch — Mail Cabinet · Staffed Mail Handling", "世貿館 郵便物保管棚・スタッフが管理"],
+"全新公共區・開放長桌":["New Common Area · Open Long Table", "新しい共用エリア・オープンロングテーブル"],
+"信義館 全新公共區・開放長桌":["Xinyi Branch — New Common Area · Open Long Table", "信義館 新しい共用エリア・オープンロングテーブル"],
+"公共區・實木共享長桌":["Common Area · Solid-Wood Shared Table", "共用エリア・無垢材シェアテーブル"],
+"信義館 公共區・實木共享長桌":["Xinyi Branch — Common Area · Solid-Wood Shared Table", "信義館 共用エリア・無垢材シェアテーブル"],
+"事務機・點心補給車":["Printer · Snack Trolley", "複合機・スナックワゴン"],
+"信義館 事務機・點心補給車":["Xinyi Branch — Printer · Snack Trolley", "信義館 複合機・スナックワゴン"],
+"休憩角落・沙發小憩":["Lounge Corner · Sofa", "休憩コーナー・ソファ"],
+"信義館 休憩角落・沙發小憩":["Xinyi Branch — Lounge Corner · Sofa", "信義館 休憩コーナー・ソファ"],
+"茶水吧・咖啡茶包":["Tea Bar · Coffee & Tea", "ティーバー・コーヒーと紅茶"],
+"信義館 茶水吧・咖啡茶包":["Xinyi Branch — Tea Bar · Coffee & Tea", "信義館 ティーバー・コーヒーと紅茶"],
+});
+Object.assign(T, { // 2026-10-24 信件代收櫃照片
+"辰星商務中心世貿館 信件代收櫃":["Morning Stars WTC Branch mail cabinet","辰星商務センター世貿館 郵便物保管棚"],
+"世貿館信件代收櫃：每家公司一格，由現場人員收件、拍照通知。":["WTC Branch mail cabinet: each company has its own slot; on-site staff receive, photograph and notify you of every item.","世貿館の郵便物保管棚：会社ごとに専用の棚があり、スタッフが受け取り・撮影してお知らせします。"],
+});
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */

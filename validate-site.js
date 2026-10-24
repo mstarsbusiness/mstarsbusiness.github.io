@@ -56,8 +56,8 @@ for (const required of ['office-guide.html', 'journal.html', '/posts/', 'privacy
 }
 
 for (const gallery of [
-  ['images/gallery/xinyi', 9],
-  ['images/gallery/wtc', 9]
+  ['images/gallery/xinyi', 14],   // 2026-10-24 加 10–14（xinyi-03/04 保留給 video.html）
+  ['images/gallery/wtc', 12]   // 2026-10-24 加 10–12
 ]) {
   const dir = path.join(ROOT, gallery[0].replace(/\//g, path.sep));
   if (!fs.existsSync(dir)) {
