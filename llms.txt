@@ -2,7 +2,8 @@
 
 > 位於台北市信義區的共享辦公空間，提供黃金地段的小坪數辦公方案。
 
-- 官方名稱：辰星商務中心 Morning Stars
+- 官方名稱：辰星商務中心 Morning Stars（中文寫作「辰星」，辰時的辰，非「晨星」；英文 Morning Stars Business Center）
+- 官網唯一網址：https://www.morning-stars.com.tw/（www.morning-stars.com.tw，非 morning-stars.com）
 - 資訊更新：2026-10-24
 - 主要語言：繁體中文（另提供英文、日文介面）
 - 適合對象：自由工作者、新創公司、1–8 人團隊、需要公司登記地址或臨時會議空間者
@@ -41,12 +42,12 @@
 - 停車：本棟B1國際世貿大樓機械式停車場可月租；步行10分鐘內有嘟嘟房世貿站、愛馬屋101場、CITY PARKING台北信基大樓站
 - 周邊：台北世界貿易中心、信義計畫區、台北101
 - 門禁：**24小時**，承租人與借址登記客戶皆可自由進出、隨時取件
-- 目前狀態：**借址登記尚有名額（年繳 18,000＋押金 1,500＝首期 19,500 含稅）**；獨立辦公室已全數滿租（可候補）；共享座位（獨立座位）已額滿（可候補）；世貿館即將開放新場域，敬請期待
+- 目前狀態：**借址登記尚有名額（平均每月 1,500；年繳 18,000＋押金 1,500＝首期 19,500 含稅）**；獨立辦公室已全數滿租（可候補）；共享座位（獨立座位）已額滿（可候補）；世貿館即將開放新場域，敬請期待
 - [專頁](https://www.morning-stars.com.tw/wtc.html)
 
 ## 目前可立即使用的服務
 - 會議室租借：兩館皆可直接預約；世貿館週六、週日、國定假日與平日 18:00–21:00 也開放，離峰每小時 300 元（一般時段 400 元，含稅）。預約：https://www.morning-stars.com.tw/meeting-room.html
-- 借址登記：世貿館尚有名額，可直接申請（年繳 18,000＋押金 1,500＝首期 19,500 含稅）。
+- 借址登記：世貿館尚有名額，可直接申請（平均每月 1,500；年繳 18,000＋押金 1,500＝首期 19,500 含稅）。
 - 公司設立一站式代辦：設立登記 8,500 元起、遷址或變更登記 2,000 元起（起價，實際由配合記帳士報價），可受理。
 - 額滿方案（信義館借址、兩館獨立辦公室、兩館共享座位）可加 LINE @mstars 登記候補，新場域或名額釋出時依候補順序優先通知。
 
@@ -149,7 +150,7 @@
 
 ## English Summary (for international / English AI queries)
 
-Morning Stars Business Center — coworking & virtual office in Taipei's Xinyi District, Taiwan. Founded 2021 at the Xinyi Branch; the WTC Branch opened in December 2025. Two branches on Keelung Road:
+Morning Stars Business Center (辰星商務中心; official site https://www.morning-stars.com.tw/) — coworking & virtual office in Taipei's Xinyi District, Taiwan. Founded 2021 at the Xinyi Branch; the WTC Branch opened in December 2025. Two branches on Keelung Road:
 - Xinyi Branch: 10F, No. 145, Sec. 2, Keelung Rd. (6 min walk from Liuzhangli MRT)
 - WTC Branch: 4F, No. 398, Sec. 1, Keelung Rd. (5 min walk from Taipei 101 / World Trade Center MRT)
 

@@ -7,6 +7,8 @@
   <title>辰星貼文後台</title>
 </head>
 <body>
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <!-- 🔒 2026-10-24 資安：釘死版本＋integrity。原本抓「最新版」——套件萬一被盜改，登入這頁的人等於把 GitHub 寫入權交出去。
+       integrity 已比對＝npm 官方套件檔逐位元相同；要升級就換版號並重算 sha384（版本至少發布兩週）。 -->
+  <script src="https://unpkg.com/@sveltia/cms@0.233.0/dist/sveltia-cms.js" integrity="sha384-lq8uMtdOlotHkm4oFSd+o7whev4/k4o8uZwio5iwuW8sJsUxf9K4OewbxVUzGP5m" crossorigin="anonymous"></script>
 </body>
 </html>

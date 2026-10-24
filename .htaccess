@@ -12,6 +12,15 @@ ErrorDocument 404 /404.html
 #   ③ 包在 IfModule 裡＝主機沒開 mod_rewrite 也不會讓全站 500。
 <IfModule mod_rewrite.c>
 RewriteEngine On
+# 🔒 2026-10-24 資安第八輪：內部檔一律回 404（不讓人知道它存在），放最前面＝比轉址先擋。
+#   ① 點開頭的檔（.ftp-deploy-sync-state.json 會列出全站檔名與雜湊）；.well-known 保留給 SSL 憑證驗證
+#   ② 建置／檢查工具（build-journal.js、validate-site.js、工具_*.js——最後一個用 UTF-8 位元組寫，維持指令列純 ASCII）
+#   ③ 說明文件、備份、腳本類副檔名
+#   用 RewriteRule 不用 Require：本主機已證實允許 RewriteRule；Require 需要另一種覆寫權限，萬一沒開會全站 500。
+RewriteRule (^|/)\.(?!well-known(/|$)) - [R=404,L]
+RewriteRule ^(build-journal|validate-site)\.js$ - [R=404,L]
+RewriteRule ^\xE5\xB7\xA5\xE5\x85\xB7_[^/]*\.js$ - [R=404,L]
+RewriteRule \.(md|bak|old|orig|sql|log|sh|bat|ps1|py|swp)$ - [R=404,L]
 # /index.html → /（只攔外部請求；放在前面＝non-www 的 /index.html 一跳就到位，不串兩層轉址）
 RewriteCond %{THE_REQUEST} \s/+index\.html[?\s] [NC]
 RewriteRule ^index\.html$ https://www.morning-stars.com.tw/ [R=301,L]
@@ -60,4 +69,18 @@ ExpiresByType application/javascript "access plus 7 days"
 ExpiresByType text/javascript "access plus 7 days"
 ExpiresByType application/json "access plus 10 minutes"
 ExpiresByType text/html "access plus 10 minutes"
+</IfModule>
+
+# 🔒 資安標頭（2026-10-24 資安第八輪；包 IfModule＝主機沒開 mod_headers 也不會 500）
+#   HSTS：一年內瀏覽器只走 https（刻意不加 includeSubDomains——cpanel／webmail 等子網域不受影響）
+#   nosniff：已實測 .js／.css／.json 的 Content-Type 都正確，加了不會擋到正常檔案
+#   SAMEORIGIN＋frame-ancestors：別的網站不能把官網包進 iframe 騙點擊（CRM 沒有內嵌官網，已查）
+#   CSP 只放不影響載入的三項；不限制 script 來源（GA、地圖、內嵌程式很多，硬加會整站壞）
+<IfModule mod_headers.c>
+Header always set Strict-Transport-Security "max-age=31536000"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+Header always unset X-Powered-By
 </IfModule>

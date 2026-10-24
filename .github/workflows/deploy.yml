@@ -37,6 +37,9 @@ jobs:
             _要上傳清單_20260708.md
             部署與發文教學.pdf
             config.yml
+            build-journal.js
+            validate-site.js
+            工具_*.js
 
       # 2026-10-24 IndexNow：部署完把這次改過的頁面通知 Bing／Yandex 等（ChatGPT 搜尋主要用 Bing 索引）
       #   金鑰檔＝網站根目錄 281220307317c00851aab2e2d1a952a7.txt（IndexNow 規定公開放置，不是密碼）。失敗不影響部署。
