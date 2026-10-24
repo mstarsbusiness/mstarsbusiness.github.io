@@ -154,7 +154,7 @@ function postPage(post, allPosts) {
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg">
 ${fonts}
-<link rel="stylesheet" href="../assets/pages.css">
+<link rel="stylesheet" href="../assets/pages.css?v=20261024b">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -255,7 +255,7 @@ function journalPage(posts) {
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg">
 ${fonts}
-<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/pages.css?v=20261024b">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>

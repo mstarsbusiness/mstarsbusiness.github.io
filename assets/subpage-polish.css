@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&display=swap');
+/* 2026-10-24 字型瘦身：原本這裡 @import 同一份字型，與各頁 <link> 重複宣告會讓每個字型檔被請求兩次——已移除；字型一律由各頁 <head> 的 <link> 載入（404／privacy 已補 link）。 */
 
 /* Codex subpage polish — 2026-09-02
    Scope: customer-facing presentation only. Do not put business copy, prices, SEO or behavior here. */
