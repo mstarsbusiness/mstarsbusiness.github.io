@@ -107,6 +107,7 @@ body.lux .close{border-color:var(--gold)}
 }
 </script>
 <link rel="stylesheet" href="assets/subpage-polish.css?v=20260910c">
+<style id="gallery-dark-fix">/* 2026-10-24：subpage-polish 把 body.lux 改成米白底，相簿原為深色設計（淺色圖說），還原深底 */body.lux{background:var(--bg)!important}</style>
 </head>
 <body class="lux">
 <header><div class="wrap">
@@ -125,14 +126,14 @@ body.lux .close{border-color:var(--gold)}
 
 <div class="gal"><div class="wrap">
 <figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-02.jpg" alt="信義館 大門入口・品牌形象牆" loading="lazy"></div><figcaption><span class="no">01 / 11</span><span class="t">大門入口・品牌形象牆</span><span class="v">Xinyi Venue</span></figcaption></figure>
-<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-10.jpg" alt="信義館 全新公共區・開放長桌" loading="lazy"></div><figcaption><span class="no">02 / 11</span><span class="t">全新公共區・開放長桌</span><span class="v">Xinyi Venue</span></figcaption></figure>
-<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-11.jpg" alt="信義館 公共區・實木共享長桌" loading="lazy"></div><figcaption><span class="no">03 / 11</span><span class="t">公共區・實木共享長桌</span><span class="v">Xinyi Venue</span></figcaption></figure>
+<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-10.jpg" alt="信義館 公共區兼會議室・開放長桌" loading="lazy"></div><figcaption><span class="no">02 / 11</span><span class="t">公共區兼會議室・開放長桌</span><span class="v">Xinyi Venue</span></figcaption></figure>
+<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-11.jpg" alt="信義館 公共區兼會議室・實木長桌" loading="lazy"></div><figcaption><span class="no">03 / 11</span><span class="t">公共區兼會議室・實木長桌</span><span class="v">Xinyi Venue</span></figcaption></figure>
 <figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-12.jpg" alt="信義館 事務機・點心補給車" loading="lazy"></div><figcaption><span class="no">04 / 11</span><span class="t">事務機・點心補給車</span><span class="v">Xinyi Venue</span></figcaption></figure>
 <figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-13.jpg" alt="信義館 休憩角落・沙發小憩" loading="lazy"></div><figcaption><span class="no">05 / 11</span><span class="t">休憩角落・沙發小憩</span><span class="v">Xinyi Venue</span></figcaption></figure>
 <figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-05.jpg" alt="信義館 茶水區・冰箱與飲水設備" loading="lazy"></div><figcaption><span class="no">06 / 11</span><span class="t">茶水區・冰箱與飲水設備</span><span class="v">Xinyi Venue</span></figcaption></figure>
 <figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-14.jpg" alt="信義館 茶水吧・咖啡茶包" loading="lazy"></div><figcaption><span class="no">07 / 11</span><span class="t">茶水吧・咖啡茶包</span><span class="v">Xinyi Venue</span></figcaption></figure>
-<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-06.jpg" alt="信義館 六人辦公室・臨窗木桌" loading="lazy"></div><figcaption><span class="no">08 / 11</span><span class="t">六人辦公室・臨窗木桌</span><span class="v">Xinyi Venue</span></figcaption></figure>
-<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-07.jpg" alt="信義館 八人會議空間・綠意點綴" loading="lazy"></div><figcaption><span class="no">09 / 11</span><span class="t">八人會議空間・綠意點綴</span><span class="v">Xinyi Venue</span></figcaption></figure>
+<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-06.jpg" alt="信義館 獨立八人工作區・臨窗木桌" loading="lazy"></div><figcaption><span class="no">08 / 11</span><span class="t">獨立八人工作區・臨窗木桌</span><span class="v">Xinyi Venue</span></figcaption></figure>
+<figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-07.jpg" alt="信義館 獨立辦公室・綠意點綴" loading="lazy"></div><figcaption><span class="no">09 / 11</span><span class="t">獨立辦公室・綠意點綴</span><span class="v">Xinyi Venue</span></figcaption></figure>
 <figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-08.jpg" alt="信義館 臨窗雙人桌・城市景觀" loading="lazy"></div><figcaption><span class="no">10 / 11</span><span class="t">臨窗雙人桌・城市景觀</span><span class="v">Xinyi Venue</span></figcaption></figure>
 <figure><div class="imgbox"><img src="images/gallery/xinyi/xinyi-09.jpg" alt="信義館 玻璃隔間辦公區" loading="lazy"></div><figcaption><span class="no">11 / 11</span><span class="t">玻璃隔間辦公區</span><span class="v">Xinyi Venue</span></figcaption></figure>
 </div></div>
@@ -156,7 +157,8 @@ const tt=document.getElementById('totop');
 addEventListener('scroll',()=>tt.classList.toggle('show',scrollY>600));
 tt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 </script>
-<script src="i18n.js?v=20261027"></script>
+<script src="i18n.js?v=20261028"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
+<script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
 </html>

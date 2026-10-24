@@ -107,6 +107,7 @@ body.lux .close{border-color:var(--gold)}
 }
 </script>
 <link rel="stylesheet" href="assets/subpage-polish.css?v=20260910c">
+<style id="gallery-dark-fix">/* 2026-10-24：subpage-polish 把 body.lux 改成米白底，相簿原為深色設計（淺色圖說），還原深底 */body.lux{background:var(--bg)!important}</style>
 </head>
 <body class="lux">
 <header><div class="wrap">
@@ -156,7 +157,8 @@ const tt=document.getElementById('totop');
 addEventListener('scroll',()=>tt.classList.toggle('show',scrollY>600));
 tt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 </script>
-<script src="i18n.js?v=20261027"></script>
+<script src="i18n.js?v=20261028"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
+<script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
 </html>

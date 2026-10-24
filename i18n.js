@@ -713,6 +713,16 @@ Object.assign(T, { // 2026-10-24 信件代收櫃照片
 "辰星商務中心世貿館 信件代收櫃":["Morning Stars WTC Branch mail cabinet","辰星商務センター世貿館 郵便物保管棚"],
 "世貿館信件代收櫃：每家公司一格，由現場人員收件、拍照通知。":["WTC Branch mail cabinet: each company has its own slot; on-site staff receive, photograph and notify you of every item.","世貿館の郵便物保管棚：会社ごとに専用の棚があり、スタッフが受け取り・撮影してお知らせします。"],
 });
+Object.assign(T, { // 2026-10-24 信義館相簿圖說更正（老闆：xinyi-07 是獨立辦公室、xinyi-06 是獨立 8 人工作區、會議室就是公共區）
+"獨立辦公室・綠意點綴":["Private Office · Greenery","個室オフィス・グリーンのアクセント"],
+"信義館 獨立辦公室・綠意點綴":["Xinyi Branch — Private Office · Greenery","信義館 個室オフィス・グリーンのアクセント"],
+"獨立八人工作區・臨窗木桌":["Private 8-Person Workspace · Window-Side Wooden Desks","8名用個室ワークスペース・窓際の木製デスク"],
+"信義館 獨立八人工作區・臨窗木桌":["Xinyi Branch — Private 8-Person Workspace · Window-Side Wooden Desks","信義館 8名用個室ワークスペース・窓際の木製デスク"],
+"公共區兼會議室・開放長桌":["Common Area & Meeting Room · Open Long Table","共用エリア兼会議室・オープンロングテーブル"],
+"信義館 公共區兼會議室・開放長桌":["Xinyi Branch — Common Area & Meeting Room · Open Long Table","信義館 共用エリア兼会議室・オープンロングテーブル"],
+"公共區兼會議室・實木長桌":["Common Area & Meeting Room · Solid-Wood Table","共用エリア兼会議室・無垢材テーブル"],
+"信義館 公共區兼會議室・實木長桌":["Xinyi Branch — Common Area & Meeting Room · Solid-Wood Table","信義館 共用エリア兼会議室・無垢材テーブル"],
+});
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
