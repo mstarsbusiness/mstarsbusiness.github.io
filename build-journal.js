@@ -126,7 +126,7 @@ function postPage(post, allPosts) {
     description,
     image,
     datePublished: isoDate(post.date),
-    dateModified: isoDate(post.date),
+    dateModified: isoDate(post.updated || post.date),
     inLanguage: 'zh-Hant',
     mainEntityOfPage: url,
     author: { '@type': 'Organization', name: BRAND, url: `${SITE}/` },
@@ -175,6 +175,7 @@ ${header('../')}
         <h1>${esc(post.title)}</h1>
         <div class="article-meta">
           <span>${esc(displayDate(post.date))}</span>
+          ${post.updated ? `<span>更新 ${esc(displayDate(post.updated))}</span>` : ''}
           <span>${readingMinutes(post.body)} 分鐘閱讀</span>
           <span>辰星商務中心</span>
         </div>
@@ -199,7 +200,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20261023"></script>
+<script src="../i18n.js?v=20261024"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
@@ -324,7 +325,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20261023"></script>
+<script src="i18n.js?v=20261024"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
@@ -363,7 +364,7 @@ function sitemap(posts) {
   ];
   const urls = pages.map(([url, priority, frequency]) => `<url><loc>${SITE}${url}</loc><lastmod>${today}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`);
   posts.forEach(post => {
-    urls.push(`<url><loc>${SITE}/posts/${esc(post.id)}.html</loc><lastmod>${isoDate(post.date) || today}</lastmod><changefreq>monthly</changefreq><priority>.6</priority></url>`);
+    urls.push(`<url><loc>${SITE}/posts/${esc(post.id)}.html</loc><lastmod>${isoDate(post.updated || post.date) || today}</lastmod><changefreq>monthly</changefreq><priority>.6</priority></url>`);
   });
   return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join('')}</urlset>`;
 }

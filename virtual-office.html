@@ -42,14 +42,31 @@
         "name": "辰星商務中心 Morning Stars",
         "@id": "https://www.morning-stars.com.tw/#brand",
         "telephone": "+886-903-368-856",
-        "url": "https://www.morning-stars.com.tw/"
+        "url": "https://www.morning-stars.com.tw/",
+        "address": { "@type": "PostalAddress", "streetAddress": "基隆路一段398號4樓", "addressLocality": "信義區", "addressRegion": "台北市", "postalCode": "110", "addressCountry": "TW" },
+        "sameAs": ["https://www.facebook.com/mstarscowork/", "https://www.instagram.com/mstarsoffice/"]
       },
-      "offers": {
-        "@type": "Offer",
-        "price": "18000",
-        "priceCurrency": "TWD",
-        "description": "借址登記年繳方案，平均每月 NT$1,500 元起"
-      }
+      "dateModified": "2026-10-24",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "世貿館 借址登記",
+          "price": "18000",
+          "priceCurrency": "TWD",
+          "description": "世貿館年費 18,000 元（含稅），另收一次性押金 1,500 元，首期合計 19,500 元。目前尚有名額。",
+          "availability": "https://schema.org/LimitedAvailability",
+          "availableAtOrFrom": { "@type": "Place", "name": "辰星商務中心 世貿館", "url": "https://www.morning-stars.com.tw/wtc.html", "address": { "@type": "PostalAddress", "streetAddress": "基隆路一段398號4樓", "addressLocality": "信義區", "addressRegion": "台北市", "postalCode": "110", "addressCountry": "TW" } }
+        },
+        {
+          "@type": "Offer",
+          "name": "信義館 借址登記",
+          "price": "21600",
+          "priceCurrency": "TWD",
+          "description": "信義館年費 21,600 元（含稅），另收一次性押金 1,800 元，首期合計 23,400 元。目前已額滿，可登記候補。",
+          "availability": "https://schema.org/SoldOut",
+          "availableAtOrFrom": { "@type": "Place", "name": "辰星商務中心 信義館", "url": "https://www.morning-stars.com.tw/xinyi.html", "address": { "@type": "PostalAddress", "streetAddress": "基隆路二段145號10樓", "addressLocality": "信義區", "addressRegion": "台北市", "postalCode": "110", "addressCountry": "TW" } }
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -200,7 +217,14 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
   <section><div class="wrap">
     <div class="avail-bar"><p>目前名額：世貿館借址登記尚有名額，可直接申請；信義館已額滿，開放候補。新場域開放時，候補名單優先通知。</p><a class="primary" href="https://line.me/R/ti/p/@mstars" target="_blank" rel="noopener">LINE 立即詢問</a><a href="tel:0903368856">致電 0903-368-856</a></div>
     <p class="answer-lead"><strong>快速答案：</strong>若您需要台北信義區的公司或行號登記地址，但不需要每天使用固定辦公桌，借址登記通常是成本較低的選擇。辰星世貿館年繳 NT$18,000 起（首期含押金 NT$1,500 共 NT$19,500、含稅；信義館首期 NT$23,400），包含登記地址、郵件包裹代收與 LINE 到件通知。</p>
-    <p class="answer-lead" style="font-size:.85rem;color:var(--stone,#8a8072)">本頁資訊更新日期：2026 年 10 月 22 日</p>
+    <p class="answer-lead" style="font-size:.85rem;color:var(--stone,#8a8072)">本頁資訊更新日期：2026 年 10 月 24 日</p>
+    <h3>為什麼選辰星借址登記？</h3>
+    <ul class="feat">
+      <li><strong>一站式設立</strong>：配合專業記帳士，公司設立、變更登記與每月記帳一次處理，辰星不加價、不抽成。</li>
+      <li><strong>信件即時通知</strong>：郵件、包裹與政府公文到件後，透過 LINE 即時通知，不怕漏掉重要文件。</li>
+      <li><strong>進駐前查核行業</strong>：簽約前先確認您的營業項目可以借址，避免登記後才被要求遷址。</li>
+      <li><strong>費用透明</strong>：年費含稅，不另收行政費或郵件代收費；信件轉寄的郵資依實際金額收取。</li>
+    </ul>
     <p class="answer-lead"><a href="mail-handling.html">📮 信件與包裹代收服務完整說明 →</a></p>
     <p class="lead">所謂「借址登記」，就是將公司行號的工商登記地址設於辰星，無需承租整間實體辦公室，即可合法完成公司設立與營業登記。</p>
     <p>對許多初創團隊、自由工作者、SOHO 族與電商賣家而言，事業初期最需要的不是一間昂貴的辦公室，而是一個<strong>能登記、能收信、形象專業</strong>的地址。辰星位於台北市信義區基隆路，鄰近捷運六張犁站與台北 101／世貿站，是名片與官網上一看就放心的黃金地段門面。</p>
@@ -481,7 +505,7 @@ body.lux .brand .blogo{width:40px;height:40px;object-fit:contain;flex:none;displ
   if(qi)qi.addEventListener('keydown',function(e){if(e.key==='Enter')doCheck();});
 })();
 </script>
-<script src="i18n.js?v=20261023"></script>
+<script src="i18n.js?v=20261024"></script>
 <script defer src="chat-widget.js"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 </body>

@@ -678,6 +678,19 @@ Object.assign(T, { // 2026-09-29 世貿館會議室 LINE Pay 付款區（meeting
 "信義館會議室的付款方式，將由專員與您聯繫時說明。":["For Xinyi Branch meeting rooms, our staff will contact you with payment details.","信義館会議室のお支払い方法は、担当者よりご連絡の際にご案内いたします。"],
 "LINE Pay 付款 QR Code（辰星管理顧問有限公司）":["LINE Pay payment QR code (Morning Stars Ltd.)","LINE Pay 決済QRコード（辰星管理顧問有限公司）"],
 });
+Object.assign(T, { // 2026-10-24 借址主頁「為什麼選辰星」＋更新日期
+"資訊更新：2026 年 10 月 24 日":["Updated: October 24, 2026","更新日：2026年10月24日"],
+"本頁資訊更新日期：2026 年 10 月 24 日":["Last updated: October 24, 2026","最終更新日：2026年10月24日"],
+"為什麼選辰星借址登記？":["Why choose Morning Stars for your registered address?","辰星の登記住所サービスが選ばれる理由"],
+"一站式設立":["One-stop company setup","ワンストップで会社設立"],
+"：配合專業記帳士，公司設立、變更登記與每月記帳一次處理，辰星不加價、不抽成。":[": Our partner accountants handle incorporation, amendments and monthly bookkeeping in one place — we add no markup or commission.","：提携する記帳士が会社設立・変更登記・毎月の記帳をまとめて対応。辰星は上乗せ・手数料を一切取りません。"],
+"信件即時通知":["Instant mail alerts","郵便物の即時通知"],
+"：郵件、包裹與政府公文到件後，透過 LINE 即時通知，不怕漏掉重要文件。":[": We notify you on LINE as soon as letters, parcels or government notices arrive, so nothing important is missed.","：郵便物・小包・官公庁からの書類が届くと LINE ですぐにお知らせ。重要書類を見逃しません。"],
+"進駐前查核行業":["Business-type check before you sign","契約前に業種を確認"],
+"：簽約前先確認您的營業項目可以借址，避免登記後才被要求遷址。":[": We confirm your business activities can use a registered address before signing, so you won't be asked to relocate later.","：契約前にお客様の営業項目が登記住所を利用できるか確認し、登記後の移転要求を防ぎます。"],
+"費用透明":["Transparent pricing","明朗な料金"],
+"：年費含稅，不另收行政費或郵件代收費；信件轉寄的郵資依實際金額收取。":[": The annual fee includes tax, with no admin or mail-handling fees; mail forwarding is charged at actual postage.","：年会費は税込で、事務手数料や郵便物受取料は不要。転送の郵送料のみ実費となります。"],
+});
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */

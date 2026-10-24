@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2      # IndexNow 要比對上一版找出改過的頁面
 
       - name: Deploy to 捕夢網 public_html
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -35,3 +37,25 @@ jobs:
             _要上傳清單_20260708.md
             部署與發文教學.pdf
             config.yml
+
+      # 2026-10-24 IndexNow：部署完把這次改過的頁面通知 Bing／Yandex 等（ChatGPT 搜尋主要用 Bing 索引）
+      #   金鑰檔＝網站根目錄 281220307317c00851aab2e2d1a952a7.txt（IndexNow 規定公開放置，不是密碼）。失敗不影響部署。
+      - name: IndexNow 通知搜尋引擎
+        continue-on-error: true
+        run: |
+          KEY=281220307317c00851aab2e2d1a952a7
+          SITE=https://www.morning-stars.com.tw
+          FILES=$(git -c core.quotepath=off diff --name-only --diff-filter=AM HEAD~1 HEAD 2>/dev/null | grep -E '\.html$' | grep -vE '^(admin|新增網站服務項目)/' | LC_ALL=C grep -v '[^ -~]' || true)
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -q '^data/posts.json$'; then FILES="$FILES journal.html"; fi
+          URLS=""
+          for f in $FILES; do
+            u="$SITE/$f"; [ "$f" = "index.html" ] && u="$SITE/"
+            URLS="$URLS\"$u\","
+          done
+          if [ -z "$URLS" ]; then echo "這次沒有改到頁面，略過 IndexNow。"; exit 0; fi
+          URLS="[${URLS%,}]"
+          echo "通知：$URLS"
+          curl -sS -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"www.morning-stars.com.tw\",\"key\":\"$KEY\",\"keyLocation\":\"$SITE/$KEY.txt\",\"urlList\":$URLS}"
+

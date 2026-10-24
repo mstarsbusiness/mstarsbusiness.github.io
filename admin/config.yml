@@ -31,6 +31,7 @@ collections:
               - { label: 識別碼（自動）, name: id, widget: uuid, required: false }
               - { label: 標題, name: title, widget: string }
               - { label: 日期, name: date, widget: string, hint: "顯示用文字，例如 2026.06" }
+              - { label: 最後更新日（選填）, name: updated, widget: string, required: false, hint: "改過舊文時填，例如 2026.10.24；會顯示「更新」並更新 sitemap" }
               - { label: 分類標籤, name: tag, widget: string, hint: "例如：最新消息 / 場館動態 / 講座活動" }
               - { label: 圖片, name: img, widget: image, required: false, hint: "建議寬度 1000px 以上" }
               - { label: 內文, name: body, widget: text, hint: "可分多段；段落之間空一行" }
