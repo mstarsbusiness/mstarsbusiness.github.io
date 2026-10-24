@@ -116,6 +116,8 @@ function postPage(post, allPosts) {
   const text = paras(post.body);
   const description = excerpt(post.body, 155);
   const url = `${SITE}/posts/${post.id}.html`;
+  /* 2026-10-24 舊文整併：post.canonical（完整網址）＝本篇的主題已由另一頁完整涵蓋，canonical 指過去、sitemap 不列；post.canonicalText＝導讀連結文字 */
+  const canonicalUrl = /^https:\/\/www\.morning-stars\.com\.tw\//.test(String(post.canonical || '')) ? post.canonical : url;
   const displayImage = safeImagePath(post.img);
   const image = absoluteImageUrl(post.img);
   const relatedPosts = allPosts.filter(item => item.id !== post.id).slice(0, 3);
@@ -128,7 +130,7 @@ function postPage(post, allPosts) {
     datePublished: isoDate(post.date),
     dateModified: isoDate(post.updated || post.date),
     inLanguage: 'zh-Hant',
-    mainEntityOfPage: url,
+    mainEntityOfPage: canonicalUrl,
     author: { '@type': 'Organization', name: BRAND, url: `${SITE}/` },
     publisher: { '@type': 'Organization', name: BRAND, logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-dark.png` } }
   };
@@ -140,13 +142,13 @@ function postPage(post, allPosts) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(post.title)}｜辰星商務中心 Journal</title>
 <meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${esc(canonicalUrl)}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="author" content="${BRAND}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="${esc(post.title)}｜辰星商務中心 Journal">
 <meta property="og:description" content="${esc(description)}">
-<meta property="og:url" content="${url}">
+<meta property="og:url" content="${esc(canonicalUrl)}">
 <meta property="og:image" content="${esc(image)}">
 <meta property="og:site_name" content="${BRAND}">
 <meta name="twitter:card" content="summary_large_image">
@@ -180,6 +182,7 @@ ${header('../')}
           <span>辰星商務中心</span>
         </div>
         <p class="article-summary">${esc(description)}</p>
+        ${canonicalUrl !== url ? `<p class="article-summary">📌 這個主題的完整、最新說明：<a href="${esc(canonicalUrl)}">${esc(post.canonicalText || '前往完整說明')} →</a></p>` : ''}
         <div class="post-hero-img"><img src="${esc(displayImage)}" alt="${esc(post.title)}" loading="eager" decoding="async"></div>
         <div class="article-body">${text.map(item => `<p>${renderPara(item)}</p>`).join('')}</div>
         ${post.link ? `<p class="article-action"><a class="btn solid" href="${esc(post.link)}" target="_blank" rel="noopener">${esc(post.linkText || '查看更多')}</a></p>` : ''}
@@ -200,7 +203,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20261024"></script>
+<script src="../i18n.js?v=20261025"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
@@ -325,7 +328,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20261024"></script>
+<script src="i18n.js?v=20261025"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 </body>
 </html>`;
@@ -363,7 +366,7 @@ function sitemap(posts) {
     ['/terms.html', '.3', 'yearly']
   ];
   const urls = pages.map(([url, priority, frequency]) => `<url><loc>${SITE}${url}</loc><lastmod>${today}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`);
-  posts.forEach(post => {
+  posts.filter(post => !post.canonical).forEach(post => {
     urls.push(`<url><loc>${SITE}/posts/${esc(post.id)}.html</loc><lastmod>${isoDate(post.updated || post.date) || today}</lastmod><changefreq>monthly</changefreq><priority>.6</priority></url>`);
   });
   return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join('')}</urlset>`;

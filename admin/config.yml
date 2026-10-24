@@ -32,6 +32,8 @@ collections:
               - { label: 標題, name: title, widget: string }
               - { label: 日期, name: date, widget: string, hint: "顯示用文字，例如 2026.06" }
               - { label: 最後更新日（選填）, name: updated, widget: string, required: false, hint: "改過舊文時填，例如 2026.10.24；會顯示「更新」並更新 sitemap" }
+              - { label: 整併到（選填）, name: canonical, widget: string, required: false, hint: "本篇主題已由另一頁完整涵蓋時填完整網址（https://www.morning-stars.com.tw/...），canonical 會指過去、sitemap 不列" }
+              - { label: 整併連結文字（選填）, name: canonicalText, widget: string, required: false }
               - { label: 分類標籤, name: tag, widget: string, hint: "例如：最新消息 / 場館動態 / 講座活動" }
               - { label: 圖片, name: img, widget: image, required: false, hint: "建議寬度 1000px 以上" }
               - { label: 內文, name: body, widget: text, hint: "可分多段；段落之間空一行" }

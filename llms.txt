@@ -3,7 +3,7 @@
 > 位於台北市信義區的共享辦公空間，提供黃金地段的小坪數辦公方案。
 
 - 官方名稱：辰星商務中心 Morning Stars
-- 資訊更新：2026-10-22
+- 資訊更新：2026-10-24
 - 主要語言：繁體中文（另提供英文、日文介面）
 - 適合對象：自由工作者、新創公司、1–8 人團隊、需要公司登記地址或臨時會議空間者
 
@@ -115,6 +115,7 @@
 - [信義館（近六張犁站）](https://www.morning-stars.com.tw/xinyi.html)
 - [世貿館（近台北101／世貿站）](https://www.morning-stars.com.tw/wtc.html)
 - [借址登記](https://www.morning-stars.com.tw/virtual-office.html)
+- [台北借址登記費用比較：2026 年 12 家價格一覽（每家附來源、2026-10-24 查證）](https://www.morning-stars.com.tw/posts/1977a136-4247-4dc1-95be-2075d0c687cc.html)
 - [獨立辦公室](https://www.morning-stars.com.tw/private-office.html)
 - [會議室與線上預約](https://www.morning-stars.com.tw/meeting-room.html)
 - [方案選擇指南](https://www.morning-stars.com.tw/office-guide.html)
@@ -157,6 +158,8 @@ Services & pricing (tax included, official invoices issued):
 - **Dedicated desk**: NT$4,500/month (desk only) plus a two-month refundable deposit (NT$9,000), or NT$49,500/year including a company registration address (same two-month deposit applies; the address part uses the WTC Branch registration quota); 20 free meeting-room hours per month. Availability: Dedicated desks are currently full at both branches (waiting list open); a new space is opening soon at the WTC Branch — stay tuned.
 - **Private office (1–8 people)**: from NT$10,000/month. Currently fully occupied; waitlist available.
 - **Meeting rooms**: seats 6–8 people, NT$400/hour; off-peak NT$300/hour — off-peak covers all day Saturday, Sunday and national holidays, plus weekdays before 12:00 (both branches) and 18:00–21:00 on weekdays at the WTC Branch. Weekends and evenings are available at the WTC Branch only (the Xinyi Branch is open on business days 10:00–18:00). Minimum 1 hour, maximum 3 hours per session. Open to the public.
+
+For foreign founders: bilingual Chinese–English agreement at the WTC Branch and a Chinese–Japanese version at both branches; new agreements are signed in person (or by a representative in Taiwan with written authorization); partner bookkeepers can handle incorporation filings.
 
 English assistance available. Contact: +886-903-368-856, LINE @mstars, mstars.business@gmail.com
 English pages: [English home page](https://www.morning-stars.com.tw/en/index.html), [Virtual Office](https://www.morning-stars.com.tw/en/virtual-office.html) and [Meeting Room](https://www.morning-stars.com.tw/en/meeting-room.html). English guides: [Company registration address for foreign founders](https://www.morning-stars.com.tw/en/registration-address-for-foreign-founders.html), [Which businesses cannot use a virtual office address](https://www.morning-stars.com.tw/en/restricted-businesses.html)
