@@ -723,6 +723,9 @@ Object.assign(T, { // 2026-10-24 信義館相簿圖說更正（老闆：xinyi-07
 "公共區兼會議室・實木長桌":["Common Area & Meeting Room · Solid-Wood Table","共用エリア兼会議室・無垢材テーブル"],
 "信義館 公共區兼會議室・實木長桌":["Xinyi Branch — Common Area & Meeting Room · Solid-Wood Table","信義館 共用エリア兼会議室・無垢材テーブル"],
 });
+Object.assign(T, { // 2026-10-24 合作夥伴：辰星管理顧問改包租代管・社會住宅
+"包租代管・社會住宅":["Property Leasing & Management · Social Housing","サブリース・賃貸管理・社会住宅"],
+});
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
