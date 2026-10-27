@@ -24,10 +24,7 @@
 [
   {
     "@context": "https://schema.org",
-    "@type": [
-      "LocalBusiness",
-      "CoworkingSpace"
-    ],
+    "@type": "Organization",
     "name": "辰星商務中心 Morning Stars",
     "alternateName": [
       "Morning Stars Business Center",
@@ -39,9 +36,6 @@
     "url": "https://www.morning-stars.com.tw/",
     "telephone": "+886-903-368-856",
     "email": "mstars.business@gmail.com",
-    "priceRange": "$$",
-    "currenciesAccepted": "TWD",
-    "paymentAccepted": "Cash, Bank Transfer",
     "description": "辰星商務中心位於台北信義區黃金地段，提供信義館與世貿館兩處據點，服務涵蓋借址登記（虛擬辦公室）、獨立辦公室租借、共享座位及會議室預約。",
     "address": [
       {
@@ -61,25 +55,9 @@
         "addressCountry": "TW"
       }
     ],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 25.027068,
-      "longitude": 121.555857
-    },
-    "hasMap": "https://maps.google.com/?q=台北市信義區基隆路二段145號10樓",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "10:00",
-        "closes": "17:00"
-      }
+    "location": [
+      { "@id": "https://www.morning-stars.com.tw/xinyi.html#xinyi" },
+      { "@id": "https://www.morning-stars.com.tw/wtc.html#wtc" }
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -102,7 +80,7 @@
         {
           "@type": "Offer",
           "name": "共享座位",
-          "description": "獨立座位月租NT$4,500起＋押金兩個月，每月贈20小時免費會議室；兩館目前皆已額滿（可候補），世貿館即將開放新場域，敬請期待。年繳49,500（繳11送1）含公司登記地址之方案，設址部分可使用世貿館借址名額",
+          "description": "獨立座位月租NT$4,500起＋押金兩個月，每月贈20小時免費會議室；名額有限，歡迎洽詢，世貿館即將開放新場域。年繳49,500（繳11送1）含公司登記地址之方案，設址部分可使用世貿館借址名額",
           "price": "4500",
           "priceCurrency": "TWD"
         }
@@ -151,9 +129,10 @@
       "LocalBusiness",
       "CoworkingSpace"
     ],
+    "@id": "https://www.morning-stars.com.tw/xinyi.html#xinyi",
     "name": "辰星商務中心 信義館",
     "image": "https://www.morning-stars.com.tw/images/og-cover.jpg",
-    "url": "https://www.morning-stars.com.tw/#venues",
+    "url": "https://www.morning-stars.com.tw/xinyi.html",
     "telephone": "+886-903-368-856",
     "email": "mstars.business@gmail.com",
     "priceRange": "$$",
@@ -185,9 +164,7 @@
         "closes": "17:00"
       }
     ],
-    "branchOf": {
-      "@type": "Organization",
-      "name": "辰星商務中心 Morning Stars",
+    "parentOrganization": {
       "@id": "https://www.morning-stars.com.tw/#brand"
     },
     "description": "辰星商務中心信義館，鄰近捷運六張犁站，提供共享辦公室、獨立辦公室、借址登記（虛擬辦公室）及彈性座位方案。"
@@ -198,9 +175,10 @@
       "LocalBusiness",
       "CoworkingSpace"
     ],
+    "@id": "https://www.morning-stars.com.tw/wtc.html#wtc",
     "name": "辰星商務中心 世貿館",
     "image": "https://www.morning-stars.com.tw/images/og-cover.jpg",
-    "url": "https://www.morning-stars.com.tw/#venues",
+    "url": "https://www.morning-stars.com.tw/wtc.html",
     "telephone": "+886-903-368-856",
     "email": "mstars.business@gmail.com",
     "priceRange": "$$",
@@ -235,9 +213,7 @@
         "description": "世貿館 24 小時可進出；現場服務 平日 10:00–17:00"
       }
     ],
-    "branchOf": {
-      "@type": "Organization",
-      "name": "辰星商務中心 Morning Stars",
+    "parentOrganization": {
       "@id": "https://www.morning-stars.com.tw/#brand"
     },
     "description": "辰星商務中心世貿館，鄰近捷運台北101/世貿站，提供共享辦公室、獨立辦公室、借址登記及會議室租借；進駐客戶可 24 小時進出。"
@@ -301,6 +277,7 @@
     },
     "provider": {
       "@type": "Organization",
+      "@id": "https://www.morning-stars.com.tw/#brand",
       "name": "辰星商務中心 Morning Stars",
       "url": "https://www.morning-stars.com.tw/",
       "telephone": "+886-903-368-856"
