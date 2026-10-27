@@ -41,6 +41,9 @@ RedirectMatch 301 ^/posts/(office-guide|virtual-office|private-office|meeting-ro
 # /xinyi、/wtc（不帶副檔名）與被截斷的 .h／.htm 一律 301 到正式頁；不會碰到 xinyi-01.jpg 這類檔名。
 RedirectMatch 301 ^/(xinyi|wtc)(\.h|\.htm)?$ https://www.morning-stars.com.tw/$1.html
 
+# 根目錄 4 個「副檔名 .html 的 JPG」（2026-10-28 移到 CRM 交接文件歸檔）：同名貼文在 /posts/ 底下，舊網址導過去。
+RedirectMatch 301 ^/(9291514c-3bea-4d29-9cc3-8a8953967708|seminar-survey-2026|xinyi-xmas-2025|wtc-coming-soon-2025)\.html$ https://www.morning-stars.com.tw/posts/$1.html
+
 # 已移除的舊貼文（2026-09-25 老闆指示清掉）：檔案已從 repo 刪除，網址 301 導到同題目的現存貼文，
 # 不留 404、保住既有排名。① 9/10 重複發的「借址登記的信件包裹怎麼收？」→ 9/2 原文
 # ②「世貿站附近會議室一小時多少錢？」舊版 → 8/14 版 ③「台北市設址登記是什麼？和借址一樣嗎？」→ 8/18「商務中心借址登記是什麼？」

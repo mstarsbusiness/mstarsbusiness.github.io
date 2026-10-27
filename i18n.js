@@ -729,6 +729,9 @@ Object.assign(T, { // 2026-10-24 合作夥伴：辰星管理顧問改包租代�
 "包租代管・老屋活化・租賃資產管理":["Property Leasing & Management · Older Home Renovation · Rental Asset Management","サブリース・賃貸管理・築古物件リノベーション・賃貸資産管理"],
 "心之所寓 Hearth & Heart":["Hearth & Heart","心之所寓 Hearth & Heart"],
 });
+Object.assign(T, { // 2026-10-28 首頁大標加主要服務
+"商務中心・借址登記・公司設立":["Business Center · Virtual Office · Company Setup","ビジネスセンター・バーチャルオフィス・会社設立"],
+});
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
