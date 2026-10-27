@@ -725,6 +725,8 @@ Object.assign(T, { // 2026-10-24 信義館相簿圖說更正（老闆：xinyi-07
 });
 Object.assign(T, { // 2026-10-24 合作夥伴：辰星管理顧問改包租代管・社會住宅
 "包租代管・社會住宅":["Property Leasing & Management · Social Housing","サブリース・賃貸管理・社会住宅"],
+"包租代管・老屋活化・租賃資產管理":["Property Leasing & Management · Older Home Renovation · Rental Asset Management","サブリース・賃貸管理・築古物件リノベーション・賃貸資産管理"],
+"心之所寓 Hearth & Heart":["Hearth & Heart","心之所寓 Hearth & Heart"],
 });
   }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
