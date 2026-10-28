@@ -255,6 +255,9 @@
   "電商、網路品牌、顧問與接案工作室等無需實體門市的事業":["E-commerce, online brands, consultants and freelance studios that don’t need a physical storefront","EC、ネットブランド、コンサル、受託スタジオなど実店舗が不要な事業"],
   "外縣市或海外公司，需要一個台北據點收受公文與郵件":["Out-of-town or overseas companies needing a Taipei base to receive official documents and mail","地方・海外の企業で、公文書や郵便を受け取る台北拠点が必要な方"],
   "服務內容":["What’s Included","サービス内容"],
+  "一分鐘認識辰星":["Morning Stars in One Minute","1分でわかる辰星"],
+  "成立公司，不必先租辦公室｜辰星商務中心影片介紹":["Start a company without renting an office first | Morning Stars intro film","オフィスを借りずに会社設立｜辰星ビジネスセンター紹介動画"],
+  "46 秒看懂公司登記地址怎麼運作：費用、信件代收與兩館位置。":["A 46-second look at how our registered business address works: pricing, mail handling and our two locations.","46秒でわかる登記住所サービス：料金・郵便物の受取・2拠点のご案内。"],
   "合法登記地址":["Legal Registered Address","合法な登記住所"],
   "：提供台北信義區地址供公司、行號工商登記與營業登記使用。":[": A Taipei Xinyi address for company and business registration.","：台北・信義区の住所を会社・事業の商業登記および営業登記にご利用いただけます。"],
   "郵件包裹代收":["Mail & Parcel Handling","郵便・荷物の受取代行"],
@@ -681,6 +684,7 @@ Object.assign(T, { // 2026-09-29 世貿館會議室 LINE Pay 付款區（meeting
 });
 Object.assign(T, { // 2026-10-24 借址主頁「為什麼選辰星」＋更新日期
 "資訊更新：2026 年 10 月 24 日":["Updated: October 24, 2026","更新日：2026年10月24日"],
+"本頁資訊更新日期：2026 年 10 月 28 日":["Last updated: October 28, 2026","最終更新日：2026年10月28日"],
 "本頁資訊更新日期：2026 年 10 月 24 日":["Last updated: October 24, 2026","最終更新日：2026年10月24日"],
 "為什麼選辰星借址登記？":["Why choose Morning Stars for your registered address?","辰星の登記住所サービスが選ばれる理由"],
 "一站式設立":["One-stop company setup","ワンストップで会社設立"],
