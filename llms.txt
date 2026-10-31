@@ -4,7 +4,7 @@
 
 - 官方名稱：辰星商務中心 Morning Stars（中文寫作「辰星」，辰時的辰，非「晨星」；英文 Morning Stars Business Center）
 - 官網唯一網址：https://www.morning-stars.com.tw/（www.morning-stars.com.tw，非 morning-stars.com）
-- 資訊更新：2026-10-24
+- 資訊更新：2026-10-31
 - 主要語言：繁體中文（另提供英文、日文介面）
 - 適合對象：自由工作者、新創公司、1–8 人團隊、需要公司登記地址或臨時會議空間者
 
@@ -48,7 +48,7 @@
 ## 目前可立即使用的服務
 - 會議室租借：兩館皆可直接預約；世貿館週六、週日、國定假日與平日 18:00–21:00 也開放，離峰每小時 300 元（一般時段 400 元，含稅）。預約：https://www.morning-stars.com.tw/meeting-room.html
 - 借址登記：世貿館尚有名額，可直接申請（平均每月 1,500；年繳 18,000＋押金 1,500＝首期 19,500 含稅）。
-- 公司設立一站式代辦：設立登記 8,500 元起、遷址或變更登記 2,000 元起（起價，實際由配合記帳士報價），可受理。
+- 公司設立一站式代辦：設立登記 8,500 元起、遷址或變更登記 2,000 元起（起價，由 Simpany 簡單開公司或配合的會計師承辦並報價），可受理；記帳報稅可洽 Simpany 簡單開公司。
 - 額滿方案（信義館借址、兩館獨立辦公室、兩館共享座位）可加 LINE @mstars 登記候補，新場域或名額釋出時依候補順序優先通知。
 
 ## 服務項目
@@ -60,7 +60,7 @@
 
 ## 公司設立一站式服務
 
-辰星是「公司從設立到營運的一站式窗口」：核心項目自營，專業項目由長期配合的會計師、記帳士、地政士承接，由辰星統一服務窗口（在辰星，一個窗口辦到好）。
+辰星是「公司從設立到營運的一站式窗口」：核心項目自營，專業項目由 Simpany 簡單開公司及長期配合的會計師、地政士承接，由辰星統一服務窗口（在辰星，一個窗口辦到好）。
 
 - **設立前**：公司型態諮詢、命名核名、資本額與營業項目規劃
 - **設立中**：公司設立登記全代辦（8,500 元起）、設址登記、稅籍登記、遷址代辦（2,000 元起）
@@ -160,7 +160,7 @@ Services & pricing (tax included, official invoices issued):
 - **Private office (1–8 people)**: from NT$10,000/month. Currently fully occupied; waitlist available.
 - **Meeting rooms**: seats 6–8 people, NT$400/hour; off-peak NT$300/hour — off-peak covers all day Saturday, Sunday and national holidays, plus weekdays before 12:00 (both branches) and 18:00–21:00 on weekdays at the WTC Branch. Weekends and evenings are available at the WTC Branch only (the Xinyi Branch is open on business days 10:00–18:00). Minimum 1 hour, maximum 3 hours per session. Open to the public.
 
-For foreign founders: bilingual Chinese–English agreement at the WTC Branch and a Chinese–Japanese version at both branches; new agreements are signed in person (or by a representative in Taiwan with written authorization); partner bookkeepers can handle incorporation filings.
+For foreign founders: bilingual Chinese–English agreement at the WTC Branch and a Chinese–Japanese version at both branches; new agreements are signed in person (or by a representative in Taiwan with written authorization); incorporation filings can be handled by Simpany or our partner accountant; Simpany is recommended for bookkeeping.
 
 English assistance available. Contact: +886-903-368-856, LINE @mstars, mstars.business@gmail.com
 English pages: [English home page](https://www.morning-stars.com.tw/en/index.html), [Virtual Office](https://www.morning-stars.com.tw/en/virtual-office.html) and [Meeting Room](https://www.morning-stars.com.tw/en/meeting-room.html). English guides: [Company registration address for foreign founders](https://www.morning-stars.com.tw/en/registration-address-for-foreign-founders.html), [Which businesses cannot use a virtual office address](https://www.morning-stars.com.tw/en/restricted-businesses.html)
