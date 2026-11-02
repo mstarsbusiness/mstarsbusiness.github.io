@@ -117,6 +117,38 @@ if (allMissing.size === 0) {
 }
 console.log('========================================');
 
+/* ---- 字典載入檢查（2026-11-03）：實際執行 i18n.js，確認每一句在「開頁當下」就生效 ----
+ * 上面的覆蓋率只看字典「有沒有這句」。但 9/2～10/28 新增的 111 句被誤放進 watch() 函式裡，
+ * 開頁翻譯時還沒載入 → 回訪的英／日訪客看到中文，覆蓋率卻顯示 100%。這段用假 DOM 真的跑一次引擎。 */
+(function runtimeCheck() {
+  const vm = require('vm');
+  const src = fs.readFileSync(path.join(ROOT, 'i18n.js'), 'utf8');
+  const keys = [...dict];
+  function run(lang) {
+    const nodes = keys.map((k) => ({ nodeValue: k, parentNode: { closest: () => null } }));
+    let i = 0;
+    const el = () => ({ appendChild() {}, setAttribute() {}, classList: { add() {}, remove() {}, toggle() {} } });
+    const ctx = {
+      document: { readyState: 'complete', body: {}, documentElement: el(), head: el(), createElement: el,
+        createTreeWalker: () => ({ nextNode: () => nodes[i++] || null }),
+        querySelectorAll: () => [], getElementById: () => null, addEventListener() {} },
+      NodeFilter: { SHOW_TEXT: 4 }, localStorage: { getItem: () => lang, setItem() {} },
+      location: { pathname: '/wtc.html', href: '', replace() {} },
+      MutationObserver: class { observe() {} }, WeakSet, WeakMap, setTimeout, clearTimeout, console,
+    };
+    ctx.window = ctx;
+    try { vm.runInNewContext(src, ctx); } catch (e) { return { err: e.message }; }
+    return { left: new Set(nodes.filter((n) => dict.has(n.nodeValue)).map((n) => n.nodeValue)) };
+  }
+  const en = run('en'), ja = run('ja');
+  console.log('\n【字典載入檢查】實際執行 i18n.js');
+  if (en.err || ja.err) { console.log('🔴 i18n.js 執行失敗：' + (en.err || ja.err)); return; }
+  const bad = [...en.left].filter((k) => ja.left.has(k));
+  if (!bad.length) { console.log('✅ ' + keys.length + ' 句在開頁當下全部生效'); return; }
+  console.log('🔴 ' + bad.length + ' 句在字典裡、但開頁時沒有生效（多半是 Object.assign(T,…) 被放進函式裡）：');
+  bad.slice(0, 10).forEach((k) => console.log('   - ' + k.slice(0, 60)));
+})();
+
 /* ---- 快取檢查：改完 i18n.js 一定要 bump 版本號，否則訪客瀏覽器會一直用舊字典 ---- */
 const htmls = fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'));
 const vers = new Set();

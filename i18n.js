@@ -1096,7 +1096,10 @@ Object.assign(T, { // 2026-09-01b 會議室圖例（8/31 伺服器時間改版�
       if(busy) return;
       clearTimeout(tid); tid=setTimeout(refresh,120);   // 合併連續變動，避免頻繁重掃
     }).observe(document.body,{childList:true,subtree:true,characterData:true});
-
+  }
+  /* ⚠️ 2026-11-03 修正：以下字典區塊原本被包在 watch() 函式裡（9/2 起的新增都誤放在 watch 結尾大括號之前），
+   *    要等 watch() 執行（開頁翻譯之後）才載入 → 回訪的英/日訪客開頁時這 111 句維持中文。
+   *    新增字典一律放在函式外（本行以下或 T 定義區），工具_多語覆蓋率檢查.js 會實際執行驗證。 */
 Object.assign(T, { // 2026-09-02 事實頁入口（mail-handling / meeting-room-price 原為孤兒頁，僅三頁互連）
 "📮 信件與包裹代收服務完整說明 →":["📮 Full guide to our mail & parcel handling service (Chinese) →","📮 郵便物・宅配便受取サービスの詳細（中国語）→"],
 "💰 會議室費用與計費規則完整說明 →":["💰 Full meeting-room pricing & billing rules (Chinese) →","💰 会議室の料金・計算ルールの詳細（中国語）→"],
@@ -1230,7 +1233,6 @@ Object.assign(T, { // 2026-10-24 合作夥伴：辰星管理顧問改包租代�
 Object.assign(T, { // 2026-10-28 首頁大標加主要服務
 "商務中心・借址登記・公司設立":["Business Center · Virtual Office · Company Setup","ビジネスセンター・バーチャルオフィス・会社設立"],
 });
-  }
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
   var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
