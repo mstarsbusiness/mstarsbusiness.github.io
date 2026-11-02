@@ -203,7 +203,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=20261031"></script>
+<script src="../i18n.js?v=20261102"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
@@ -329,7 +329,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=20261031"></script>
+<script src="i18n.js?v=20261102"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
@@ -360,7 +360,7 @@ function sitemap(posts) {
     ['/en/registration-address-for-foreign-founders.html', '.7', 'monthly'],   // 2026-10-19 外國創業者指南
     ['/en/restricted-businesses.html', '.7', 'monthly'],                      // 2026-10-19 不可借址行業（英文）
     ['/journal.html', '.7', 'weekly'],
-    ['/crm.html', '.6', 'monthly'],
+    // ['/crm.html', '.6', 'monthly'],   // 2026-11-02：CRM 說明頁改 noindex,follow 並移出 sitemap（頁面仍公開，供 OAuth／隱私說明）
     ['/video.html', '.7', 'monthly'],   // 影片導覽（2026-09-19 重啟：8/25 曾因檔案未上傳致 GSC 404 而註解，這次 video.html 要與本檔同批上傳）
     [`/${encodeURIComponent('辰星場館相簿-信義館.html')}`, '.7', 'monthly'],
     [`/${encodeURIComponent('辰星場館相簿-世貿館.html')}`, '.7', 'monthly'],

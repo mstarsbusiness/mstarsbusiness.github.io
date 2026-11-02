@@ -1,6 +1,6 @@
 # robots.txt — 辰星商務中心 Morning Stars
 # https://www.morning-stars.com.tw/robots.txt
-# 最後更新：2026-08-29
+# 最後更新：2026-11-02（各指定爬蟲群組補 Disallow: /admin/——指定群組不會繼承 * 群組的規則）
 #
 # 策略：辰星是在地服務業，內容沒有需要保護的智慧財產，核心目標是「被 AI 推薦」。
 # 因此對所有 AI 爬蟲一律放行——包含訓練型（GPTBot、ClaudeBot）。
@@ -15,64 +15,80 @@
 
 # ── 一般搜尋引擎 ─────────────────────────────
 User-agent: Googlebot
+Disallow: /admin/
 Allow: /
 
 User-agent: bingbot
+Disallow: /admin/
 Allow: /
 
 # ── AI 檢索型爬蟲（使用者提問當下即時取頁）──────
 # 這一組是「被 AI 推薦」的關鍵，絕對不能封鎖
 User-agent: OAI-SearchBot
+Disallow: /admin/
 Allow: /
 
 User-agent: ChatGPT-User
+Disallow: /admin/
 Allow: /
 
 User-agent: Claude-User
+Disallow: /admin/
 Allow: /
 
 User-agent: Claude-SearchBot
+Disallow: /admin/
 Allow: /
 
 User-agent: Claude-Web
+Disallow: /admin/
 Allow: /
 
 User-agent: PerplexityBot
+Disallow: /admin/
 Allow: /
 
 User-agent: Perplexity-User
+Disallow: /admin/
 Allow: /
 
 User-agent: MistralAI-User
+Disallow: /admin/
 Allow: /
 
 # ── AI 訓練型爬蟲（辰星選擇放行，理由見上）──────
 User-agent: GPTBot
+Disallow: /admin/
 Allow: /
 
 User-agent: ClaudeBot
+Disallow: /admin/
 Allow: /
 
 User-agent: Google-Extended
+Disallow: /admin/
 Allow: /
 
 User-agent: Applebot-Extended
+Disallow: /admin/
 Allow: /
 
 User-agent: meta-externalagent
+Disallow: /admin/
 Allow: /
 
 User-agent: Amazonbot
+Disallow: /admin/
 Allow: /
 
 User-agent: cohere-ai
+Disallow: /admin/
 Allow: /
 
 # ── 全域規則 ─────────────────────────────────
 User-agent: *
-Allow: /
-
-# 不需被索引的路徑
+# 不需被索引的路徑（Disallow 放在 Allow 前：Google 依最長規則、部分爬蟲依先後順序，兩種解析結果才會一致）
 Disallow: /admin/
+Allow: /
 
 Sitemap: https://www.morning-stars.com.tw/sitemap.xml
