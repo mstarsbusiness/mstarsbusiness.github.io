@@ -21,6 +21,8 @@ const PAGES = [
   'terms.html', 'privacy-policy.html', 'privacy.html', '404.html',
   'journal.html', 'dark.html', 'light.html',
   '辰星場館相簿-信義館.html', '辰星場館相簿-世貿館.html',
+  // 2026-11-03 補：這五頁原本沒列入，日文覆蓋率只有三成都沒被發現
+  'wtc.html', 'xinyi.html', 'meeting-room-price.html', 'mail-handling.html', 'company-setup.html',
 ];
 
 /* 不需要翻譯的：專有名詞與使用者原文 */
