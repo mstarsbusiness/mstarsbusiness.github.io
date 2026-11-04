@@ -24,11 +24,12 @@ RewriteRule \.(md|bak|old|orig|sql|log|sh|bat|ps1|py|swp)$ - [R=404,L]
 # /index.html → /（只攔外部請求；放在前面＝non-www 的 /index.html 一跳就到位，不串兩層轉址）
 RewriteCond %{THE_REQUEST} \s/+index\.html[?\s] [NC]
 RewriteRule ^index\.html$ https://www.morning-stars.com.tw/ [R=301,L]
-# 不帶 www → www：2026-11-04 起由捕夢網主機層（cPanel）接手（客服單 PID 900458，11/3 回覆已設
-# HTTPS 轉址＋WWW 導向），本檔規則依其建議移除以免重複。若日後主機層失效（https://morning-stars.com.tw
-# 不再 301 到 www），把下面兩行取消註解即可還原：
-# RewriteCond %{HTTP_HOST} ^morning-stars\.com\.tw$ [NC]
-# RewriteRule ^(.*)$ https://www.morning-stars.com.tw/$1 [R=301,L]
+# 不帶 www → www（本檔規則＝現行唯一有效的 WWW 導向，勿移除）：
+# 2026-11-04 曾依捕夢網客服單 PID 900458 建議移除實測——結果 https://morning-stars.com.tw 直接 200
+# 出頁＝主機層的「WWW 導向」無效（研判寫在被本站 FTP 部署覆蓋的伺服器端 .htaccess），同日還原。
+# 除非捕夢網確認已改在「虛擬主機／網域層級」設定且實測 301 正常，否則不要再拿掉這兩行。
+RewriteCond %{HTTP_HOST} ^morning-stars\.com\.tw$ [NC]
+RewriteRule ^(.*)$ https://www.morning-stars.com.tw/$1 [R=301,L]
 </IfModule>
 
 # 舊網址導回（2026-09-25 Search Console「找不到網頁 (404)」）：
