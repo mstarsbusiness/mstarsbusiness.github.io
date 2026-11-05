@@ -10,6 +10,17 @@
   var GREET = '您好！我是辰星商務中心線上客服 😊 想了解公司設址登記、辦公室，或會議室預約嗎？';
   var CHIPS = ['公司設址怎麼收費？', '會議室如何預約？', '我想預約參觀'];
   var STORE = 'ms_chat_v1';
+  var EN = location.pathname.indexOf('/en/') === 0;
+  // 對話代碼（2026-11-06）：瀏覽器隨機產生、不含個資，讓伺服器把同一位訪客的多句話串在一起存檔（保存 180 天，見隱私權政策）
+  var SID = '';
+  try { SID = localStorage.getItem('ms_chat_sid') || ''; } catch (e) {}
+  if (!/^[A-Za-z0-9_-]{8,40}$/.test(SID)) {
+    var a = new Uint8Array(12); try { (window.crypto || window.msCrypto).getRandomValues(a); } catch (e) { for (var i = 0; i < 12; i++) a[i] = Math.floor(Math.random() * 256); }
+    SID = Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+    try { localStorage.setItem('ms_chat_sid', SID); } catch (e) {}
+  }
+  var NOTE = EN ? 'Instant replies by AI; details confirmed by our staff. Chats are kept for 180 days — please do not enter ID or account numbers.'
+                : '由 AI 即時回覆、細節由專人確認；對話保存 180 天，請勿輸入身分證號或帳號等敏感資料';
 
   // ---- 對話記錄（跨頁延續，存 localStorage）----
   var history = [];
@@ -64,7 +75,7 @@
     '<div class="msc-body" id="mscBody"></div>' +
     '<div class="msc-chips" id="mscChips"></div>' +
     '<div class="msc-foot"><input id="mscInput" type="text" placeholder="輸入訊息…" autocomplete="off"><button id="mscSend">送出</button></div>' +
-    '<div class="msc-note">由 AI 提供即時回覆，細節將由專人為您確認</div>';
+    '<div class="msc-note">' + NOTE + ' <a href="/privacy-policy.html" target="_blank" rel="noopener" style="color:inherit">' + (EN ? 'Privacy' : '隱私權政策') + '</a></div>';
   document.body.appendChild(bubble); document.body.appendChild(panel);
 
   var body = panel.querySelector('#mscBody');
@@ -102,7 +113,7 @@
     var typing = document.createElement('div'); typing.className = 'msc-row b';
     typing.innerHTML = '<div class="msc-msg"><div class="msc-typing"><span></span><span></span><span></span></div></div>';
     body.appendChild(typing); body.scrollTop = body.scrollHeight;
-    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history.slice(-12) }) })
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history.slice(-12), sid: SID }) })
       .then(function (r) { return r.json(); })
       .then(function (j) {
         typing.remove();
