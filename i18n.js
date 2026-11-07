@@ -1243,6 +1243,20 @@ Object.assign(T, { // 2026-11-06 官網線上客服對話存檔（隱私權政�
 "八、聯絡方式":["8. Contact", "八、お問い合わせ"],
 "由 AI 即時回覆、細節由專人確認；對話保存 180 天，請勿輸入身分證號或帳號等敏感資料":["Instant replies by AI; details confirmed by our staff. Chats are kept for 180 days — please do not enter ID or account numbers.", "AIが即時に返信し、詳細は担当者が確認します。会話は180日間保存されます。身分証番号や口座番号などの機密情報は入力しないでください"],
 });
+Object.assign(T, { // 2026-11-07 行業檢核收錄數 66→68（排程報告：頁內 DB 實為 68 筆）
+"68 項行業":["68 industries", "68 業種"],
+"※ 本工具為實務參考，非稅務或法律意見。台灣沒有法律「明文禁止借址登記」；能否通過取決於①目的事業主管機關對特許業是否要求實體場所／專任人員，②國稅局稽徵實務對稅額結構或需實地查核行業的認定。實際個案仍以會計師、記帳士或所屬稽徵機關（辰星兩館為財政部臺北國稅局信義分局）認定為準。資料版本 v2.0（2026-08-22）：收錄 68 項行業，營業項目代碼依 GCIS 代碼表 V8.0（115.06.08）。":["※ This tool is a practical reference, not tax or legal advice. No Taiwanese law explicitly prohibits virtual-office registration; approval depends on (1) whether the competent authority for a licensed industry requires physical premises or full-time staff, and (2) how the tax bureau's audit practice assesses the tax structure or industries requiring on-site inspection. Individual cases are ultimately determined by your accountant, bookkeeper, or the tax office in charge (for both Morning Stars locations: Xinyi Branch, National Taxation Bureau of Taipei). Data version v2.0 (2026-08-22): 68 industries, business codes per GCIS code table V8.0 (2026-06-08).", "※ 本ツールは実務上の参考であり、税務・法律上の助言ではありません。台湾には住所貸し登記を明文で禁止する法律はなく、可否は①許認可業種に対する主管機関の実体場所・専任人員の要求、②税額構造や実地調査が必要な業種に対する国税局の実務判断によります。個別案件は会計士・記帳士または所轄税務機関（辰星両館は財政部台北国税局信義分局）の認定が最終となります。データ版 v2.0（2026-08-22）：68 業種収録、営業項目コードは GCIS コード表 V8.0（115.06.08）準拠。"],
+});
+Object.assign(T, { // 2026-11-07 老闆：信義館與世貿館的 LINE PAY 一樣（兩館共用）——會議室頁付款區、FAQ、價格頁
+"可以，兩館會議室都開放對外租借，皆可線上預約，並以 LINE Pay 或匯款付款。":["Yes, both branches rent meeting rooms to the public. You can book online at either branch and pay by LINE Pay or bank transfer.","はい、両拠点とも会議室を外部の方に貸し出しています。どちらもオンライン予約でき、LINE Payまたは振込でお支払いいただけます。"],
+"💳 外來客戶付款方式（兩館會議室）":["💳 Payment for External Guests (Both Branches)","💳 外部のお客様のお支払い方法（両拠点の会議室）"],
+"外來（非進駐）客戶預約會議室，送出申請後可用以下任一方式付款：":["External (non-tenant) guests can pay by either method below after submitting a meeting room booking request:","外部（非入居）のお客様は、会議室の予約申請後、以下のいずれかの方法でお支払いいただけます："],
+"① LINE Pay（兩館共用）：掃描左方 QR Code，手機用戶可直接點 QR 圖開啟 LINE Pay 付款頁（收款商店：辰星管理顧問有限公司）。":["① LINE Pay (both branches): scan the QR code on the left, or tap the QR image on your phone to open the LINE Pay payment page (merchant: Morning Stars Ltd.).","① LINE Pay（両拠点共通）：左のQRコードをスキャン、またはスマートフォンでQR画像をタップしてLINE Pay決済ページを開けます（加盟店：辰星管理顧問有限公司）。"],
+"② 世貿館銀行匯款：國泰世華銀行(013) 1150-3500-6232（戶名：辰星管理顧問有限公司）。":["② Bank transfer (WTC Branch): Cathay United Bank (013), account 1150-3500-6232 (account name: Morning Stars Ltd.).","② 世貿館の銀行振込：国泰世華銀行(013) 1150-3500-6232（口座名義：辰星管理顧問有限公司）。"],
+"信義館會議室同樣可用上方 LINE Pay 付款；如需匯款，帳號將於送出預約後由官方 LINE 提供。":["Xinyi Branch meeting rooms can also be paid with the LINE Pay QR code above; if you prefer a bank transfer, we will send the account details via our official LINE after you book.","信義館の会議室も上記のLINE Payでお支払いいただけます。振込をご希望の場合は、予約後に公式LINEで口座をご案内します。"],
+"同樣可用 LINE Pay（與世貿館共用同一個付款 QR Code，收款商店：辰星管理顧問有限公司）；如需匯款，帳號將於送出預約後由官方 LINE 提供。":["LINE Pay is also available (the same payment QR code as the WTC Branch; merchant: Morning Stars Ltd.); if you prefer a bank transfer, we will send the account details via our official LINE after you book.","LINE Payもご利用いただけます（世貿館と同じ決済QRコード、加盟店：辰星管理顧問有限公司）。振込をご希望の場合は、予約後に公式LINEで口座をご案内します。"],
+"本頁資訊為辰星商務中心營運實務，更新日期 2026-11-07。價格皆為含稅價。實際檔期以系統顯示為準。｜相關頁面：":["This page reflects Morning Stars Business Center's current practice, last updated 2026-11-07. All prices include tax. Actual availability is as shown in the booking system. | Related pages: ","本ページの情報は辰星商務中心の運営実務に基づき、2026-11-07 に更新しました。価格はすべて税込です。実際の空き状況はシステムの表示をご確認ください。｜関連ページ："],
+});
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
   var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
