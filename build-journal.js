@@ -203,7 +203,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=2026110701"></script>
+<script src="../i18n.js?v=2026111001"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
@@ -329,12 +329,25 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=2026110701"></script>
+<script src="i18n.js?v=2026111001"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
 </html>`;
 }
+
+/* 2026-11-10：靜態頁 lastmod 改用 git 最後提交日（原本一律寫產生當天，AI 能見度實測指出
+   「每頁日期都是當天」會讓搜尋引擎不信任 lastmod）。需要 git 歷史：build-journal.yml 的
+   checkout 已設 fetch-depth: 0；拿不到（本機淺複製等）就退回當天日期。 */
+let _execSync = null;
+try { _execSync = require('child_process').execSync; } catch (e) {}
+const gitLastMod = file => {
+  if (!_execSync) return '';
+  try {
+    const d = _execSync(`git log -1 --format=%cs -- "${file}"`, { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : '';
+  } catch (e) { return ''; }
+};
 
 function sitemap(posts) {
   const today = new Date().toISOString().slice(0, 10);
@@ -367,7 +380,11 @@ function sitemap(posts) {
     ['/privacy-policy.html', '.3', 'yearly'],
     ['/terms.html', '.3', 'yearly']
   ];
-  const urls = pages.map(([url, priority, frequency]) => `<url><loc>${SITE}${url}</loc><lastmod>${today}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`);
+  const urls = pages.map(([url, priority, frequency]) => {
+    const file = url === '/' ? 'index.html' : decodeURIComponent(url.replace(/^\//, ''));
+    const mod = gitLastMod(file) || today;
+    return `<url><loc>${SITE}${url}</loc><lastmod>${mod}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
+  });
   posts.filter(post => !post.canonical).forEach(post => {
     urls.push(`<url><loc>${SITE}/posts/${esc(post.id)}.html</loc><lastmod>${isoDate(post.updated || post.date) || today}</lastmod><changefreq>monthly</changefreq><priority>.6</priority></url>`);
   });

@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: 取出原始碼
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 2026-11-10：sitemap 靜態頁 lastmod 改讀各檔最後提交日，需要完整 git 歷史
 
       - name: 安裝 Node.js
         uses: actions/setup-node@v4
