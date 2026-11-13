@@ -6,6 +6,16 @@ on:
     branches: [ main ]
   workflow_dispatch:        # 也可在 Actions 頁面手動執行
 
+# 2026-11-13：同一時間只跑一個部署，而且一律上傳 main 的最新版。
+#   起因：兩次部署同時跑時，偶爾「比較舊的那次」最後跑完、把新版蓋掉（9/27–11/12 查到 4 次）。
+#   11/12 21:26 CRM 發文的「上傳配圖」那筆，觸發晚了約 90 秒，上傳了還沒有新文章的舊版，官網少了那篇。
+#   ① concurrency：排隊依序跑；正在上傳的那次不中途取消（中途取消會留下傳一半的檔案和錯的同步紀錄）。
+#      排隊中的舊請求會被更新的請求取代，沒關係，因為 ② 每次都上傳最新版。
+#   ② checkout 指定 ref: main：不管是哪個事件觸發，都上傳「開始部署那一刻」的 main 最新版。
+concurrency:
+  group: ftp-deploy
+  cancel-in-progress: false
+
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
@@ -13,7 +23,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2      # IndexNow 要比對上一版找出改過的頁面
+          ref: main
+          fetch-depth: 0      # IndexNow 要比對「這次推送前」的版本，它不一定在最近兩個提交裡
 
       - name: Deploy to 捕夢網 public_html
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -45,14 +56,26 @@ jobs:
       #   金鑰檔＝網站根目錄 281220307317c00851aab2e2d1a952a7.txt（IndexNow 規定公開放置，不是密碼）。失敗不影響部署。
       - name: IndexNow 通知搜尋引擎
         continue-on-error: true
+        env:
+          EV_SHA: ${{ github.sha }}
+          EV_BEFORE: ${{ github.event.before }}
         run: |
           KEY=281220307317c00851aab2e2d1a952a7
           SITE=https://www.morning-stars.com.tw
-          BASE=HEAD~1
-          # GitHub Desktop 先 pull 再推會產生 merge commit：改跟遠端那一側（第二個 parent）比，才抓得到這次本機改的頁面
-          if git rev-parse -q --verify HEAD^2 >/dev/null; then BASE=HEAD^2; fi
-          FILES=$(git -c core.quotepath=off diff --name-only --diff-filter=AM $BASE HEAD 2>/dev/null | grep -E '\.html$' | grep -vE '^(admin|新增網站服務項目)/' | LC_ALL=C grep -v '[^ -~]' || true)
-          if git diff --name-only $BASE HEAD 2>/dev/null | grep -q '^data/posts.json$'; then FILES="$FILES journal.html"; fi
+          # 2026-11-13：上面改成部署 main 最新版後，這裡改比對「觸發這次部署的事件」本身改了什麼，
+          #   不然同一批改動會被重複通知、或被下一次部署的範圍吃掉。
+          #   push 觸發：推送前（EV_BEFORE）→ 推送後（EV_SHA），一次推好幾個提交也都算進來；
+          #   手動或自動重生觸發（沒有 EV_BEFORE）：比 EV_SHA 的上一版。
+          HEAD_SHA=$EV_SHA
+          BASE=""
+          if [ -n "$EV_BEFORE" ] && [ "$EV_BEFORE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$EV_BEFORE^{commit}" 2>/dev/null; then BASE=$EV_BEFORE; fi
+          if [ -z "$BASE" ]; then
+            BASE="$HEAD_SHA~1"
+            # GitHub Desktop 先 pull 再推會產生 merge commit：改跟遠端那一側（第二個 parent）比，才抓得到這次本機改的頁面
+            if git rev-parse -q --verify "$HEAD_SHA^2" >/dev/null; then BASE="$HEAD_SHA^2"; fi
+          fi
+          FILES=$(git -c core.quotepath=off diff --name-only --diff-filter=AM $BASE $HEAD_SHA 2>/dev/null | grep -E '\.html$' | grep -vE '^(admin|新增網站服務項目)/' | LC_ALL=C grep -v '[^ -~]' || true)
+          if git diff --name-only $BASE $HEAD_SHA 2>/dev/null | grep -q '^data/posts.json$'; then FILES="$FILES journal.html"; fi
           URLS=""
           for f in $FILES; do
             u="$SITE/$f"; [ "$f" = "index.html" ] && u="$SITE/"

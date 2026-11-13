@@ -26,6 +26,7 @@ jobs:
       - name: 取出原始碼
         uses: actions/checkout@v4
         with:
+          ref: main        # 2026-11-13：一律用 main 最新版重生（11/12 有一筆觸發晚了 90 秒，拿舊的 posts.json 重生、推送被擋而失敗）
           fetch-depth: 0   # 2026-11-10：sitemap 靜態頁 lastmod 改讀各檔最後提交日，需要完整 git 歷史
 
       - name: 安裝 Node.js
@@ -45,7 +46,16 @@ jobs:
             echo "沒有變更，略過提交。"
           else
             git commit -m "chore: 自動重生 journal 與貼文頁 [skip ci]"
-            git push
+            # 2026-11-13：重生的這幾十秒內 main 剛好又有新提交時，先接到最新版後面再推（最多 3 次）。
+            #   只會碰 journal.html、sitemap.xml、posts/；新提交若又改了 posts.json，它會自己再觸發一次重生、取消這一次。
+            ok=0
+            for i in 1 2 3; do
+              if git push; then ok=1; break; fi
+              echo "main 剛好有新提交，先接上最新版再推（第 $i 次）"
+              git pull --rebase origin main || { git rebase --abort; break; }
+              sleep 2
+            done
+            if [ "$ok" != 1 ]; then echo "推送失敗"; exit 1; fi
           fi
 
       # ★ 關鍵修正（2026-08-03）：github-actions[bot] 用內建 token 推的 commit 不會叫醒
