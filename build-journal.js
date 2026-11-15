@@ -112,15 +112,44 @@ const mobileContactBar = prefix => `<div class="mobile-contact-bar" aria-label="
   <a href="${prefix}index.html#contact">預約</a>
 </div>`;
 
+/* 2026-11-15 T12：搜尋描述優先用 post.description（後台／CMS「搜尋描述」欄），沒填才自動截內文 155 字
+   （原本 74 頁有 70 頁描述剛好 156 字，看起來像量產）。 */
+const postDescription = post => {
+  const own = String(post.description || '').replace(/\s+/g, ' ').trim();
+  return own ? own.slice(0, 160) : excerpt(post.body, 155);
+};
+
+/* 2026-11-15 T10：已整併（有 canonical）的文章改成「立即跳轉」極簡頁。
+   主力是 .htaccess 的 301（主機層）；這頁是備援——萬一主機規則沒生效，瀏覽器與 Google 也會被帶到主題頁。 */
+const isMerged = post => /^https:\/\/www\.morning-stars\.com\.tw\//.test(String(post.canonical || ''));
+function redirectStub(post) {
+  const target = post.canonical;
+  return `<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>${esc(post.title)}｜辰星商務中心 Journal</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="${esc(target)}">
+<meta http-equiv="refresh" content="0; url=${esc(target)}">
+</head>
+<body>
+<p>這篇文章已整併到新的說明頁：<a href="${esc(target)}">${esc(post.canonicalText || post.title)} →</a></p>
+</body>
+</html>`;
+}
+
 function postPage(post, allPosts) {
+  if (isMerged(post)) return redirectStub(post);
   const text = paras(post.body);
-  const description = excerpt(post.body, 155);
+  const description = postDescription(post);
   const url = `${SITE}/posts/${post.id}.html`;
-  /* 2026-10-24 舊文整併：post.canonical（完整網址）＝本篇的主題已由另一頁完整涵蓋，canonical 指過去、sitemap 不列；post.canonicalText＝導讀連結文字 */
-  const canonicalUrl = /^https:\/\/www\.morning-stars\.com\.tw\//.test(String(post.canonical || '')) ? post.canonical : url;
+  /* 2026-10-24 舊文整併：post.canonical（完整網址）＝本篇的主題已由另一頁完整涵蓋，canonical 指過去、sitemap 不列；post.canonicalText＝導讀連結文字
+     2026-11-15 起有 canonical 的文章在上面就改輸出跳轉頁，走到這裡的 canonicalUrl 一律等於自己。 */
+  const canonicalUrl = isMerged(post) ? post.canonical : url;
   const displayImage = safeImagePath(post.img);
   const image = absoluteImageUrl(post.img);
-  const relatedPosts = allPosts.filter(item => item.id !== post.id).slice(0, 3);
+  const relatedPosts = allPosts.filter(item => item.id !== post.id && !isMerged(item)).slice(0, 3);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -385,7 +414,7 @@ function sitemap(posts) {
     const mod = gitLastMod(file) || today;
     return `<url><loc>${SITE}${url}</loc><lastmod>${mod}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
   });
-  posts.filter(post => !post.canonical).forEach(post => {
+  posts.filter(post => !isMerged(post)).forEach(post => {
     urls.push(`<url><loc>${SITE}/posts/${esc(post.id)}.html</loc><lastmod>${isoDate(post.updated || post.date) || today}</lastmod><changefreq>monthly</changefreq><priority>.6</priority></url>`);
   });
   return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join('')}</urlset>`;
@@ -397,5 +426,6 @@ const output = path.join(ROOT, 'posts');
 
 fs.mkdirSync(output, { recursive: true });
 posts.forEach(post => fs.writeFileSync(path.join(output, `${post.id}.html`), postPage(post, posts)));
-fs.writeFileSync(path.join(ROOT, 'journal.html'), journalPage(posts));
+/* 2026-11-15 T10：已整併的文章不再列進 Journal（它們已 301 到主題頁） */
+fs.writeFileSync(path.join(ROOT, 'journal.html'), journalPage(posts.filter(post => !isMerged(post))));
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap(posts));

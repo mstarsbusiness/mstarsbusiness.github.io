@@ -45,7 +45,31 @@ RedirectMatch 301 ^/posts/(office-guide|virtual-office|private-office|meeting-ro
 RedirectMatch 301 ^/(xinyi|wtc)(\.h|\.htm)?$ https://www.morning-stars.com.tw/$1.html
 
 # 根目錄 4 個「副檔名 .html 的 JPG」（2026-10-28 移到 CRM 交接文件歸檔）：同名貼文在 /posts/ 底下，舊網址導過去。
-RedirectMatch 301 ^/(9291514c-3bea-4d29-9cc3-8a8953967708|seminar-survey-2026|xinyi-xmas-2025|wtc-coming-soon-2025)\.html$ https://www.morning-stars.com.tw/posts/$1.html
+RedirectMatch 301 ^/(9291514c-3bea-4d29-9cc3-8a8953967708|seminar-survey-2026|xinyi-xmas-2025)\.html$ https://www.morning-stars.com.tw/posts/$1.html
+# wtc-coming-soon-2025 的貼文本身已整併到世貿館頁（見下方 2026-11-15 段）→ 根目錄舊網址直接導到終點，不多跳一次。
+Redirect 301 /wtc-coming-soon-2025.html https://www.morning-stars.com.tw/wtc.html
+
+# 已整併的 16 篇舊文改 301（2026-11-15 老闆核准「T10 官網重複頁改為轉址」）：
+# 10/24、11/10 整併時只設 canonical、頁面仍完整輸出，Google 照樣收錄並拿舊文排名
+# （11/15 無痕實測：608771e4 排「信義區 借址登記」第 8，主頁 virtual-office 反而不在前 10）。
+# 改成主機層 301，把排名訊號集中到主題頁；對照表＝data/posts.json 各篇的 canonical 欄，兩邊要一致。
+# build-journal.js 對有 canonical 的文章另輸出「立即跳轉」極簡頁當備援，Journal 列表與延伸閱讀也不再列出。
+Redirect 301 /posts/25b2797a-da7b-42bb-9d12-99a502891a21.html https://www.morning-stars.com.tw/wtc.html
+Redirect 301 /posts/3e949bdd-78e1-488e-97fe-2154263219bb.html https://www.morning-stars.com.tw/virtual-office.html
+Redirect 301 /posts/49655d8c-629b-475b-b083-c88e1e828a4b.html https://www.morning-stars.com.tw/virtual-office.html
+Redirect 301 /posts/4aba7592-2124-43bd-a14d-9fb6c12df563.html https://www.morning-stars.com.tw/posts/1977a136-4247-4dc1-95be-2075d0c687cc.html
+Redirect 301 /posts/5ef2b7be-38a4-46b0-8f63-449fd7611011.html https://www.morning-stars.com.tw/posts/8845cac6-9aa5-4a14-8400-b19e3bf6320c.html
+Redirect 301 /posts/608771e4-d5d1-4d58-9ba2-1ab8a1c73c35.html https://www.morning-stars.com.tw/virtual-office.html
+Redirect 301 /posts/9c279a43-168b-4e62-a481-dbf18f96f229.html https://www.morning-stars.com.tw/virtual-office.html
+Redirect 301 /posts/a0bec539-11ce-4d58-a68b-6cda909e325c.html https://www.morning-stars.com.tw/posts/afc1b824-0dda-4eb8-a386-32d1d0c35c42.html
+Redirect 301 /posts/b6448479-2e01-4b69-b900-7538907c4a9d.html https://www.morning-stars.com.tw/posts/2c0a1c6c-1cf8-4bc5-87da-672d6869cf7e.html
+Redirect 301 /posts/d4a4bda3-b365-4aa6-8254-fecab8131ef1.html https://www.morning-stars.com.tw/posts/3cc65dbd-59d6-4890-a8e3-a368b6c2466a.html
+Redirect 301 /posts/d6d58a13-23b9-4c64-9923-461adb923950.html https://www.morning-stars.com.tw/virtual-office.html
+Redirect 301 /posts/dcd2eec6-fb43-46f6-aa81-0a1530005c55.html https://www.morning-stars.com.tw/posts/1977a136-4247-4dc1-95be-2075d0c687cc.html
+Redirect 301 /posts/ef1425d2-10b3-4352-8c7d-5d371d305e64.html https://www.morning-stars.com.tw/posts/8b8fecb3-33cb-476c-979b-55c7db98c766.html
+Redirect 301 /posts/f39c59d5-dab3-4acd-87af-00a8ba6b9177.html https://www.morning-stars.com.tw/wtc.html
+Redirect 301 /posts/f44bdeaa-0b93-47fe-b32b-4b880a5ca114.html https://www.morning-stars.com.tw/posts/2c0a1c6c-1cf8-4bc5-87da-672d6869cf7e.html
+Redirect 301 /posts/wtc-coming-soon-2025.html https://www.morning-stars.com.tw/wtc.html
 
 # 已移除的舊貼文（2026-09-25 老闆指示清掉）：檔案已從 repo 刪除，網址 301 導到同題目的現存貼文，
 # 不留 404、保住既有排名。① 9/10 重複發的「借址登記的信件包裹怎麼收？」→ 9/2 原文
