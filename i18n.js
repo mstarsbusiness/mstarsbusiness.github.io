@@ -1278,6 +1278,21 @@ Object.assign(T, { // 2026-11-19 老闆：世貿館 2027 年 1 月可能有辦�
 "世貿館 2027 年 1 月可能有獨立辦公室釋出（視現有租約而定），歡迎預約參觀並登記候補。":["A private office at the WTC Branch may become available in January 2027 (depending on current leases) — book a visit and join the waiting list.", "世貿館では2027年1月に個室オフィスが空く可能性があります（現在の契約状況によります）。ぜひ見学のご予約とキャンセル待ちへのご登録をどうぞ。"],
 "2027 年 1 月可能釋出":["May open up Jan 2027", "2027年1月に空きの可能性あり"]
 });
+Object.assign(T, { // 2026-11-19 名額同步（工具_名額同步.js）：世貿館借址額滿時官網自動換成下列句子——先收進字典，切換當下英／日版就不會出現中文
+"借址登記｜世貿館年繳 NT$18,000 起（目前額滿・可候補）→":["Registered address | WTC Branch from NT$18,000/year (currently full · waiting list) →", "登記住所｜世貿館 年額NT$18,000〜（現在満室・キャンセル待ち受付）→"],
+"目前名額：兩館借址登記目前皆額滿，開放候補。新場域開放時，候補名單優先通知。":["Availability: registration addresses at both branches are currently full, with a waiting list open. When new space opens, the waiting list is notified first.", "空き状況：登記住所は現在両館とも満室で、キャンセル待ちを受け付けています。新しいスペースが開く際は、キャンセル待ちの方へ優先的にご案内します。"],
+"目前名額：借址登記兩館皆額滿可候補；獨立辦公室與共享座位兩館皆額滿，開放候補；會議室兩館皆可直接預約。":["Availability: registration addresses are full at both branches (waiting list open); private offices and dedicated desks are full at both branches (waiting list open); meeting rooms at both branches can be booked directly.", "空き状況：登記住所は両館とも満室（キャンセル待ち受付）。個室オフィス・専用デスクも両館とも満室で、キャンセル待ちを受け付けています。会議室は両館とも直接ご予約いただけます。"],
+"借址登記目前額滿，可登記候補":["Address registration is currently full — join the waiting list", "住所登記は現在満室です（キャンセル待ち受付中）"],
+"目前沒有。世貿館的借址登記目前已額滿（年費 18,000＋押金 1,500＝首期 19,500 含稅），可來電 0903-368-856 或加 LINE @mstars 登記候補，有名額會依登記順序通知。信義館的借址名額目前也已額滿。":["Not at the moment. Address registration at the WTC Branch is currently full (annual fee NT$18,000 + NT$1,500 deposit = NT$19,500 first payment, tax included). Call 0903-368-856 or add LINE @mstars to join the waiting list — we notify in order when a place opens. The Xinyi Branch is also full at the moment.", "現在は空きがありません。世貿館の住所登記は現在満室です（年額18,000＋保証金1,500＝初回19,500元・税込）。0903-368-856 へのお電話または LINE @mstars でキャンセル待ちにご登録いただければ、空きが出た際に登録順にご連絡します。信義館も現在満室です。"],
+"平日 10:00–17:00 歡迎預約參觀，實際走一趟最清楚。借址登記目前額滿，可先登記候補，有名額會依序通知。":["Visits are welcome by appointment on weekdays 10:00–17:00 — seeing the space is the best way to decide. Address registration is currently full; join the waiting list and we will notify you in order when a place opens.", "平日10:00〜17:00にご予約いただければ見学できます。実際にご覧いただくのが一番です。住所登記は現在満室のため、先にキャンセル待ちにご登録いただければ、空きが出た際に順番にご連絡します。"],
+"目前也已額滿":["is also full at the moment", "現在満室です"],
+"（首期 19,500 含稅），一樣可登記候補。":[" (NT$19,500 first payment, tax included); you can join the waiting list there as well.", "（初回19,500元・税込）。こちらもキャンセル待ちにご登録いただけます。"],
+"目前也已額滿，可登記候補。":[" is also full at the moment — waiting list open.", "も現在満室です。キャンセル待ちを受け付けています。"],
+"信義館的借址登記名額目前已額滿（年繳 21,600＋押金 1,800＝首期 23,400 含稅，平均每月約 1,800），可登記候補，有空缺會依序通知。世貿館的借址登記目前也已額滿（年費 18,000＋押金 1,500＝首期 19,500 含稅），一樣可登記候補。歡迎來電 0903-368-856 或加 LINE @mstars 洽詢。":["Address registration at the Xinyi Branch is currently full (NT$21,600 per year + NT$1,800 deposit = NT$23,400 first payment, tax included, about NT$1,800 per month). You can join the waiting list and we will notify you in order. The WTC Branch is also full at the moment (NT$18,000 per year + NT$1,500 deposit = NT$19,500 first payment, tax included), with a waiting list open as well. Call 0903-368-856 or add LINE @mstars for details.", "信義館の住所登記は現在満室です（年額21,600＋保証金1,800＝初回23,400元・税込、月平均約1,800）。キャンセル待ちにご登録いただければ、空きが出た際に順番にご連絡します。世貿館も現在満室です（年額18,000＋保証金1,500＝初回19,500元・税込）。こちらもキャンセル待ちを受け付けています。お問い合わせは 0903-368-856 または LINE @mstars まで。"],
+"兩館借址登記目前皆額滿，可登記候補":["Address registration is currently full at both branches — waiting list open", "住所登記は現在両館とも満室です（キャンセル待ち受付）"],
+"兩館登記地址目前皆額滿，開放候補登記":["Registration addresses at both branches are currently full; the waiting list is open", "登記住所は現在両館とも満室で、キャンセル待ちを受け付けています"],
+"兩館目前皆額滿・可登記候補":["Both branches currently full · waiting list open", "現在両館とも満室・キャンセル待ち受付"]
+});
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
   var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};

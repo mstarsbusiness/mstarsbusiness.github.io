@@ -232,7 +232,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=2026111901"></script>
+<script src="../i18n.js?v=2026111902"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
@@ -358,7 +358,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=2026111901"></script>
+<script src="i18n.js?v=2026111902"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
