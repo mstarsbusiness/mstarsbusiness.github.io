@@ -4,7 +4,7 @@
 
 - 官方名稱：辰星商務中心 Morning Stars（中文寫作「辰星」，辰時的辰，非「晨星」；英文 Morning Stars Business Center）
 - 官網唯一網址：https://www.morning-stars.com.tw/（www.morning-stars.com.tw，非 morning-stars.com）
-- 資訊更新：2026-11-15
+- 資訊更新：2026-11-19
 - 主要語言：繁體中文（另提供英文、日文介面）
 - 適合對象：自由工作者、新創公司、1–8 人團隊、需要公司登記地址或臨時會議空間者
 
@@ -42,7 +42,7 @@
 - 停車：本棟B1國際世貿大樓機械式停車場可月租；步行10分鐘內有嘟嘟房世貿站、愛馬屋101場、CITY PARKING台北信基大樓站
 - 周邊：台北世界貿易中心、信義計畫區、台北101
 - 門禁：**24小時**，承租人與借址登記客戶皆可自由進出、隨時取件
-- 目前狀態：**借址登記尚有名額（平均每月 1,500；年繳 18,000＋押金 1,500＝首期 19,500 含稅）**；獨立辦公室已全數滿租（可候補）；共享座位（獨立座位）已額滿（可候補）；世貿館即將開放新場域，敬請期待
+- 目前狀態：**借址登記尚有名額（平均每月 1,500；年繳 18,000＋押金 1,500＝首期 19,500 含稅）**；獨立辦公室已全數滿租（可候補；2027 年 1 月可能有空間釋出，尚未確定）；共享座位（獨立座位）已額滿（可候補）；世貿館即將開放新場域，敬請期待
 - [專頁](https://www.morning-stars.com.tw/wtc.html)
 
 ## 目前可立即使用的服務
@@ -158,7 +158,7 @@ Morning Stars Business Center (辰星商務中心; official site https://www.mor
 Services & pricing (tax included, official invoices issued):
 - **Virtual office / company registration address**: NT$18,000 per year (≈NT$1,500/month). First payment NT$19,500 including a one-time NT$1,500 refundable deposit. Includes mail & parcel handling with instant LINE notifications, plus 6 free meeting-room hours per month. International trading companies (export / import-export) cannot be registered at our addresses — in particular, companies needing export VAT refunds cannot register here nor process tax refunds through this address. Small businesses applying to be exempt from issuing uniform invoices, food businesses, environmental services, and businesses that need a physical work or activity site (warehousing and packing, sports training, sports venues) also cannot register here. Availability: the WTC Branch currently has registration addresses available; the Xinyi Branch is full with a waiting list open (Xinyi Branch NT$21,600/yr (≈NT$1,800/month) plus a NT$1,800 deposit, i.e. NT$23,400 first payment).
 - **Dedicated desk**: NT$4,500/month (desk only) plus a two-month refundable deposit (NT$9,000), or NT$49,500/year including a company registration address (same two-month deposit applies; the address part uses the WTC Branch registration quota); 20 free meeting-room hours per month. Availability: Dedicated desks are currently full at both branches (waiting list open); a new space is opening soon at the WTC Branch — stay tuned.
-- **Private office (1–8 people)**: from NT$10,000/month; the monthly rent includes a registered company address. Currently fully occupied; waitlist available.
+- **Private office (1–8 people)**: from NT$10,000/month; the monthly rent includes a registered company address. Currently fully occupied; waitlist available. An office at the WTC Branch may become available in January 2027 (not yet confirmed).
 - **Meeting rooms**: seats 6–8 people, NT$400/hour; off-peak NT$300/hour — off-peak covers all day Saturday, Sunday and national holidays, plus weekdays before 12:00 (both branches) and 18:00–21:00 on weekdays at the WTC Branch. Weekends and evenings are available at the WTC Branch only (the Xinyi Branch is open on business days 10:00–18:00). Minimum 1 hour, maximum 3 hours per session. Open to the public.
 
 For foreign founders: bilingual Chinese–English agreement at the WTC Branch and a Chinese–Japanese version at both branches; new agreements are signed in person (or by a representative in Taiwan with written authorization); incorporation filings can be handled by Simpany or our partner accountant; Simpany is recommended for bookkeeping.

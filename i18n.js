@@ -1274,6 +1274,10 @@ Object.assign(T, { // 2026-11-13 老闆：會議室線上預約防呆（台灣�
 "同樣可用 LINE Pay（與世貿館共用同一個付款 QR Code，收款商店：辰星管理顧問有限公司）或銀行匯款（合作金庫銀行 0560-7175-04238，戶名：辰星商務中心有限公司）。":["LINE Pay is also available (the same payment QR code as the WTC Branch; merchant: Morning Stars Ltd.), or bank transfer (Taiwan Cooperative Bank 0560-7175-04238, account name: Morning Stars Business Center Co., Ltd.).", "LINE Pay（世貿館と同じ支払いQRコード、加盟店：辰星管理顧問有限公司）または銀行振込（合作金庫銀行 0560-7175-04238、口座名義：辰星商務中心有限公司）もご利用いただけます。"],
 "本頁資訊為辰星商務中心營運實務，更新日期 2026-11-13。價格皆為含稅價。實際檔期以系統顯示為準。｜相關頁面：":["This page reflects Morning Stars Business Center's current practice, last updated 2026-11-13. All prices include tax. Actual availability is as shown in the booking system. | Related pages: ", "本ページの情報は辰星商務中心の運営実務に基づき、2026-11-13 に更新しました。価格はすべて税込です。実際の空き状況はシステムの表示をご確認ください。｜関連ページ："],
 });
+Object.assign(T, { // 2026-11-19 老闆：世貿館 2027 年 1 月可能有辦公室釋出（翼品／準點續約未定，先開放候補找客戶）
+"世貿館 2027 年 1 月可能有獨立辦公室釋出（視現有租約而定），歡迎預約參觀並登記候補。":["A private office at the WTC Branch may become available in January 2027 (depending on current leases) — book a visit and join the waiting list.", "世貿館では2027年1月に個室オフィスが空く可能性があります（現在の契約状況によります）。ぜひ見学のご予約とキャンセル待ちへのご登録をどうぞ。"],
+"2027 年 1 月可能釋出":["May open up Jan 2027", "2027年1月に空きの可能性あり"]
+});
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
   var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
