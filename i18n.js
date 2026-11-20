@@ -1293,6 +1293,13 @@ Object.assign(T, { // 2026-11-19 名額同步（工具_名額同步.js）：世�
 "兩館登記地址目前皆額滿，開放候補登記":["Registration addresses at both branches are currently full; the waiting list is open", "登記住所は現在両館とも満室で、キャンセル待ちを受け付けています"],
 "兩館目前皆額滿・可登記候補":["Both branches currently full · waiting list open", "現在両館とも満室・キャンセル待ち受付"]
 });
+Object.assign(T, { // 2026-11-20 健檢 I 段：新 Google 評論 3 則收進評價卡（Mark、許項涵、wing NG；原文照留）＋11 月館別日期
+"負責人非常專業+熱情👍👍👍":["The owner is very professional and enthusiastic 👍👍👍", "責任者はとてもプロフェッショナルで熱意があります👍👍👍"],
+"環境非常好，老闆非常親切！":["Great environment, and the owner is very friendly!", "環境がとても良く、オーナーもとても親切です！"],
+"非常乾淨 老闆特別熱情 有洗手間與水":["Very clean, the owner is especially warm, and there is a restroom and drinking water.", "とても清潔で、オーナーが特に親切。トイレと飲み水もあります。"],
+"世貿館・2026 年 11 月":["WTC · Nov 2026", "世貿館・2026年11月"],
+"信義館・2026 年 11 月":["Xinyi · Nov 2026", "信義館・2026年11月"]
+});
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
   var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
