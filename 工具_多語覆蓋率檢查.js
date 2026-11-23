@@ -23,6 +23,7 @@ const PAGES = [
   '辰星場館相簿-信義館.html', '辰星場館相簿-世貿館.html',
   // 2026-11-03 補：這五頁原本沒列入，日文覆蓋率只有三成都沒被發現
   'wtc.html', 'xinyi.html', 'meeting-room-price.html', 'mail-handling.html', 'company-setup.html',
+  'waitlist.html',   // 2026-11-23 候補登記頁
 ];
 
 /* 不需要翻譯的：專有名詞與使用者原文 */
@@ -152,14 +153,18 @@ console.log('========================================');
 /* ---- 快取檢查：改完 i18n.js 一定要 bump 版本號，否則訪客瀏覽器會一直用舊字典 ---- */
 const htmls = fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'));
 const vers = new Set();
-let noVer = [];
+let noVer = [], noBoot = [];
 for (const f of htmls) {
   const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
-  const m = src.match(/src="(?:\.\.\/)?i18n\.js(\?v=(\d+))?"/);
+  /* 2026-11-23 起頁面載 i18n-boot.js（data-full 指向 i18n.js）；兩個版本號都要有、且一致 */
+  const m = src.match(/(?:src|data-full)="(?:\.\.\/)?i18n\.js(\?v=(\d+))?"/);
   if (!m) continue;
   if (!m[2]) noVer.push(f); else vers.add(m[2]);
+  const b = src.match(/src="(?:\.\.\/)?i18n-boot\.js(\?v=(\d+))?"/);
+  if (!b) noBoot.push(f); else if (!b[2]) noVer.push(f + '（i18n-boot.js）'); else vers.add(b[2]);
 }
 console.log('\n【快取檢查】i18n.js 版本參數');
+if (noBoot.length) { console.log('🔴 下列頁面直接載入 i18n.js（中文訪客也會下載整包字典），請改成 i18n-boot.js＋data-full：'); noBoot.forEach((f) => console.log('   - ' + f)); }
 if (noVer.length) {
   console.log('🔴 下列頁面引用 i18n.js 沒有 ?v= 版本號，訪客會讀到舊字典：');
   noVer.forEach((f) => console.log('   - ' + f));

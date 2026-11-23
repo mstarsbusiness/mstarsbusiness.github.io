@@ -232,7 +232,7 @@ ${header('../')}
 </main>
 ${footer('../')}
 ${mobileContactBar('../')}
-<script src="../i18n.js?v=2026112001"></script>
+<script src="../i18n-boot.js?v=2026112302" data-full="../i18n.js?v=2026112302"></script>
 <script src="../assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
@@ -358,7 +358,7 @@ ${header('')}
 </script>
 ${footer('')}
 ${mobileContactBar('')}
-<script src="i18n.js?v=2026112001"></script>
+<script src="i18n-boot.js?v=2026112302" data-full="i18n.js?v=2026112302"></script>
 <script src="assets/ms-track.js?v=20261007" defer></script>
 <script src="/assets/contrast-guard.js?v=20261024" defer></script>
 </body>
@@ -396,6 +396,7 @@ function sitemap(posts) {
     ['/meeting-room-price.html', '.8', 'monthly'],   // AI 事實頁（2026-08-22 新增）
     ['/mail-handling.html', '.8', 'monthly'],        // AI 事實頁（2026-08-22 新增）
     ['/company-setup.html', '.8', 'monthly'],       // 公司設立一站式（2026-08-26 新增）
+    ['/waitlist.html', '.7', 'monthly'],            // 候補登記（2026-11-23 新增；名額額滿期間接住流量）
     ['/en/index.html', '.9', 'monthly'],             // 英文首頁（2026-08-22 新增）
     ['/en/virtual-office.html', '.8', 'monthly'],   // 英文版（2026-08-07 新增，供英文搜尋流量）
     ['/en/meeting-room.html', '.8', 'monthly'],

@@ -1,6 +1,7 @@
 /* 辰星商務中心 — 共用多語系引擎 (中 / EN / 日)
    所有頁面共用這一支：以後改翻譯只改這個檔。
-   用法：頁面 <body> 結尾前加 <script src="i18n.js"></script>（posts/ 子目錄用 ../i18n.js），
+   用法（2026-11-23 起）：頁面不直接載入本檔，改載小檔 i18n-boot.js（data-full 指向本檔）——中文訪客不下載這份字典，
+   選了英／日文才由 i18n-boot.js 載入本檔。舊用法：<script src="i18n.js"></script>（posts/ 子目錄用 ../i18n.js），
    並在導覽列放一個地球切換鈕：
    <div class="langsw"><button class="lang-btn" aria-label="Language" onclick="toggleLangMenu(event)"><svg ...globe...></svg></button>
      <div class="lang-menu" id="langMenu"><a data-l="zh" onclick="setLang('zh')">中文</a><a data-l="en" onclick="setLang('en')">English</a><a data-l="ja" onclick="setLang('ja')">日本語</a></div></div>
@@ -22,8 +23,10 @@
   .nav>.menu{margin-left:auto}
   .nav>.langsw{margin-left:14px}
   `;
-  var st=document.createElement('style'); st.id='ms-i18n-css'; st.textContent=CSS;
-  (document.head||document.documentElement).appendChild(st);
+  if(!document.getElementById('ms-i18n-css')){   // 2026-11-23：頁面先載 i18n-boot.js（已注入同一份樣式）時不重複注入
+    var st=document.createElement('style'); st.id='ms-i18n-css'; st.textContent=CSS;
+    (document.head||document.documentElement).appendChild(st);
+  }
 
   /* ---- 字典 zh -> [en, ja] ---- */
   var T={
@@ -1160,9 +1163,9 @@ Object.assign(T, { // 2026-10-16 費用透明區塊（private-office 另外付�
 "除了年費與押金，不會有行政費、文件費或郵件代收費。只有在您需要時才會產生的費用有三種：信件轉寄的郵資（依實際金額收取並附執據）、使用事務機影印（黑白每張 2 元、彩色每張 6 元，未稅）、會議室使用超過每月贈送的 6 小時（每小時 400 元，離峰 300 元）。":["Beyond the annual fee and deposit, there are no administrative, document or mail-handling fees. Only three costs may arise, and only when you need them: postage for mail forwarding (charged at cost with a receipt), copying on the multifunction printer (NT$2 per black-and-white page, NT$6 per colour page, excluding tax), and meeting-room use beyond the 6 free hours each month (NT$400 per hour, NT$300 off-peak).", "年会費と保証金以外に、事務手数料・書類費・郵便受取料はかかりません。必要な場合にのみ発生する費用は3つです：郵便転送の郵送料（実費・受領証付き）、複合機でのコピー（モノクロ1枚2元、カラー1枚6元、税抜）、毎月無料の6時間を超える会議室利用（1時間400元、オフピーク300元）。"],
 });
 Object.assign(T, { // 2026-10-19 名額狀態列（private-office／virtual-office／office-guide）＋會議室 FAQ 三題
-"目前名額：世貿館借址登記尚有名額，可直接申請；信義館已額滿，開放候補。新場域開放時，候補名單優先通知。":["Availability: the WTC Branch currently has registration addresses available and you can apply directly; the Xinyi Branch is full with a waiting list open. We notify the waiting list first when new space opens.", "空き状況：世貿館は登記住所に空きがあり、直接お申し込みいただけます。信義館は満室のため、キャンセル待ちを受け付けています。新スペースのオープン時は、キャンセル待ちの方に優先してご案内します。"],
+"目前名額：世貿館借址登記尚有名額，可直接申請；信義館已額滿，開放候補。名額釋出時，候補名單優先通知。":["Availability: the WTC Branch currently has registration addresses available and you can apply directly; the Xinyi Branch is full with a waiting list open. We notify the waiting list first when a place becomes available.", "空き状況：世貿館は登記住所に空きがあり、直接お申し込みいただけます。信義館は満室のため、キャンセル待ちを受け付けています。空きが出た際は、キャンセル待ちの方に優先してご案内します。"],
 "需要開會或接待客戶？會議室可直接預約 →":["Need to hold a meeting or host a client? Meeting rooms can be booked directly →","会議や来客対応が必要ですか？会議室はすぐにご予約いただけます →"],
-"目前名額：兩館獨立辦公室皆已滿租、共享座位兩館皆額滿，開放候補；世貿館即將開放新場域，候補名單優先通知。":["Availability: private offices and dedicated desks are currently full at both branches, with a waiting list open. A new space is opening soon at the WTC Branch, and the waiting list will be notified first.", "空き状況：個室オフィス・専用デスクともに両館満室のため、キャンセル待ちを受け付けています。世貿館では新スペースを近日オープン予定で、キャンセル待ちの方に優先してご案内します。"],
+"目前名額：兩館獨立辦公室皆已滿租、共享座位兩館皆額滿，開放候補；名額釋出時，候補名單優先通知。":["Availability: private offices and dedicated desks are currently full at both branches, with a waiting list open. When a space becomes available, the waiting list will be notified first.", "空き状況：個室オフィス・専用デスクともに両館満室のため、キャンセル待ちを受け付けています。空きが出た際は、キャンセル待ちの方に優先してご案内します。"],
 "加入候補（LINE）":["Join the waiting list (LINE)", "キャンセル待ちに登録（LINE）"],
 "辰星會議室可以容納幾個人？":["How many people can Morning Stars' meeting rooms hold?","辰星の会議室は何人まで利用できますか？"],
 "信義館與世貿館會議室每間皆可容納 6 至 8 人，適合小型商務會議、面試、顧問諮詢與一對一洽談。若需要 10 人以上的場地，建議另尋較大型會議空間。":["Each meeting room at the Xinyi and WTC branches seats 6 to 8 people — suitable for small business meetings, interviews, consultations and one-on-one discussions. For groups of 10 or more, we recommend a larger venue.","信義館・世貿館の会議室はいずれも6〜8名まで利用でき、小規模な商談、面接、コンサルティング、1対1の打ち合わせに適しています。10名以上の場合は、より広い会場をおすすめします。"],
@@ -1280,7 +1283,7 @@ Object.assign(T, { // 2026-11-19 老闆：世貿館 2027 年 1 月可能有辦�
 });
 Object.assign(T, { // 2026-11-19 名額同步（工具_名額同步.js）：世貿館借址額滿時官網自動換成下列句子——先收進字典，切換當下英／日版就不會出現中文
 "借址登記｜世貿館年繳 NT$18,000 起（目前額滿・可候補）→":["Registered address | WTC Branch from NT$18,000/year (currently full · waiting list) →", "登記住所｜世貿館 年額NT$18,000〜（現在満室・キャンセル待ち受付）→"],
-"目前名額：兩館借址登記目前皆額滿，開放候補。新場域開放時，候補名單優先通知。":["Availability: registration addresses at both branches are currently full, with a waiting list open. When new space opens, the waiting list is notified first.", "空き状況：登記住所は現在両館とも満室で、キャンセル待ちを受け付けています。新しいスペースが開く際は、キャンセル待ちの方へ優先的にご案内します。"],
+"目前名額：兩館借址登記目前皆額滿，開放候補。名額釋出時，候補名單優先通知。":["Availability: registration addresses at both branches are currently full, with a waiting list open. When a place becomes available, the waiting list is notified first.", "空き状況：登記住所は現在両館とも満室で、キャンセル待ちを受け付けています。空きが出た際は、キャンセル待ちの方へ優先的にご案内します。"],
 "目前名額：借址登記兩館皆額滿可候補；獨立辦公室與共享座位兩館皆額滿，開放候補；會議室兩館皆可直接預約。":["Availability: registration addresses are full at both branches (waiting list open); private offices and dedicated desks are full at both branches (waiting list open); meeting rooms at both branches can be booked directly.", "空き状況：登記住所は両館とも満室（キャンセル待ち受付）。個室オフィス・専用デスクも両館とも満室で、キャンセル待ちを受け付けています。会議室は両館とも直接ご予約いただけます。"],
 "借址登記目前額滿，可登記候補":["Address registration is currently full — join the waiting list", "住所登記は現在満室です（キャンセル待ち受付中）"],
 "目前沒有。世貿館的借址登記目前已額滿（年費 18,000＋押金 1,500＝首期 19,500 含稅），可來電 0903-368-856 或加 LINE @mstars 登記候補，有名額會依登記順序通知。信義館的借址名額目前也已額滿。":["Not at the moment. Address registration at the WTC Branch is currently full (annual fee NT$18,000 + NT$1,500 deposit = NT$19,500 first payment, tax included). Call 0903-368-856 or add LINE @mstars to join the waiting list — we notify in order when a place opens. The Xinyi Branch is also full at the moment.", "現在は空きがありません。世貿館の住所登記は現在満室です（年額18,000＋保証金1,500＝初回19,500元・税込）。0903-368-856 へのお電話または LINE @mstars でキャンセル待ちにご登録いただければ、空きが出た際に登録順にご連絡します。信義館も現在満室です。"],
@@ -1299,6 +1302,35 @@ Object.assign(T, { // 2026-11-20 健檢 I 段：新 Google 評論 3 則收進評
 "非常乾淨 老闆特別熱情 有洗手間與水":["Very clean, the owner is especially warm, and there is a restroom and drinking water.", "とても清潔で、オーナーが特に親切。トイレと飲み水もあります。"],
 "世貿館・2026 年 11 月":["WTC · Nov 2026", "世貿館・2026年11月"],
 "信義館・2026 年 11 月":["Xinyi · Nov 2026", "信義館・2026年11月"]
+});
+Object.assign(T, { // 2026-11-23 候補登記頁 waitlist.html＋入口連結
+"候補登記：獨立辦公室與共享座位":["Waiting list: private offices and coworking desks", "キャンセル待ち登録：個室オフィス・コワーキング席"],
+"名額一釋出，就依登記順序通知您。登記免費，不必先付任何費用。":["As soon as a space opens up, we notify you in the order you registered. Joining is free — no payment needed.", "空きが出しだい、ご登録順にお知らせします。登録は無料で、事前のお支払いは不要です。"],
+"／ 候補登記":["/ Waiting list", "／ キャンセル待ち登録"],
+"獨立辦公室：兩館目前滿租。世貿館 2027 年 1 月可能有辦公室釋出，視現有租約而定，尚未確定。":["Private offices: both branches are currently fully let. An office at the WTC Branch may become available in January 2027, depending on an existing lease — not yet confirmed.", "個室オフィス：現在両館とも満室です。世貿館では2027年1月に空きが出る可能性がありますが、現契約次第のため未確定です。"],
+"共享座位：兩館目前額滿。":["Coworking desks: currently full at both branches.", "コワーキング席：現在両館とも満席です。"],
+"借址登記：信義館目前額滿，可登記候補；世貿館名額以 LINE 即時回覆為準。":["Address registration: the Xinyi Branch is currently full (waiting list open); for the WTC Branch, please check availability with us on LINE.", "住所登記：信義館は現在満室（キャンセル待ち受付）。世貿館の空き状況はLINEでの最新回答をご確認ください。"],
+"會議室：兩館都可以直接線上預約，不用候補。":["Meeting rooms: both branches can be booked online right away — no waiting list.", "会議室：両館ともオンラインですぐ予約でき、キャンセル待ちは不要です。"],
+"用 LINE 登記候補":["Join the waiting list on LINE", "LINEでキャンセル待ち登録"],
+"會議室現在就能預約 →":["Meeting rooms can be booked now →", "会議室は今すぐ予約できます →"],
+"登記方式":["How to join", "登録方法"],
+"加 LINE 傳一句話":["Send us one line on LINE", "LINEで一言送るだけ"],
+"按上方「用 LINE 登記候補」，告訴我們想要的方案、館別與人數。":["Tap “Join the waiting list on LINE” above and tell us the plan, branch and number of people you need.", "上の「LINEでキャンセル待ち登録」を押して、ご希望のプラン・拠点・人数をお知らせください。"],
+"登記候補順序":["Get your place in line", "キャンセル待ちの順番を登録"],
+"專員會回覆確認，並把您排進候補名單。":["Our staff will confirm and add you to the waiting list.", "担当者が確認のうえ、キャンセル待ちリストに登録します。"],
+"有空位依序通知":["Notified in order when space opens", "空きが出たら順番にご連絡"],
+"名額釋出時用 LINE 通知您，再約時間參觀、確認方案。":["When a space opens, we message you on LINE, then arrange a viewing and confirm the plan.", "空きが出たらLINEでお知らせし、見学日程とプランを確認します。"],
+"LINE 搜尋 ID：@mstars。電腦版若沒有自動帶入文字，直接傳「我想登記候補」也可以。":["LINE ID: @mstars. If the message isn’t pre-filled on desktop, just send “I’d like to join the waiting list”.", "LINE ID：@mstars。パソコン版で文章が自動入力されない場合は「キャンセル待ちを登録したい」とお送りください。"],
+"登記候補要付費嗎？":["Does it cost anything to join the waiting list?", "キャンセル待ち登録に費用はかかりますか？"],
+"不用。登記候補完全免費，有空位時再決定要不要承租。":["No. Joining the waiting list is completely free — you decide whether to rent when a space opens up.", "いいえ。登録は完全無料で、空きが出てからご契約を決めていただけます。"],
+"有空位時會怎麼通知我？":["How will you let me know when a space opens?", "空きが出たらどのように連絡がありますか？"],
+"我們會依登記順序用 LINE 通知；想要電話聯絡也可以留電話，由專員回電。":["We notify you on LINE in the order you registered; if you prefer a call, leave your number and our staff will call you back.", "ご登録順にLINEでお知らせします。お電話をご希望の場合は番号をお知らせいただければ、担当者から折り返します。"],
+"不想等，現在有什麼可以先用？":["Don’t want to wait — what can I use right now?", "待たずに今すぐ使えるものはありますか？"],
+"會議室兩館都可以直接線上預約，按小時計費；借址登記可以先用 LINE 詢問兩館目前的名額。":["Meeting rooms at both branches can be booked online and are charged by the hour; for address registration, ask us on LINE about current availability at each branch.", "会議室は両館ともオンラインで予約でき、時間単位の料金です。住所登記は、両館の現在の空き状況をLINEでお問い合わせください。"],
+"資訊更新：2026 年 11 月 23 日":["Last updated: 23 November 2026", "最終更新：2026年11月23日"],
+"想先了解方案差異？":["Want to compare the plans first?", "まずはプランの違いを知りたい方へ"],
+"借址登記、獨立辦公室、共享座位與會議室怎麼選，可以先看比較表。":["See the comparison table to choose between address registration, private offices, coworking desks and meeting rooms.", "住所登記・個室・コワーキング席・会議室の選び方は、比較表をご覧ください。"],
+"候補登記說明 →":["How the waiting list works →", "キャンセル待ち登録のご案内 →"]
 });
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
