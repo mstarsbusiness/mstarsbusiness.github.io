@@ -1332,6 +1332,12 @@ Object.assign(T, { // 2026-11-23 候補登記頁 waitlist.html＋入口連結
 "借址登記、獨立辦公室、共享座位與會議室怎麼選，可以先看比較表。":["See the comparison table to choose between address registration, private offices, coworking desks and meeting rooms.", "住所登記・個室・コワーキング席・会議室の選び方は、比較表をご覧ください。"],
 "候補登記說明 →":["How the waiting list works →", "キャンセル待ち登録のご案内 →"]
 });
+Object.assign(T, { // 2026-11-25 老闆：會議室內禁止用餐及吃東西（meeting-room 預約須知第 7 條、meeting-room-price 使用須知）
+"禁止用餐":["No eating", "食事禁止"],
+"：會議室內禁止用餐及吃東西，謝謝您的配合。":[": Eating (meals or snacks) is not allowed in the meeting room. Thank you for your cooperation.", "：会議室内での食事（お弁当・軽食を含む）はご遠慮ください。ご協力ありがとうございます。"],
+"會議室內禁止用餐及吃東西，謝謝您的配合。":["Eating (meals or snacks) is not allowed in the meeting room. Thank you for your cooperation.", "会議室内での食事（お弁当・軽食を含む）はご遠慮ください。ご協力ありがとうございます。"],
+"本頁資訊為辰星商務中心營運實務，更新日期 2026-11-25。價格皆為含稅價。實際檔期以系統顯示為準。｜相關頁面：":["This page reflects Morning Stars Business Center's current practice, last updated 2026-11-25. All prices include tax. Actual availability is as shown in the booking system. | Related pages: ", "本ページの情報は辰星商務中心の運営実務に基づき、2026-11-25 に更新しました。価格はすべて税込です。実際の空き状況はシステムの表示をご確認ください。｜関連ページ："],
+});
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
   var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
