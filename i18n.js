@@ -1338,6 +1338,12 @@ Object.assign(T, { // 2026-11-25 老闆：會議室內禁止用餐及吃東西�
 "會議室內禁止用餐及吃東西，謝謝您的配合。":["Eating (meals or snacks) is not allowed in the meeting room. Thank you for your cooperation.", "会議室内での食事（お弁当・軽食を含む）はご遠慮ください。ご協力ありがとうございます。"],
 "本頁資訊為辰星商務中心營運實務，更新日期 2026-11-25。價格皆為含稅價。實際檔期以系統顯示為準。｜相關頁面：":["This page reflects Morning Stars Business Center's current practice, last updated 2026-11-25. All prices include tax. Actual availability is as shown in the booking system. | Related pages: ", "本ページの情報は辰星商務中心の運営実務に基づき、2026-11-25 に更新しました。価格はすべて税込です。実際の空き状況はシステムの表示をご確認ください。｜関連ページ："],
 });
+Object.assign(T, { // 2026-11-28 老闆：信義館 2 間辦公室 2027 年 1 月可能釋出（世貿館 1 間照舊），private-office／waitlist／xinyi
+"2027 年 1 月信義館可能有 2 間、世貿館可能有 1 間獨立辦公室釋出（視現有租約而定），歡迎預約參觀並登記候補。":["In January 2027, two private offices at the Xinyi Branch and one at the WTC Branch may become available (depending on current leases) — book a visit and join the waiting list.", "2027年1月に信義館で2室、世貿館で1室の個室オフィスが空く可能性があります（現在の契約状況によります）。ぜひ見学のご予約とキャンセル待ちへのご登録をどうぞ。"],
+"獨立辦公室：兩館目前滿租。2027 年 1 月信義館可能有 2 間、世貿館可能有 1 間辦公室釋出，視現有租約而定，尚未確定。":["Private offices: both branches are currently fully let. In January 2027, two offices at the Xinyi Branch and one at the WTC Branch may become available, depending on existing leases — not yet confirmed.", "個室オフィス：現在両館とも満室です。2027年1月に信義館で2室、世貿館で1室空きが出る可能性がありますが、現契約次第のため未確定です。"],
+"平日 10:00–17:00 歡迎預約參觀。獨立辦公室目前滿租，2027 年 1 月可能有 2 間釋出（視現有租約而定），先登記候補比較不會錯過。":["Visits are welcome by appointment on weekdays 10:00–17:00. Private offices are currently fully let; two may become available in January 2027 (depending on current leases), so joining the waitlist early helps you not miss out.", "平日10:00〜17:00に見学予約を受け付けています。個室オフィスは現在満室ですが、2027年1月に2室空く可能性があります（現在の契約状況によります）。早めにキャンセル待ちに登録しておくと安心です。"],
+"2027 年 1 月可能釋出 2 間":["2 may open up Jan 2027", "2027年1月に2室空きの可能性あり"]
+});
   /* 有「獨立英文頁」的頁面，按 English 直接前往該頁（不做前端翻譯），
      避免同一內容出現兩個英文版本。清單以中文檔名對應 /en/ 下的檔名。 2026-08-07 */
   var EN_PAGES={'':'/en/index.html','index.html':'/en/index.html','light.html':'/en/index.html','dark.html':'/en/index.html','meeting-room.html':'/en/meeting-room.html','virtual-office.html':'/en/virtual-office.html'};
